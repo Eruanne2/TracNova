@@ -38,7 +38,11 @@ app.get('/', (req, res) => {
 });
 
 // Express routes:
-// app.use('/api/users', users);
+app.use('/api/users', users);
+// GET /api/users/current
+// POST /api/users/register
+// POST /api/users/login
+
 
 
 // Port:
