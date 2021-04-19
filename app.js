@@ -8,10 +8,12 @@ const db = require('./config/keys').mongoURI;
 // Routes imports:
 const users = require('./routes/api/users');
 const daily_logs = require('./routes/api/daily_logs');
+const variables = require('./routes/api/variables');
 
 // Model imports:
 const User = require('./models/User');
 const DailyLog = require('./models/DailyLog');
+const Variable = require('./models/Variable');
 
 const passport = require('passport');
 
@@ -48,6 +50,10 @@ app.use('/api/daily_logs', daily_logs);
 // GET /api/daily_logs/:id
 // GET /api/daily_logs/user/:user_id
 // POST /api/daily_logs/
+app.use('/api/variables', variables);
+// GET /api/variables/:id
+// GET /api/variables/user/:user_id
+// POST /api/variables/
 
 
 // Port:
