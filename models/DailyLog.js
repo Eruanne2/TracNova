@@ -6,16 +6,16 @@ const DailyLogSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  variables: [
-    {
+  variables: [{
+    varId: {
       type: Schema.Types.ObjectId,
       ref: 'Variable'
+    },
+    count: {
+      type: Number,
+      required: true
     }
-  ],
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  }]
 }, {
   timestamps: true
 });

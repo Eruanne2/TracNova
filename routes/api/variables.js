@@ -2,24 +2,24 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
-const validateVariableInput = require('../../validations/daily_logs');
+const validateVariableInput = require('../../validations/variables');
 
 const Variable = require('../../models/Variable');
 
 router.get('/:id', (req, res) => {
   Variable.findById(req.params.id)
-    .then(dlog => res.json(dlog))
+    .then(variable => res.json(variable))
     .catch(err =>
-      res.status(404).json({nologfound: "We can't seem to find the Variable you are looking for."})
+      res.status(404).json({novarfound: "We can't seem to find the Variable you are looking for."})
     );
 });
 
 router.get('/user/:user_id', (req, res) => {
   Variable.find({user: req.params.user_id})
     .sort({date: -1})
-    .then(dlogs => res.json(dlogs))
+    .then(variables => res.json(variables))
     .catch(err => 
-      res.status(404).json({notwotsfound: "No Variables Found from this user"})
+      res.status(404).json({novarfound: "No Variables Found from this user"})
     );
 });
 
@@ -41,8 +41,7 @@ router.post('/',
             user: req.user.id,
             name: req.body.name,
             unit: req.body.unit,
-            count: req.body.count,
-            variables: req.body.dailylogs
+            dailylogs: req.body.dailylogs
           });
           newVar.save().then(variable => res.send(variable)).catch(err => res.send(err));
         }

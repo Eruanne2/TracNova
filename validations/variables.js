@@ -12,7 +12,7 @@ module.exports = function validateVariableInput(data) {
     errors.name = "Name field is required";
   }
 
-  if (Validator.isEmpty(data.email)) {
+  if (Validator.isEmpty(data.unit)) {
     errors.unit = "Unit field is required";
   }
 

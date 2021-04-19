@@ -19,7 +19,7 @@ router.get('/user/:user_id', (req, res) => {
     .sort({date: -1})
     .then(dlogs => res.json(dlogs))
     .catch(err => 
-      res.status(404).json({notwotsfound: "No Daily Logs Found from this user"})
+      res.status(404).json({nologfound: "No Daily Logs Found from this user"})
     );
 });
 
