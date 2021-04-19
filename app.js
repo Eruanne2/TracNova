@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 const mongoose = require('mongoose');
-// const db = require('./config/keys').mongoURI;
+const db = require('./config/keys').mongoURI;
 
 // Routes imports:
 // const users = require('./routes/api/users');
@@ -16,10 +16,10 @@ const passport = require('passport');
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
-// mongoose
-//  .connect(db, {useNewUrlParser: true})
-//  .then(() => console.log("Connected to mongoDB"))
-//  .catch(err => console.log(err));
+mongoose
+ .connect(db, {useNewUrlParser: true})
+ .then(() => console.log("Connected to mongoDB"))
+ .catch(err => console.log(err));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
