@@ -14,12 +14,11 @@ const VariableSchema = new Schema({
     type: String,
     required: true
   },
-  dailylogs: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'DailyLog'
-    }
-  ]
+  dailylogs: {
+    type: Schema.Types.Mixed,
+    default: {},
+    required: true
+  }
 }, {
   timestamps: true
 });

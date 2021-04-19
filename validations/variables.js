@@ -6,7 +6,6 @@ module.exports = function validateVariableInput(data) {
 
   data.name = validText(data.name) ? data.name : '';
   data.unit = validText(data.unit) ? data.unit : '';
-  // data.dailylogs = data.dailylogs.length > 0 ? data.dailylogs : [];
 
   if (Validator.isEmpty(data.name)) {
     errors.name = "Name field is required";
