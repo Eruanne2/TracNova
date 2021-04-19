@@ -7,9 +7,11 @@ const db = require('./config/keys').mongoURI;
 
 // Routes imports:
 const users = require('./routes/api/users');
+const daily_logs = require('./routes/api/daily_logs');
 
 // Model imports:
 const User = require('./models/User');
+const DailyLog = require('./models/DailyLog');
 
 const passport = require('passport');
 
@@ -42,7 +44,10 @@ app.use('/api/users', users);
 // GET /api/users/current
 // POST /api/users/register
 // POST /api/users/login
-
+app.use('/api/daily_logs', daily_logs);
+// GET /api/daily_logs/:id
+// GET /api/daily_logs/user/:user_id
+// POST /api/daily_logs/
 
 
 // Port:
