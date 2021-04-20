@@ -45,7 +45,26 @@ router.post('/',
           });
           newVar.save().then(variable => res.send(variable)).catch(err => res.send(err));
         }
-      })
+      });
+  }
+);
+
+router.patch('/:id',
+  passport.authenticate('jwt', { session: false }),
+  // above line gave req a user key
+  (req, res) => {
+    const {errors, isValid} = validateVariableInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    Variable.findByIdAndUpdate(req.params.id, update, () => {
+        dailylogs[req.body.date] = req.body.count})
+      .then(variable => res.send(variable))
+      .catch(err =>
+        res.status(404).json({novarfound: "We can't seem to find the Variable you are looking for."})
+      );
   }
 );
 
