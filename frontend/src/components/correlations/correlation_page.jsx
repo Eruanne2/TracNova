@@ -1,5 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import CorrelationChart from "./correlation_chart"
+import CorrelationButtons from "./correlation_buttons"
 import AddCorrelationChartContainer from "./add_correlation_chart_container";
 import CorrelationChartContainer from "./correlation_chart_container";
 
@@ -26,17 +28,20 @@ function DropdownMenu({logout, history}){
 function CorrelationPage({logout, history, correlation, correlations}){
   return (
     <section className="page correlation">
-      <DropdownMenu {...{logout, history}}/>
-      <section className="charts">
-        { correlations
-            .filter(corr => corr !== correlation)
-            .map(corr => (
-              <CorrelationChartContainer
-                key={corr.id} correlationId={corr.id} editable={false}
-              />
-            ))
-        }
-        <AddCorrelationChartContainer />
+      <CorrelationButtons />
+      <CorrelationChart />
+      <Link to="#" onClick={handleClick}>Logout</Link>
+//       <DropdownMenu {...{logout, history}}/>
+//       <section className="charts">
+//         { correlations
+//             .filter(corr => corr !== correlation)
+//             .map(corr => (
+//               <CorrelationChartContainer
+//                 key={corr.id} correlationId={corr.id} editable={false}
+//               />
+//             ))
+//         }
+//         <AddCorrelationChartContainer />
       </section>
     </section>
   )

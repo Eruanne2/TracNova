@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {withRouter} from "react-router-dom";
-import { Link } from 'react-router-dom';
+
+import {Link} from "react-router-dom";
+import '../../styles/session.css'
 
 function SignupForm({signup, errors, history, currentUser}){
   const [_username, _setUsername] = useState('');
@@ -45,7 +47,7 @@ function SignupForm({signup, errors, history, currentUser}){
   return (
     <section className="session signin">
       <figure className="logo-wrapper">
-        <img className="logo" alt="TracNova icon"/>
+        <img src={process.env.PUBLIC_URL + 'images/public/logo512.png'} className="logo" alt="TracNova icon"/>
       </figure>
 
       <form onSubmit={e => handleSubmit(e)}>

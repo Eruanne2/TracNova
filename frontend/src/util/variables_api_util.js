@@ -13,7 +13,7 @@ export const postVariable = varData => {
 };
 
 export const patchVariable = varData => {
-  return axios.patch(`/api/variables/${varData._id}`, varData);
+  return axios.patch(`/api/variables/${varData.id}`, varData);
 };
 
 export const deleteVariable = varId => {
