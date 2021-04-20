@@ -57,10 +57,10 @@ const getCorrelationCoefficient = (data, varTypes) => {
 
 
 // Phi Correlation
-const phi = table => {
-  return (table[3] * table[0] - table[2] * table[1]) /
-    Math.sqrt((table[2] + table[3]) * (table[0] + table[1]) * (table[1] + table[3]) * (table[0] + table[2]))
-}
+const phi = ([_00, _01, _10, _11]) => 
+  (_11 * _00 - _10 * _01) /
+    Math.sqrt((_10 + _11) * (_00 + _01) * (_01 + _11) * (_00 + _10))
+
 
 // Point-Biserial Correlation
 const pointBiserial = (testData, varTypes) => {
@@ -94,3 +94,4 @@ const popStdDev = arr => {
     arr.reduce((acc, val) => acc + (val - mean) ** 2, 0) / arr.length
   );
 };
+
