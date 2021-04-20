@@ -1,2 +1,6 @@
 /node_modules
 keys_dev.js
+
+# ignore raw image assets
+/assets/raw
+/assets/raw/*
