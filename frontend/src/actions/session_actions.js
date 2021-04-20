@@ -24,11 +24,13 @@ export const receiveUserLogout = () => ({
   type: RECEIVE_USER_LOGOUT
 });
 
+// thunk creators
+
 export const logout = () => dispatch => {
   localStorage.removeItem('jwtToken');
   APIUtil.setAuthToken(false);
   dispatch(receiveUserLogout());
-}
+};
 
 export const signup = user => dispatch => 
   APIUtil.signup(user).then(() => {

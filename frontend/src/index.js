@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //testing
   // window.axios = axios;
-  // window.store = store;
+  window.store = store;
 
   ReactDOM.render(<Root store={store} />, root);
 })
