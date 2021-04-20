@@ -13,12 +13,8 @@ module.exports = function validateVariableUpdate(data) {
     errors.date = "Date field is required";
   }
 
-  if (validDate(data.date)) {
-    errors.date = "Date must be a valid date1";
-  }
-
-  if (Validator.isDate(data.date) && data.date > today.getDate()) {
-    errors.date = "Date must be a valid date2";
+  if (!validDate(data.date)) {
+    errors.date = "Date must be a valid date";
   }
 
   if (Validator.isEmpty(data.count)) {
