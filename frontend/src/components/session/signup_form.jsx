@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {withRouter} from "react-router-dom";
-import {Link} from "react-router-dom";
-
 import logo from "../../images/public/logo512.png"
-
+import {Link} from "react-router-dom";
 import '../../styles/session.css'
 
-function SignupForm({signedIn, signup, errors, history}){
+function SignupForm({signup, errors, history, currentUser}){
   const [_username, _setUsername] = useState('');
   const [_email, _setEmail] = useState('');
   const [_password, _setPassword] = useState('');
@@ -14,9 +12,9 @@ function SignupForm({signedIn, signup, errors, history}){
   const [_errors, _setErrors] = useState({});
   
   useEffect(() => {
-    if (signedIn)
-      history.push('/login');
-  }, [signedIn]);
+    if (currentUser === true)
+      history.push('/');
+  }, [currentUser]);
 
   useEffect(() => {
     _setErrors(errors);

@@ -3,7 +3,6 @@ import {signup} from "../../actions/session_actions";
 import SignupForm from "./signup_form"
 
 const mapSTP = ({session, errors}) => ({
-  signedIn: session.isSignedIn,
   errors: errors.session
 });
 

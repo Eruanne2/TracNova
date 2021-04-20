@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import logo from "../../images/public/logo512.png"
 import '../../styles/session.css'
-
 function LoginForm({
   history,
   currentUser, errors,
@@ -16,7 +15,7 @@ function LoginForm({
 
   useEffect(() => {
     if (currentUser === true)
-      history.push('/correlations');
+      history.push('/');
   }, [currentUser]);
 
   useEffect(() => {
