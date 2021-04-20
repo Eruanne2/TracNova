@@ -1,21 +1,21 @@
 import axios from 'axios';
 
 export const getVariableById = varId => {
-  return axios.get(`/variables/${varId}`);
+  return axios.get(`/api/variables/${varId}`);
 };
 
 export const getUserVariables = userId => {
-  return axios.get(`/variables/user/${userId}`)
+  return axios.get(`/api/variables/user/${userId}`)
 };
 
 export const postVariable = varData => {
-  return axios.post('/variables', varData);
+  return axios.post('/api/variables/', varData);
 };
 
 export const patchVariable = varData => {
-  return axios.patch(`/variables/${varData.id}`, varData);
+  return axios.patch(`/api/variables/${varData.id}`, varData);
 };
 
 export const deleteVariable = varId => {
-  return axios.delete(`/variables/${varId}`);
+  return axios.delete(`/api/variables/${varId}`);
 };

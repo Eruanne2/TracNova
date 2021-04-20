@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import axios from 'axios';
 import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
@@ -11,6 +10,10 @@ import { logout } from './actions/session_actions';
 // Not Needed
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
+
+// testing
+import axios from 'axios';
+import * as variableActions from './actions/variables_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -33,11 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
 
   //testing
-  // window.axios = axios;
+  window.axios = axios;
   window.store = store;
+  window.variableActions = variableActions;
+
 
   ReactDOM.render(<Root store={store} />, root);
 })
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
