@@ -6,18 +6,22 @@ import CorrelationPageContainer from "./correlations/correlation_page_container"
 import CorrelationsPageContainer from "./correlations/correlations_page_container";
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './session/signup_form_container'
+import AppMenu from "./util/app_menu";
 
 window.axios = axios;
 export default function App(){
   return (
-    <Switch>
-      <AuthRoute exact path="/login" component={LoginFormContainer}/>
-      <AuthRoute exact path="/signup" component={SignupFormContainer}/>
-      <ProtectedRoute exact path="/correlations/:correlationId" component={CorrelationPageContainer}/>
-      <ProtectedRoute exact path="/correlations" component={CorrelationsPageContainer}/>
-      <Route exact path="/">
-        <Redirect to="/correlations"/>
-      </Route>  
-    </Switch>
+    <>
+      <ProtectedRoute path="/" component={AppMenu}/>
+      <Switch>
+        <AuthRoute exact path="/login" component={LoginFormContainer}/>
+        <AuthRoute exact path="/signup" component={SignupFormContainer}/>
+        <ProtectedRoute exact path="/correlations/:correlationId" component={CorrelationPageContainer}/>
+        <ProtectedRoute exact path="/correlations" component={CorrelationsPageContainer}/>
+        <Route exact path="/">
+          <Redirect to="/correlations"/>
+        </Route>  
+      </Switch>
+    </>
   );
 }

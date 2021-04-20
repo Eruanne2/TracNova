@@ -1,33 +1,35 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import AppMenu from "../util/app_menu";
 import AddCorrelationChartContainer from "./add_correlation_container";
 import CorrelationChartContainer from "./correlation_chart_container";
 
-function DropdownMenu({logout, history}){
-  const handleLogout = e => {
-    e.preventDefault();
-    logout();
-    history.push('/');
-  }
-
-  return (
-    <section className="modal dropdown-menu">
-      <section className="lightbox dropdown-menu">
-        <ul>
-          <li className="menu-item">
-            <Link to="#" onClick={handleLogout}>Logout</Link>
-          </li>
-        </ul>
-      </section>
-    </section>
-  )
-}
-
-function CorrelationPage({logout, history, correlation, correlations}){
+function CorrelationPage({logout, history, variables, correlation, correlations}){
   return (
     <section className="page correlation">
-      <DropdownMenu {...{logout, history}}/>
+      <section>
+        <section>
+          <figure>
+            Correlation Chart
+          </figure>
+
+          <h2 className="title"></h2>
+          <h3 className="summary">
+            Correlation Level
+          </h3>
+        </section>
+
+        <section className="variables">{ 
+          variables.map(variable => (
+            <VariableContainer key={variable._id} variable={variable}/>
+          ))
+        }</section>
+
+        <LogsWrapperContainer variables={variables}/>
+      </section>
+
+      {/* Move below to another separate file eventually */}
       <section className="charts">
+        Correlation Charts
         { correlations
             .filter(corr => corr !== correlation)
             .map(corr => (
@@ -37,7 +39,7 @@ function CorrelationPage({logout, history, correlation, correlations}){
             ))
         }
         <AddCorrelationChartContainer />
-      </section>
+      </section> 
     </section>
   )
 }
