@@ -15,7 +15,7 @@ function LoginForm({
   useEffect(() => {
     if (currentUser === true)
       history.push('/');
-  }, [currentUser]);
+  }, [currentUser, history]);
 
   useEffect(() => {
     _setErrors(errors);
@@ -58,7 +58,7 @@ function LoginForm({
           type="password" placeholder="Enter password" value={_password}
           onChange={e => _setPassword(e.target.value)}
         />
-        <input className="button session button" type="submit" value="Log in"/>
+        <input className="button session-button" type="submit" value="Log in"/>
       </form>
 
       {renderErrors()}

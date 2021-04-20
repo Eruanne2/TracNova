@@ -8,8 +8,6 @@ export default function CorrelationChart({correlation, variables, width = 1000, 
     const delta = max - min;
     const startDate = correlation.startDate;
     const endDate = correlation.endDate;
-
-    
   }
 
   return (

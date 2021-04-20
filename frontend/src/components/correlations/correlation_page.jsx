@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import AddCorrelationChartContainer from "./add_correlation_chart_container";
+import AddCorrelationChartContainer from "./add_correlation_container";
 import CorrelationChartContainer from "./correlation_chart_container";
 
 function DropdownMenu({logout, history}){
