@@ -38,27 +38,7 @@ router.post('/register', (req, res) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
-            newUser
-              .save()
-              .then(user => {
-                const payload = {
-                  id: user.id,
-                  username: user.username,
-                  email: user.email
-                }
-                jwt.sign(
-                  payload,
-                  keys.secretOrKey,
-                  { expiresIn: 3600 },
-                  (err, token) => {
-                    res.json({
-                      success: true,
-                      token: "Bearer " + token
-                    });
-                  }
-                );
-              })
-              .catch(err => res.send(err));
+            newUser.save().then(user => res.send(user)).catch(err => res.send(err));
           })
         })
       }
