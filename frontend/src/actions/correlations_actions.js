@@ -53,6 +53,6 @@ export const updateCorrelation = correlationData => dispatch => {
 
 export const destroyCorrelation = correlationId => dispatch => {
   APIUtil.deleteCorrelation(correlationId)
-    .then(res => dispatch(removeCorrelation(res.data._id)))
+    .then(res => dispatch(removeCorrelation(res.data.v._id)))
     .catch(err => dispatch(receiveCorrelationErrors(err.response.data)));
 };
