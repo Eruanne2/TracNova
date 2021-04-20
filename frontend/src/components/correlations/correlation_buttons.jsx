@@ -49,9 +49,9 @@ export default function CorrelationButtons(){
         </div>
         </div>
        
-       <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/stars.png'})` }} className="stars"></div>
+       {/* <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/stars.png'})` }} className="stars"></div>
        <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/twinkling.png'})` }} className="twinkling"></div>
-       <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/clouds.png'})` }} className="clouds"></div>
+       <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/clouds.png'})` }} className="clouds"></div> */}
        {/* <div style="%PUBLIC_URL%/images/stars.png"  className="stars"></div>  */}
        {/* <img src={process.env.PUBLIC_URL + 'images/stars.png'} /> */}
        {/* <img src={process.env.PUBLIC_URL + stars } /> */}
