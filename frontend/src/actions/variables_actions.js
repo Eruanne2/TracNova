@@ -27,8 +27,8 @@ export const receiveVariableErrors = errors => ({
 
 // thunk creators
 
-export const fetchVariable = id => dispatch => {
-  APIUtil.getVariableById(id)
+export const fetchVariable = varId => dispatch => {
+  APIUtil.getVariableById(varId)
     .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
@@ -51,8 +51,8 @@ export const updateVariable = varData => dispatch => {
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
-export const destroyVariable = id => dispatch => {
-  APIUtil.deleteVariable(id)
-    .then(res => dispatch(removeVariable(res.data)))
+export const destroyVariable = varId => dispatch => {
+  APIUtil.deleteVariable(varId)
+    .then(res => dispatch(removeVariable(res.data._id)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
