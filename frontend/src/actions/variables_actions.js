@@ -29,30 +29,30 @@ export const receiveVariableErrors = errors => ({
 
 export const fetchVariable = id => dispatch => {
   APIUtil.getVariableById(id)
-    .then(res => dispatch(receiveVariable(res)))
+    .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const fetchUserVariables = userId => dispatch => {
   APIUtil.getUserVariables(userId)
-    .then(res => dispatch(receiveUserVariables(res)))
+    .then(res => dispatch(receiveUserVariables(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const createVariable = varData => dispatch => {
   APIUtil.postVariable(varData)
-    .then(res => dispatch(receiveVariable(res)))
+    .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const updateVariable = varData => dispatch => {
   APIUtil.patchVariable(varData)
-    .then(res => dispatch(receiveVariable(res)))
+    .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const destroyVariable = id => dispatch => {
   APIUtil.deleteVariable(id)
-    .then(res => dispatch(removeVariable(res)))
+    .then(res => dispatch(removeVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
