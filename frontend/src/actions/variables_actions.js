@@ -3,6 +3,7 @@ import * as APIUtil from '../util/variables_api_util';
 export const RECEIVE_VARIABLE = 'RECEIVE_VARIABLE';
 export const RECEIVE_USER_VARIABLES = 'RECEIVE_USER_VARIABLES';
 export const REMOVE_VARIABLE = 'REMOVE_VARIABLE';
+export const RECEIVE_VARIABLE_ERRORS = 'RECEIVE_VARIABLE_ERRORS';
 
 export const receiveVariable = variable => ({
   type: RECEIVE_VARIABLE, 
@@ -11,37 +12,47 @@ export const receiveVariable = variable => ({
 
 export const receiveUserVariables = userVariables => ({
   type: RECEIVE_USER_VARIABLES,
-  userVariables
+  userVariables,
 });
 
 export const removeVariable = varId => ({
   type: REMOVE_VARIABLE,
-  varId
+  varId,
 });
+
+export const receiveVariableErrors = errors => ({
+  type: RECEIVE_VARIABLE_ERRORS,
+  errors,
+})
 
 // thunk creators
 
 export const fetchVariable = id => dispatch => {
   APIUtil.getVariableById(id)
-    .then(res => dispatch(receiveVariable(res)));
+    .then(res => dispatch(receiveVariable(res)))
+    .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const fetchUserVariables = userId => dispatch => {
   APIUtil.getUserVariables(userId)
-    .then(res => dispatch(receiveUserVariables(res)));
+    .then(res => dispatch(receiveUserVariables(res)))
+    .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const createVariable = varData => dispatch => {
   APIUtil.postVariable(varData)
-    .then(res => dispatch(receiveVariable(res)));
+    .then(res => dispatch(receiveVariable(res)))
+    .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const updateVariable = varData => dispatch => {
   APIUtil.patchVariable(varData)
-    .then(res => dispatch(receiveVariable(res)));
+    .then(res => dispatch(receiveVariable(res)))
+    .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const destroyVariable = id => dispatch => {
   APIUtil.deleteVariable(id)
-    .then(res => dispatch(removeVariable(res)));
+    .then(res => dispatch(removeVariable(res)))
+    .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
