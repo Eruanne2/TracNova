@@ -6,10 +6,12 @@ const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 
 // Routes imports:
-// const users = require('./routes/api/users');
+const users = require('./routes/api/users');
+const variables = require('./routes/api/variables');
 
 // Model imports:
-// const User = require('./models/User');
+const User = require('./models/User');
+const Variable = require('./models/Variable');
 
 const passport = require('passport');
 
@@ -38,7 +40,14 @@ app.get('/', (req, res) => {
 });
 
 // Express routes:
-// app.use('/api/users', users);
+app.use('/api/users', users);
+// GET /api/users/current
+// POST /api/users/register
+// POST /api/users/login
+app.use('/api/variables', variables);
+// GET /api/variables/:id
+// GET /api/variables/user/:user_id
+// POST /api/variables/
 
 
 // Port:
