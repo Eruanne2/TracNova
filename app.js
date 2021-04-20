@@ -19,7 +19,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 mongoose
- .connect(db, {useNewUrlParser: true})
+ .connect(db, {useNewUrlParser: true, useFindAndModify: false})
  .then(() => console.log("Connected to mongoDB"))
  .catch(err => console.log(err));
 
