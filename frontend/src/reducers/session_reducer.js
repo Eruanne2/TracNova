@@ -6,6 +6,7 @@ const nullUser = {
 };
 
 export default function SessionReducer(state = nullUser, action){
+  Object.freeze(state);
   switch (action.type){
     case SessionActions.RECEIVE_CURRENT_USER:
       return {
@@ -17,11 +18,6 @@ export default function SessionReducer(state = nullUser, action){
       return {
         isAuthenticated: false,
         user: undefined
-      };
-    case SessionActions.RECEIVE_USER_SIGN_IN:
-      return {
-        ...state,
-        isSignedIn: true
       };
     default:
       return state;
