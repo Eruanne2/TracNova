@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function SignupForm({signedIn, signup, errors, history}){
   const [_username, _setUsername] = useState('');
@@ -42,22 +43,40 @@ function SignupForm({signedIn, signup, errors, history}){
   }
 
   return (
-    <div className="signup-form-container">
+    <section className="session signin">
+      <figure className="logo-wrapper">
+        <img className="logo" alt="TracNova icon"/>
+      </figure>
+
       <form onSubmit={e => handleSubmit(e)}>
         <div className="signup-form">
-          <input type="text" value={_username} onChange={(e) => _setUsername(e.target.value)} placeholder="Username"/>
-          <br/>
-          <input type="text" value={_email} onChange={(e) => _setEmail(e.target.value)} placeholder="Email"/>
-          <br/>
-          <input type="password" value={_password} onChange={(e) => _setPassword(e.target.value)} placeholder="Password"/>
-          <br/>
-          <input type="password" value={_password2} onChange={(e) => _setPassword2(e.target.value)} placeholder="Confirm Password"/>
-          <br/>
-          <input type="submit" value="submit" />
-          {renderErrors()}
+          <input className="session-input" 
+            type="text" value={_username} placeholder="Username"
+            onChange={(e) => _setUsername(e.target.value)} 
+          />
+          <input className="session-input" 
+            type="text" value={_email} placeholder="Email"
+            onChange={(e) => _setEmail(e.target.value)} 
+          />
+          <input className="session-input" 
+            type="password" value={_password} placeholder="Password"
+            onChange={(e) => _setPassword(e.target.value)} 
+          />
+          <input className="session-input" 
+            type="password" value={_password2} placeholder="Confirm Password"
+            onChange={(e) => _setPassword2(e.target.value)} 
+          />
+          <input className="button session button" type="submit" value="submit" />
         </div>
       </form>
-    </div>
+
+      {renderErrors()}
+
+      <section className='redirect-text'>
+        Already have an account?
+        <Link className="session redirect-link" to="/login">Log in</Link>
+      </section>
+    </section>
   )
 }
 

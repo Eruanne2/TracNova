@@ -46,7 +46,7 @@ function LoginForm({
 
   return (
     <section className="session login">
-      <figure className="logo-container">
+      <figure className="logo-wrapper">
         <img className="logo" alt="TracNova icon"/>
       </figure>
       <form onSubmit={handleSubmit}>
@@ -58,11 +58,15 @@ function LoginForm({
           type="password" placeholder="Enter password" value={_password}
           onChange={e => _setPassword(e.target.value)}
         />
-        <input type="submit" value="Log in"/>
+        <input className="button session button" type="submit" value="Log in"/>
       </form>
 
       {renderErrors()}
-
+      
+      <section className='redirect-text'>
+        Don't have an account? 
+        <Link className="session redirect-link" to="/signup">Sign up</Link>
+      </section>
     </section>
   );
 }

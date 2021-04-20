@@ -1,5 +1,7 @@
 import React from "react";
 import {Link, withRouter} from "react-router-dom";
+import CorrelationChart from "./correlation_chart"
+import CorrelationButtons from "./correlation_buttons"
 
 function CorrelationPage({logout, history}){
   const handleClick = e => {
@@ -9,6 +11,8 @@ function CorrelationPage({logout, history}){
   }
   return (
     <section className="page correlation">
+      <CorrelationButtons />
+      <CorrelationChart />
       <Link to="#" onClick={handleClick}>Logout</Link>
     </section>
   )
