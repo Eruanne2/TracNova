@@ -15,6 +15,7 @@ const variablesReducer = (state = {}, action) => {
       return newState;
     case REMOVE_VARIABLE:
       delete newState[action.varId];
+      return newState;
     default:
       return state;
   }
