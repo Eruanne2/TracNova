@@ -8,10 +8,12 @@ const db = require('./config/keys').mongoURI;
 // Routes imports:
 const users = require('./routes/api/users');
 const variables = require('./routes/api/variables');
+const correlations = require('./routes/api/correlations');
 
 // Model imports:
 const User = require('./models/User');
 const Variable = require('./models/Variable');
+const Correlation = require('./models/Correlation');
 
 const passport = require('passport');
 
@@ -48,6 +50,14 @@ app.use('/api/variables', variables);
 // GET /api/variables/:id
 // GET /api/variables/user/:user_id
 // POST /api/variables/
+// PATCH /api/variables/:id
+// DELETE /api/variables/:id
+app.use('/api/correlations', correlations);
+// GET /api/correlations/:id
+// GET /api/correlations/user/:user_id
+// POST /api/correlations/
+// PATCH /api/correlations/:id
+// DELETE /api/correlations/:id
 
 
 // Port:
