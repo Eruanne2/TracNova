@@ -1,15 +1,9 @@
 import {combineReducers} from 'redux';
+import variablesReducer from './variables_reducer';
+import correlationsReducer from './correlations_reducer';
 // import SessionErrorsReducer from './session_errors_reducer';
-
-const correlationsReducer = (state = {}, action) => {
-  return state;
-}
-
-const dataReducer = (state = {}, action) => {
-  return state;
-}
 
 export default combineReducers({
   correlations: correlationsReducer,
-  data: dataReducer
+  variables: variablesReducer
 });
