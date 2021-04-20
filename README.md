@@ -1,5 +1,7 @@
 # Table of Contents
-* [Technologies-Used](#technologies-used)
+* [Technologies Used](#technologies-used)
+  * [Stack](#stack)
+  * [Notable Dependencies](#notable-dependencies)
 * [Features](#features)
   * [User Auth](#user-auth)
   * [Variables](#variables)
@@ -12,11 +14,15 @@
 * [Lessons Learned](#lessons-learned)
   * [Database Design](#database-design)
 
-# Stack
-* PostgreSQL
-* Ruby on Rails
+# Technologies Used
+## Stack
+* MongoDB
+* Express
+* React
 * Node.js
-* React-Redux
+## Notable Dependencies
+* Statistics.js
+* ReCharts
 
 # Features
 ## User Auth
