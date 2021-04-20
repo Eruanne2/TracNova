@@ -5,7 +5,11 @@ module.exports = function validateCorrelationInput(data) {
   let errors = {};
 
   if (data.variables.length !== 2) {
-    errors.correlations = "Correlation must have exactly 2 variables";
+    errors.variables = "Correlation must have exactly 2 variables";
+  }
+
+  if (data.variables[0] === data.variables[1]) {
+    errors.variables = "Variables must not be the same";
   }
 
   return {
