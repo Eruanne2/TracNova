@@ -1,7 +1,10 @@
 import React from "react";
-import AppMenu from "../util/app_menu";
-import AddCorrelationChartContainer from "./add_correlation_container";
+import AddCorrelationContainer from "./add_correlation_container";
+import CorrelationChart from "./correlation_chart"
+import CorrelationButtons from "./correlation_buttons"
 import CorrelationChartContainer from "./correlation_chart_container";
+import VariableContainer from "../variables/variable_container";
+import LogsWrapperContainer from "../variables/logs_wrapper_container";
 
 function CorrelationPage({logout, history, variables, correlation, correlations}){
   return (
@@ -9,7 +12,8 @@ function CorrelationPage({logout, history, variables, correlation, correlations}
       <section>
         <section>
           <figure>
-            Correlation Chart
+            <CorrelationButtons />
+            <CorrelationChart />
           </figure>
 
           <h2 className="title"></h2>
@@ -38,7 +42,7 @@ function CorrelationPage({logout, history, variables, correlation, correlations}
               />
             ))
         }
-        <AddCorrelationChartContainer />
+        <AddCorrelationContainer />
       </section> 
     </section>
   )

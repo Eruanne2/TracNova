@@ -1,0 +1,254 @@
+/* // @mixin scrimGradient($startColor: $color-black, $direction: 'to bottom') {
+
+//   $scrimCoordinates: (
+//     0: 1,
+//     19: 0.738,
+//     34: 0.541,
+//     47: 0.382,
+//     56.5: 0.278,
+//     65: 0.194,
+//     73: 0.126,
+//     80.2: 0.075,
+//     86.1: 0.042,
+//     91: 0.021,
+//     95.2: 0.008,
+//     98.2: 0.002,
+//     100: 0
+//   );
+
+//   $hue: hue($startColor);
+//   $saturation: saturation($startColor);
+//   $lightness: lightness($startColor);
+//   $stops: ();
+
+//   @each $colorStop, $alphaValue in $scrimCoordinates {
+//     $stop: hsla($hue, $saturation, $lightness, $alphaValue) percentage($colorStop/100);
+//     $stops: append($stops, $stop, comma);
+//   }
+
+//   background: linear-gradient(unquote($direction), $stops);
+
+// }
+
+// $startColor: yellow;
+
+
+// @import '../smooth-gradient-sass-function/src/smooth-gradient';
+
+// @function easeOutSine-gradient($color: #000, $opacity: 1) {
+//   $clothoid: (
+//   1    : 0%,
+//   0.3  : 50%,
+//   0.15 : 65%,
+//   0.075: 75.5%,
+//   0.037: 82.85%,
+//   0.019: 88%,
+//   0    : 100%
+// );
+
+//   @if type-of($color) != color {
+//     @return null;
+//   }
+//   $rgba: "#{red($color)},#{green($color)},#{blue($color)}";
+//   $color-stops: ();
+//   @each $key, $value in $easeOutSine {
+//     $color-stops: append($color-stops, unquote("rgba(#{$rgba}, #{$key * $opacity}) #{$value}"), "comma");
+//   }
+//   @return $color-stops;
+// }
+
+
+
+
+/* COLOR VARIABLES
+============================================= */
+/* $orange: #ffa600;
+$blue: #82d2e5;
+$green:#c1d72e; */
+
+
+/* GRADIENT LISTS
+============================================= */
+
+/* $list1: $blue, $green, $orange;
+
+@mixin gradient($direction, $list) { 
+  background: -webkit-linear-gradient($direction, $list);
+  background: -moz-linear-gradient($direction, $list);
+  background: -o-linear-gradient($direction, $list);
+  background: linear-gradient($direction, $list);  
+} */ 
+
+.button-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+
+.button-block {
+  
+  height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  /* // position: absolute;
+  // @include gradient(left, $list1); */
+  
+}
+
+.button-time {
+  background-color: rgba(14, 5, 30, 0.3);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 3;
+}
+
+.button-time div {
+  margin: 20px;
+  height: 40px;
+  width: 100px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: rgba(228, 228, 228, 0.5) 1px 0 10px;
+ 
+}
+
+.button-1 {
+  border: 1px solid  #49182f;
+  background: radial-gradient(#362626,#e66465);
+}
+.button-2 {
+  border: 1px solid orangered;
+  background-color: orange;
+  box-shadow: 0 0 0.25rem 0.25rem rgba(255, 255, 255, 0.75);
+}
+/* .button-3 {
+  // @include scrimGradient;
+} */
+
+.button-4 {  
+  background-color: inherit;
+    outline: 10px;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed, inset 0 0 2px #9ecaed;
+  /* // background-color: green; */
+}
+
+.button-4:hover {
+  box-shadow: 0 0 14px #9ecaed, inset 0 0 1px #9ecaed;
+  color: white;
+  text-shadow: rgba(228, 228, 228, 1) 1px 0 10px;
+}
+
+.button-5 {
+  background-color: inherit;
+  box-shadow: 0 0 10px #9ecaed , inset 0 0px 20px rgba(94, 57, 231, 1);
+}
+  
+
+.button-6 {
+  background-color: purple;
+  
+}
+
+
+.buttons-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 3;
+  background-color: rgba(29, 214, 153, 0.3);
+  width: 100%;
+}
+
+.buttons-2 div {
+  margin: 20px;
+  height: 40px;
+  width: 100px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: rgb(228, 228, 228) 1px 0 10px;
+ 
+}
+
+/* .buttons-21 {
+
+}
+
+.buttons-22 {
+  
+}
+.buttons-23 {
+
+}
+
+.buttons-24 {
+
+}
+.buttons-25 {
+
+}
+
+.buttons-26 {
+  @include gradient(left, $list1);
+} */
+
+.buttons-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 3;
+
+  background-color: rgba(241, 222, 110, 0.3);
+  width: 100%;
+}
+
+
+.buttons-3 div {
+  margin: 20px;
+  height: 40px;
+  width: 100px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: rgb(228, 228, 228) 1px 0 10px;
+ 
+}
+
+/* .buttons-31 {
+
+}
+
+.buttons-32 {
+  
+}
+.buttons-33 {
+
+}
+
+.buttons-34 {
+
+}
+.buttons-35 {
+
+}
+
+.buttons-36 {
+  @include gradient(left, $list1);
+} */

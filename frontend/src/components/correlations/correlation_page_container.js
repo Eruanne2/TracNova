@@ -7,7 +7,7 @@ const mapSTP = ({entities}, {match}) => {
 
   return ({
     correlation,
-    variables: correlation.variableIds.map(id => entities.variables[id]),
+    variables: [],//correlation.variableIds.map(id => entities.variables[id]),
     correlations: Object.values(entities.correlations)
   });
 }
