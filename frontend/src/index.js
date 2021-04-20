@@ -13,22 +13,22 @@ import { logout } from './actions/session_actions';
 // import reportWebVitals from './reportWebVitals';
 
 document.addEventListener("DOMContentLoaded", () => {
-  // let store;
+  let store;
 
-  // if (localStorage.jwtToken) {
-  //   setAuthToken(localStorage.jwtToken);
-  //   const decodedUser = jwt_decode(localStorage.jwtToken);
-  //   const preloadedState = { session: {isAuthenticated: true, user: decodedUser}}
-  //   store = configureStore(preloadedState);
-  //   const currentTime = Date.now() / 1000;
+  if (localStorage.jwtToken) {
+    setAuthToken(localStorage.jwtToken);
+    const decodedUser = jwt_decode(localStorage.jwtToken);
+    const preloadedState = { session: {isAuthenticated: true, user: decodedUser}}
+    store = configureStore(preloadedState);
+    const currentTime = Date.now() / 1000;
 
-  //   if (decodedUser.exp < currentTime) {
-  //     store.dispatch(logout());
-  //     window.location.href = '/login';
-  //   }
-  // } else {
-  //   store = configureStore({});
-  // }
+    if (decodedUser.exp < currentTime) {
+      store.dispatch(logout());
+      window.location.href = '/login';
+    }
+  } else {
+    store = configureStore({});
+  }
 
   const root = document.getElementById('root');
 
