@@ -2,13 +2,14 @@ import React from "react";
 import { withRouter } from "react-router";
 import {Link} from "react-router-dom";
 
-function AppMenu({logout, history}){
+function AppMenu({logout, history,...props}){
   const handleLogout = e => {
     e.preventDefault();
+
     logout();
     history.push('/');
   }
-
+console.log(props)
   return (
     <section className="modal app-menu dropdown-menu">
       <section className="lightbox app-menu dropdown-menu">
