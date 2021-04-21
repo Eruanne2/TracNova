@@ -81,7 +81,6 @@ function AddCorrelation({history, createCorrelation}){
 
   const handleCreate = (e, data) => {
     e.preventDefault();
-    console.log(data);
     // history.push(`/correlations`);
   };
 

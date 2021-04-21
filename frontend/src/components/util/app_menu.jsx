@@ -9,7 +9,6 @@ function AppMenu({logout, history,...props}){
     logout();
     history.push('/');
   }
-console.log(props)
   return (
     <section className="modal app-menu dropdown-menu">
       <section className="lightbox app-menu dropdown-menu">
