@@ -10,6 +10,8 @@ export default function SessionErrorsReducer(state = nullErrors, action){
       return action.errors;
     case SessionActions.RECEIVE_CURRENT_USER:
       return nullErrors;
+    case SessionActions.CLEAR_SESSION_ERRORS:
+      return nullErrors;
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import '../../styles/session.css'
 function LoginForm({
   history,
   currentUser, errors,
-  login,
+  login, clearSessionErrors
 }){
   const [_email, _setEmail] = useState('');
   const [_password, _setPassword] = useState('');
@@ -27,6 +27,11 @@ function LoginForm({
     login({email: _email, password: _password});
   }
 
+  const handleClose = (e) => {
+    e.preventDefault();
+    clearSessionErrors();
+  }
+
   const renderErrors = () => {
     return (
       <section className="session lightbox error-message">
@@ -40,7 +45,7 @@ function LoginForm({
             ))
           }
         </ul>
-        <Link to="#">OK</Link>
+        <Link to="#" onClick={handleClose}>OK</Link>
       </section>
     )
   };
@@ -62,7 +67,7 @@ function LoginForm({
         <input className="button session-button" type="submit" value="Log in"/>
       </form>
 
-      {renderErrors()}
+      {errorKeys.length ? renderErrors() : null}
       
       <section className='redirect-text'>
         Don't have an account? 
