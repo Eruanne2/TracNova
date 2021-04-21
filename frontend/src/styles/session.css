@@ -1,19 +1,135 @@
-.session {
+/* .session {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-}
+  z-index: 3;
+} */
 
-.signup-form {
+/* .signup-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+} */
+
+.logo-wrapper {
+  position: relative;
 }
 
-/* .redirect-text {
+.logo {
+  /* filter: drop-shadow(16px 16px 20px red) invert(75%); */
+  filter: drop-shadow(0px 0px 40px rgba(5, 100, 200));
+  transition: filter 0.5s linear;
+  z-index: -5;
+}
+.logo:hover {
+  filter: drop-shadow(0px 0px 70px rgba(5, 120, 240));
+  /* filter: drop-shadow(0px 0px 140px rgba(5, 120, 240)) invert(100%); */
+}
+
+.login {
   display: flex;
   flex-direction: column;
   align-items: center;
-} */
+  /* justify-content: center; */
+  z-index: 3;
+}
+
+.login-form {
+  height: 300px;
+  width: 420px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: inherit;
+  background-color: rgba(255, 255, 255, 0.062);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  transition: background-color 0.5s linear;
+  transition: box-shadow 0.5s linear;
+  
+}
+.login-form > form {
+  
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: inherit;
+  /* border: 1px solid yellow; */
+}
+
+.login-form:hover {
+  background-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0px 0px 70px rgba(5, 100, 255);
+}
+.login-or-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: inherit;
+  /* background-color: rgba(255, 255, 255, 0.91); */
+  
+}
+
+.session-input {
+  border: 1px #ff316f;
+  border-radius: 3px;
+}
+.session-button {
+  background-color: #ff316ff6;
+  border: 1px solid;
+  border-radius: 3px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  z-index: 3;
+  box-shadow: 0px 0px 70px rgba(5, 100, 255);
+}
+
+.session-button:hover {
+  background-color: #ff316f;
+  box-shadow: 0px 0px 90px rgba(255, 0, 150);
+}
+
+.redirect-text {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+  height: 40px;
+  width: 110px;
+  background-color: rgba(5, 100, 255, .74);
+  transition: background-color 0.5s linear;
+  z-index: 3;
+  border: 1px solid;
+  box-shadow: 0px 0px 7px rgba(5, 100, 255), inset 0px 0px 7px rgba(5, 100, 255);
+  margin-bottom: 20px;
+}
+
+.redirect-link {
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+}
+.redirect-link:hover {
+  background-color: rgba(255, 255, 255, 0.144);
+}
+.redirect-link:a:link, a:visited  {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+}
+
+.brand {
+  filter: color(255, 255, 255);
+  filter: drop-shadow(0px 0px 40px rgb(0, 0, 0));
+}
