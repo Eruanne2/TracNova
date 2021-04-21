@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import logo from "../../images/public/logo512.png"
+import brand from '../../images/TracNova.png'
 import '../../styles/session.css'
+
 function LoginForm({
   history,
   currentUser, errors,
@@ -40,33 +42,49 @@ function LoginForm({
             ))
           }
         </ul>
-        <Link to="#">OK</Link>
       </section>
     )
   };
 
   return (
-    <section className="session login">
-      <figure className="logo-wrapper">
-        <img src={logo} className="logo" alt="TracNova icon"/>
-      </figure>
-      <form onSubmit={handleSubmit}>
-        <input className="session-input" 
-          type="text" placeholder="Enter email" value={_email}
-          onChange={e => _setEmail(e.target.value)}
-        />
-        <input className="session-input" 
-          type="password" placeholder="Enter password" value={_password}
-          onChange={e => _setPassword(e.target.value)}
-        />
-        <input className="button session-button" type="submit" value="Log in"/>
-      </form>
-
-      {renderErrors()}
+    <section className="session-background">
+      <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/stars.png'})` }} className="stars"/>
+      <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/twinkling.png'})` }} className="twinkling"/>
+      <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/clouds.png'})` }} className="clouds"/>
       
-      <section className='redirect-text'>
-        Don't have an account? 
-        <Link className="session redirect-link" to="/signup">Sign up</Link>
+      <section className="session login">
+        <section className="login-or-signup">
+          
+          <figure className="logo-wrapper">
+            <img src={logo} className="logo" alt="TracNova icon"/>
+          </figure>
+          
+          <section className="login-form">
+            <form onSubmit={handleSubmit}>
+              <input className="session-input" 
+                type="text" placeholder="Enter email" value={_email}
+                onChange={e => _setEmail(e.target.value)}
+                />
+                
+              <input className="session-input" 
+                type="password" placeholder="Enter password" value={_password}
+                onChange={e => _setPassword(e.target.value)}
+                />
+              <input className="button session-button" type="submit" value="Log in"/>
+
+            </form>
+            <Link className="session redirect-link" to="/signup">
+            <section className='redirect-text'>
+              Sign up <br></br>New user 
+              
+            </section>
+            </Link>
+          </section>
+
+          {renderErrors()}
+
+        </section>
+        <img className="brand" src={brand}/>
       </section>
     </section>
   );
