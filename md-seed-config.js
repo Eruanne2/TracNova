@@ -1,4 +1,8 @@
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+const Users = require('./seeders/users.seeder');
+const Varibles = require('./seeders/variables.seeder');
+const Correlations = require('./seeders/correlations.seeder');
 
 const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017/dbname';
 
@@ -8,7 +12,9 @@ const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017/dbname';
  * @type {Object}
  */
 export const seedersList = {
-
+  Users, 
+  Variables,
+  Correlations
 };
 /**
  * Connect to mongodb implementation
