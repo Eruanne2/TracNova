@@ -78,10 +78,7 @@ function LoginForm({
 
             </form>
             <Link className="session redirect-link" to="/signup">
-            <section className='redirect-text'>
-              Sign up <br></br>New user 
-              
-            </section>
+              Sign up New user 
             </Link>
           </section>
 
