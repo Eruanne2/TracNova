@@ -7,7 +7,7 @@ import CorrelationsPageContainer from "./correlations/correlations_page_containe
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './session/signup_form_container'
 import AppMenuContainer from "./util/app_menu_container";
-import DashboardContainer from './dashboard_container';
+import DashboardContainer from './dashboard/dashboard_container';
 
 window.axios = axios;
 export default function App(){
