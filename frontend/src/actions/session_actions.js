@@ -1,5 +1,7 @@
 import  * as APIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
+import { fetchUserVariables } from './variables_actions';
+import { fetchUserCorrelations } from './correlations_actions';
 
 export const RECEIVE_USER_LOGOUT = 'RECEIVE_USER_LOGOUT';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
@@ -45,6 +47,8 @@ export const login = user => dispatch =>
     APIUtil.setAuthToken(token);
     const decoded = jwt_decode(token);
     dispatch(receiveCurrentUser(decoded));
+    dispatch(fetchUserVariables(decoded.id));
+    dispatch(fetchUserCorrelations(decoded.id));
   }).catch(err => {
     dispatch(receiveErrors(err.response.data));
   });
