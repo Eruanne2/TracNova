@@ -1,6 +1,17 @@
 import {connect} from "react-redux";
+import { withRouter } from "react-router";
 import Variable from "./variable";
 
-const VariableContainer = Variable;
+const mapSTP = ({entities}, {match}) => {
+  const {variableId} = match.params;
 
-export default VariableContainer;
+  return {
+    variable: variableId ? entities.variables[variableId] : null
+  };
+}
+
+const mapDTP = ({})
+
+const VariableContainer = connect()(Variable);
+
+export default withRouter(VariableContainer);

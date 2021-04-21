@@ -87,9 +87,7 @@ const mapDTP = dispatch => ({
 
 const CorrelationFormModalContainer = connect(mapSTP, mapDTP)(CorrelationFormModal);
 
-function AddCorrelation({history, createCorrelation}){
-  const [_editMode, _setEditMode] = useState(false);
-
+function AddCorrelation(){
   const handleCreate = (e, {name, varIds}) => {
     e.preventDefault();
     console.log(name, varIds);

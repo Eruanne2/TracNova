@@ -1,3 +1,5 @@
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import {Link} from "react-router-dom";
 
@@ -26,6 +28,8 @@ function VariableIcon({variable}){
 }
 
 export default function VariablesPage({variables}){
+  variables = [{id: 1, name: '🐨 koala'}, {id: 2 ,name: 'お前はもう死んでいる'}, {id: 3, name: "Check In"}];
+
   return (
     <section className="page variables">
       Variables Page (Index Page)
@@ -39,6 +43,10 @@ export default function VariablesPage({variables}){
               </li>
             ))
           }
+          <Link className="button variable-button" to="/variables/new">
+            <FontAwesomeIcon className="icon" icon={faPlus}/>
+            Add Variables
+          </Link>
         </ul>
       </section>
     </section>

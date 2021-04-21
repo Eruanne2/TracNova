@@ -9,3 +9,4 @@ const mapSTP = ({entities}) => ({
 const CorrelationsPageContainer = connect(mapSTP)(CorrelationsPage);
 
 export default CorrelationsPageContainer;
+
