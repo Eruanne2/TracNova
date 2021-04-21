@@ -14,7 +14,7 @@ function SignupForm({signup, errors, history, currentUser}){
   useEffect(() => {
     if (currentUser === true)
       history.push('/');
-  }, [currentUser]);
+  }, [currentUser, history]);
 
   useEffect(() => {
     _setErrors(errors);
@@ -68,7 +68,7 @@ function SignupForm({signup, errors, history, currentUser}){
             type="password" value={_password2} placeholder="Confirm Password"
             onChange={(e) => _setPassword2(e.target.value)} 
           />
-          <input className="button session button" type="submit" value="submit" />
+          <input className="button session-button" type="submit" value="submit" />
         </div>
       </form>
 

@@ -24,14 +24,6 @@ export default function CorrelationChart({correlation, variables, width = 1000, 
     const delta = max - min;
     const startDate = correlation.startDate;
     const endDate = correlation.endDate;
-
-
-
-
-
-
-
-    
   }
   const fakeData = [];
   for (let i = 0; i < 20; i++)

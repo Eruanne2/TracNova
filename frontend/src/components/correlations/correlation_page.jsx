@@ -1,48 +1,49 @@
 import React from "react";
-import {Link, withRouter} from "react-router-dom";
+import AddCorrelationContainer from "./add_correlation_container";
 import CorrelationChart from "./correlation_chart"
 import CorrelationButtons from "./correlation_buttons"
-import AddCorrelationChartContainer from "./add_correlation_chart_container";
 import CorrelationChartContainer from "./correlation_chart_container";
+import VariableContainer from "../variables/variable_container";
+import LogsWrapperContainer from "../variables/logs_wrapper_container";
 
-function DropdownMenu({logout, history}){
-  const handleLogout = e => {
-    e.preventDefault();
-    logout();
-    history.push('/');
-  }
-
-  return (
-    <section className="modal dropdown-menu">
-      <section className="lightbox dropdown-menu">
-        <ul>
-          <li className="menu-item">
-            <Link to="#" onClick={handleLogout}>Logout</Link>
-          </li>
-        </ul>
-      </section>
-    </section>
-  )
-}
-
-function CorrelationPage({logout, history, correlation, correlations}){
+function CorrelationPage({logout, history, variables, correlation, correlations}){
   return (
     <section className="page correlation">
-      <CorrelationButtons />
-      <CorrelationChart />
-      <Link to="#" onClick={handleClick}>Logout</Link>
-//       <DropdownMenu {...{logout, history}}/>
-//       <section className="charts">
-//         { correlations
-//             .filter(corr => corr !== correlation)
-//             .map(corr => (
-//               <CorrelationChartContainer
-//                 key={corr.id} correlationId={corr.id} editable={false}
-//               />
-//             ))
-//         }
-//         <AddCorrelationChartContainer />
+      <section>
+        <section>
+          <figure>
+            <CorrelationButtons />
+            <CorrelationChart />
+          </figure>
+
+          <h2 className="title"></h2>
+          <h3 className="summary">
+            Correlation Level
+          </h3>
+        </section>
+
+        <section className="variables">{ 
+          variables.map(variable => (
+            <VariableContainer key={variable._id} variable={variable}/>
+          ))
+        }</section>
+
+        <LogsWrapperContainer variables={variables}/>
       </section>
+
+      {/* Move below to another separate file eventually */}
+      <section className="charts">
+        Correlation Charts
+        { correlations
+            .filter(corr => corr !== correlation)
+            .map(corr => (
+              <CorrelationChartContainer
+                key={corr.id} correlationId={corr.id} editable={false}
+              />
+            ))
+        }
+        <AddCorrelationContainer />
+      </section> 
     </section>
   )
 }
