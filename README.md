@@ -47,3 +47,4 @@ gif here
 
 # Lessons Learned
 ## Database Design
+## Work Delegation
