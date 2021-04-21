@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-
+import logo from "../../images/public/logo512.png"
+import '../../styles/session.css'
 function LoginForm({
   history,
   currentUser, errors,
@@ -47,7 +48,7 @@ function LoginForm({
   return (
     <section className="session login">
       <figure className="logo-wrapper">
-        <img className="logo" alt="TracNova icon"/>
+        <img src={logo} className="logo" alt="TracNova icon"/>
       </figure>
       <form onSubmit={handleSubmit}>
         <input className="session-input" 
