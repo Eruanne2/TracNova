@@ -57,33 +57,35 @@ function SignupForm({signup, errors, history, currentUser}){
             <img src={logo} className="logo" alt="TracNova icon"/>
           </figure>
 
-          <form className="login-form" onSubmit={e => handleSubmit(e)}>
-            
-              <input className="session-input" 
-                type="text" value={_username} placeholder="Username"
-                onChange={(e) => _setUsername(e.target.value)} 
-                />
-              <input className="session-input" 
-                type="text" value={_email} placeholder="Email"
-                onChange={(e) => _setEmail(e.target.value)} 
-                />
-              <input className="session-input" 
-                type="password" value={_password} placeholder="Password"
-                onChange={(e) => _setPassword(e.target.value)} 
-                />
-              <input className="session-input" 
-                type="password" value={_password2} placeholder="Confirm Password"
-                onChange={(e) => _setPassword2(e.target.value)} 
-                />
-              <input className="button session-button" type="submit" value="Sign Up" />
-            
-
-          <Link className="session redirect-link" to="/login">
-          <section className='redirect-text'>
-            Existing Users
+          <section className="login-form">
+            <form onSubmit={e => handleSubmit(e)}>
+              
+                <input className="session-input" 
+                  type="text" value={_username} placeholder="Username"
+                  onChange={(e) => _setUsername(e.target.value)} 
+                  />
+                <input className="session-input" 
+                  type="text" value={_email} placeholder="Email"
+                  onChange={(e) => _setEmail(e.target.value)} 
+                  />
+                <input className="session-input" 
+                  type="password" value={_password} placeholder="Password"
+                  onChange={(e) => _setPassword(e.target.value)} 
+                  />
+                <input className="session-input" 
+                  type="password" value={_password2} placeholder="Confirm Password"
+                  onChange={(e) => _setPassword2(e.target.value)} 
+                  />
+                <input className="button session-button" type="submit" value="Sign Up" />
+              
+    
+            </form>
+            <Link className="session redirect-link" to="/login">
+            <section className='redirect-text'>
+              Existing Users
+            </section>
+            </Link>
           </section>
-          </Link>
-          </form>
 
           {renderErrors()}
 

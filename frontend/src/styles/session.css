@@ -38,6 +38,7 @@
 
 .login-form {
   height: 300px;
+  width: 420px;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -49,6 +50,17 @@
   border: 1px solid rgba(255, 255, 255, 0.11);
   transition: background-color 0.5s linear;
   transition: box-shadow 0.5s linear;
+  
+}
+.login-form > form {
+  
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: inherit;
+  /* border: 1px solid yellow; */
 }
 
 .login-form:hover {
@@ -93,13 +105,14 @@
   align-items: center;
   text-decoration: none;
   justify-content: center;
-  height: 30px;
+  height: 40px;
   width: 110px;
   background-color: rgba(5, 100, 255, .74);
   transition: background-color 0.5s linear;
   z-index: 3;
   border: 1px solid;
-  box-shadow: 0px 0px 7px rgba(5, 100, 255), inset 0px 0px 7px rgba(5, 100, 255)
+  box-shadow: 0px 0px 7px rgba(5, 100, 255), inset 0px 0px 7px rgba(5, 100, 255);
+  margin-bottom: 20px;
 }
 
 .redirect-link {

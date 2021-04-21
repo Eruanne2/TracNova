@@ -57,23 +57,27 @@ function LoginForm({
             <img src={logo} className="logo" alt="TracNova icon"/>
           </figure>
           
-          <form className="login-form" onSubmit={handleSubmit}>
-            <input className="session-input" 
-              type="text" placeholder="Enter email" value={_email}
-              onChange={e => _setEmail(e.target.value)}
-              />
-            <input className="session-input" 
-              type="password" placeholder="Enter password" value={_password}
-              onChange={e => _setPassword(e.target.value)}
-              />
-            <input className="button session-button" type="submit" value="Log in"/>
-          
-          <Link className="session redirect-link" to="/signup">
-          <section className='redirect-text'>
-            Sign up
+          <section className="login-form">
+            <form onSubmit={handleSubmit}>
+              <input className="session-input" 
+                type="text" placeholder="Enter email" value={_email}
+                onChange={e => _setEmail(e.target.value)}
+                />
+                
+              <input className="session-input" 
+                type="password" placeholder="Enter password" value={_password}
+                onChange={e => _setPassword(e.target.value)}
+                />
+              <input className="button session-button" type="submit" value="Log in"/>
+
+            </form>
+            <Link className="session redirect-link" to="/signup">
+            <section className='redirect-text'>
+              Sign up <br></br>New user 
+              
+            </section>
+            </Link>
           </section>
-          </Link>
-          </form>
 
           {renderErrors()}
 
