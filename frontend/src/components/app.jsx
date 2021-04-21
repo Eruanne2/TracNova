@@ -13,7 +13,7 @@ import VariablePageContainer from "./variables/variable_page_container";
 window.axios = axios;
 export default function App(){
   return (
-    <>
+    <div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
       <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
@@ -29,6 +29,6 @@ export default function App(){
           
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }

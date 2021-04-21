@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import {Link, NavLink} from "react-router-dom";
+import '../../styles/app_menu_nav.css';
 
 function AppMenu({history, variables, logout}){
   const handleLogout = e => {
@@ -10,8 +11,9 @@ function AppMenu({history, variables, logout}){
     history.push('/');
   }
   return (
-    <section className="modal app-menu dropdown-menu">
-      <section className="lightbox app-menu dropdown-menu">
+    <section className="app-menu-nav dropdown-menu">
+      <section className="app-menu dropdown-menu">
+        <div>TracNova Logo</div>
         <ul>
           <li className="menu-item">
             <NavLink activeClassName="selected" to="/variables">Variables</NavLink>
