@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {withRouter} from "react-router-dom";
-import logo from "../../images/public/logo512.png"
 import {Link} from "react-router-dom";
+import logo from "../../images/public/logo512.png"
+import brand from '../../images/TracNova.png'
 import '../../styles/session.css'
 
 function SignupForm({signup, errors, history, currentUser}){
@@ -46,38 +47,53 @@ function SignupForm({signup, errors, history, currentUser}){
   }
 
   return (
-    <section className="session signin">
-      <figure className="logo-wrapper">
-        <img src={logo} className="logo" alt="TracNova icon"/>
-      </figure>
+     <section className="session-background">
+      <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/stars.png'})` }} className="stars"/>
+      <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/twinkling.png'})` }} className="twinkling"/>
+      <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/clouds.png'})` }} className="clouds"/>
+      
+      <section className="session signin">
+        <section className="login-or-signup">
 
-      <form onSubmit={e => handleSubmit(e)}>
-        <div className="signup-form">
-          <input className="session-input" 
-            type="text" value={_username} placeholder="Username"
-            onChange={(e) => _setUsername(e.target.value)} 
-          />
-          <input className="session-input" 
-            type="text" value={_email} placeholder="Email"
-            onChange={(e) => _setEmail(e.target.value)} 
-          />
-          <input className="session-input" 
-            type="password" value={_password} placeholder="Password"
-            onChange={(e) => _setPassword(e.target.value)} 
-          />
-          <input className="session-input" 
-            type="password" value={_password2} placeholder="Confirm Password"
-            onChange={(e) => _setPassword2(e.target.value)} 
-          />
-          <input className="button session-button" type="submit" value="submit" />
-        </div>
-      </form>
+          <figure className="logo-wrapper">
+            <img src={logo} className="logo" alt="TracNova icon"/>
+          </figure>
 
-      {errorKeys.length ? renderErrors() : null}
+          <section className="login-form">
+            <form onSubmit={e => handleSubmit(e)}>
 
-      <section className='redirect-text'>
-        Already have an account?
-        <Link className="session redirect-link" to="/login">Log in</Link>
+                <input className="session-input" 
+                  type="text" value={_username} placeholder="Username"
+                  onChange={(e) => _setUsername(e.target.value)} 
+                  />
+                <input className="session-input" 
+                  type="text" value={_email} placeholder="Email"
+                  onChange={(e) => _setEmail(e.target.value)} 
+                  />
+                <input className="session-input" 
+                  type="password" value={_password} placeholder="Password"
+                  onChange={(e) => _setPassword(e.target.value)} 
+                  />
+                <input className="session-input" 
+                  type="password" value={_password2} placeholder="Confirm Password"
+                  onChange={(e) => _setPassword2(e.target.value)} 
+                  />
+                <input className="button session-button" type="submit" value="Sign Up" />
+
+
+            </form>
+            
+            <Link className="session redirect-link" to="/login">
+              <section className='redirect-text'>
+                Existing Users
+              </section>
+            </Link>
+          </section>
+
+        {errorKeys.length ? renderErrors() : null}
+
+        <img className="brand" src={brand}/>
+        </section>
       </section>
     </section>
   )
