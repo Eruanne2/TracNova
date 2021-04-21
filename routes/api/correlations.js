@@ -33,11 +33,18 @@ router.post('/',
       return res.status(400).json(errors);
     }
 
-    const newCorr = new Correlation({
-      user: req.user.id,
-      variables: req.body.variables
-    });
-    newCorr.save().then(corr => res.send(corr)).catch(err => res.send(err));
+    Correlation.findOne({user: req.user.id, name: req.body.name})
+      .then(corr => {
+        if (corr) return res.status(400).json({name: "Correlation already exists for this user"});
+        else {
+          const newCorr = new Correlation({
+            user: req.user.id,
+            variables: req.body.variables
+          });
+          newCorr.save().then(corr => res.send(corr)).catch(err => res.send(err));
+        }
+      });
+
   }
 );
 

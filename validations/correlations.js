@@ -4,6 +4,12 @@ const validText = require('./valid_text');
 module.exports = function validateCorrelationInput(data) {
   let errors = {};
 
+  data.name = validText(data.name) ? data.name : '';
+
+  if (Validator.isEmpty(data.name)) {
+    errors.name = "Name field is required";
+  }
+
   if (data.variables.length !== 2) {
     errors.variables = "Correlation must have exactly 2 variables";
   }
