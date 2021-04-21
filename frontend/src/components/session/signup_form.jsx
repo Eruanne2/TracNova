@@ -60,6 +60,9 @@ function SignupForm({signup, errors, history, currentUser}){
           </figure>
 
           <section className="login-form">
+            <div className="login-form-head">
+              <h1>Create an Account</h1>
+            </div>
             <form onSubmit={e => handleSubmit(e)}>
 
                 <input className="session-input" 
@@ -84,9 +87,7 @@ function SignupForm({signup, errors, history, currentUser}){
             </form>
             
             <Link className="session redirect-link" to="/login">
-              <section className='redirect-text'>
-                Existing Users
-              </section>
+              Existing Users
             </Link>
           </section>
 

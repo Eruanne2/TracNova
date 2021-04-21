@@ -66,6 +66,10 @@ function LoginForm({
           </figure>
           
           <section className="login-form">
+            <div className="login-form-head">
+              <h1>Welcome Back User</h1>
+              <p>Dive In</p>
+            </div>
             <form onSubmit={handleSubmit}>
               <input className="session-input" 
                 type="text" placeholder="Enter email" value={_email}
@@ -80,10 +84,7 @@ function LoginForm({
 
             </form>
             <Link className="session redirect-link" to="/signup">
-              <section className='redirect-text'>
-                Sign up <br></br>New user 
-                
-              </section>
+              Sign up New user 
             </Link>
           </section>
 
