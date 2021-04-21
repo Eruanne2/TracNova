@@ -1,6 +1,6 @@
-import { Seeder } from 'mongoose-data-seed';
-import { Variable } from './models/Variables';
-import { User } from './models/Users';
+const { Seeder } = require('mongoose-data-seed');
+const { Variable } = require('../models/Variable');
+const { User } = require('../models/User');
 
 class VariablesSeeder extends Seeder {
   async beforeRun() {
@@ -121,4 +121,4 @@ class VariablesSeeder extends Seeder {
 
 }
 
-export default VariablesSeeder;
+module.exports = VariablesSeeder;

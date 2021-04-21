@@ -1,7 +1,7 @@
-import { Seeder } from 'mongoose-data-seed';
-import { Correlation } from './models/Correlations';
-import { Variable } from './models/Variables';
-import { User } from './models/Users';
+const { Seeder } = require('mongoose-data-seed');
+const { Correlation } = require('../models/Correlation');
+const { Variable } = require('../models/Variable');
+const { User } = require('../models/User');
 
 
 class CorrelationsSeeder extends Seeder {
@@ -35,7 +35,7 @@ class CorrelationsSeeder extends Seeder {
       }
     ];
   }
-  
+
 }
 
-export default CorrelationsSeeder;
+module.exports = CorrelationsSeeder;

@@ -1,5 +1,5 @@
-import { Seeder } from 'mongoose-data-seed';
-import { User } from './models/Users';
+const { Seeder } = require('mongoose-data-seed');
+const { User } = require('../models/User');
 
 const data = [{
     username: 'demo',
@@ -20,4 +20,4 @@ class UsersSeeder extends Seeder {
   }
 }
 
-export default UsersSeeder;
+module.exports = UsersSeeder;
