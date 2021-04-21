@@ -30,13 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (decodedUser.exp < currentTime) {
       store.dispatch(logout());
       window.location.href = '/login';
+    } else {
+      store.dispatch(fetchUserVariables(decodedUser.id));
+      store.dispatch(fetchUserCorrelations(decodedUser.id));
     }
   } else {
     store = configureStore({});
   }
 
-  store.dispatch(fetchUserVariables(decodedUser.id));
-  store.dispatch(fetchUserCorrelations(decodedUser.id));
   const root = document.getElementById('root');
 
   //testing
