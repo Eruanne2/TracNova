@@ -9,10 +9,6 @@ function Dashboard({variables}){
   const _completed = (variable) => {
     let date = new Date();
     let dateString = ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + date.getFullYear();
-    debugger
-    console.log(dateString);
-    console.log(variable.dailylogs);
-    console.log(variable.dailylogs[dateString]);
     return (!!variable.dailylogs[dateString]);
   };
 
@@ -29,8 +25,9 @@ function Dashboard({variables}){
       </aside>
       <main>
         <section className='toggle-entry-form'>
-          <button>Add Today's Entry</button>
-          {/*<NewEntryForm/>*/}
+          <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
+          {_toggleForm && <div>Dummy entry form</div>}
+          {/*_toggleForm && <NewEntryForm/>*/}
         </section>
           {/* make a graph using currentVar1 and currentVar2 */}
       </main>
