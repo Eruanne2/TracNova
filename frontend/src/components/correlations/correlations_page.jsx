@@ -3,9 +3,9 @@ import { withRouter } from 'react-router-dom';
 import AddCorrelationContainer from './add_correlation_container';
 
 function CorrelationsPage({history, correlations, variables}){
-  // useEffect(() => {
-  //   variables.length || history.push('/variables');
-  // }, [variables]);
+  useEffect(() => {
+    variables.length || history.push('/variables');
+  }, [variables]);
 
   useEffect(() => {
     correlations.length && 
