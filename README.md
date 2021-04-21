@@ -5,8 +5,8 @@ We all know that what gets measured gets improved. Like any other habit tracker,
 
 Does drinking water really help you lose weight? Does waking up earlier really make you more productive? Find out for yourself.
 
-- logo here -
-- gif here -
+logo here
+gif here
 
 # Table of Contents
 * [Technologies Used](#technologies-used)
@@ -33,6 +33,7 @@ Does drinking water really help you lose weight? Does waking up earlier really m
 ## Notable Dependencies
 * Statistics.js
 * ReCharts
+* mongoose-data-seed
 
 # Features
 ## User Auth
