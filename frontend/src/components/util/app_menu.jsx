@@ -13,6 +13,7 @@ function AppMenu({history, variables, logout}){
   return (
     <section className="modal app-menu dropdown-menu">
       <section className="lightbox app-menu dropdown-menu">
+        <img className="brand" alt="logo"/>
         <ul>
           <li className="menu-item">
             <NavLink activeClassName="selected" to="/variables">Variables</NavLink>
