@@ -5,19 +5,15 @@
   justify-content: space-around;
 }
 
-.logo-wrapper {
-
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo {
-
-
-}
-
-.session-input {
-
-}
-
-.redirect-text {
-
-}
+/* .redirect-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
