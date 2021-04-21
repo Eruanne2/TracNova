@@ -128,3 +128,8 @@
   font-size: 20px;
   color: white;
 }
+
+.brand {
+  filter: color(255, 255, 255);
+  filter: drop-shadow(0px 0px 40px rgb(0, 0, 0));
+}

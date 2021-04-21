@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import logo from "../../images/public/logo512.png"
+import brand from '../../images/TracNova.png'
 import '../../styles/session.css'
+
 function LoginForm({
   history,
   currentUser, errors,
@@ -82,6 +84,7 @@ function LoginForm({
           {renderErrors()}
 
         </section>
+        <img className="brand" src={brand}/>
       </section>
     </section>
   );

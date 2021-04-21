@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {withRouter} from "react-router-dom";
-import logo from "../../images/public/logo512.png"
 import {Link} from "react-router-dom";
+import logo from "../../images/public/logo512.png"
+import brand from '../../images/TracNova.png'
 import '../../styles/session.css'
 
 function SignupForm({signup, errors, history, currentUser}){
@@ -59,7 +60,7 @@ function SignupForm({signup, errors, history, currentUser}){
 
           <section className="login-form">
             <form onSubmit={e => handleSubmit(e)}>
-              
+
                 <input className="session-input" 
                   type="text" value={_username} placeholder="Username"
                   onChange={(e) => _setUsername(e.target.value)} 
@@ -77,8 +78,8 @@ function SignupForm({signup, errors, history, currentUser}){
                   onChange={(e) => _setPassword2(e.target.value)} 
                   />
                 <input className="button session-button" type="submit" value="Sign Up" />
-              
-    
+
+
             </form>
             <Link className="session redirect-link" to="/login">
             <section className='redirect-text'>
@@ -89,6 +90,7 @@ function SignupForm({signup, errors, history, currentUser}){
 
           {renderErrors()}
 
+        <img className="brand" src={brand}/>
         </section>
       </section>
     </section>
