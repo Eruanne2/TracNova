@@ -34,7 +34,7 @@ export const fetchCorrelation = correlationId => dispatch => {
 };
 
 export const fetchUserCorrelations = userId => dispatch => {
-  APIUtil.getCorrelationsByUser(userId)
+  APIUtil.getUserCorrelations(userId)
     .then(res => dispatch(receiveUserCorrelations(res.data)))
     .catch(err => dispatch(receiveCorrelationErrors(err.response.data)));
 };

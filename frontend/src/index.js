@@ -6,6 +6,8 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+import { fetchUserVariables } from './actions/variables_actions';
+import { fetchUserCorrelations } from './actions/correlations_actions';
 
 // Not Needed
 // import App from './App';
@@ -16,12 +18,12 @@ import axios from 'axios';
 import * as variableActions from './actions/variables_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
-  let store;
+  let store, decodedUser;
 
   if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
-    const decodedUser = jwt_decode(localStorage.jwtToken);
-    const preloadedState = { session: {isAuthenticated: true, user: decodedUser}}
+    decodedUser = jwt_decode(localStorage.jwtToken);
+    const preloadedState = { session: {isAuthenticated: true, user: decodedUser} }
     store = configureStore(preloadedState);
     const currentTime = Date.now() / 1000;
 
@@ -33,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore({});
   }
 
+  store.dispatch(fetchUserVariables(decodedUser.id));
+  store.dispatch(fetchUserCorrelations(decodedUser.id));
   const root = document.getElementById('root');
 
   //testing

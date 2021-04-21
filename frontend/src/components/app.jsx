@@ -7,6 +7,7 @@ import CorrelationsPageContainer from "./correlations/correlations_page_containe
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './session/signup_form_container'
 import AppMenuContainer from "./util/app_menu_container";
+import DashboardContainer from './dashboard_container';
 
 window.axios = axios;
 export default function App(){
@@ -18,8 +19,9 @@ export default function App(){
         <AuthRoute exact path="/signup" component={SignupFormContainer}/>
         <ProtectedRoute exact path="/correlations/:correlationId" component={CorrelationPageContainer}/>
         <ProtectedRoute exact path="/correlations" component={CorrelationsPageContainer}/>
+        <ProtectedRoute exact path="/dashboard" component={DashboardContainer}/>
         <Route exact path="/">
-          <Redirect to="/correlations"/>
+          <Redirect to="/dashboard"/>
         </Route>  
       </Switch>
     </>

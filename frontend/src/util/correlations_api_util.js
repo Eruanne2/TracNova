@@ -4,7 +4,7 @@ export const getCorrelationById = corrId => {
   return axios.get(`/api/correlations/${corrId}`);
 };
 
-export const getCorrelationsByUser = userId => {
+export const getUserCorrelations = userId => {
   return axios.get(`/api/correlations/user/${userId}`);
 };
 
