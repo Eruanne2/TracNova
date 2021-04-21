@@ -12,9 +12,12 @@ function AppMenu({history, variables, logout}){
   return (
     <section className="modal app-menu dropdown-menu">
       <section className="lightbox app-menu dropdown-menu">
+        <Link to="/">
+          <img className="logo" alt="logo"/>
+        </Link>
         <ul>
           <li className="menu-item">
-            <NavLink activeClassName="selected" to="/variables">Variables</NavLink>
+            <NavLink activeClassName="selected" to="/variables">Habits</NavLink>
           </li>
           { variables.length < 2 ? null :
               <li className="menu-item">

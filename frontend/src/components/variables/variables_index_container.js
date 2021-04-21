@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import VariablesPage from "./variables_page";
+import VariablesIndex from "./variables_index";
 import * as VariableActions from "../../actions/variables_actions";
 
 const mapSTP = ({entities}) => ({
@@ -11,6 +11,6 @@ const mapDTP = dispatch => ({
   destroyVariable: varId => dispatch(VariableActions.destroyVariable(varId))
 });
 
-const VariablesPageContainer = connect(mapSTP, mapDTP)(VariablesPage);
+const VariablesIndexContainer = connect(mapSTP, mapDTP)(VariablesIndex);
 
-export default VariablesPageContainer;
+export default VariablesIndexContainer;

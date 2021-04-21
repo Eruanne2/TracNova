@@ -1,36 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import LogEditor from "./log_editor";
+import Log from "./log";
 
-const DATA = {
+const MOCK_DATA = {
   user: 'userId',
   name: 'code written',
   unit: 'boolean',
   dailylogs: {
     '04/01/2021': 35,
     '04/02/2021': 0,
-    '04/03/2021': 13,
-    '04/04/2021': 124,
-    '04/05/2021': 283,
-    '04/06/2021': 72,
-    '04/07/2021': 82,
-    '04/08/2021': 15,
-    '04/09/2021': 113,
-    '04/10/2021': 154,
-    '04/11/2021': 102,
-    '04/12/2021': 93,
-    '04/14/2021': 37,
-    '04/15/2021': 62,
-    '04/16/2021': 152,
-    '04/17/2021': 0,
-    '04/18/2021': 25,
-    '04/19/2021': 164,
-    '04/19/2015': 164,
+    '04/03/2021': 13
   }
 };
 
 export default function VariablePage({
-  variable = DATA // {}
+  variable = MOCK_DATA // {}
 }){
   const symbolBooleanRef = useRef(Symbol('Boolean'));
 
@@ -62,8 +46,17 @@ export default function VariablePage({
     console.log({name: _name, unit: _unit, dailylogs: _dailylogs});
   }
 
-  const handleChangeLogCreator = date => val => {
-    const logs = {...(_dailylogs || {}), [date]: Math.max(val, 0)};
+  const handleChangeLogCreator = date => ({date: newDate, value}) => {
+    const logs = {...(_dailylogs || {})};
+
+    if (date !== newDate && logs[newDate] !== undefined)
+      if (!window.confirm(
+        `You are about to overwrite a previous log on ${newDate}.\nCurrent value: ${logs[newDate]}\nNew value: ${value}\nAre you sure?`
+      )) return false;
+
+    delete logs[date];
+    logs[newDate] = Math.max(value, 0);
+
     const valArr = Object.values(logs);
 
     _setRange({ min: Math.min(...valArr), max: Math.max(...valArr) });
@@ -76,10 +69,14 @@ export default function VariablePage({
     _setDailylogs(logs);
   }
 
-  const handleEditLogCreator = date => () => {
+  const handleLogEditModeCreator = date => () => {
     _setEdit(date);
   }
   
+  const handleLogFinishEdit = () => {
+    _setEdit(undefined);
+  }
+
   return (
     <section className="page variable">
       <form onSubmit={handleSubmit}>
@@ -104,33 +101,36 @@ export default function VariablePage({
             onChange={e => _setUnit(_metricUnit)}
           />
           Metric (please specify unit)
-          { _unit === symbolBooleanRef.current ? null :
-            <input className="input variable-input variable-unit"
-              value={_metricUnit}
-              onChange={e => {
-                _setMetricUnit(e.target.value);
-                _setUnit(e.target.value);
-              }}
-            />
-          }
         </label>
+        
+        { _unit === symbolBooleanRef.current ? null :
+          <input className="input variable-input variable-unit"
+            value={_metricUnit}
+            onChange={e => {
+              _setMetricUnit(e.target.value);
+              _setUnit(e.target.value);
+            }}
+          />
+        }
 
         <section className="logs-wrapper">
           <ul className="logs">
             { Object.entries(_dailylogs)
                 .sort((a, b) => new Date(a[0]) - new Date(b[0]))
                 .map(([date, count]) => (
-                  <LogEditor key={date} 
+                  <Log key={date} 
                     {...{date, count}}
                     editMode={_edit === date}
                     unit={_unit}
                     range={_range}
                     handleChange={handleChangeLogCreator(date)}
                     handleDelete={handleDeleteLogCreator(date)}
-                    handleEdit={handleEditLogCreator(date)}
+                    handleEditMode={handleLogEditModeCreator(date)}
+                    handleFinishEdit={handleLogFinishEdit}
                   />
                 ))
             }
+            
           </ul>
         </section>
 
