@@ -1,7 +1,7 @@
 const { Seeder } = require('mongoose-data-seed');
-const { Correlation } = require('../models/Correlation');
-const { Variable } = require('../models/Variable');
-const { User } = require('../models/User');
+const Correlation = require('../models/Correlation');
+const Variable = require('../models/Variable');
+const User = require('../models/User');
 
 
 class CorrelationsSeeder extends Seeder {

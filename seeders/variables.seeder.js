@@ -1,6 +1,6 @@
 const { Seeder } = require('mongoose-data-seed');
-const { Variable } = require('../models/Variable');
-const { User } = require('../models/User');
+const Variable = require('../models/Variable');
+const User = require('../models/User');
 
 class VariablesSeeder extends Seeder {
   async beforeRun() {
