@@ -66,6 +66,8 @@ router.patch('/:id',
       // let newV = Object.assign(v.dailylogs, {[req.body.date]: parseInt(req.body.count, 10)})
       if (req.body.date !== undefined) {
         v.dailylogs = { ...v.dailylogs, [req.body.date]: parseInt(req.body.count, 10)};
+      } else {
+        v.dailylogs = {[req.body.date]: parseInt(req.body.count, 10)};
       }
       if (req.body.unit !== undefined) {
         v.unit = req.body.unit;

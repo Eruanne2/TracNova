@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const validateCorrelationInput = require('../../validations/correlations');
+const validateCorrelationUpdate = require('../../validations/correlations_update');
 
 const Correlation = require('../../models/Correlation');
 
@@ -39,6 +40,7 @@ router.post('/',
         else {
           const newCorr = new Correlation({
             user: req.user.id,
+            name: req.body.name,
             variables: req.body.variables
           });
           newCorr.save().then(corr => res.send(corr)).catch(err => res.send(err));
@@ -54,14 +56,19 @@ router.patch('/:id',
   function (req, res) {
     if (!req.params.id) return res.json({success: false, error: 'No id provided'});
 
-    const {errors, isValid} = validateCorrelationInput(req.body);
+    const {errors, isValid} = validateCorrelationUpdate(req.body);
     
     if (!isValid) {
       return res.status(400).json(errors);
     }
 
     Correlation.findById(req.params.id, function(err, corr) {
-      corr.variables = req.body.variables;
+      if (req.body.variables !== undefined) {
+        corr.variables = req.body.variables;
+      }
+      if (req.body.name !== undefined) {
+        corr.name = req.body.name;
+      }
       corr.save().then(corr => res.json(corr)).catch(err => res.send(err))
     })
     .catch(err => res.status(404).json({novarfound: "No Correlation found"}));
