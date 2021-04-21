@@ -60,6 +60,10 @@ function LoginForm({
           </figure>
           
           <section className="login-form">
+            <div className="login-form-head">
+              <h1>Welcome Back User</h1>
+              <p>Dive In</p>
+            </div>
             <form onSubmit={handleSubmit}>
               <input className="session-input" 
                 type="text" placeholder="Enter email" value={_email}
