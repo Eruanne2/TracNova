@@ -20,8 +20,7 @@ const MOCK_DATA = {
 export default function VariablePage({
   variable = {},
   currentUser, 
-  updateVariable, createVariable,
-  entities
+  updateVariable, createVariable
 }){
 
   const symbolBooleanRef = useRef(Symbol('Boolean'));
@@ -59,7 +58,9 @@ export default function VariablePage({
       unit: typeof _unit === 'symbol' ? 'boolean' : _unit, 
       dailylogs: _dailylogs
     };
-    debugger
+    
+    console.log(varData);
+    
     if (variable._id)
       updateVariable({...varData, id: variable._id})
     else
