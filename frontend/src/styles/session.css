@@ -44,7 +44,7 @@ section.login-or-signup > .logo-wrapper > .logo {
   /* filter: drop-shadow(16px 16px 20px red) invert(75%); */
   filter: drop-shadow(0px 0px 40px rgba(5, 100, 200));
   transition: filter 0.5s linear;
-  z-index: -5;
+  z-index: 0;
 }
 .logo:hover {
   filter: drop-shadow(0px 0px 70px rgba(5, 120, 240));
@@ -100,8 +100,10 @@ section.login-or-signup > .logo-wrapper > .logo {
   font-weight: 900;
   margin-block-start: 0em;
   margin-block-end: 0em;
-  margin-top: 5px;
+  margin-top: 15px;
   letter-spacing: 1px;
+  text-align: center;
+  color: rgb(142,142,142);
 }
 
 .login-form > form {
@@ -182,7 +184,34 @@ section.login-or-signup > .logo-wrapper > .logo {
   transition: 0.3s;
 }
 
-.redirect-link {
+.signup-undernote {
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  color: rgb(116,115,120);
+  font-size: 14px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  width: 270px;
+  line-height: 18px;
+}
+
+.demo-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+}
+
+.demo-user > p:first-of-type {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: rgb(116,115,120);
+}
+
+.demo-user-button {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -196,25 +225,60 @@ section.login-or-signup > .logo-wrapper > .logo {
   border-radius: 3px;
   box-shadow: 0px 0px 4px rgba(5, 100, 255);
   margin-top: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   letter-spacing: 0.5px;
   color: white;
+  cursor: pointer;
 }
 
-.redirect-link:hover {
+.demo-user-button:hover {
   background-color: rgb(49, 189, 254);
   transition: 0.3s;
 }
-.redirect-link:a:link, a:visited  {
+.demo-user-button:a:link, a:visited  {
   text-decoration: none;
   font-size: 20px;
   color: white;
 }
 
+.go-to-signup {
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  width: 380px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 1.5px solid rgb(219,219,219);
+  transition: background-color 0.5s linear;
+  transition: box-shadow 0.5s linear;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.go-to-signup:hover {
+  background-color: rgba(255, 255, 255);
+  transition: 0.3s;
+  box-shadow: 0px 0px 10px rgba(39, 149, 246, 0.714);
+}
+
+.go-to-signup > a {
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: 900;
+  color: rgb(39, 149, 246);
+}
+
+
+/* 
 .brand {
   filter: color(255, 255, 255);
   filter: drop-shadow(0px 0px 50px rgb(230, 230, 230));
@@ -223,7 +287,7 @@ section.login-or-signup > .logo-wrapper > .logo {
   box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.036);
   position: fixed;
   bottom: 12%;
-}
+} */
 
 .modal-background {
   background-color: black;

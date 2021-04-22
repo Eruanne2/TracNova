@@ -69,27 +69,38 @@ function LoginForm({
             <img src={logo} className="logo" alt="TracNova icon"/>
           </figure>
           
-          <section className="login-form">
-            <div className="login-form-head">
-              <h1>Welcome Back User</h1>
-              <p>Dive In</p>
-            </div>
-            <form onSubmit={handleSubmit}>
-              <input className="session-input" 
-                type="text" placeholder="Enter email" value={_email}
-                onChange={e => _setEmail(e.target.value)}
-                />
-                
-              <input className="session-input" 
-                type="password" placeholder="Enter password" value={_password}
-                onChange={e => _setPassword(e.target.value)}
-                />
-              <input className="button session-button" type="submit" value="Log in"/>
+          <section className="login-section">
+            <div className="login-form">
+              <div className="login-form-head">
+                <h1>Welcome Back User</h1>
+                <p>Dive In</p>
+              </div>
+              <form onSubmit={handleSubmit}>
+                <input className="session-input" 
+                  type="text" placeholder="Enter email" value={_email}
+                  onChange={e => _setEmail(e.target.value)}
+                  />
+                  
+                <input className="session-input" 
+                  type="password" placeholder="Enter password" value={_password}
+                  onChange={e => _setPassword(e.target.value)}
+                  />
+                <input className="button session-button" type="submit" value="Log in"/>
 
-            </form>
-            <Link className="session redirect-link" to="/signup">
-              Sign up New user 
-            </Link>
+              </form>
+              <div className="demo-user">
+                <p>-------- Or --------</p>
+                <p className="demo-user-button">Login with Demo User</p>
+              </div>
+            </div>
+            <div className="go-to-signup">
+              Don't have an account?
+              <Link className="session redirect-link" to="/signup">
+                Sign Up
+              </Link>
+            </div>
+
+
           </section>
 
           {errorKeys.length ? renderErrors() : null}

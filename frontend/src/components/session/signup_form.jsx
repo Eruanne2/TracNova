@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {withRouter} from "react-router-dom";
 import {Link} from "react-router-dom";
-import logo from "../../images/public/logo512.png"
+import logo from '../../images/logo-black.png'
 import brand from '../../images/TracNova.png'
 import '../../styles/session.css'
 
@@ -67,41 +67,50 @@ function SignupForm({signup, errors, history, currentUser, clearSessionErrors}){
       <section className="session signin">
         <section className="login-or-signup">
 
-          <section className="login-form">
-            <div className="login-form-head">
-              <h1>Create an Account</h1>
+          <figure className="logo-wrapper">
+            <img src={logo} className="logo" alt="TracNova icon"/>
+          </figure>
+          <section className="login-section">
+            <section className="login-form">
+              <div className="login-form-head">
+                <h1>Create an Account</h1>
+                <p>Sign up to see your habits and their correlations</p>
+              </div>
+              <form onSubmit={e => handleSubmit(e)}>
+
+                  <input className="session-input" 
+                    type="text" value={_username} placeholder="Username"
+                    onChange={(e) => _setUsername(e.target.value)} 
+                    />
+                  <input className="session-input" 
+                    type="text" value={_email} placeholder="Email"
+                    onChange={(e) => _setEmail(e.target.value)} 
+                    />
+                  <input className="session-input" 
+                    type="password" value={_password} placeholder="Password"
+                    onChange={(e) => _setPassword(e.target.value)} 
+                    />
+                  <input className="session-input" 
+                    type="password" value={_password2} placeholder="Confirm Password"
+                    onChange={(e) => _setPassword2(e.target.value)} 
+                    />
+                  <input className="button session-button" type="submit" value="Sign Up" />
+
+
+              </form>
+              <p className="signup-undernote">By signing up, you agree to our Terms , Data Policy and Cookies Policy </p>
+            </section>
+            <div className="go-to-signup">
+              Have an account?
+              <Link className="session redirect-link" to="/login">
+                Log in
+              </Link>
             </div>
-            <form onSubmit={e => handleSubmit(e)}>
 
-                <input className="session-input" 
-                  type="text" value={_username} placeholder="Username"
-                  onChange={(e) => _setUsername(e.target.value)} 
-                  />
-                <input className="session-input" 
-                  type="text" value={_email} placeholder="Email"
-                  onChange={(e) => _setEmail(e.target.value)} 
-                  />
-                <input className="session-input" 
-                  type="password" value={_password} placeholder="Password"
-                  onChange={(e) => _setPassword(e.target.value)} 
-                  />
-                <input className="session-input" 
-                  type="password" value={_password2} placeholder="Confirm Password"
-                  onChange={(e) => _setPassword2(e.target.value)} 
-                  />
-                <input className="button session-button" type="submit" value="Sign Up" />
-
-
-            </form>
-            
-            <Link className="session redirect-link" to="/login">
-              Existing Users
-            </Link>
           </section>
 
         {errorKeys.length ? renderErrors() : null}
 
-        <img className="brand" src={brand}/>
         </section>
       </section>
     </section>
