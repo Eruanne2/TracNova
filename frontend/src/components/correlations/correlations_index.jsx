@@ -6,9 +6,9 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 function CorrelationsIndex({history, correlations, variables, createCorrelation, destroyCorrelation}){
   useEffect(() => {
-    correlations.length && 
+    history.location.pathname === '/correlations' && correlations.length && 
       history.push(`/correlations/${correlations[0]._id}`);
-  }, [correlations]);
+  }, [history.location.pathname, correlations]);
 
   const handleDeleteCorrelation = (id) => {
     destroyCorrelation(id);
