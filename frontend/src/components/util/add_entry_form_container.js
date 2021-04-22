@@ -9,4 +9,4 @@ const mapDTP = dispatch => ({
   updateVariable: entryData => dispatch(updateVariable(entryData))
 });
 
-export default connect(null, mapDTP)(AddEntryForm);
+export default connect(mapSTP, mapDTP)(AddEntryForm);

@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 
 export default function AddEntryForm({updateVariable, variables, defaultVar}) {
   const [_variable, _setVariable] = useState(defaultVar || undefined);
+  const [_todayVal, _setTodayVal] = useState(0);
   
   useEffect(() => {
-    if (!!defaultVar) _setVariable(defaultVar)
+    if (!!defaultVar) _setVariable(Object.assign({}, defaultVar));
   }, [defaultVar]);
   
   const handleSubmit = e => {
     e.preventDefault();
-    updateVariable(_variable)
+    let newVar = Object.assign({}, _variable);
+    newVar[getToday()] = _todayVal;
+    updateVariable(newVar);
   };
 
   const submitYesterday = e => {
@@ -17,6 +20,11 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
     let newVar = Object.assign({}, _variable);
     newVar[getToday()] = _variable[getYesterday()];
     updateVariable(newVar);
+  };
+
+  const updateVal = e => {
+    e.preventDefault();
+    _setTodayVal(e.currentTarget.value);
   };
 
   const getYesterday = () => {
@@ -36,20 +44,25 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
     switch(variable.unit){
       case 'binary':
         return <div>
-          <button>Yes</button>
-          <button>No</button>
+          <button value={0} onClick={updateVal}>Yes</button>
+          <button value={0} onClick={updateVal}>No</button>
         </div>
       case 'rating':
         return <div>
-          <button>😡</button>
-          <button>😞</button>
-          <button>😐</button>
-          <button>😊</button>
-          <button>😁</button>
+          <button value={1} onClick={updateVal}>😞</button>
+          <button value={2} onClick={updateVal}>😐</button>
+          <button value={3} onClick={updateVal}>😊</button>
+          <button value={4} onClick={updateVal}>😡</button>
+          <button value={5} onClick={updateVal}>😁</button>
         </div>
       default:
         return <div>
-          <input type='text'/><p>{variable.unit}</p>
+          {/* <input type='text'/><p>{variable.unit}</p> */}
+          <input className="input range react-log-input"
+              type="range" value={_todayVal} step="1"
+              min={Object.values(variable.dailylogs).min - 10} max={Object.values(variable.dailylogs).min + 10}
+              onChange={updateVal}
+            />
         </div>
     }
   };
