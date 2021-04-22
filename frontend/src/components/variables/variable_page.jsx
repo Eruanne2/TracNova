@@ -17,12 +17,13 @@ const MOCK_DATA = {
   }
 };
 
+const nullVariable = {};
+
 export default function VariablePage({
-  variable = {},
+  variable = nullVariable,
   currentUser, 
   updateVariable, createVariable
 }){
-
   const symbolBooleanRef = useRef(Symbol('Boolean'));
 
   if (variable.unit && typeof variable.unit === 'string' &&
@@ -35,12 +36,12 @@ export default function VariablePage({
     (variable.unit && variable.unit !== symbolBooleanRef.current) ?
       variable.unit : ''
   );
-  const [_dailylogs, _setDailylogs] = useState(variable.dailylogs || {});
+  const [_dailylogs, _setDailylogs] = useState(Object.assign({}, variable.dailylogs || {}));
   const [_range, _setRange] = useState({min: 0, max: 1});
   const [_edit, _setEdit] = useState();
 
   const allResolved = _dailylogs[undefined] === undefined
-  
+
   useEffect(() => {
     const valArr = Object.values(_dailylogs || {});
 
@@ -50,16 +51,21 @@ export default function VariablePage({
     })
   }, []);
 
+  useEffect(() => {
+    _setName(variable.name || '');
+    _setUnit(variable.unit || symbolBooleanRef.current);
+    _setDailylogs(Object.assign({}, variable.dailylogs || {}));
+  }, [variable]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const varData = {
       user: currentUser.id,
       name: _name, 
       unit: typeof _unit === 'symbol' ? 'boolean' : _unit, 
       dailylogs: _dailylogs
     };
-    
-    console.log(varData);
     
     if (variable._id)
       updateVariable({...varData, id: variable._id})
