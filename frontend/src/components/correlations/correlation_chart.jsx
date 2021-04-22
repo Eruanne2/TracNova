@@ -15,6 +15,9 @@ import React from "react";
 // } from 'recharts';
 // import '../../styles/chart.css'
 import ChartMetrics from './chart_permutations/chart_metrics'
+import ChartBooleans from './chart_permutations/chart_booleans'
+import ChartScatter from './chart_permutations/chart_scatter_correlation'
+import ChartRatings from './chart_permutations/chart_ratings'
 
 export default function CorrelationChart({correlation, variables, width = 1000, height = 1000}){
   function varToPath(variable){
@@ -52,12 +55,21 @@ export default function CorrelationChart({correlation, variables, width = 1000, 
     //     <path d={``} />
     //   </svg>
     // </figure>
+    <div className="charts">
 
-    <div className="chart">
-      <div className="testChart">     
+    <div className="chart metrics">
         <ChartMetrics/>            
+    </div>
+    <div className="chart booleans">     
+        <ChartBooleans/>            
+    </div>
+    <div className="chart scatter">     
+        <ChartScatter/>            
+    </div>
+    <div className="chart rating">     
+        <ChartRatings/>            
+    </div>
         
-      </div>
       <footer>🥴</footer>
     </div>
 

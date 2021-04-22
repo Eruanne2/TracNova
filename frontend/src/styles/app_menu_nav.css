@@ -87,3 +87,9 @@
 .app-menu > ul >li > a:hover {
   text-decoration: underline;
 }
+
+.app-menu .logo {
+  margin-top: 10px;
+  width: 140px;
+  height: auto;
+}

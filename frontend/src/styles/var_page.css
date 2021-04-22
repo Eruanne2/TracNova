@@ -1,0 +1,24 @@
+section.page.variable {
+  position: absolute;
+  top: 200px;
+  left: 540px;
+  border: none;
+  box-shadow: 0 0 2px rgb(49,49,49);
+  height: 350px;
+  width: 500px;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+}
+
+section.page.variable > form:first-of-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 30px;
+  margin-top: 30px;
+  width: 420px;
+}
+
+section.page.variable > form:first-of-type > * {
+  margin-top: 20px;
+}

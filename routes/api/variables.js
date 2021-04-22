@@ -50,7 +50,8 @@ router.post('/',
   }
 );
 
-router.patch('/:id',
+// add entry (takes in an id, a date, and a count)
+router.patch('/:id/entry',
   passport.authenticate('jwt', { session: false }),
   // above line gave req a user key
   function (req, res) {
@@ -62,12 +63,18 @@ router.patch('/:id',
       return res.status(400).json(errors);
     }
 
+    let formattedDate = req.body.date;
+    if (formattedDate.length < 10) {
+      if (formattedDate.indexOf('/') === 1) formattedDate = '0' + formattedDate;
+      if (formattedDate.indexOf('/', 3) === 4) formattedDate = formattedDate.slice(0,3) + '0' + formattedDate.slice(3)
+    }
+
     Variable.findById(req.params.id, function(err, v) {
       // let newV = Object.assign(v.dailylogs, {[req.body.date]: parseFloat(req.body.count)})
       if (req.body.date !== undefined) {
-        v.dailylogs = { ...v.dailylogs, [req.body.date]: parseFloat(req.body.count)};
+        v.dailylogs = { ...v.dailylogs, [formattedDate]: parseFloat(req.body.count)};
       } else {
-        v.dailylogs = {[req.body.date]: parseInt(req.body.count, 10)};
+        v.dailylogs = {[formattedDate]: parseInt(req.body.count, 10)};
       }
       if (req.body.unit !== undefined) {
         v.unit = req.body.unit;
@@ -76,6 +83,37 @@ router.patch('/:id',
         v.name = req.body.name;
       }
       v.save().then(v => res.json(v)).catch(err => res.send(err))
+    })
+    .catch(err => res.status(404).json({novarfound: "No var found"}));
+  }
+  
+);
+
+// update variable (takes in variable)
+router.patch('/:id',
+  passport.authenticate('jwt', { session: false }),
+  // above line gave req a user key
+  function (req, res) {
+    if (!req.params.id) return res.json({success: false, error: 'No id provided'});
+
+    const {errors, isValid} = validateVariableInput(req.body);
+    
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    Variable.findById(req.params._id, function(err, v) {
+
+      const updatedVariable = {
+        name: req.body.name,
+        unit: req.body.unit,
+        dailylogs: req.body.dailylogs
+      }
+    
+      Variable.findOneAndUpdate({'_id': req.body['_id']}, {$set: updatedVariable}, {new: true})
+    
+      .then(variable => res.json(variable))
+      .catch(err => console.log(err));
     })
     .catch(err => res.status(404).json({novarfound: "No var found"}));
   }

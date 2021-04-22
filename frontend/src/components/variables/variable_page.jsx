@@ -3,6 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { createVariable } from "../../actions/variables_actions";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
+import '../../styles/var_page.css';
+
+import VariablesIndexContainer from './variables_index_container';
 
 import Log from "./log";
 
@@ -22,7 +25,7 @@ const nullVariable = {};
 export default function VariablePage({
   variable = nullVariable,
   currentUser, 
-  updateVariable, createVariable
+  addVariableEntry, createVariable
 }){
   const symbolBooleanRef = useRef(Symbol('Boolean'));
 
@@ -67,7 +70,7 @@ export default function VariablePage({
     };
     
     if (variable._id)
-      updateVariable({...varData, id: variable._id})
+      addVariableEntry({...varData, id: variable._id})
     else
       createVariable(varData);
   }
@@ -115,6 +118,7 @@ export default function VariablePage({
 
   return (
     <section className="page variable">
+      <VariablesIndexContainer/>
       <form onSubmit={handleSubmit}>
         <input className="input variable-input variable-name"
           type="text" value={_name} placeholder="Enter habit name"

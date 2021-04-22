@@ -1,7 +1,7 @@
 // fetchVariable(id),
 // fetchUserVariables(userId),
 // createVariable(varData),
-// updateVariable(varData),
+// addVariableEntry(varData),
 // destroyVariable(id)
 
 import { connect } from "react-redux";

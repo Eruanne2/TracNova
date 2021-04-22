@@ -29,7 +29,7 @@
   text-decoration: none;
   position: relative;
   height: 40px;
-  width: 260px;
+  width: 180px;
   background-color: rgb(49,49,49);
   color: white;
   font-weight: 800;
@@ -37,11 +37,14 @@
   letter-spacing: 0.5px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  padding-left: 20px;
+  padding-right: 60px;
 }
 
-.variables-index > ul > a.button.variables-button > p:hover {
-  text-shadow: 0 0 2px white;
+.variables-index > ul > a.button.variables-button:hover {
+  background-color: rgb(116,115,120);
 }
 
 .variables-index > ul > li {
@@ -63,7 +66,11 @@
   cursor: pointer;
   font-weight: 800;
   color: rgb(205, 0, 0);
-  z-index: 50;
+  z-index: 10;
+}
+
+.variables-index > ul > li > div:last-of-type:hover {
+  color:rgb(255, 34, 34);
 }
 
 a.var-item-link {
@@ -107,4 +114,11 @@ a.var-item-link > div > div.icon {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+a.var-item-link > div > div.name {
+  width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
