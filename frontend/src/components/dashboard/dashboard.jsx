@@ -11,7 +11,12 @@ export default function Dashboard({variables}){
   const [_coefficient, _setCoefficient] = useState(0);
 
   useEffect(() => {
-    if (!!_currentVar1 && !!_currentVar2 && _currentVar1 !== _currentVar2) _setCoefficient(StatUtil.getCorrelationCoefficient(_currentVar1, _currentVar2))
+    if (
+      !!_currentVar1 
+      && !!_currentVar2 
+      && _currentVar1 !== _currentVar2
+      && StatUtil.numDataPoints(_currentVar1, _currentVar2) > 6
+      ) _setCoefficient(StatUtil.getCorrelationCoefficient(_currentVar1, _currentVar2))
   }, [_currentVar2]);
 
   useEffect(() => {
@@ -65,7 +70,7 @@ export default function Dashboard({variables}){
               You have {numPoints} {parseInt(numPoints) === 1 ? 'entry' : 'entries'} for this correlation.
               { (parseInt(numPoints) < 7) && <p>We need at least 7 day's worth of data to be able to look for a correlation.</p> }
               { (parseInt(numPoints) > 7 && parseInt(numPoints) < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span>For better accuracy, log these two habits daily for at least two weeks.</p>}
-              { (parseInt(numPoints) > 13 && parseInt(numPoints) < 30) && <p>Nice! You've logged these two habits for at least two weeks. It's still a pretty small sample - for even better results, try to log these habits daily for a whole month.</p>}
+              { (parseInt(numPoints) > 13 && parseInt(numPoints) < 30) && <p>You've logged these two habits over two weeks. Nice! In statistics, it's still a pretty small sample - for even better results, try to log these habits daily for a whole month.</p>}
               { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
             </h3>
           }

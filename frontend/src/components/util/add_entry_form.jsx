@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import IconButton from "../util/icon_button"
 import { faCheckCircle, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -98,6 +99,7 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
         {getCustomInput(_variable)}
         <input type='submit' onClick={handleSubmit} value='Add Entry' />
       </form>
+      <p>Need to add an entry for another day? <Link to='/variables'>Head over to the habits page.</Link></p>
     </div>
   )
 };
