@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import {Link, NavLink} from "react-router-dom";
+import '../../styles/app_menu_nav.css';
 
 function AppMenu({history, variables, logout}){
   const handleLogout = e => {
@@ -10,8 +11,8 @@ function AppMenu({history, variables, logout}){
     history.push('/');
   }
   return (
-    <section className="modal app-menu dropdown-menu">
-      <section className="lightbox app-menu dropdown-menu">
+    <section className="modal app-menu-nav dropdown-menu">
+      <section className="app-menu dropdown-menu">
         <Link to="/">
           <img className="logo" alt="logo"/>
         </Link>
