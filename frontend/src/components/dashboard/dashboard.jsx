@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as StatUtil from '../../util/stat_util';
+import VariableIcon from '../variables/variable_icon';
 // import NewEntryForm from 'wherever';
 
 function Dashboard({variables}){
@@ -38,7 +39,7 @@ function Dashboard({variables}){
               className={_completed(variable) ? 'complete' : 'incomplete'}
               onClick={handleLiClick(variable)}
             >
-              {variable.name}
+              <VariableIcon variable={variable}/>
             </li>
           ))}
         </ul>
