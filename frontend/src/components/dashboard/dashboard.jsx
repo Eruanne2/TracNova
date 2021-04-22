@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as StatUtil from '../../util/stat_util';
 import VariableIcon from '../variables/variable_icon';
 // import NewEntryForm from 'wherever';
+import "../../styles/dashboard.css";
 
 function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
@@ -29,7 +30,7 @@ function Dashboard({variables}){
   if (!!_currentVar1 && !!_currentVar2) numPoints = StatUtil.numDataPoints(_currentVar1, _currentVar2);
   
   return(
-    <div>
+    <div className="dashboard-div">
       <aside>
         <h1>Your Habits: </h1>
         <ul className='variables-list'>
