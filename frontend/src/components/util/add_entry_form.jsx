@@ -34,7 +34,7 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
   const getCustomInput = variable => {
     if (!variable) return null;
     switch(variable.unit){
-      case 'boolean':
+      case 'binary':
         return <div>
           <button>Yes</button>
           <button>No</button>
@@ -61,7 +61,7 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
       <form>
         {!defaultVar &&
           <select value={_variable} onChange={e => _setVariable(e.currentTarget.value)}>
-            {/* <option value={}onChange={}>Select Habit</option> */}
+            <option value={0}>Select Habit</option>
             {variables && Object.values(variables).map((variable, idx) => (
               <option value={variable} key={idx}>{variable.name}</option>
             ))}

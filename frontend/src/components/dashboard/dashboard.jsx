@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as StatUtil from '../../util/stat_util';
 import VariableIcon from '../variables/variable_icon';
-import AddEntryForm from '../util/add_entry_form';
+import AddEntryFormContainer from '../util/add_entry_form_container';
 import "../../styles/dashboard.css";
 
 export default function Dashboard({variables}){
@@ -48,7 +48,7 @@ export default function Dashboard({variables}){
       <main>
         <section className='toggle-entry-form'>
           <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-          {_toggleForm && <AddEntryForm defaultVar={_currentVar2 || null}/>}
+          {_toggleForm && <AddEntryFormContainer defaultVar={_currentVar2 || null}/>}
         </section>
         <section className='correlation-preview'>
 
