@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from "react-router";
 import axios from "axios";
 import { AuthRoute, ProtectedRoute } from "../util/router_util";
 import CorrelationPageContainer from "./correlations/correlation_page_container";
-import CorrelationsPageContainer from "./correlations/correlations_page_container";
+import CorrelationsIndexContainer from "./correlations/correlations_index_container";
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './session/signup_form_container'
 import AppMenuContainer from "./util/app_menu_container";
@@ -17,12 +17,13 @@ export default function App(){
     <div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
       <ProtectedRoute path="/" component={VariableIndexContainer}/>
+      <ProtectedRoute path="/correlations" component={CorrelationsIndexContainer}/>
       <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer}/>
         <ProtectedRoute exact path="/variables/:variableId" component={VariablePageContainer}/>
         <ProtectedRoute exact path="/correlations/:correlationId" component={CorrelationPageContainer}/>
-        <ProtectedRoute exact path="/correlations" component={CorrelationsPageContainer}/>
+        
         <ProtectedRoute exact path="/dashboard" component={DashboardContainer}/>
         <Route exact path="/">
           <Redirect to="/dashboard"/>

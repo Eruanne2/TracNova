@@ -59,7 +59,6 @@ export default function VariablePage({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const varData = {
       user: currentUser.id,
       name: _name, 

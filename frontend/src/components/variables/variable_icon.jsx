@@ -3,10 +3,10 @@ import React from 'react';
 export default function VariableIcon({variable, handleClick}){
   const {name} = variable;
   let abbreviation;
-  const match = name.match(/(\w[^\ ^\t^\n]+)/g);
+  const match = name.match(/^(\s+)?(\w+\s+)+(\w+)?/g);
 
-  if (match && match.length > 1)
-    abbreviation = name.split(/[\ \t\n]/).slice(0, 2).map(x => x[0]).join('')
+  if (match)
+    abbreviation = name.split(/[\ \t\n]/).slice(0, 2).map(x => x[0].toUpperCase()).join('')
   else
     abbreviation = name.substring(0, 2);
 
