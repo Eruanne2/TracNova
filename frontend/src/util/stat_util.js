@@ -1,5 +1,5 @@
-const Statistics = require('statistics.js'); // do not remove the .js !!!!
-
+// const Statistics = require('statistics.js'); // do not remove the .js !!!!
+import Statistics from "statistics.js"
 // { "10/15/2021": 127.83, "04/21/2021": 69 }
 // { "10/15/2021": true, "04/19/2021": true, "04/21/2021": false }
 // => [ { var1: } ]

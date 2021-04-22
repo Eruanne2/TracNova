@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { createVariable } from "../../actions/variables_actions";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
+import '../../styles/var_page.css';
+
 import VariablesIndexContainer from './variables_index_container';
 
 import Log from "./log";
@@ -18,12 +20,13 @@ const MOCK_DATA = {
   }
 };
 
-export default function VariablePage({
-  variable = {},
-  currentUser, 
-  updateVariable, createVariable
-}){
+const nullVariable = {};
 
+export default function VariablePage({
+  variable = nullVariable,
+  currentUser, 
+  createVariable, updateVariable, addVariableEntry
+}){
   const symbolBooleanRef = useRef(Symbol('Boolean'));
 
   if (variable.unit && typeof variable.unit === 'string' &&
@@ -36,20 +39,36 @@ export default function VariablePage({
     (variable.unit && variable.unit !== symbolBooleanRef.current) ?
       variable.unit : ''
   );
-  const [_dailylogs, _setDailylogs] = useState(variable.dailylogs || {});
-  const [_range, _setRange] = useState({min: 0, max: 1});
+  const [_dailylogs, _setDailylogs] = useState(Object.assign({}, variable.dailylogs || {}));
+  const [_range, _setRange] = useState();
   const [_edit, _setEdit] = useState();
 
-  const allResolved = _dailylogs[undefined] === undefined
+  const allResolved = _dailylogs[_edit] === undefined
   
-  useEffect(() => {
+  const setRange = () => {
     const valArr = Object.values(_dailylogs || {});
 
-    _setRange({
-      min: Math.min(...valArr),
-      max: Math.max(...valArr)
-    })
-  }, []);
+    if (valArr.length === 0) return;
+
+    let min = Math.min(...valArr), max = Math.max(...valArr);
+    
+    if ( max - min < 10 ){
+      min = Math.max(0, min - ((10 - max + min) >> 1));
+      max = min + 10;
+    }
+
+    _setRange({ min, max });
+  }
+
+  useEffect(() => {
+    if (_range === undefined) setRange();
+  }, [_dailylogs]);
+
+  useEffect(() => {
+    _setName(variable.name || '');
+    _setUnit(variable.unit || symbolBooleanRef.current);
+    _setDailylogs(Object.assign({}, variable.dailylogs || {}));
+  }, [variable]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,10 +79,8 @@ export default function VariablePage({
       dailylogs: _dailylogs
     };
     
-    console.log(varData);
-    
     if (variable._id)
-      updateVariable({...varData, id: variable._id})
+      updateVariable({...varData, _id: variable._id})
     else
       createVariable(varData);
   }
@@ -76,15 +93,17 @@ export default function VariablePage({
         `You are about to overwrite a previous log on ${newDate}.\nCurrent value: ${logs[newDate]}\nNew value: ${value}\nAre you sure?`
       )) return false;
 
+    if (String(_edit) === date){
+      _setEdit(newDate);
+    }
+
     delete logs[date];
     logs[newDate] = Math.max(value, 0);
 
-    const valArr = Object.values(logs);
-
-    _setRange({ min: Math.min(...valArr), max: Math.max(...valArr) });
+    setRange();
     _setDailylogs(logs)
   }
-
+  
   const handleDeleteLogCreator = date => () => {
     const logs = {..._dailylogs};
     delete logs[date];
@@ -96,11 +115,15 @@ export default function VariablePage({
   }
   
   const handleLogFinishEdit = () => {
-    if (allResolved)
+    // newEntryRef.current = undefined;
+    
+    if (_dailylogs[undefined] !== undefined) 
+      alert('All records must be properly dated.');
+    else {
       _setEdit(undefined)
-    else alert('All records must be properly dated.');
+    }
   }
-
+  
   const handleCreateLog = () => {
     const today = dateToMDY(new Date());
     const date = _dailylogs[today] === undefined ? today : undefined;
@@ -111,7 +134,6 @@ export default function VariablePage({
 
   return (
     <section className="page variable">
-      <VariablesIndexContainer/>
       <form onSubmit={handleSubmit}>
         <input className="input variable-input variable-name"
           type="text" value={_name} placeholder="Enter habit name"
@@ -149,7 +171,11 @@ export default function VariablePage({
         <section className="logs-wrapper react-logs-wrapper">
           <ul className="logs react-logs">
             { Object.entries(_dailylogs)
-                .sort((a, b) => new Date(a[0]) - new Date(b[0]))
+                .sort((a, b) => a[0] === String(_edit) ? 1 :
+                  ( b[0] === String(_edit) ? -1 :
+                    new Date(a[0]) - new Date(b[0])
+                  )
+                )
                 .map(([date, count]) => (
                   <Log key={date} 
                     {...{date, count}}

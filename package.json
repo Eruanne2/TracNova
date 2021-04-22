@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "10.13.0",
+    "npm": "7.10.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server:debug": "nodemon --inspect app.js",
@@ -11,6 +15,7 @@
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "dev:debug": "concurrently \"npm run server:debug\" \"npm run frontend\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
@@ -34,6 +39,7 @@
     "mongoose-data-seed": "^2.1.6",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "statistics.js": "^1.0.0",
     "validator": "^13.5.2"
   },
   "devDependencies": {

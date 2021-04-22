@@ -1,16 +1,18 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React, {useEffect} from "react";
+import {NavLink, withRouter} from "react-router-dom";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/var_index.css";
 import VariableIcon from "./variable_icon";
 
-const MOCK_DATA = [{_id: 1, name: '🐨 koala'}, {_id: 2 ,name: 'お前はもう死んでいる'}, {_id: 3, name: "Check In"}];
-
-export default function VariablesIndex({variables}){
-  if (!variables || !variables.length) variables = MOCK_DATA;
+function VariablesIndex({history, variables = {}, destroyVariable}){
+  useEffect(() => {
+    variables.length && 
+      history.push(`/variables/${variables[0]._id}`);
+  }, [variables]);
+  
   const handleDeleteVariable = (id) => {
-    console.log(id);
+    destroyVariable(id);
   }
 
   return (
@@ -38,3 +40,5 @@ export default function VariablesIndex({variables}){
     </section>
   )
 }
+
+export default withRouter(VariablesIndex);

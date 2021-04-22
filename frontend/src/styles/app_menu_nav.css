@@ -15,7 +15,7 @@
 }
 
 .app-menu {
-  width: calc(100% - 400px);
+  width: 70%;
   height: inherit;
   position: relative;
   display: flex;
@@ -86,4 +86,10 @@
 
 .app-menu > ul >li > a:hover {
   text-decoration: underline;
+}
+
+.app-menu .logo {
+  margin-top: 10px;
+  width: 140px;
+  height: auto;
 }
