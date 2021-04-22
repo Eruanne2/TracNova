@@ -1,10 +1,11 @@
 
 div.page-404 {
   position: absolute;
-  top: 70px;
+  top: 0;
+  z-index: 100;
   background-color: rgb(28,22,16);
   width: 100%;
-  height: calc(100vh - 70px);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,10 +30,27 @@ div.page-404 > p {
   font-size: 25px;
   font-weight: 900;
   text-shadow: 0 0 20px black;
+  background-color: rgba(0, 0, 0, 0.084);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
   transform: rotate(25deg);
   position: relative;
-  left: -7%;
-  top: 25%;
+  left: -15%;
+  top: 12%;
+}
+
+div.page-404 > a {
+  text-decoration: none;
+  color: rgb(88, 230, 255);
+  z-index: 10;
+  font-size: 25px;
+  font-weight: 900;
+  text-shadow: 0 0 40px black;
+  background-color: rgba(0, 0, 0, 0.084);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
+  transform: rotate(-10deg);
+  position: relative;
+  left: -14%;
+  top: 30%;
 }
 
 div.page-404 > img {
