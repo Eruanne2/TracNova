@@ -88,7 +88,7 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
       {!!defaultVar ? <h1>Update {defaultVar.name}</h1> : <h1>Log a Habit</h1>}
       <form>
         {!defaultVar &&
-          <select value={_variable} onChange={e => _setVariable(e.currentTarget.value)}>
+          <select value={_variable || 0} onChange={e => _setVariable(e.currentTarget.value)}>
             <option value={0}>Select Habit</option>
             {variables && Object.values(variables).map((variable, idx) => (
               <option value={variable} key={idx}>{variable.name}</option>
