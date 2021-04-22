@@ -11,7 +11,7 @@ import {
   ComposedChart,
 } from 'recharts';
 import '../../../styles/chart.css'
-
+import CUSTOM_LABEL from './chart_ratings_label'
 
 export default function ChartRatings(){
 
@@ -58,14 +58,14 @@ export default function ChartRatings(){
         />
         <YAxis 
           type="number"
-          tick={[(e) => CUSTOM_LABEL(e)]}
-          label={[(e) => CUSTOM_LABEL(e)]}
+          ticks={[0, 1, 2, 3, 4, 5]}
+          label={<CUSTOM_LABEL />}
           dataKey="nums1"
           strokeWidth="2"
           domain={[0, 5]}
         />
-        <Area type='stepBefore' dataKey="nums2" stroke="rgba(5, 180, 0, 0.5)" dot={false} strokeWidth="5" fill="rgba(5, 200, 0, 0.3)"/>
-        <Area type='stepBefore' dataKey="nums1" stroke="rgba(5, 0, 250, 0.5)" dot={false} strokeWidth="1" fill="rgba(5, 0, 220, 0.3)"/>
+        <Area type='stepBefore' dataKey="nums2" stroke="rgba(5, 160, 0, 0.8)" dot={false} strokeWidth="4" fill="rgba(5, 200, 0, 0.3)"/>
+        <Area type='stepBefore' dataKey="nums1" stroke="rgba(5, 0, 250, 0.5)" dot={false} strokeWidth="2" fill="rgba(5, 0, 220, 0.3)"/>
         <Tooltip backgroundColor="inherit" />
         <ReferenceLine type="linear" isFront={true} dataKey="nums3" label="the average" stroke="black" strokeWidth="5"strokeDasharray="3 3"/>
       </AreaChart>
