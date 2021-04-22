@@ -14,6 +14,7 @@ import { logout } from './actions/session_actions';
 // testing
 import axios from 'axios';
 import * as variableActions from './actions/variables_actions';
+import * as correlationActions from './actions/correlations_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.axios = axios;
   window.store = store;
   window.variableActions = variableActions;
+  window.correlationActions = correlationActions;
 
 
   ReactDOM.render(<Root store={store} />, root);
