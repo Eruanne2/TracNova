@@ -67,10 +67,6 @@ function SignupForm({signup, errors, history, currentUser, clearSessionErrors}){
       <section className="session signin">
         <section className="login-or-signup">
 
-          <figure className="logo-wrapper">
-            <img src={logo} className="logo" alt="TracNova icon"/>
-          </figure>
-
           <section className="login-form">
             <div className="login-form-head">
               <h1>Create an Account</h1>

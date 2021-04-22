@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { createVariable } from "../../actions/variables_actions";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
+import '../../styles/var_page.css';
+
 import VariablesIndexContainer from './variables_index_container';
 
 import Log from "./log";

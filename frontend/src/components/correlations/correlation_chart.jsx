@@ -61,9 +61,5 @@ export default function CorrelationChart({correlation, variables, width = 1000, 
       <footer>🥴</footer>
     </div>
 
-
-
-
-
   )
 }
