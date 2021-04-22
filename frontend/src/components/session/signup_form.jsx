@@ -5,7 +5,7 @@ import logo from "../../images/public/logo512.png"
 import brand from '../../images/TracNova.png'
 import '../../styles/session.css'
 
-function SignupForm({signup, errors, history, currentUser}){
+function SignupForm({signup, errors, history, currentUser, clearSessionErrors}){
   const [_username, _setUsername] = useState('');
   const [_email, _setEmail] = useState('');
   const [_password, _setPassword] = useState('');
@@ -33,16 +33,28 @@ function SignupForm({signup, errors, history, currentUser}){
     }, history);
   } 
 
+  const handleClose = (e) => {
+    e.preventDefault();
+    clearSessionErrors();
+  }
+
   function renderErrors(){
     return (
-      <ul>
-        { errorKeys.map((key, i) => (
-            <li key={`error-${i}`}>
-              {_errors[key]}
-            </li>
-          ))
-        }
-      </ul>
+      <div>
+        <section className="session lightbox error-message">
+          <h4 className="error-title">Error</h4>
+          <ul className="error-messages">
+            { errorKeys.map((key, i) => (
+                <li key={`error-${i}`}>
+                  {_errors[key]}
+                </li>
+              ))
+            }
+          </ul>
+          <Link to="#" className="close-modal" onClick={handleClose}>{`\u2715`}</Link>
+        </section>
+        <div className="modal-background"></div>
+      </div>
     )
   }
 

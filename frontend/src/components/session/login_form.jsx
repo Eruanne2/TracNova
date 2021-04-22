@@ -36,19 +36,23 @@ function LoginForm({
 
   const renderErrors = () => {
     return (
-      <section className="session lightbox error-message">
-        <h4 className="error-title">Error</h4>
-        <ul className="error-messages">
-          { errorKeys.map((key, i) => (
-              <li className="error-message" key={`error-${i}`}>
-                <div className="error-text"></div>
-                {_errors[key]}
-              </li>
-            ))
-          }
-        </ul>
-        <Link to="#" onClick={handleClose}>OK</Link>
-      </section>
+      <div>
+        <section className="session lightbox error-message">
+          <h4 className="error-title">Error</h4>
+          <ul className="error-messages">
+            { errorKeys.map((key, i) => (
+                <li className="error-message" key={`error-${i}`}>
+                  <div className="error-text"></div>
+                  {_errors[key]}
+                </li>
+              ))
+            }
+          </ul>
+          <Link to="#" className="close-modal" onClick={handleClose}>{`\u2715`}</Link>
+        </section>
+        <div className="modal-background"></div>
+
+      </div>
     )
   };
 

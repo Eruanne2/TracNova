@@ -14,7 +14,7 @@ import VariableIndexContainer from "./variables/variables_index_container"
 window.axios = axios;
 export default function App(){
   return (
-    <>
+    <div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
       <ProtectedRoute path="/" component={VariableIndexContainer}/>
       <Switch>
@@ -31,6 +31,6 @@ export default function App(){
           
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }
