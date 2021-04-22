@@ -11,13 +11,13 @@ import DashboardContainer from './dashboard/dashboard_container';
 import VariablePageContainer from "./variables/variable_page_container";
 import VariablesIndexContainer from "./variables/variables_index_container";
 
-
 window.axios = axios;
+
 export default function App(){
   return (
     <div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
-      <ProtectedRoute path="/" component={VariablesIndexContainer}/>
+      <ProtectedRoute path={/\/(variables.*|correlations.*)/} component={VariablesIndexContainer}/>
       <ProtectedRoute path="/correlations" component={CorrelationsIndexContainer}/>
       <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>

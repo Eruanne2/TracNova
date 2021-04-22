@@ -6,15 +6,37 @@ import CorrelationChartContainer from "./correlation_chart_container";
 import VariableContainer from "../variables/variable_container";
 import LogsWrapperContainer from "../variables/logs_wrapper_container";
 
-function CorrelationPage({logout, history, variables, correlation, correlations}){
+const nullCorrelation = {};
+
+function VariableDropArea(){
+  return (
+    <div 
+      onDrop={e => {console.log(e.dataTransfer.getData('text/plain'));}}
+      onDragOver={e => {e.preventDefault()}
+    }>
+      <div style={{width: 100, height: 100, background: "#ddd"}}>Drop</div>
+    </div>
+  );
+}
+
+function CorrelationPage({
+  variables = [],
+  correlation = nullCorrelation,
+  correlations,
+  createCorrelation, updateCorrelation
+}){
   return (
     <section className="page correlation">
       <section>
         <section>
-          <figure>
+          <section className='drop-area variables-drop-area'>
+            <VariableDropArea />
+          </section>
+          {variables.length}
+          {/* <figure>
             <CorrelationButtons />
             <CorrelationChart />
-          </figure>
+          </figure> */}
 
           <h2 className="title"></h2>
           <h3 className="summary">
@@ -33,15 +55,7 @@ function CorrelationPage({logout, history, variables, correlation, correlations}
 
       {/* Move below to another separate file eventually */}
       <section className="charts">
-        Correlation Charts
-        { correlations
-            .filter(corr => corr !== correlation)
-            .map(corr => (
-              <CorrelationChartContainer
-                key={corr.id} correlationId={corr.id} editable={false}
-              />
-            ))
-        }
+        
         <AddCorrelationContainer />
       </section> 
     </section>
