@@ -25,7 +25,7 @@ const nullVariable = {};
 export default function VariablePage({
   variable = nullVariable,
   currentUser, 
-  addVariableEntry, createVariable
+  createVariable, updateVariable, addVariableEntry
 }){
   const symbolBooleanRef = useRef(Symbol('Boolean'));
 
@@ -40,19 +40,29 @@ export default function VariablePage({
       variable.unit : ''
   );
   const [_dailylogs, _setDailylogs] = useState(Object.assign({}, variable.dailylogs || {}));
-  const [_range, _setRange] = useState({min: 0, max: 1});
+  const [_range, _setRange] = useState();
   const [_edit, _setEdit] = useState();
 
-  const allResolved = _dailylogs[undefined] === undefined
-
-  useEffect(() => {
+  const allResolved = _dailylogs[_edit] === undefined
+  
+  const setRange = () => {
     const valArr = Object.values(_dailylogs || {});
 
-    _setRange({
-      min: Math.min(...valArr),
-      max: Math.max(...valArr)
-    })
-  }, []);
+    if (valArr.length === 0) return;
+
+    let min = Math.min(...valArr), max = Math.max(...valArr);
+    
+    if ( max - min < 10 ){
+      min = Math.max(0, min - ((10 - max + min) >> 1));
+      max = min + 10;
+    }
+
+    _setRange({ min, max });
+  }
+
+  useEffect(() => {
+    if (_range === undefined) setRange();
+  }, [_dailylogs]);
 
   useEffect(() => {
     _setName(variable.name || '');
@@ -62,7 +72,6 @@ export default function VariablePage({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const varData = {
       user: currentUser.id,
       name: _name, 
@@ -71,7 +80,7 @@ export default function VariablePage({
     };
     
     if (variable._id)
-      addVariableEntry({...varData, id: variable._id})
+      updateVariable({...varData, _id: variable._id})
     else
       createVariable(varData);
   }
@@ -84,15 +93,17 @@ export default function VariablePage({
         `You are about to overwrite a previous log on ${newDate}.\nCurrent value: ${logs[newDate]}\nNew value: ${value}\nAre you sure?`
       )) return false;
 
+    if (String(_edit) === date){
+      _setEdit(newDate);
+    }
+
     delete logs[date];
     logs[newDate] = Math.max(value, 0);
 
-    const valArr = Object.values(logs);
-
-    _setRange({ min: Math.min(...valArr), max: Math.max(...valArr) });
+    setRange();
     _setDailylogs(logs)
   }
-
+  
   const handleDeleteLogCreator = date => () => {
     const logs = {..._dailylogs};
     delete logs[date];
@@ -104,11 +115,15 @@ export default function VariablePage({
   }
   
   const handleLogFinishEdit = () => {
-    if (allResolved)
+    // newEntryRef.current = undefined;
+    
+    if (_dailylogs[undefined] !== undefined) 
+      alert('All records must be properly dated.');
+    else {
       _setEdit(undefined)
-    else alert('All records must be properly dated.');
+    }
   }
-
+  
   const handleCreateLog = () => {
     const today = dateToMDY(new Date());
     const date = _dailylogs[today] === undefined ? today : undefined;
@@ -119,7 +134,6 @@ export default function VariablePage({
 
   return (
     <section className="page variable">
-      <VariablesIndexContainer/>
       <form onSubmit={handleSubmit}>
         <input className="input variable-input variable-name"
           type="text" value={_name} placeholder="Enter habit name"
@@ -157,7 +171,11 @@ export default function VariablePage({
         <section className="logs-wrapper react-logs-wrapper">
           <ul className="logs react-logs">
             { Object.entries(_dailylogs)
-                .sort((a, b) => new Date(a[0]) - new Date(b[0]))
+                .sort((a, b) => a[0] === String(_edit) ? 1 :
+                  ( b[0] === String(_edit) ? -1 :
+                    new Date(a[0]) - new Date(b[0])
+                  )
+                )
                 .map(([date, count]) => (
                   <Log key={date} 
                     {...{date, count}}
