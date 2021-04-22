@@ -95,7 +95,7 @@ function LoginForm({
           {errorKeys.length ? renderErrors() : null}
 
         </section>
-        <img className="brand" src={brand}/>
+        
       </section>
     </section>
   );
