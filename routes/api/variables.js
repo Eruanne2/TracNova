@@ -50,7 +50,7 @@ router.post('/',
   }
 );
 
-router.patch('/:id',
+router.patch('/:id/entry',
   passport.authenticate('jwt', { session: false }),
   // above line gave req a user key
   function (req, res) {

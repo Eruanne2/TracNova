@@ -23,7 +23,7 @@ const MOCK_DATA = {
 export default function VariablePage({
   variable = {},
   currentUser, 
-  updateVariable, createVariable
+  addVariableEntry, createVariable
 }){
 
   const symbolBooleanRef = useRef(Symbol('Boolean'));
@@ -65,7 +65,7 @@ export default function VariablePage({
     console.log(varData);
     
     if (variable._id)
-      updateVariable({...varData, id: variable._id})
+      addVariableEntry({...varData, id: variable._id})
     else
       createVariable(varData);
   }

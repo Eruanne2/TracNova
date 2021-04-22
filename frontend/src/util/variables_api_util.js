@@ -12,8 +12,8 @@ export const postVariable = varData => {
   return axios.post('/api/variables/', varData);
 };
 
-export const patchVariable = varData => {
-  return axios.patch(`/api/variables/${varData.id}`, varData);
+export const patchVariableEntry = varData => {
+  return axios.patch(`/api/variables/${varData.id}/entry`, varData);
 };
 
 export const deleteVariable = varId => {

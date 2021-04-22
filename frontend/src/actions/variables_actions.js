@@ -45,8 +45,8 @@ export const createVariable = varData => dispatch => {
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
-export const updateVariable = varData => dispatch => {
-  APIUtil.patchVariable(varData)
+export const addVariableEntry = varData => dispatch => {
+  APIUtil.patchVariableEntry(varData)
     .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
