@@ -34,6 +34,11 @@ function LoginForm({
     clearSessionErrors();
   }
 
+  const demoLogin = (e) => {
+    e.preventDefault();
+    login({email: 'demo@example.com', password: 'password'});
+  }
+
   const renderErrors = () => {
     return (
       <div>
@@ -90,7 +95,7 @@ function LoginForm({
               </form>
               <div className="demo-user">
                 <p>-------- Or --------</p>
-                <p className="demo-user-button">Login with Demo User</p>
+                <p className="demo-user-button" onClick={demoLogin}>Login with Demo User</p>
               </div>
             </div>
             <div className="go-to-signup">
