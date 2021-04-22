@@ -22,7 +22,7 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
   const submitYesterday = e => {
     e.preventDefault();
     let newVar = Object.assign({}, _variable);
-    newVar.dailylogs[getToday()] = _variable[getYesterday()];
+    newVar.dailylogs[getToday()] = _variable.dailylogs[getYesterday()];
     updateVariable(newVar);
   };
 
