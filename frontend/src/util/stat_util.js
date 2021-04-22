@@ -1,11 +1,11 @@
-import Statistics from 'statistics';
+const Statistics = require('statistics.js'); // do not remove the .js !!!!
 
 // { "10/15/2021": 127.83, "04/21/2021": 69 }
 // { "10/15/2021": true, "04/19/2021": true, "04/21/2021": false }
 // => [ { var1: } ]
 
 // takes data from daily logs and formats it as shown below
-const getStatData = (variable1, variable2) => {
+export const getStatData = (variable1, variable2) => {
   let varTypes = { 
     [variable1.name]: (variable1.unit === 'boolean') ? 'binary' : 'metric',
     [variable2.name]: (variable2.unit === 'boolean') ? 'binary' : 'metric' 
@@ -18,6 +18,16 @@ const getStatData = (variable1, variable2) => {
   });
 
   return [formattedData, varTypes];
+};
+
+// get number of data points
+export const numDataPoints = (variable1, variable2) => {
+  let formattedData = [];
+  Object.keys(variable1.dailylogs).forEach(date => {
+    if (!variable2.dailylogs[date]) return;
+    else formattedData.push({ [variable1.name]: variable1.dailylogs[date], [variable2.name]: variable2.dailylogs[date] });
+  });
+  return formattedData.length;
 };
 
 // example input for getCorrelationCoefficient: 
@@ -117,4 +127,3 @@ const popStdDev = arr => {
     arr.reduce((acc, val) => acc + (val - mean) ** 2, 0) / arr.length
   );
 };
-

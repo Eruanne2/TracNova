@@ -4,6 +4,9 @@ import { createVariable } from "../../actions/variables_actions";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
 import '../../styles/var_page.css';
+
+import VariablesIndexContainer from './variables_index_container';
+
 import Log from "./log";
 
 const MOCK_DATA = {
@@ -110,6 +113,7 @@ export default function VariablePage({
 
   return (
     <section className="page variable">
+      <VariablesIndexContainer/>
       <form onSubmit={handleSubmit}>
         <input className="input variable-input variable-name"
           type="text" value={_name} placeholder="Enter habit name"
