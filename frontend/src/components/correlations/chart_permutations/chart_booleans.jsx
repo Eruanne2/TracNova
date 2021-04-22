@@ -9,6 +9,8 @@ import {
   Legend,
   ReferenceLine,
   Tooltip,
+  Label,
+  LabelList,
 } from 'recharts';
 import '../../../styles/chart.css'
 
@@ -39,8 +41,8 @@ export default function ChartBooleans(){
   for (let i = 0; i < 20; i++)
   fakestData.push({
     date: i, 
-    nums1: Math.floor(0.5 + (Math.random())),
-    nums2: Math.floor(0.5 + (Math.random())),
+    nums1: Math.floor(0.5 + (Math.random())), //>= 1 ? "Yes" : "No",
+    nums2: Math.floor(0.5 + (Math.random())), // >= 1 ? "Yes" : "No",
   })
 
   
@@ -67,7 +69,11 @@ return (
           dataKey="nums1"
           strokeWidth="2"
           domain={[0, 2]}
-        />
+        >
+          <Label value="Did Neither" offset={-20} position="insideBottomLeft"/>
+          <Label value="Did One" offset={-20} position="insideLeft"/>
+          <Label value="Did Both" offset={-20} position="insideTopLeft"/>
+        </YAxis>
         <XAxis 
           type="number"
           dataKey="date"
@@ -75,8 +81,10 @@ return (
         />  
           <Tooltip />
           <Legend />
-          <Bar type="number" dataKey="nums1" stackId="a" fill="#8884d8" isAnimationActive={false}/>
-          <Bar type="number" dataKey="nums2" stackId="a" fill="#82ca9d" isAnimationActive={false}/>
+          <Bar type="number" dataKey="nums1" stackId="a" fill="#8884d8" isAnimationActive={false} minPointSize={6} />
+        
+          <Bar type="number" dataKey="nums2" stackId="a" fill="#82ca9d" isAnimationActive={false} minPointSize={3} />
+     
         </BarChart>
     //   </ResponsiveContainer>
   // <ResponsiveContainer className="chartPrice" width={800} height={400}>
