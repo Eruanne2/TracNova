@@ -61,7 +61,6 @@ export default function Dashboard({variables}){
           {_toggleForm && <AddEntryFormContainer defaultVar={_currentVar2 || null}/>}
         </section>
         <section className='correlation-preview'>
-
           <h1>Habit 1: {_currentVar1.name} and Habit 2: {_currentVar2.name}</h1>
           {(!!_currentVar2 && numPoints > 6) && <h2>Correlation Coefficient: {_coefficient}</h2>}
           
@@ -69,7 +68,7 @@ export default function Dashboard({variables}){
             <h3>
               You have {numPoints} {parseInt(numPoints) === 1 ? 'entry' : 'entries'} for this correlation.
               { (parseInt(numPoints) < 7) && <p>We need at least 7 day's worth of data to be able to look for a correlation.</p> }
-              { (parseInt(numPoints) > 7 && parseInt(numPoints) < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span>For better accuracy, log these two habits daily for at least two weeks.</p>}
+              { (parseInt(numPoints) > 7 && parseInt(numPoints) < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span> For better accuracy, log these two habits daily for at least two weeks.</p>}
               { (parseInt(numPoints) > 13 && parseInt(numPoints) < 30) && <p>You've logged these two habits over two weeks. Nice! In statistics, it's still a pretty small sample - for even better results, try to log these habits daily for a whole month.</p>}
               { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
             </h3>

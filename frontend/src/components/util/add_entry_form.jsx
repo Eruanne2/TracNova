@@ -5,7 +5,7 @@ import { faCheckCircle, faMinus, faPlus } from "@fortawesome/free-solid-svg-icon
 
 
 export default function AddEntryForm({updateVariable, variables, defaultVar}) {
-  const [_variable, _setVariable] = useState(defaultVar || undefined);
+  const [_variable, _setVariable] = useState(defaultVar || {});
   const [_todayVal, _setTodayVal] = useState(0);
   
   useEffect(() => {
@@ -61,6 +61,7 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
           <button value={5} onClick={updateVal}>😁</button>
         </div>
       default:
+        console.log('in the input creator')
         return <div>
           <IconButton className="button range-button" 
             onClick={e => _setTodayVal(_todayVal - 1)} title="decrease value" icon={faMinus}
@@ -68,7 +69,7 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
           <label>
           <input className="input range react-log-input"
               type="range" value={_todayVal} step="1"
-              min={Math.min(...Object.values(variable.dailylogs)) - 10} max={Math.max(...Object.values(variable.dailylogs)) + 10}
+              // min={Math.min(...Object.values(variable.dailylogs)) - 10} max={Math.max(...Object.values(variable.dailylogs)) + 10}
               onChange={updateVal}
             />
           </label>
@@ -83,19 +84,20 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
     }
   };
 
+  console.log('before the render')
   return(
     <div className='entry-form-div'>
       {!!defaultVar ? <h1>Update {defaultVar.name}</h1> : <h1>Log a Habit</h1>}
       <form>
         {!defaultVar &&
-          <select value={_variable || 0} onChange={e => _setVariable(e.currentTarget.value)}>
+          <select value={_variable._id || 0} onChange={e => {  _setVariable(variables[e.currentTarget.value])}}>
             <option value={0}>Select Habit</option>
-            {variables && Object.values(variables).map((variable, idx) => (
-              <option value={variable} key={idx}>{variable.name}</option>
+            {variables && Object.values(variables).map(variable => (
+              <option value={variable._id} key={variable._id}>{variable.name}</option>
             ))}
           </select>
         }
-        {(!!_variable && !!_variable.dailylogs[getYesterday()]) && <button onClick={submitYesterday}>Repeat yesterday's Entry</button>}
+        {(!!_variable && !!_variable.dailylogs && !!_variable.dailylogs[getYesterday()]) && <button onClick={submitYesterday}>Repeat yesterday's Entry</button>}
         {getCustomInput(_variable)}
         <input type='submit' onClick={handleSubmit} value='Add Entry' />
       </form>
