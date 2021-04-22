@@ -11,6 +11,7 @@ function SignupForm({signup, errors, history, currentUser}){
   const [_password, _setPassword] = useState('');
   const [_password2, _setPassword2] = useState('');
   const [_errors, _setErrors] = useState({});
+  const errorKeys = Object.keys(_errors);
   
   useEffect(() => {
     if (currentUser === true)
@@ -35,7 +36,7 @@ function SignupForm({signup, errors, history, currentUser}){
   function renderErrors(){
     return (
       <ul>
-        { Object.keys(_errors).map((key, i) => (
+        { errorKeys.map((key, i) => (
             <li key={`error-${i}`}>
               {_errors[key]}
             </li>
@@ -84,12 +85,13 @@ function SignupForm({signup, errors, history, currentUser}){
 
 
             </form>
+            
             <Link className="session redirect-link" to="/login">
               Existing Users
             </Link>
           </section>
 
-          {renderErrors()}
+        {errorKeys.length ? renderErrors() : null}
 
         <img className="brand" src={brand}/>
         </section>

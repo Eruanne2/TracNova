@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import StatUtil from '../../util/stat_util';
 // import NewEntryForm from 'wherever';
 
 function Dashboard({variables}){
@@ -49,6 +50,7 @@ function Dashboard({variables}){
 
           <h1>Habit 1: {_currentVar1.name} and Habit 2: {_currentVar2.name}</h1>
           <h2>Correlation Coefficient: {}</h2>
+          {/* <h2>Correlation Coefficient: {getCorrelationCoefficient(formattedData)}</h2> */}
           <h3>
             You have {} X entries for this correlation.
             { ({} < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span>For better accuracy, log these two habits daily for at least two weeks.</p>}
