@@ -42,9 +42,8 @@ export default function VariablePage({
   const [_dailylogs, _setDailylogs] = useState(Object.assign({}, variable.dailylogs || {}));
   const [_range, _setRange] = useState();
   const [_edit, _setEdit] = useState();
-  const newEntryRef = useRef(undefined);
 
-  const allResolved = _dailylogs[newEntryRef.current] === undefined
+  const allResolved = _dailylogs[_edit] === undefined
   
   const setRange = () => {
     const valArr = Object.values(_dailylogs || {});
@@ -94,9 +93,7 @@ export default function VariablePage({
         `You are about to overwrite a previous log on ${newDate}.\nCurrent value: ${logs[newDate]}\nNew value: ${value}\nAre you sure?`
       )) return false;
 
-    if (String(newEntryRef.current) === date){
-
-      newEntryRef.current = newDate;
+    if (String(_edit) === date){
       _setEdit(newDate);
     }
 
@@ -118,7 +115,7 @@ export default function VariablePage({
   }
   
   const handleLogFinishEdit = () => {
-    newEntryRef.current = undefined;
+    // newEntryRef.current = undefined;
     
     if (_dailylogs[undefined] !== undefined) 
       alert('All records must be properly dated.');
@@ -126,7 +123,7 @@ export default function VariablePage({
       _setEdit(undefined)
     }
   }
-console.log(_edit, newEntryRef.current)
+  
   const handleCreateLog = () => {
     const today = dateToMDY(new Date());
     const date = _dailylogs[today] === undefined ? today : undefined;
@@ -174,8 +171,8 @@ console.log(_edit, newEntryRef.current)
         <section className="logs-wrapper react-logs-wrapper">
           <ul className="logs react-logs">
             { Object.entries(_dailylogs)
-                .sort((a, b) => a[0] === String(newEntryRef.current) ? 1 :
-                  ( b[0] === String(newEntryRef.current) ? -1 :
+                .sort((a, b) => a[0] === String(_edit) ? 1 :
+                  ( b[0] === String(_edit) ? -1 :
                     new Date(a[0]) - new Date(b[0])
                   )
                 )
