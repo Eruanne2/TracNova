@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as StatUtil from '../../util/stat_util';
 import VariableIcon from '../variables/variable_icon';
-// import NewEntryForm from 'wherever';
+import AddEntryForm from '../util/add_entry_form';
 
-function Dashboard({variables}){
+export default function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
   const [_currentVar1, _setCurrentVar1] = useState('');
   const [_currentVar2, _setCurrentVar2] = useState('');
@@ -47,8 +47,7 @@ function Dashboard({variables}){
       <main>
         <section className='toggle-entry-form'>
           <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-          {_toggleForm && <div>Dummy entry form</div>}
-          {/*_toggleForm && <NewEntryForm/>*/}
+          {_toggleForm && <AddEntryForm defaultVar={_currentVar2 || null}/>}
         </section>
         <section className='correlation-preview'>
 
@@ -71,5 +70,3 @@ function Dashboard({variables}){
     </div>
   )
 };
-
-export default Dashboard;
