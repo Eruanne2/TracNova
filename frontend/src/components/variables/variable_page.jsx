@@ -25,7 +25,7 @@ const nullVariable = {};
 export default function VariablePage({
   variable = nullVariable,
   currentUser, 
-  updateVariable, createVariable
+  addVariableEntry, createVariable
 }){
   const symbolBooleanRef = useRef(Symbol('Boolean'));
 
@@ -71,7 +71,7 @@ export default function VariablePage({
     };
     
     if (variable._id)
-      updateVariable({...varData, id: variable._id})
+      addVariableEntry({...varData, id: variable._id})
     else
       createVariable(varData);
   }
