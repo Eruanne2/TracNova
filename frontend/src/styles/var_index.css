@@ -1,0 +1,89 @@
+.variables-index {
+  width: calc(100% - 420px);
+  height: calc(100vh - 150px);
+  margin: 0 auto;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+}
+
+.variables-wrapper > * {
+  border: 1px solid black;
+}
+
+.variables-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.variables-wrapper > ul {
+  width: 230px;
+  padding: 0px;
+  height: 100%;
+  border: 1px solid rgb(116,115,120);
+  margin-top: 15px;
+}
+
+.variables-wrapper > ul > li {
+  position: relative;
+  list-style: none;
+  border-bottom: 1px solid rgb(116,115,120);
+  height: 55px;
+}
+
+a.var-item-link {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 55px;
+  width: 230px;
+  background-color: white;
+  text-decoration: none;
+  color: rgb(29,96,139);
+  font-weight: 800;
+}
+
+a.var-item-link > div > a {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 200px;
+}
+
+a.var-item-link > div > a > * {
+  margin-right: 20px;
+}
+
+a.var-item-link > div > a > div.icon {
+  border: none;
+  box-shadow: 0 0 3px rgb(49,49,49);
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.variables-wrapper-body {
+  height: 400px;
+  margin-top: 25px;
+  margin-left: 60px;
+  margin-right: 10px;
+  padding-top: 30px;
+  flex-grow: 1;
+}
+
+.variables-wrapper-body > a.variable-button {
+  margin-left: 40px;
+  text-decoration: none;
+  font-size: 18px;
+  text-shadow: 0 0 1px rgb(49,49,49);
+  color: rgb(24,119,242);
+}

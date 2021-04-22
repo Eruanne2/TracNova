@@ -8,7 +8,7 @@ import '../../styles/session.css'
 function LoginForm({
   history,
   currentUser, errors,
-  login,
+  login, clearSessionErrors
 }){
   const [_email, _setEmail] = useState('');
   const [_password, _setPassword] = useState('');
@@ -29,24 +29,34 @@ function LoginForm({
     login({email: _email, password: _password});
   }
 
+  const handleClose = (e) => {
+    e.preventDefault();
+    clearSessionErrors();
+  }
+
   const renderErrors = () => {
     return (
-      <section className="session lightbox error-message">
-        <h4 className="error-title">Error</h4>
-        <ul className="error-messages">
-          { errorKeys.map((key, i) => (
-              <li className="error-message" key={`error-${i}`}>
-                <div className="error-text"></div>
-                {_errors[key]}
-              </li>
-            ))
-          }
-        </ul>
-      </section>
+      <div>
+        <section className="session lightbox error-message">
+          <h4 className="error-title">Error</h4>
+          <ul className="error-messages">
+            { errorKeys.map((key, i) => (
+                <li className="error-message" key={`error-${i}`}>
+                  <div className="error-text"></div>
+                  {_errors[key]}
+                </li>
+              ))
+            }
+          </ul>
+          <Link to="#" className="close-modal" onClick={handleClose}>{`\u2715`}</Link>
+        </section>
+        <div className="modal-background"></div>
+
+      </div>
     )
   };
 
-  return (
+  return (      
     <section className="session-background">
       <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/stars.png'})` }} className="stars"/>
       <div style={{ backgroundImage: `(${process.env.PUBLIC_URL + 'images/twinkling.png'})` }} className="twinkling"/>
@@ -82,7 +92,7 @@ function LoginForm({
             </Link>
           </section>
 
-          {renderErrors()}
+          {errorKeys.length ? renderErrors() : null}
 
         </section>
         <img className="brand" src={brand}/>
