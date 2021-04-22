@@ -1,12 +1,12 @@
 section.page.variable {
-  position: relative;
+  position: absolute;
+  top: 100px;
+  left: 22%;
   border: none;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   margin-left: 220px;
   padding-top: 20px;
-  width: calc(100vw - 420px);
-  display: grid;
-  grid-template-columns: 270px 1fr;
+  width: 48%;
 }
 
 section.page.variable > form:first-of-type {
