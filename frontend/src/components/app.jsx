@@ -17,8 +17,10 @@ export default function App(){
   return (
     <div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
-      <ProtectedRoute path="/(variables|correlations)" component={VariablesIndexContainer}/>
-      <ProtectedRoute path="/correlations" component={CorrelationsIndexContainer}/>
+      <section className="indices">
+        <ProtectedRoute path="/(variables|correlations)" component={VariablesIndexContainer}/>
+        <ProtectedRoute path="/correlations" component={CorrelationsIndexContainer}/>
+      </section>
       <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer}/>

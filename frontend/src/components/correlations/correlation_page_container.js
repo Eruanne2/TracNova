@@ -5,9 +5,11 @@ import CorrelationPage from "./correlation_page";
 const mapSTP = ({entities, session}, {match}) => {
   const {correlationId} = match.params;
   const correlation = entities.correlations[correlationId];
+  const allVariables = entities.variables;
 
   return ({
     currentUser: session.user,
+    allVariables,
     variables: (correlation ? 
       correlation.variableIds.map(id => entities.variables[id]) : []
     ),

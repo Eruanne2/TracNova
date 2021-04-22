@@ -11,7 +11,9 @@ export default function VariableIcon({variable, onDragStart, handleClick, dragga
     abbreviation = name.substring(0, 2);
 
   return (
-    <div className='icon-wrapper variable' onClick={handleClick} onDragStart={onDragStart} draggable={draggable}>
+    <div className='icon-wrapper variable' 
+      onClick={handleClick} onDragStart={onDragStart} draggable={draggable}
+    >
       <div className='icon'>
         {abbreviation}
       </div>
