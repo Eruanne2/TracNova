@@ -35,6 +35,14 @@ export default function ChartBooleans(){
     nums1: Math.floor(0.5 + (Math.random())),
   })
 
+  const fakestData = [];
+  for (let i = 0; i < 20; i++)
+  fakestData.push({
+    date: i, 
+    nums1: Math.floor(0.5 + (Math.random())),
+    nums2: Math.floor(0.5 + (Math.random())),
+  })
+
   
 return (
     // <ResponsiveContainer 
@@ -44,9 +52,9 @@ return (
     // >
         <BarChart
         className="chart-container"
-          width={500}
-          height={300}
-          data={fakeData2, fakeData3}
+          width={800}
+          height={400}
+          data={fakestData}
           margin={{
             top: 20,
             right: 30,
@@ -54,15 +62,21 @@ return (
             bottom: 5,
           }}
         >
-          <XAxis 
-            dataKey="name" 
-            allowDuplicatedCategories={false} 
-            type="number" dataKey="date" hide={false}/>
-          <YAxis allowDuplicatedCategories={false} />
+        <YAxis 
+          type="number"
+          dataKey="nums1"
+          strokeWidth="2"
+          domain={[0, 2]}
+        />
+        <XAxis 
+          type="number"
+          dataKey="date"
+          hide={false}
+        />  
           <Tooltip />
           <Legend />
-          <Bar type="number" dataKey="nums" data={fakeData2} stackId="a" fill="#8884d8" isAnimationActive={false}/>
-          <Bar type="number" dataKey="nums1" data={fakeData3} stackId="a" fill="#82ca9d" isAnimationActive={false}/>
+          <Bar type="number" dataKey="nums1" stackId="a" fill="#8884d8" isAnimationActive={false}/>
+          <Bar type="number" dataKey="nums2" stackId="a" fill="#82ca9d" isAnimationActive={false}/>
         </BarChart>
     //   </ResponsiveContainer>
   // <ResponsiveContainer className="chartPrice" width={800} height={400}>

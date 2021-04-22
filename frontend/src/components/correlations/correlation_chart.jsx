@@ -16,6 +16,7 @@ import React from "react";
 // import '../../styles/chart.css'
 import ChartMetrics from './chart_permutations/chart_metrics'
 import ChartBooleans from './chart_permutations/chart_booleans'
+import ChartScatter from './chart_permutations/chart_scatter_correlation'
 
 export default function CorrelationChart({correlation, variables, width = 1000, height = 1000}){
   function varToPath(variable){
@@ -60,6 +61,9 @@ export default function CorrelationChart({correlation, variables, width = 1000, 
     </div>
     <div className="chart booleans">     
         <ChartBooleans/>            
+    </div>
+    <div className="chart scatter">     
+        <ChartScatter/>            
     </div>
         
       <footer>🥴</footer>
