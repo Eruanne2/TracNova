@@ -9,11 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 5px rgb(49,49,49);;
+  box-shadow: 0 0 5px rgb(49,49,49);
+  margin-bottom: 40px;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
 }
 
 .app-menu {
-  width: calc(100% - 200px);
+  width: calc(100% - 400px);
   height: inherit;
   position: relative;
   display: flex;

@@ -150,6 +150,7 @@
   display: inline-block;
   font-size: 16px;
   font-weight: 900;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   z-index: 3;
   box-shadow: 0px 0px 70px rgba(5, 100, 255);
   cursor: pointer;
@@ -180,6 +181,7 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   letter-spacing: 0.5px;
   color: white;
 }
@@ -251,7 +253,7 @@ h4.error-title {
   font-weight: 900;
   color: rgb(116, 0, 0);
   margin-top: 10px;
-  margin-bottom: 2px;
+  margin-bottom: 20px;
 }
 
 ul.error-messages {
