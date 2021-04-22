@@ -7,12 +7,18 @@ import VariableIcon from "./variable_icon";
 
 function VariablesIndex({history, variables = {}, destroyVariable}){
   useEffect(() => {
-    variables.length && 
+    history.location.pathname === '/variables' && variables.length && 
       history.push(`/variables/${variables[0]._id}`);
-  }, [variables]);
+  }, [history.location.pathname, variables]);
   
   const handleDeleteVariable = (id) => {
     destroyVariable(id);
+  }
+
+  const handleDragStart = (e, id) => {
+    console.log(1);
+    console.log(e, id);
+    e.dataTransfer.setData('text/plain', id);
   }
 
   return (
@@ -30,7 +36,7 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
               <NavLink activeClassName="selected" className="var-item-link"
                 to={`/variables/${variable._id}`}
               >
-                <VariableIcon variable={variable}/>
+                <VariableIcon variable={variable} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
               </NavLink>
               <div onClick={e => handleDeleteVariable(variable._id)}>Delete</div>
             </li>

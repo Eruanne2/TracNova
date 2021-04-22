@@ -14,13 +14,13 @@ import PageNotFound from './static_pages/page_not_found';
 import Splash from './static_pages/splash';
 import VariablesIndexContainer from "./variables/variables_index_container";
 
-
 window.axios = axios;
+
 export default function App(){
   return (
     <div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
-      <ProtectedRoute path="/variables" component={VariablesIndexContainer}/>
+      <ProtectedRoute path="/(variables|correlations)" component={VariablesIndexContainer}/>
       <ProtectedRoute path="/correlations" component={CorrelationsIndexContainer}/>
       <Switch>
         <AuthRoute exact path='/' component={Splash}/>
