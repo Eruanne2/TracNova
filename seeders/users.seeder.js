@@ -4,7 +4,8 @@ const User = require('../models/User');
 const data = [{
     username: 'demo',
     email: 'demo@example.com',
-    password: 'password'
+    password: 'password',
+    password2: 'password'
 }];
 
 class UsersSeeder extends Seeder {
