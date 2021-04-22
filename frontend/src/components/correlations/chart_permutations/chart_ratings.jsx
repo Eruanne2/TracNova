@@ -42,10 +42,12 @@ export default function ChartRatings(){
           strokeWidth="2"
           domain
         />
-        <Line dataKey="nums1" stroke="rgb(5, 0, 220)" dot={false} strokeWidth="6" />
-        <Line dataKey="nums2" stroke="rgb(5, 200, 0)" dot={false} strokeWidth="6" />
+        <Line type='stepAfter' dataKey="nums2" stroke="rgba(5, 200, 0, 0.5)" dot={false} strokeWidth="5" />
+        <Line type='stepBefore' dataKey="nums1" stroke="rgba(5, 0, 220, 0.5)" dot={false} strokeWidth="1" />
         <Tooltip backgroundColor="inherit" />
       </LineChart>
     </ResponsiveContainer>
   )
 }
+
+// type='basis' | 'basisClosed' | 'basisOpen' | 'linear' | 'linearClosed' | 'natural' | 'monotoneX' | 'monotoneY' | 'monotone' | 'step' | 'stepBefore' | 'stepAfter'
