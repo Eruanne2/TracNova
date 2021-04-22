@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import logo from "../../images/public/logo512.png"
-import brand from '../../images/TracNova.png'
+import brand from "../../images/public/logo512.png"
+import logo from '../../images/tracnova3.png'
 import '../../styles/session.css'
 
 function LoginForm({
