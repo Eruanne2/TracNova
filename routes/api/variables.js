@@ -63,9 +63,9 @@ router.patch('/:id',
     }
 
     Variable.findById(req.params.id, function(err, v) {
-      // let newV = Object.assign(v.dailylogs, {[req.body.date]: parseInt(req.body.count, 10)})
+      // let newV = Object.assign(v.dailylogs, {[req.body.date]: parseFloat(req.body.count)})
       if (req.body.date !== undefined) {
-        v.dailylogs = { ...v.dailylogs, [req.body.date]: parseInt(req.body.count, 10)};
+        v.dailylogs = { ...v.dailylogs, [req.body.date]: parseFloat(req.body.count)};
       } else {
         v.dailylogs = {[req.body.date]: parseInt(req.body.count, 10)};
       }
