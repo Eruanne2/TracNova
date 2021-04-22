@@ -13,8 +13,31 @@
   justify-content: center;
 } */
 
-.logo-wrapper {
+section.session-background {
+  background-color: rgb(227, 239, 242);
+}
+
+section.login-or-signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+section.login-or-signup > .logo-wrapper {
+  width: 400px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.login-or-signup > .logo-wrapper > .logo {
+  position: relative;
+  left: -30px;
+  width: 500px;
+  height: auto;
 }
 
 .logo {
@@ -38,17 +61,15 @@
 
 .login-form {
   /* height: 400px; */
-  width: 420px;
-  position: absolute;
-  top: 10%;
+  width: 380px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  z-index: inherit;
-  background-color: rgba(255, 255, 255, 0.447);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.11);
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 1.5px solid rgb(219,219,219);
   transition: background-color 0.5s linear;
   transition: box-shadow 0.5s linear;
   padding-top: 18px;
@@ -62,9 +83,8 @@
   align-items: center;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   width: 300px;
-  color: white;
-  text-shadow: 0 0 8px #1528b6;
-  margin-bottom: 15px;
+  color: rgb(38, 38, 38);
+  margin-bottom: 25px;
 }
 
 .login-form-head > h1 {
@@ -96,9 +116,9 @@
 }
 
 .login-form:hover {
-  background-color: rgba(255, 255, 255, 0.543);
+  background-color: rgba(255, 255, 255);
   transition: 0.3s;
-  box-shadow: 0px 0px 70px rgba(5, 100, 255);
+  box-shadow: 0px 0px 10px rgba(39, 149, 246, 0.714);
 }
 .login-or-signup {
   display: flex;
@@ -119,7 +139,7 @@
   font-family: 'Courier New', Courier, monospace;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(250, 250, 250);
   font-weight: 900;
   color: rgb(45, 82, 233);
   margin-bottom: 10px;
@@ -139,7 +159,7 @@
   background-color: #fe4c81f6;
   width: 272px;
   height: 35px;
-  border: 1px solid #ffb2c9f6;
+  border: none;
   border-radius: 3px;
   color: white;
   margin-top: 10px;
@@ -152,14 +172,13 @@
   font-weight: 900;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   z-index: 3;
-  box-shadow: 0px 0px 70px rgba(5, 100, 255);
+  box-shadow: 0px 0px 5px rgb(152, 152, 152);
   cursor: pointer;
 }
 
 .session-button:hover {
-  background-color: #fe2d3b;
-  border: 1px solid rgb(255, 231, 231);
-  box-shadow: 0px 0px 70px rgba(255, 0, 150);
+  background-color: #f0648ef6;
+  box-shadow: 0px 0px 4px rgb(255, 0, 150);
   transition: 0.3s;
 }
 
@@ -170,14 +189,14 @@
   justify-content: center;
   height: 34px;
   width: 270px;
-  background-color: rgba(5, 101, 255, 0.803);
+  background-color: rgb(39, 149, 246);
   transition: background-color 0.3s linear;
   z-index: 3;
-  border: 1px solid;
+  border: none;
   border-radius: 3px;
-  box-shadow: 0px 0px 7px rgba(5, 100, 255), inset 0px 0px 7px rgba(5, 100, 255);
+  box-shadow: 0px 0px 4px rgba(5, 100, 255);
   margin-top: 15px;
-  margin-bottom: 55px;
+  margin-bottom: 40px;
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
@@ -187,7 +206,8 @@
 }
 
 .redirect-link:hover {
-  background-color: rgba(5, 43, 255, 0.94);
+  background-color: rgb(49, 189, 254);
+  transition: 0.3s;
 }
 .redirect-link:a:link, a:visited  {
   text-decoration: none;
