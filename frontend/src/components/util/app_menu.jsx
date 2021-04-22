@@ -19,7 +19,7 @@ function AppMenu({history, variables, logout}){
         </Link>
         <ul>
           <li className="menu-item">
-            <NavLink activeClassName="selected" to="/variables">Habits</NavLink>
+            <NavLink activeClassName="selected" to={`/variables/${variables[0]}`}>Habits</NavLink>
           </li>
           { variables.length < 2 ? null :
               <li className="menu-item">
