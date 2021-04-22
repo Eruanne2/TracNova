@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import VariablesIndex from './variables/variables_index_container';
+// import NewEntryForm from 'wherever';
 
 function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
@@ -29,7 +29,18 @@ function Dashboard({variables}){
           {_toggleForm && <div>Dummy entry form</div>}
           {/*_toggleForm && <NewEntryForm/>*/}
         </section>
+        <section className='correlation-preview'>
+
+          <h1>Var1 and Var2</h1>
+          <h2>Correlation Coefficient: {}</h2>
+          <h3>
+            You have {} entries for this correlation.
+            { ({} < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span>For better accuracy, log these two habits daily for at least two weeks.</p>}
+            { ({} > 13 && {} < 30) && <p>Nice! You've logged these two habits for at least two weeks. It's still a pretty small sample - for even better results, try to log these habits daily for a whole month.</p>}
+            { ({} > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
+          </h3>
           {/* make a graph using currentVar1 and currentVar2 */}
+        </section>
       </main>
     </div>
   )
