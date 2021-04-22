@@ -44,7 +44,9 @@ router.post('/',
             unit: req.body.unit,
             dailylogs: req.body.dailylogs
           });
-          newVar.save().then(variable => res.send(variable)).catch(err => res.send(err));
+          newVar.save()
+            .then(variable => res.send(variable))
+            .catch(err => res.send(err));
         }
       });
   }
@@ -94,23 +96,24 @@ router.patch('/:id',
   passport.authenticate('jwt', { session: false }),
   // above line gave req a user key
   function (req, res) {
+
     if (!req.params.id) return res.json({success: false, error: 'No id provided'});
 
     const {errors, isValid} = validateVariableInput(req.body);
-    
+
     if (!isValid) {
       return res.status(400).json(errors);
     }
 
-    Variable.findById(req.params._id, function(err, v) {
+    Variable.findById(req.params.id, function(err, v) {
 
       const updatedVariable = {
         name: req.body.name,
         unit: req.body.unit,
         dailylogs: req.body.dailylogs
       }
-    
-      Variable.findOneAndUpdate({'_id': req.body['_id']}, {$set: updatedVariable}, {new: true})
+
+      Variable.findOneAndUpdate({'_id': req.body._id}, {$set: updatedVariable}, {new: true})
     
       .then(variable => res.json(variable))
       .catch(err => console.log(err));

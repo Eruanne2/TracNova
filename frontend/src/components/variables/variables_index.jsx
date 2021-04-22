@@ -1,11 +1,16 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React, {useEffect} from "react";
+import {NavLink, withRouter} from "react-router-dom";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/var_index.css";
 import VariableIcon from "./variable_icon";
 
-export default function VariablesIndex({variables = {}, destroyVariable}){
+function VariablesIndex({history, variables = {}, destroyVariable}){
+  useEffect(() => {
+    variables.length && 
+      history.push(`/variables/${variables[0]._id}`);
+  }, [variables]);
+  
   const handleDeleteVariable = (id) => {
     destroyVariable(id);
   }
@@ -35,3 +40,5 @@ export default function VariablesIndex({variables = {}, destroyVariable}){
     </section>
   )
 }
+
+export default withRouter(VariablesIndex);
