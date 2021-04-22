@@ -14,14 +14,15 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
   const handleSubmit = e => {
     e.preventDefault();
     let newVar = Object.assign({}, _variable);
-    newVar[getToday()] = _todayVal;
+    newVar.dailylogs[getToday()] = _todayVal;
+    debugger
     updateVariable(newVar);
   };
 
   const submitYesterday = e => {
     e.preventDefault();
     let newVar = Object.assign({}, _variable);
-    newVar[getToday()] = _variable[getYesterday()];
+    newVar.dailylogs[getToday()] = _variable[getYesterday()];
     updateVariable(newVar);
   };
 
@@ -77,8 +78,6 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
             type="text" value={_todayVal}
             onChange={updateVal}
           />
-
-
         </div>
     }
   };
