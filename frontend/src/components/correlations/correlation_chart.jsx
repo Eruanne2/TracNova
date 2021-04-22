@@ -20,6 +20,7 @@ import ChartScatter from './chart_permutations/chart_scatter_correlation'
 import ChartRatings from './chart_permutations/chart_ratings'
 import ChartBooleanRating from './chart_permutations/chart_boolean_rating'
 import ChartMetricBoolean from './chart_permutations/chart_metric_boolean'
+import ChartMetricRating from './chart_permutations/chart_metric_rating'
 
 export default function CorrelationChart({correlation, variables, width = 1000, height = 1000}){
   function varToPath(variable){
@@ -59,14 +60,14 @@ export default function CorrelationChart({correlation, variables, width = 1000, 
     // </figure>
     <div className="charts">
 
+    <div className="chart scatter">     
+        <ChartScatter/>            
+    </div>
     <div className="chart metrics">
         <ChartMetrics/>            
     </div>
     <div className="chart booleans">     
         <ChartBooleans/>            
-    </div>
-    <div className="chart scatter">     
-        <ChartScatter/>            
     </div>
     <div className="chart ratings">     
         <ChartRatings/>            
@@ -76,6 +77,9 @@ export default function CorrelationChart({correlation, variables, width = 1000, 
     </div>
     <div className="chart boolean-metric">     
         <ChartMetricBoolean/>            
+    </div>
+    <div className="chart boolean-metric">     
+        <ChartMetricRating/>            
     </div>
         
       <footer>🥴</footer>
