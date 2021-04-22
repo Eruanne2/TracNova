@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import IconButton from "../util/icon_button"
+import { faCheckCircle, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function AddEntryForm({updateVariable, variables, defaultVar}) {
   const [_variable, _setVariable] = useState(defaultVar || undefined);
@@ -57,17 +60,29 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
         </div>
       default:
         return <div>
-          {/* <input type='text'/><p>{variable.unit}</p> */}
+          <IconButton className="button range-button" 
+            onClick={e => _setTodayVal(_todayVal - 1)} title="decrease value" icon={faMinus}
+          />
+          <label>
           <input className="input range react-log-input"
               type="range" value={_todayVal} step="1"
               min={Object.values(variable.dailylogs).min - 10} max={Object.values(variable.dailylogs).min + 10}
               onChange={updateVal}
             />
+          </label>
+          <IconButton className="button range-button" 
+            onClick={e => _setTodayVal(parseFloat(_todayVal) + 1)} title="increase value" icon={faPlus}
+          />
+          <input className="input range react-log-input"
+            type="text" value={_todayVal}
+            onChange={updateVal}
+          />
+
+
         </div>
     }
   };
 
-  console.log('variables', variables);
   return(
     <div className='entry-form-div'>
       {!!defaultVar ? <h1>Update {defaultVar.name}</h1> : <h1>Log a Habit</h1>}
