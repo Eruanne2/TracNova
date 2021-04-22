@@ -1,8 +1,8 @@
 
 .dashboard-div {
-  margin-left: 220px;
+  margin-left: 18%;
   padding-top: 20px;
-  width: calc(100vw - 420px);
+  width: 68%;
   display: grid;
   grid-template-columns: 270px 1fr;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
@@ -128,12 +128,10 @@
 }
 
 .correlation-preview {
-  z-index: -1;
-  position: absolute;
-  top: 120px;
+  position: relative;
+  top: 40px;
   border: none;
   border-radius: 3px;
-  width: calc(100% - 130px);
   box-shadow: 0 0 4px rgb(49,49,49);
   background-color: rgb(226, 253, 255);
   color: rgb(73, 121, 255);

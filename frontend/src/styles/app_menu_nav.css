@@ -15,7 +15,7 @@
 }
 
 .app-menu {
-  width: calc(100% - 400px);
+  width: 70%;
   height: inherit;
   position: relative;
   display: flex;
