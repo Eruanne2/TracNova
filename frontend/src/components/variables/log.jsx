@@ -23,8 +23,8 @@ export default function Log({editMode, unit, date, count, range, handleEditMode,
   }
 
   const handleDateChange = (e) => {
-    console.log(e.currentTarget.value, yMDToMDY(e.currentTarget.value))
-    handleChange({date: yMDToMDY(e.currentTarget.value), value: count});
+    if (e.currentTarget.value)
+      handleChange({date: yMDToMDY(e.currentTarget.value), value: count});
   };
 
   return (
