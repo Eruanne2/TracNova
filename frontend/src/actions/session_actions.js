@@ -1,15 +1,17 @@
 import  * as APIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
+import { fetchUserVariables } from './variables_actions';
+import { fetchUserCorrelations } from './correlations_actions';
 
 export const RECEIVE_USER_LOGOUT = 'RECEIVE_USER_LOGOUT';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
 });
-
 
 export const receiveErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
@@ -20,6 +22,10 @@ export const receiveUserLogout = () => ({
   type: RECEIVE_USER_LOGOUT
 });
 
+export const clearErrors = (errors) => ({
+  type: CLEAR_SESSION_ERRORS
+})
+
 // thunk creator
 export const logout = () => dispatch => {
   localStorage.removeItem('jwtToken');
@@ -29,7 +35,6 @@ export const logout = () => dispatch => {
 
 export const signup = user => dispatch => 
   APIUtil.signup(user).then(() => {
-    console.log(user);
     dispatch(login({ email: user.email, password: user.password }));
   }, err => {
     dispatch(receiveErrors(err.response.data));
@@ -42,6 +47,11 @@ export const login = user => dispatch =>
     APIUtil.setAuthToken(token);
     const decoded = jwt_decode(token);
     dispatch(receiveCurrentUser(decoded));
+    dispatch(fetchUserVariables(decoded.id));
+    dispatch(fetchUserCorrelations(decoded.id));
   }).catch(err => {
     dispatch(receiveErrors(err.response.data));
   });
+
+export const clearSessionErrors = () => dispatch => 
+  dispatch(clearErrors())
