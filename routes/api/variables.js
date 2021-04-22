@@ -50,6 +50,7 @@ router.post('/',
   }
 );
 
+// add entry (takes in an id, a date, and a count)
 router.patch('/:id/entry',
   passport.authenticate('jwt', { session: false }),
   // above line gave req a user key
@@ -82,6 +83,37 @@ router.patch('/:id/entry',
         v.name = req.body.name;
       }
       v.save().then(v => res.json(v)).catch(err => res.send(err))
+    })
+    .catch(err => res.status(404).json({novarfound: "No var found"}));
+  }
+  
+);
+
+// update variable (takes in variable)
+router.patch('/:id',
+  passport.authenticate('jwt', { session: false }),
+  // above line gave req a user key
+  function (req, res) {
+    if (!req.params.id) return res.json({success: false, error: 'No id provided'});
+
+    const {errors, isValid} = validateVariableInput(req.body);
+    
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    Variable.findById(req.params._id, function(err, v) {
+
+      const updatedVariable = {
+        name: req.body.name,
+        unit: req.body.unit,
+        dailylogs: req.body.dailylogs
+      }
+    
+      Variable.findOneAndUpdate({'_id': req.body['_id']}, {$set: updatedVariable}, {new: true})
+    
+      .then(variable => res.json(variable))
+      .catch(err => console.log(err));
     })
     .catch(err => res.status(404).json({novarfound: "No var found"}));
   }
