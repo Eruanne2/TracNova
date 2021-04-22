@@ -52,10 +52,10 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
         </div>
       case 'rating':
         return <div>
-          <button value={1} onClick={updateVal}>😞</button>
-          <button value={2} onClick={updateVal}>😐</button>
-          <button value={3} onClick={updateVal}>😊</button>
-          <button value={4} onClick={updateVal}>😡</button>
+          <button value={1} onClick={updateVal}>😡</button>
+          <button value={2} onClick={updateVal}>😞</button>
+          <button value={3} onClick={updateVal}>😐</button>
+          <button value={4} onClick={updateVal}>😊</button>
           <button value={5} onClick={updateVal}>😁</button>
         </div>
       default:
@@ -66,7 +66,7 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
           <label>
           <input className="input range react-log-input"
               type="range" value={_todayVal} step="1"
-              min={Object.values(variable.dailylogs).min - 10} max={Object.values(variable.dailylogs).min + 10}
+              min={Math.min(...Object.values(variable.dailylogs)) - 10} max={Math.max(...Object.values(variable.dailylogs)) + 10}
               onChange={updateVal}
             />
           </label>

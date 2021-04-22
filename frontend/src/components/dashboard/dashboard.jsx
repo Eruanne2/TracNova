@@ -8,6 +8,11 @@ export default function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
   const [_currentVar1, _setCurrentVar1] = useState('');
   const [_currentVar2, _setCurrentVar2] = useState('');
+  const [_coefficient, _setCoefficient] = useState(0);
+
+  useEffect(() => {
+    if (!!_currentVar1 && !!_currentVar2 && _currentVar1 !== _currentVar2) _setCoefficient(StatUtil.getCorrelationCoefficient(_currentVar1, _currentVar2))
+  }, [_currentVar2]);
 
   useEffect(() => {
     _setCurrentVar1(Object.values(variables)[0] || '')
@@ -53,7 +58,7 @@ export default function Dashboard({variables}){
         <section className='correlation-preview'>
 
           <h1>Habit 1: {_currentVar1.name} and Habit 2: {_currentVar2.name}</h1>
-          {(!!_currentVar2 && numPoints > 6) && <h2>Correlation Coefficient: {StatUtil.getCorrelationCoefficient(_currentVar1, _currentVar2)}</h2>}
+          {(!!_currentVar2 && numPoints > 6) && <h2>Correlation Coefficient: {_coefficient}</h2>}
           
           {!!_currentVar2 && 
             <h3>
