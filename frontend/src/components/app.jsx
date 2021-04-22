@@ -9,7 +9,7 @@ import SignupFormContainer from './session/signup_form_container'
 import AppMenuContainer from "./util/app_menu_container";
 import DashboardContainer from './dashboard/dashboard_container';
 import VariablePageContainer from "./variables/variable_page_container";
-import VariableIndexContainer from "./variables/variables_index_container"
+import VariablesPageContainer from "./variables/variables_page_container";
 
 window.axios = axios;
 export default function App(){
@@ -19,6 +19,7 @@ export default function App(){
       <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer}/>
+        <ProtectedRoute exact path="/variables" component={VariablesPageContainer}/>
         <ProtectedRoute exact path="/variables/:variableId" component={VariablePageContainer}/>
         <ProtectedRoute exact path="/correlations/:correlationId" component={CorrelationPageContainer}/>
         <ProtectedRoute exact path="/correlations" component={CorrelationsPageContainer}/>
