@@ -25,10 +25,10 @@ section.page.variable > form:first-of-type {
   justify-content: flex-start;
   align-items: flex-start;
   z-index: 10;
+  font-size: 18px;
 }
 
 section.page.variable > form:first-of-type > * {
-  border: 1px solid rgb(148, 148, 148);
   position: relative;
   margin-bottom: 10px;
   width: 100%;
@@ -42,6 +42,8 @@ section.page.variable > form:first-of-type > input[type="text"] {
   padding-left: 20px;
   box-shadow: inset 0 0 5px rgb(49,49,49);
   outline: none;
+  font-size: 20px;
+  margin-bottom: 30px;
 }
 
 section.page.variable > form:first-of-type > input[type="text"]:hover:not(:focus) {
@@ -51,5 +53,49 @@ section.page.variable > form:first-of-type > input[type="text"]:hover:not(:focus
 section.page.variable > form:first-of-type > input[type="text"]:focus {
   border: 1px solid rgb(79,167,51);
 }
+
+section.page.variable > form:first-of-type > label {
+  margin-top: 10px;
+  margin-left: 5px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+section.page.variable > form:first-of-type > label + input {
+  height: 20px;
+  border-radius: 3px;
+  padding-left: 10px;
+  outline: none;
+  box-shadow: inset 0 0 3px rgb(49,49,49);
+  margin-left: 30px;
+  width: 200px;
+}
+
+ul.logs.react-logs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+ul.logs.react-logs > div.react-log {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+ul.logs.react-logs > div.react-log > div:first-of-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  margin-right: 20px;
+}
+
+ul.logs.react-logs > div.react-log > div{
+  margin-bottom: 10px;
+}
+
+
 
 
