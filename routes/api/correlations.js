@@ -34,13 +34,12 @@ router.post('/',
       return res.status(400).json(errors);
     }
 
-    Correlation.findOne({user: req.user.id, name: req.body.name})
+    Correlation.findOne({user: req.user.id, variables: { $all: req.body.variables} })
       .then(corr => {
-        if (corr) return res.status(400).json({name: "Correlation already exists for this user"});
+        if (corr) return res.status(400).json({variables: "Correlation already exists for this user"});
         else {
           const newCorr = new Correlation({
             user: req.user.id,
-            name: req.body.name,
             variables: req.body.variables
           });
           newCorr.save().then(corr => res.send(corr)).catch(err => res.send(err));
@@ -65,9 +64,6 @@ router.patch('/:id',
     Correlation.findById(req.params.id, function(err, corr) {
       if (req.body.variables !== undefined) {
         corr.variables = req.body.variables;
-      }
-      if (req.body.name !== undefined) {
-        corr.name = req.body.name;
       }
       corr.save().then(corr => res.json(corr)).catch(err => res.send(err))
     })
