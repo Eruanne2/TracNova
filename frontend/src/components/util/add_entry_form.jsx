@@ -35,22 +35,33 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
     if (!variable) return null;
     switch(variable.unit){
       case 'boolean':
-        return <p>yes/no input</p>
+        return <div>
+          <button>Yes</button>
+          <button>No</button>
+        </div>
       case 'rating':
-        return <p>rating input</p>
+        return <div>
+          <button>😡</button>
+          <button>😞</button>
+          <button>😐</button>
+          <button>😊</button>
+          <button>😁</button>
+        </div>
       default:
-        return <p>metric inupt</p>
+        return <div>
+          <input type='text'/><p>{variable.unit}</p>
+        </div>
     }
   };
 
-  debugger
+  console.log('variables', variables);
   return(
     <div className='entry-form-div'>
       {!!defaultVar ? <h1>Update {defaultVar.name}</h1> : <h1>Log a Habit</h1>}
       <form>
         {!defaultVar &&
-          <select value={_variable}>
-            <option>Select Habit</option>
+          <select value={_variable} onChange={e => _setVariable(e.currentTarget.value)}>
+            {/* <option value={}onChange={}>Select Habit</option> */}
             {variables && Object.values(variables).map((variable, idx) => (
               <option value={variable} key={idx}>{variable.name}</option>
             ))}
