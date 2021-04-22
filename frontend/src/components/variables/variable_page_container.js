@@ -7,7 +7,7 @@ const mapSTP = ({entities, session}, {match}) => {
 
   return {
     currentUser: session.user,
-    variable: variableId ? entities.variables[variableId] : null
+    variable: entities.variables[variableId]
   };
 }
 

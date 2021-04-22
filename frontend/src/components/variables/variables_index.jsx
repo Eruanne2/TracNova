@@ -5,12 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/var_index.css";
 import VariableIcon from "./variable_icon";
 
-const MOCK_DATA = [{_id: 1, name: '🐨 koala'}, {_id: 2 ,name: 'お前はもう死んでいる'}, {_id: 3, name: "Check In"}];
-
-export default function VariablesIndex({variables}){
-  if (!variables || !variables.length) variables = MOCK_DATA;
+export default function VariablesIndex({variables = {}, destroyVariable}){
   const handleDeleteVariable = (id) => {
-    console.log(id);
+    destroyVariable(id);
   }
 
   return (
