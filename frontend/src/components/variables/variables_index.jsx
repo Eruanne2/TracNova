@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import "../../styles/var_index.css";
 import VariableIcon from "./variable_icon";
 
 const MOCK_DATA = [{_id: 1, name: '🐨 koala'}, {_id: 2 ,name: 'お前はもう死んでいる'}, {_id: 3, name: "Check In"}];
@@ -15,11 +15,17 @@ export default function VariablesIndex({variables}){
 
   return (
     <section className="index variables-index">
-      Habits
+      <h1>Habits</h1>
       <ul className="variables">
+        <NavLink className="button variable-button" activeClassName="selected"
+          to="/variables/new"
+        >
+          <FontAwesomeIcon className="icon" icon={faPlus}/>
+          <p>Track a new habit!</p>
+        </NavLink>
         { variables.map(variable => (
             <li key={variable._id}>
-              <NavLink activeClassName="selected" 
+              <NavLink activeClassName="selected" className="var-item-link"
                 to={`/variables/${variable._id}`}
               >
                 <VariableIcon variable={variable}/>
@@ -28,12 +34,6 @@ export default function VariablesIndex({variables}){
             </li>
           ))
         }
-        <NavLink className="button variable-button" activeClassName="selected"
-          to="/variables/new"
-        >
-          <FontAwesomeIcon className="icon" icon={faPlus}/>
-          Track a new habit!
-        </NavLink>
       </ul>
     </section>
   )
