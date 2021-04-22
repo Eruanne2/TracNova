@@ -6,7 +6,7 @@ const Auth = ({component: Component, path, loggedIn, exact}) => (
   <Route {...{path, exact}} render={
     (props) => (
       loggedIn ? 
-        <Redirect to="/correlations" /> :
+        <Redirect to="/dashboard" /> :
         <Component {...props}/> 
     )
   } />

@@ -1,6 +1,26 @@
 import Statistics from 'statistics';
 
-// example input: 
+// { "10/15/2021": 127.83, "04/21/2021": 69 }
+// { "10/15/2021": true, "04/19/2021": true, "04/21/2021": false }
+// => [ { var1: } ]
+
+// takes data from daily logs and formats it as shown below
+const getStatData = (variable1, variable2) => {
+  let varTypes = { 
+    [variable1.name]: (variable1.unit === 'boolean') ? 'binary' : 'metric',
+    [variable2.name]: (variable2.unit === 'boolean') ? 'binary' : 'metric' 
+  };
+
+  let formattedData = [];
+  Object.keys(variable1.dailylogs).forEach(date => {
+    if (!variable2.dailylogs[date]) return;
+    else formattedData.push({ [variable1.name]: variable1.dailylogs[date], [variable2.name]: variable2.dailylogs[date] });
+  });
+
+  return [formattedData, varTypes];
+};
+
+// example input for getCorrelationCoefficient: 
 
 // var data = [
 // 	{ painMeds: 0, walkingMin: 12 },
@@ -14,11 +34,14 @@ import Statistics from 'statistics';
 
 // varTypes = { painMeds: 'binary', walkingMin: 'metric' }   -->   (varTypes are either 'binary' or 'metric')
 
-// export and use this function
 const sum = (arr) => arr.reduce((acc, el) => acc + el);
 const avg = (arr) => sum(arr) / arr.length;
 
-const getCorrelationCoefficient = (data, varTypes) => {
+// export and use this function
+// export const getCorrelationCoefficient = (data, varTypes) => {
+export const getCorrelationCoefficient = (var1, var2) => {
+  const [ data, varTypes] = getStatData(var1, var2);
+
   const types = Object.values(varTypes);
   const hasBinary = types.includes('binary');
   const hasMetric = types.includes('metric');
