@@ -62,12 +62,18 @@ router.patch('/:id',
       return res.status(400).json(errors);
     }
 
+    let formattedDate = req.body.date;
+    if (formattedDate.length < 10) {
+      if (formattedDate.indexOf('/') === 1) formattedDate = '0' + formattedDate;
+      if (formattedDate.indexOf('/', 3) === 4) formattedDate = formattedDate.slice(0,3) + '0' + formattedDate.slice(3)
+    }
+
     Variable.findById(req.params.id, function(err, v) {
       // let newV = Object.assign(v.dailylogs, {[req.body.date]: parseFloat(req.body.count)})
       if (req.body.date !== undefined) {
-        v.dailylogs = { ...v.dailylogs, [req.body.date]: parseFloat(req.body.count)};
+        v.dailylogs = { ...v.dailylogs, [formattedDate]: parseFloat(req.body.count)};
       } else {
-        v.dailylogs = {[req.body.date]: parseInt(req.body.count, 10)};
+        v.dailylogs = {[formattedDate]: parseInt(req.body.count, 10)};
       }
       if (req.body.unit !== undefined) {
         v.unit = req.body.unit;
