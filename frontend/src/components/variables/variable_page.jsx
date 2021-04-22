@@ -1,4 +1,8 @@
+import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useRef, useEffect } from "react";
+import { createVariable } from "../../actions/variables_actions";
+import { dateToMDY } from "../../util/converters";
+import IconButton from "../util/icon_button";
 
 import Log from "./log";
 
@@ -14,8 +18,11 @@ const MOCK_DATA = {
 };
 
 export default function VariablePage({
-  variable = MOCK_DATA // {}
+  variable = {},
+  currentUser, 
+  updateVariable, createVariable
 }){
+
   const symbolBooleanRef = useRef(Symbol('Boolean'));
 
   if (variable.unit && typeof variable.unit === 'string' &&
@@ -31,6 +38,8 @@ export default function VariablePage({
   const [_dailylogs, _setDailylogs] = useState(variable.dailylogs || {});
   const [_range, _setRange] = useState({min: 0, max: 1});
   const [_edit, _setEdit] = useState();
+
+  const allResolved = _dailylogs[undefined] === undefined
   
   useEffect(() => {
     const valArr = Object.values(_dailylogs || {});
@@ -43,7 +52,19 @@ export default function VariablePage({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({name: _name, unit: _unit, dailylogs: _dailylogs});
+    const varData = {
+      user: currentUser.id,
+      name: _name, 
+      unit: typeof _unit === 'symbol' ? 'boolean' : _unit, 
+      dailylogs: _dailylogs
+    };
+    
+    console.log(varData);
+    
+    if (variable._id)
+      updateVariable({...varData, id: variable._id})
+    else
+      createVariable(varData);
   }
 
   const handleChangeLogCreator = date => ({date: newDate, value}) => {
@@ -74,7 +95,17 @@ export default function VariablePage({
   }
   
   const handleLogFinishEdit = () => {
-    _setEdit(undefined);
+    if (allResolved)
+      _setEdit(undefined)
+    else alert('All records must be properly dated.');
+  }
+
+  const handleCreateLog = () => {
+    const today = dateToMDY(new Date());
+    const date = _dailylogs[today] === undefined ? today : undefined;
+    
+    _setDailylogs({..._dailylogs, [date]: 0});
+    _setEdit(date);
   }
 
   return (
@@ -113,14 +144,14 @@ export default function VariablePage({
           />
         }
 
-        <section className="logs-wrapper">
-          <ul className="logs">
+        <section className="logs-wrapper react-logs-wrapper">
+          <ul className="logs react-logs">
             { Object.entries(_dailylogs)
                 .sort((a, b) => new Date(a[0]) - new Date(b[0]))
                 .map(([date, count]) => (
                   <Log key={date} 
                     {...{date, count}}
-                    editMode={_edit === date}
+                    editMode={String(_edit) == date}
                     unit={_unit}
                     range={_range}
                     handleChange={handleChangeLogCreator(date)}
@@ -130,8 +161,13 @@ export default function VariablePage({
                   />
                 ))
             }
-            
           </ul>
+          {allResolved ? 
+            <IconButton icon={faCalendarPlus} onClick={e => handleCreateLog()}>
+              Add a record
+            </IconButton> : null
+          }
+          
         </section>
 
         <input type="submit" value="Save habit data!"/>

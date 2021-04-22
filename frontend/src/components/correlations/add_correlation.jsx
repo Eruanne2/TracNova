@@ -4,7 +4,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import ButtonModal from '../util/button_modal';
-import NewVariableForm from "../variables/new_variable_form"
 
 function CorrelationFormModal({variables, editMode, handleCreate, handleBlur}){
   const [_name, _setName] = useState('');

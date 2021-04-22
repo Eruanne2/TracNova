@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import IconButton from "../util/icon_button"
 import {toYesNo, mDYToYMD, dateToYMD} from "../../util/converters";
-import { faCheck, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function LogEditor({isBoolean, date, count, range, handleFinishEdit, handleChange, handleIncDec, handleBooleanChange, handleDateChange}){
   const [_date, _setDate] = useState(mDYToYMD(date));
-console.log(dateToYMD(new Date()))
+
   return (
     <>
       <input className="input date react-log-date-input" 
@@ -39,7 +39,7 @@ console.log(dateToYMD(new Date()))
           />
         </>
       )}
-      <IconButton onClick={e => handleFinishEdit(e, 1)} title="confirm" icon={faCheck} />
+      <IconButton onClick={e => handleFinishEdit(e, 1)} title="confirm" icon={faCheckCircle} />
     </>
   );
 };
