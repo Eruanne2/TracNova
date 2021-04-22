@@ -24,9 +24,9 @@ function Dashboard({variables}){
     }
   }
 
-  window.StatUtil = StatUtil;
-  if (!!_currentVar1 && !!_currentVar2) debugger //console.log(StatUtil.numDataPoints(_currentVar1, _currentVar2));
-  // debugger
+  let numPoints = 0;
+  if (!!_currentVar1 && !!_currentVar2) numPoints = StatUtil.numDataPoints(_currentVar1, _currentVar2);
+  
   return(
     <div>
       <aside>
@@ -52,15 +52,15 @@ function Dashboard({variables}){
         <section className='correlation-preview'>
 
           <h1>Habit 1: {_currentVar1.name} and Habit 2: {_currentVar2.name}</h1>
-          {!!_currentVar2 && <h2>Correlation Coefficient: {StatUtil.getCorrelationCoefficient(_currentVar1, _currentVar2)}</h2>}
+          {(!!_currentVar2 && numPoints > 6) && <h2>Correlation Coefficient: {StatUtil.getCorrelationCoefficient(_currentVar1, _currentVar2)}</h2>}
           
           {!!_currentVar2 && 
             <h3>
-              You have {StatUtil.numDataPoints(_currentVar1, _currentVar2)} X entries for this correlation.
-              { ({} < 7) && <p>We need at least 7 day's worth of data to be able to look for a correlation.</p> }
-              { ({} > 7 && {} < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span>For better accuracy, log these two habits daily for at least two weeks.</p>}
-              { ({} > 13 && {} < 30) && <p>Nice! You've logged these two habits for at least two weeks. It's still a pretty small sample - for even better results, try to log these habits daily for a whole month.</p>}
-              { ({} > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
+              You have {numPoints} {parseInt(numPoints) === 1 ? 'entry' : 'entries'} for this correlation.
+              { (parseInt(numPoints) < 7) && <p>We need at least 7 day's worth of data to be able to look for a correlation.</p> }
+              { (parseInt(numPoints) > 7 && parseInt(numPoints) < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span>For better accuracy, log these two habits daily for at least two weeks.</p>}
+              { (parseInt(numPoints) > 13 && parseInt(numPoints) < 30) && <p>Nice! You've logged these two habits for at least two weeks. It's still a pretty small sample - for even better results, try to log these habits daily for a whole month.</p>}
+              { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
             </h3>
           }
           graph goes here
