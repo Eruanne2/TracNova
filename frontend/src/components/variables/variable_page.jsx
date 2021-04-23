@@ -164,6 +164,11 @@ export default function VariablePage({
         }
 
         <section className="logs-wrapper react-logs-wrapper">
+            {allResolved ? 
+              <IconButton icon={faCalendarPlus} onClick={e => handleCreateLog()}>
+                Add a record
+              </IconButton> : null
+            }
           <ul className="logs react-logs">
             { Object.entries(_dailylogs)
                 .sort((a, b) => a[0] === String(_edit) ? 1 :
@@ -185,11 +190,6 @@ export default function VariablePage({
                 ))
             }
           </ul>
-          {allResolved ? 
-            <IconButton icon={faCalendarPlus} onClick={e => handleCreateLog()}>
-              Add a record
-            </IconButton> : null
-          }
           
         </section>
 

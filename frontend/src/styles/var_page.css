@@ -70,16 +70,28 @@ section.page.variable > form:first-of-type > label + input {
   width: 200px;
 }
 
+section.logs-wrapper.react-logs-wrapper > :first-child {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
 ul.logs.react-logs {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  width: 100%;
 }
 
 ul.logs.react-logs > div.react-log {
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-radius: 5px;
+  border: 1px solid rgb(208, 208, 208);
+}
+
+ul.logs.react-logs > div.react-log:hover {
+  background-color: rgb(173, 235, 152)
 }
 
 ul.logs.react-logs > div.react-log > div:first-of-type {
@@ -87,12 +99,14 @@ ul.logs.react-logs > div.react-log > div:first-of-type {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 200px;
-  margin-right: 20px;
+  width: 90%;
+  margin-left: 10px;
 }
 
 ul.logs.react-logs > div.react-log > div{
+  margin-top: 10px;
   margin-bottom: 10px;
+  margin-right: 15px;
 }
 
 
