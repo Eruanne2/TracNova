@@ -105,15 +105,31 @@
   cursor: pointer;
 }
 
-input.input.range.react-log-input {
+input.range.react-log-input {
   height: 30px;
   outline: none;
   border: 1px solid rgb(155, 155, 155);
   background-color: rgb(230,230,230);
   border-radius: 5px;
-  padding-left: 10px;
-  margin-left: 10px;
+  margin: 0 10px;
+  text-align: center;
   font-weight: 900;
   font-size: 18px;
-  width: 30%;
+  width: 60px;
+}
+
+div.incdec {
+  flex-direction: column-reverse  !important;
+}
+
+
+div.incdec > div.button-slide{
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+div.log.date{
+  width: 140px;
 }

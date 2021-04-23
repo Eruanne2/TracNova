@@ -32,25 +32,27 @@ export default function LogEditor({
       );
 
     return (
-      <>
-        <IconButton className="button range-button" 
-          onClick={e => handleIncDec(e, -1)} title="decrease value" icon={faMinus}
-        />
-        <label>
-          <input className="input range react-log-input"
-            type="range" value={count} step="1"
-            min={range.min} max={range.max}
-            onChange={e => handleChange({date, value: Number(e.target.value)})}
+      <div className="input incdec">
+        <div className="input button-slide">
+          <IconButton className="button range-button" 
+            onClick={e => handleIncDec(e, -1)} title="decrease value" icon={faMinus}
           />
-        </label>
-        <IconButton className="button range-button" 
-          onClick={e => handleIncDec(e, 1)} title="increase value" icon={faPlus}
-        />
+          <label>
+            <input className="input range react-log-input"
+              type="range" value={count} step="1"
+              min={range.min} max={range.max}
+              onChange={e => handleChange({date, value: Number(e.target.value)})}
+            />
+          </label>
+          <IconButton className="button range-button" 
+            onClick={e => handleIncDec(e, 1)} title="increase value" icon={faPlus}
+          />
+        </div>
         <input className="input range react-log-input"
           type="text" value={count}
           onChange={e => handleChange({date: date, value: Number(e.target.value) || 0})}
         />
-      </>
+      </div>
     );
   } 
   return (
