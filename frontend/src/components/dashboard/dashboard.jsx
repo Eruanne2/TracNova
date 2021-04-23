@@ -125,7 +125,7 @@ export default function Dashboard({variables}){
             {_whichTab === 2 && 
               <div className='tab-two'>
                 <div className='graph-container'>
-                  <ScatteredChart variables={[_selectedVar, _draggedVar]}/>
+                  <ScatteredChart variables={[_selectedVar, _draggedVar], _coefficient}/>
                 </div>
               </div>
             }
