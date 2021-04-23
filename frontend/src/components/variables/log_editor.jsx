@@ -18,8 +18,8 @@ export default function LogEditor({
     
     if (unit === Symbol.for('rating'))
       return (
-        <>{
-          RATING_EMOJIS.map((emoji, i) => (
+        <div className="input rating-radios">{
+          RATING_EMOJIS.slice(1).map((emoji, i) => (
             <label key={i}>
               <input type="radio" value={i} name="rating"
                 checked={count === i}
@@ -28,7 +28,7 @@ export default function LogEditor({
               {emoji}
             </label>
           ))
-        }</>
+        }</div>
       );
 
     return (

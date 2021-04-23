@@ -123,11 +123,15 @@ div.incdec {
 }
 
 
-div.incdec > div.button-slide{
+div.incdec > div.button-slide, div.rating-radios{
   display: flex !important;
   flex-direction: row !important;
   justify-content: center !important;
   align-items: center !important;
+}
+
+div.rating-radios > label{
+  padding: 0 5px
 }
 
 div.log.date{
