@@ -23,13 +23,13 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
 
   return (
     <section className="index variables-index">
-      <h1>Habits</h1>
+      <h1>Factors</h1>
       <ul className="variables">
         <NavLink className="button variable-button" activeClassName="selected"
           to="/variables/new"
         >
           <FontAwesomeIcon className="icon" icon={faPlus}/>
-          <p>Track a new habit!</p>
+          <p>Track a new factor!</p>
         </NavLink>
         { variables.map(variable => (
             <li key={variable._id}>

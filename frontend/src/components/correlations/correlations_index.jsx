@@ -22,7 +22,7 @@ function CorrelationsIndex({history, correlations, variables, createCorrelation,
         to="/correlations/new"
       >
         <FontAwesomeIcon className="icon" icon={faPlusSquare}/>
-        <p>Relate your habits!</p>
+        <p>Relate your factors!</p>
       </NavLink>
 
       { correlations.map(correlation => (

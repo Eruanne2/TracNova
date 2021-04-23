@@ -68,7 +68,7 @@ export default function Dashboard({variables}){
   return(
     <div className="dashboard-div">
       <aside>
-        <h1>Your Habits: </h1>
+        <h1>Your Factors: </h1>
         <ul className='variables-list'>
           {Object.values(variables).map((variable, idx) => (
             <li key={idx} onClick={handleLiClick(variable)}
@@ -102,8 +102,8 @@ export default function Dashboard({variables}){
             <h3>
               You have {numPoints} {parseInt(numPoints) === 1 ? 'entry' : 'entries'} for this correlation.
               { (parseInt(numPoints) < 7) && <p>We need at least 7 day's worth of data to be able to look for a correlation.</p> }
-              { (parseInt(numPoints) > 7 && parseInt(numPoints) < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span> For better accuracy, log these two habits daily for at least two weeks.</p>}
-              { (parseInt(numPoints) > 13 && parseInt(numPoints) < 30) && <p>You've logged these two habits for over two weeks. Nice! In statistics, it's still a pretty small sample - for even better results, try to log these habits daily for a whole month.</p>}
+              { (parseInt(numPoints) > 7 && parseInt(numPoints) < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span> For better accuracy, log these two factors daily for at least two weeks.</p>}
+              { (parseInt(numPoints) > 13 && parseInt(numPoints) < 30) && <p>You've logged these two factors for over two weeks. Nice! In statistics, it's still a pretty small sample - for even better results, try to log these factors daily for a whole month.</p>}
               { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
             </h3>
           }
@@ -112,7 +112,7 @@ export default function Dashboard({variables}){
                   onDragOver={e => e.preventDefault()}
                   onDrop={handleReceiveDrop}>
             <ul className='tab-headers'>
-              <h2 onClick={e => _setWhichTab(1)} className={_whichTab === 1 ? 'selected-tab' : ''}>Habits over Time</h2>
+              <h2 onClick={e => _setWhichTab(1)} className={_whichTab === 1 ? 'selected-tab' : ''}>Factors over Time</h2>
               {_draggedVar && <h2 onClick={e => _setWhichTab(2)} className={_whichTab === 2 ? 'selected-tab' : ''}>Scatterplot</h2>}
             </ul>
             {_whichTab === 1 && 

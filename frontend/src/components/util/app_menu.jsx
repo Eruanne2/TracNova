@@ -20,7 +20,7 @@ function AppMenu({history, variables, logout}){
         </Link>
         <ul>
           <li className="menu-item">
-            <NavLink activeClassName="selected" to='/variables'>Habits</NavLink>
+            <NavLink activeClassName="selected" to='/variables'>Factors</NavLink>
           </li>
             {/* <li className="menu-item">
               <NavLink activeClassName="selected" to="/correlations">Correlations</NavLink>
