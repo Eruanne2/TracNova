@@ -27,6 +27,7 @@ export default function VariablePage({
   }
 
   const [_name, _setName] = useState(variable.name || '');
+  const [_selectedVar, _setSelectedVar] = useState('');
   const [_id, _setId] = useState(variable.id || '');
   const [_unit, _setUnit] = useState(variable.unit || SYMBOL_BOOLEAN);
   
@@ -139,7 +140,7 @@ export default function VariablePage({
         {/* **************************************************************** */}
       <section className='var-graph-holder'>
         <div className='graph-container'>
-          {/* <Chart variables={[, ""]}/> */}
+          <Chart variables={[variable]}/>
         </div>
         {/* <div>
           this is where the graph will go
