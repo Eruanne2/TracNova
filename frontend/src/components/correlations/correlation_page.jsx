@@ -11,10 +11,6 @@ import ChartMetrics from "./chart_permutations/chart_metrics";
 import * as StatUtil from "../../util/stat_util";
 import AddEntryFormContainer from '../util/add_entry_form_container';
 
-function CorrelationPage({logout, history, variables, correlation, correlations}){
-  const [_toggleForm, _setToggleForm] = useState(false);
-
-
 const nullCorrelation = {};
 
 function VariableDropArea({handleReceiveVarId, variable}){
@@ -29,7 +25,7 @@ function VariableDropArea({handleReceiveVarId, variable}){
     }</div>
   );
 }
-
+  
 function CorrelationPage({
   allVariables,
   variables = [],
@@ -39,6 +35,7 @@ function CorrelationPage({
 }){
 
   const [_vars, _setVars] = useState([]);
+  const [_toggleForm, _setToggleForm] = useState(false);
 
   useEffect(() => {
     const vars = [..._vars];
