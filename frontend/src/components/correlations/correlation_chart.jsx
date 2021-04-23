@@ -1,4 +1,11 @@
 import React from "react";
+import ChartMetrics from './chart_permutations/chart_metrics'
+import ChartBooleans from './chart_permutations/chart_booleans'
+import ChartScatter from './chart_permutations/chart_scatter_correlation'
+import ChartRatings from './chart_permutations/chart_ratings'
+import ChartBooleanRating from './chart_permutations/chart_boolean_rating'
+import ChartMetricBoolean from './chart_permutations/chart_metric_boolean'
+import ChartMetricRating from './chart_permutations/chart_metric_rating'
 // import {
 //   ResponsiveContainer,
 //   ComposedChart,
@@ -14,13 +21,6 @@ import React from "react";
 //   Tooltip,
 // } from 'recharts';
 // import '../../styles/chart.css'
-import ChartMetrics from './chart_permutations/chart_metrics'
-import ChartBooleans from './chart_permutations/chart_booleans'
-import ChartScatter from './chart_permutations/chart_scatter_correlation'
-import ChartRatings from './chart_permutations/chart_ratings'
-import ChartBooleanRating from './chart_permutations/chart_boolean_rating'
-import ChartMetricBoolean from './chart_permutations/chart_metric_boolean'
-import ChartMetricRating from './chart_permutations/chart_metric_rating'
 
 export default function CorrelationChart({correlation, variables, width = 1000, height = 1000}){
   function varToPath(variable){

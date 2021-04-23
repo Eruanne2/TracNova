@@ -15,11 +15,11 @@ import '../../../styles/chart.css'
 import * as StatUtil from "../../../util/stat_util";
 
 export default function ChartMetrics({variables}){
-  const data = StatUtil.formatData(...variables);
-
+  const [data, dataType] = StatUtil.getStatData(...variables);
+console.log(data, dataType);
   return (
     <ResponsiveContainer className="chartPrice" width={800} height={400}>
-      <LineChart
+      <ComposedChart
         width={500}
         height={300}
         data={data}
@@ -31,18 +31,34 @@ export default function ChartMetrics({variables}){
         }}
       >
         <XAxis dataKey="date" />
-        <YAxis 
-          yAxisId="yLeft"
-        />
-        <YAxis 
+        { (() => (
+          <>
+            <YAxis 
+              yAxisId="yLeft"
+            />
+            
+          </>
+        ))()
+        
+      }
+      <YAxis 
           yAxisId="yRight"
           orientation='right'
         />
+      { (() => (
+          <>
+        
+          </>
+        ))()
+        
+      }
+      
+        <Line yAxisId="yLeft" dataKey={variables[0] && variables[0].name} stroke="rgb(5, 200, 0)" dot={false} strokeWidth="6"/>
+        
+        <Line yAxisId="yRight" dataKey={variables[1] && variables[1].name} stroke="rgb(5, 0, 200)" dot={false} strokeWidth="6"/>
         <Tooltip />
         <Brush dataKey="date" height={30} stroke="#8884d8" />
-        <Line yAxisId="yLeft" dataKey={variables[0] && variables[0].name} stroke="rgb(5, 200, 0)" dot={false} strokeWidth="6"/>
-        <Line yAxisId="yRight" dataKey={variables[1] && variables[1].name} stroke="rgb(5, 0, 200)" dot={false} strokeWidth="6"/>
-      </LineChart>
+      </ComposedChart>
     </ResponsiveContainer>
   )
 }

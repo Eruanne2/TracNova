@@ -20,9 +20,10 @@ const Protected = ({component: Component, path, loggedIn, exact}) => (
   )}/>
 );
 
+
 const mapSTP = ({session}) => ({
   loggedIn: session.isAuthenticated,
-  currentUser: session.user
+  currentUser: session.user,
 });
 
 export const AuthRoute = withRouter(connect(mapSTP)(Auth));

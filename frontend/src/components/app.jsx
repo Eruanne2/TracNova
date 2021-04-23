@@ -17,12 +17,16 @@ import Empty from './static_pages/empty';
 
 window.axios = axios;
 
+function NoIndexComponent(){
+  return (<div className="index-page no-index"></div>)
+}
+
 export default function App(){
   return (
     <div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
       <section className="indices">
-        <ProtectedRoute path={['/variables', '/correlation']} component={VariablesIndexContainer}/>
+        <ProtectedRoute path={['/variables', '/correlations']} component={VariablesIndexContainer}/>
         <ProtectedRoute path="/correlations" component={CorrelationsIndexContainer}/>
       </section>
       <Switch>
@@ -33,11 +37,12 @@ export default function App(){
 
         <ProtectedRoute exact path="/variables/:variableId" component={VariablePageContainer}/>
         <ProtectedRoute exact path="/correlations/:correlationId" component={CorrelationPageContainer}/>
-        
         <ProtectedRoute exact path="/dashboard" component={DashboardContainer}/>
+        <ProtectedRoute path={['/variables', '/correlations']} component={NoIndexComponent}/>
         <Route exact path="/">
           <Redirect to="/dashboard"/>
-        </Route>  
+        </Route>
+        
         <Route path='*' component={PageNotFound}/>
       </Switch>
     </div>
