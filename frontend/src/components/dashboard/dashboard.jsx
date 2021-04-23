@@ -83,20 +83,29 @@ export default function Dashboard({variables}){
               { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
             </h3>
           }
-          <ul className='tab-headers'>
-            <h2 onClick={e => _setWhichTab(1)}>Habits over Time</h2>
-            <h2 onClick={e => _setWhichTab(2)}>Scatterplot</h2>
-          </ul>
-          {_whichTab === 1 && 
-            <div className='tab-one'>
-              graph 1
-              {/* make a graph using currentVar1 and currentVar2 */}
-            </div>}
-          {_whichTab === 2 && 
-            <div className='tab-two'>
-              graph 2
-              {/* make a graph using currentVar1 and currentVar2 */}
-            </div>}
+
+          <section className='droppable-graph-box'
+                  style={{width: '400px', height: '400px', border: '2px solid red'}}
+                  onDragOver={e => e.preventDefault()}
+                  onDrop={handleReceiveDrop}>
+            <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
+            <ul className='tab-headers'>
+              <h2 onClick={e => _setWhichTab(1)}>Habits over Time</h2>
+              <h2 onClick={e => _setWhichTab(2)}>Scatterplot</h2>
+            </ul>
+            {_whichTab === 1 && 
+              <div className='tab-one'>
+                graph 1
+                {/* make a graph using currentVar1 and currentVar2 */}
+              </div>
+            }
+            {_whichTab === 2 && 
+              <div className='tab-two'>
+                graph 2
+                {/* make a graph using currentVar1 and currentVar2 */}
+              </div>
+            }
+          </section>
         </section>
       </main>
     </div>
