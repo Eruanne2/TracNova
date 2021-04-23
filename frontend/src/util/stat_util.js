@@ -5,6 +5,8 @@ import Statistics from "statistics.js"
 // => [ { var1: } ]
 
 export const formatData = (...variables) => {
+  variables = variables.filter(variable => variable);
+  
   if (variables.length === 0) return [];
 
   const formDataObj = {};
