@@ -5,7 +5,7 @@
   width: 68%;
   display: grid;
   grid-template-columns: 270px 1fr;
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney';
 }
 
 .dashboard-div > aside {
@@ -180,7 +180,7 @@
   border-radius: 5px;
   background-color: rgb(53,133,247);
   color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney';
   font-weight: 900;
   font-size: 20px;
   height: 40px;

@@ -2,7 +2,7 @@
   width: 260px;
   height: calc(100vh - 150px);
   position: relative;
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney';
   display: flex;
   flex-direction: column;
   align-items: center;
