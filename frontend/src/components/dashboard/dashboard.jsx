@@ -36,6 +36,10 @@ export default function Dashboard({variables}){
     }
   }
 
+  const handleDragStart = (e, id) => {
+    e.dataTransfer.setData('text/plain', id);
+  };
+
   let numPoints = 0;
   if (!!_currentVar1 && !!_currentVar2) numPoints = StatUtil.numDataPoints(_currentVar1, _currentVar2);
   
@@ -45,12 +49,9 @@ export default function Dashboard({variables}){
         <h1>Your Habits: </h1>
         <ul className='variables-list'>
           {Object.values(variables).map((variable, idx) => (
-            <li 
-              key={idx} 
-              className={_completed(variable) ? 'complete' : 'incomplete'}
-              onClick={handleLiClick(variable)}
-            >
-              <VariableIcon variable={variable}/>
+            <li key={idx} onClick={handleLiClick(variable)}
+                className={_completed(variable) ? 'complete' : 'incomplete'}>
+              <VariableIcon variable={variable} draggable={true} onDragStart={e => handleDragStart(e, variable._id)}/>
             </li>
           ))}
         </ul>
@@ -73,7 +74,14 @@ export default function Dashboard({variables}){
               { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
             </h3>
           }
-          graph goes here
+
+          <section style={{width: '400px', height: '400px', border: '2px solid red'}}className='droppable-graph-box'>
+
+
+
+            graph goes here
+          </section>
+
           {/* make a graph using currentVar1 and currentVar2 */}
         </section>
       </main>
