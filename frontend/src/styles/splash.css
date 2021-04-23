@@ -1,6 +1,5 @@
 div.splash-div{
   background-image: url('../images/strange_space.jpeg');
-  /* background-image: url('../images/clouds.png'); */
   background-size: 100%;
   transform: scaleX(-1);
   width: 100vw;
@@ -8,7 +7,11 @@ div.splash-div{
   display: flex;
   justify-content: center;
   align-content: center;
-  z-index: 1;
+  z-index: -4;
+}
+
+.logo {
+  z-index: 4;
 }
 
 
@@ -21,12 +24,13 @@ div.splash-inner-div {
   transform: scaleX(-1);
   top: 50%;
   margin-top: -170px;
+  z-index: 4;
 }
 
 div.splash-inner-div > img {
   width: 60%;
   height: auto;
-  filter: drop-shadow(0px 0px 30px rgb(255, 255, 255));
+  filter: drop-shadow(0px 0px 30px rgb(84, 73, 240));
   transition: filter 0.5s linear;
   z-index: 0;
   position: relative;
@@ -45,6 +49,11 @@ div.splash-inner-div > a {
   left: 135px;
   z-index: 0;
   filter: drop-shadow(0px 0px 7px rgb(255, 255, 255));
+  transition: filter 0.5s linear;
+}
+div.splash-inner-div > a:hover {
+  
+  filter: drop-shadow(0px 0px 12px rgb(255, 255, 255));
   transition: filter 0.5s linear;
 }
 
