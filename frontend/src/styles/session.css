@@ -81,7 +81,7 @@ section.login-or-signup > .logo-wrapper > .logo {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney';
   width: 300px;
   color: rgb(38, 38, 38);
   margin-bottom: 25px;
@@ -172,7 +172,7 @@ section.login-or-signup > .logo-wrapper > .logo {
   display: inline-block;
   font-size: 16px;
   font-weight: 900;
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney Bold';
   z-index: 3;
   box-shadow: 0px 0px 5px rgb(152, 152, 152);
   cursor: pointer;
@@ -185,7 +185,7 @@ section.login-or-signup > .logo-wrapper > .logo {
 }
 
 .signup-undernote {
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney';
   color: rgb(116,115,120);
   font-size: 14px;
   text-align: center;
@@ -199,7 +199,7 @@ section.login-or-signup > .logo-wrapper > .logo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney';
 }
 
 .demo-user > p:first-of-type {
@@ -229,7 +229,7 @@ section.login-or-signup > .logo-wrapper > .logo {
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney';
   letter-spacing: 0.5px;
   color: white;
   cursor: pointer;
@@ -246,7 +246,7 @@ section.login-or-signup > .logo-wrapper > .logo {
 }
 
 .go-to-signup {
-  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-family: 'Whitney';
   width: 380px;
   position: relative;
   display: flex;

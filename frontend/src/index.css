@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Whitney';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/whitney-2-cufonfonts-webfont/whitneymedium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Whitney Light';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/whitney-2-cufonfonts-webfont/whitneylight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Whitney Bold';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/whitney-2-cufonfonts-webfont/whitneybold.woff') format('woff');
+}
