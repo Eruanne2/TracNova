@@ -70,11 +70,17 @@ const avg = (arr) => arr.length === 0 ? 0 : sum(arr) / arr.length;
 // export const getCorrelationCoefficient = (data, varTypes) => {
 export const getCorrelationCoefficient = (var1, var2) => {
   const [rawData, varTypes] = getStatData(var1, var2);
+
+  for (let key of Object.keys(varTypes)){
+    if (varTypes[key] !== "binary")
+      varTypes[key] = "metric";
+  }
+
   const data = rawData.map(({date, ...pair}) => pair);
   
   const types = Object.values(varTypes);
   const hasBinary = types.includes('binary');
-  const hasOther = types.filter(type => type !== 'binary') > 0;
+  const hasOther = types.filter(type => type !== 'binary').length > 0;
 
   if (types.length !== 2) throw 'Invalid varTypes.';
 
@@ -99,14 +105,13 @@ export const getCorrelationCoefficient = (var1, var2) => {
 
   if (!hasBinary && hasOther){
     // spearman
-    
     const stats = new Statistics(data, varTypes);
     const spearman = stats.spearmansRho(...Object.keys(stats.columns));
 
     return spearman.rho;
   }
   
-  else return 'Invalid varTypes in stat_util.';
+  else console.warn('Invalid varTypes in stat_util.');
 };
 
 
