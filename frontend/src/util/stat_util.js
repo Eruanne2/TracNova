@@ -84,7 +84,7 @@ export const getCorrelationCoefficient = (var1, var2) => {
     return spearman.rho;
   }
   
-  else return 'Invalid varTypes.';
+  else return 'Invalid varTypes in stat_util.';
 };
 
 

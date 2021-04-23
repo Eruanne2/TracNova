@@ -6,6 +6,7 @@ import IconButton from "../util/icon_button";
 import '../../styles/var_page.css';
 
 import Log from "./log";
+import AddEntryFormContainer from "../util/add_entry_form_container";
 
 const nullVariable = {};
 
@@ -15,6 +16,7 @@ export default function VariablePage({
   createVariable, updateVariable
 }){
   const symbolBooleanRef = useRef(Symbol('Boolean'));
+  
 
   if (variable.unit && typeof variable.unit === 'string' &&
       variable.unit.toLowerCase() === 'boolean')
@@ -29,6 +31,8 @@ export default function VariablePage({
   const [_dailylogs, _setDailylogs] = useState(Object.assign({}, variable.dailylogs || {}));
   const [_range, _setRange] = useState();
   const [_edit, _setEdit] = useState();
+  const [_toggleForm, _setToggleForm] = useState(false);
+
 
   const allResolved = _dailylogs[_edit] === undefined
   
@@ -121,6 +125,10 @@ export default function VariablePage({
 
   return (
     <section className="page variable">
+        <section className='toggle-entry-form'>
+          <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
+          {_toggleForm && <AddEntryFormContainer defaultVar={variable || null}/>}
+        </section>
       <form onSubmit={handleSubmit}>
         <input className="input variable-input variable-name"
           type="text" value={_name} placeholder="Enter habit name"

@@ -9,6 +9,11 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import VariableIcon from "../variables/variable_icon";
 import ChartMetrics from "./chart_permutations/chart_metrics";
 import * as StatUtil from "../../util/stat_util";
+import AddEntryFormContainer from '../util/add_entry_form_container';
+
+function CorrelationPage({logout, history, variables, correlation, correlations}){
+  const [_toggleForm, _setToggleForm] = useState(false);
+
 
 const nullCorrelation = {};
 
@@ -59,6 +64,10 @@ function CorrelationPage({
 
   return (
     <section className="page correlation">
+        <section className='toggle-entry-form'>
+          <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
+          {_toggleForm && <AddEntryFormContainer defaultVar={null}/>}
+        </section>
       <section>
         <section>
           { [0, 1].map(i => (
