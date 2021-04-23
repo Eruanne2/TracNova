@@ -9,6 +9,7 @@ export default function Dashboard({variables}){
   const [_currentVar1, _setCurrentVar1] = useState('');
   const [_currentVar2, _setCurrentVar2] = useState('');
   const [_coefficient, _setCoefficient] = useState(0);
+  const [_whichTab, _setWhichTab] = useState(1);
 
   useEffect(() => {
     if (
@@ -73,8 +74,20 @@ export default function Dashboard({variables}){
               { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
             </h3>
           }
-          graph goes here
-          {/* make a graph using currentVar1 and currentVar2 */}
+          <ul className='tab-headers'>
+            <h2 onClick={e => _setWhichTab(1)}>Habits over Time</h2>
+            <h2 onClick={e => _setWhichTab(2)}>Scatterplot</h2>
+          </ul>
+          {_whichTab === 1 && 
+            <div className='tab-one'>
+              graph 1
+              {/* make a graph using currentVar1 and currentVar2 */}
+            </div>}
+          {_whichTab === 2 && 
+            <div className='tab-two'>
+              graph 2
+              {/* make a graph using currentVar1 and currentVar2 */}
+            </div>}
         </section>
       </main>
     </div>
