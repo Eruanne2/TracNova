@@ -3,6 +3,8 @@ import * as StatUtil from '../../util/stat_util';
 import VariableIcon from '../variables/variable_icon';
 import AddEntryFormContainer from '../util/add_entry_form_container';
 import "../../styles/dashboard.css";
+import Chart from '../charts/chart';
+import ScatteredChart from '../charts/scattered_chart';
 
 export default function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
@@ -96,7 +98,7 @@ export default function Dashboard({variables}){
                 <div className='graph-container'>
                   <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
                   variables graphed over time
-                  {/* make a graph using currentVar1 and currentVar2 */}
+                  <Chart variables={[_selectedVar, _draggedVar]}/>
                 </div>
               </div>
             }
@@ -105,7 +107,7 @@ export default function Dashboard({variables}){
                 <div className='graph-container'>
                   <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
                   scatterplot with correlation line
-                  {/* make a graph using currentVar1 and currentVar2 */}
+                  <ScatteredChart variables={[_selectedVar, _draggedVar]}/>
                 </div>
               </div>
             }

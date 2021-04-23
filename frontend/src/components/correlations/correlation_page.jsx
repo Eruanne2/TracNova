@@ -7,7 +7,7 @@ import VariableIcon from "../variables/variable_icon";
 import ChartMetrics from "./chart_permutations/chart_metrics";
 import * as StatUtil from "../../util/stat_util";
 import AddEntryFormContainer from '../util/add_entry_form_container';
-import Chart from "../chart/chart";
+import Chart from "../charts/chart";
 
 const nullCorrelation = {};
 

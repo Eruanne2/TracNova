@@ -1,6 +1,6 @@
 
 .dashboard-div {
-  margin-left: 18%;
+  margin-left: 12%;
   padding-top: 20px;
   width: 68%;
   display: grid;
@@ -15,9 +15,9 @@
 }
 
 .dashboard-div > aside > h1 {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   width: 260px;
   color: rgb(116,115,120);
 }
@@ -47,7 +47,7 @@
   width: 260px;
   background-color: white;
   text-decoration: none;
-  color: rgb(29,96,139);
+  color: white;
   font-weight: 800;
   cursor: pointer;
   margin: 1px;
@@ -153,8 +153,8 @@
 }
 
 .dashboard-div > main {
-  padding-top: 30px;
-  padding-left: 50px;
+  padding-top: 44px;
+  padding-left: 33px;
   position: relative;
   z-index: 5;
 }
@@ -162,9 +162,9 @@
 .toggle-entry-form {
   border: none;
   border-radius: 5px;
-  box-shadow: 0 0 4px rgb(49,49,49);
-  background-color: rgb(193, 193, 193);
-  color: white;
+  box-shadow: 0 0 3px rgb(49,49,49);
+  background-color: white;
+  color: rgb(148,150,159);
   margin-right: 40px;
   display: flex;
   flex-direction: column;
@@ -176,9 +176,9 @@
 .toggle-entry-form > button {
   position: relative;
   border: none;
-  box-shadow: 0 0 7px rgb(49,49,49);
+  box-shadow: 0 0 3px rgb(49,49,49);
   border-radius: 5px;
-  background-color: rgb(79,167,51);
+  background-color: rgb(53,133,247);
   color: white;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   font-weight: 900;
@@ -188,12 +188,16 @@
   cursor: pointer;
 }
 
+.toggle-entry-form > button:hover {
+  background-color: rgb(10, 109, 247);
+  transition: 0.3s;
+}
+
 .toggle-entry-form > :nth-child(2) {
   margin-top: 20px;
   margin-bottom: 20px;
   font-weight: 800;
   font-size: 18px;
-  text-shadow: 0 0 3px rgb(49,49,49);
 }
 
 .correlation-preview {
