@@ -51,7 +51,7 @@ export default function ScatteredChart({variables}){
         />
         <Tooltip />
         <Scatter name="yoloswaggins" data={data} fill="#8884d8" />
-        <ReferenceLine ifOverflow="extendDomain" label="pretend I'm correlation" stroke="green" strokeDasharray="3 3" segment={[{ x: 22 , y: 22 }, { x: 33, y: 33 }]} />
+        <ReferenceLine ifOverflow="extendDomain" label="" stroke="green" strokeDasharray="3 3" segment={[{ x: 22 , y: 22 }, { x: 33, y: 33 }]} />
       </ScatterChart>
     </ResponsiveContainer>
   )
