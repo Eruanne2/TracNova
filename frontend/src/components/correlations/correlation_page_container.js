@@ -11,7 +11,7 @@ const mapSTP = ({entities, session}, {match}) => {
     currentUser: session.user,
     allVariables,
     variables: (correlation ? 
-      correlation.variableIds.map(id => entities.variables[id]) : []
+      correlation.variables.map(id => entities.variables[id]) : []
     ),
     correlation
   });
