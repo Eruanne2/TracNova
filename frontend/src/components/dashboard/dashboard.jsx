@@ -6,7 +6,7 @@ import "../../styles/dashboard.css";
 
 export default function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
-  const [_selectedVar, _setselectedVar] = useState('');
+  const [_selectedVar, _setSelectedVar] = useState('');
   const [_draggedVar, _setDraggedVar] = useState('');
   const [_coefficient, _setCoefficient] = useState(0);
 
@@ -20,7 +20,7 @@ export default function Dashboard({variables}){
   }, [_draggedVar]);
 
   useEffect(() => {
-    _setselectedVar(Object.values(variables)[0] || '')
+    _setSelectedVar(Object.values(variables)[0] || '')
   }, [variables]);
   
   const _completed = (variable) => {
@@ -31,8 +31,8 @@ export default function Dashboard({variables}){
 
   const handleLiClick = (variable) => {
     return e => {
-      if (!!_draggedVar) _setselectedVar(_draggedVar);
-      _setDraggedVar(variable);
+      _setSelectedVar(variable);
+      _setDraggedVar('');
     }
   }
 
@@ -42,7 +42,7 @@ export default function Dashboard({variables}){
 
   const handleReceiveDrop = e => {
     let id = e.dataTransfer.getData('text/plain');
-    _setDraggedVar(variables[id]);
+    if (!(id === _selectedVar._id)) _setDraggedVar(variables[id]);
   };
 
   let numPoints = 0;
@@ -55,7 +55,10 @@ export default function Dashboard({variables}){
         <ul className='variables-list'>
           {Object.values(variables).map((variable, idx) => (
             <li key={idx} onClick={handleLiClick(variable)}
-                className={_completed(variable) ? 'complete' : 'incomplete'}>
+                className={
+                  `${_completed(variable) ? 'complete' : 'incomplete'} 
+                  ${variable._id === _selectedVar._id && 'selected-var'}`
+                }>
               <VariableIcon variable={variable} draggable={true} onDragStart={e => handleDragStart(e, variable._id)}/>
             </li>
           ))}
@@ -87,9 +90,9 @@ export default function Dashboard({variables}){
               <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
 
             graph goes here
+            {/* make a graph using selectedVar and draggedVar */}
           </section>
 
-          {/* make a graph using selectedVar and draggedVar */}
         </section>
       </main>
     </div>
