@@ -2,16 +2,17 @@
   width: 260px;
   height: calc(100vh - 150px);
   position: relative;
-  left: 220px;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 18%;
 }
 
 .variables-index > h1 {
-  font-weight: 800;
   font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 15px;
   width: 260px;
   color: rgb(116,115,120);
 }

@@ -1,24 +1,101 @@
 section.page.variable {
   position: absolute;
-  top: 200px;
-  left: 540px;
+  top: 100px;
+  left: 22%;
   border: none;
-  box-shadow: 0 0 2px rgb(49,49,49);
-  height: 350px;
-  width: 500px;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  margin-left: 220px;
+  padding-top: 20px;
+  width: 48%;
 }
 
 section.page.variable > form:first-of-type {
+  position: relative;
+  margin-left: 30px;
+  margin-top: 30px;
+  padding: 40px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgb(49,49,49);
+  background-color: rgb(219, 240, 212);
+  color: rgb(79,167,51);
+  margin-right: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 30px;
-  margin-top: 30px;
-  width: 420px;
+  z-index: 10;
+  font-size: 18px;
 }
 
 section.page.variable > form:first-of-type > * {
+  position: relative;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+section.page.variable > form:first-of-type > input[type="text"] {
+  height: 40px;
+  width: calc(100% - 22px);
+  border: 1px solid rgb(162, 162, 162);
+  border-radius: 5px;
+  padding-left: 20px;
+  box-shadow: inset 0 0 5px rgb(49,49,49);
+  outline: none;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+section.page.variable > form:first-of-type > input[type="text"]:hover:not(:focus) {
+  border: 1px solid black;
+}
+
+section.page.variable > form:first-of-type > input[type="text"]:focus {
+  border: 1px solid rgb(79,167,51);
+}
+
+section.page.variable > form:first-of-type > label {
+  margin-top: 10px;
+  margin-left: 5px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+section.page.variable > form:first-of-type > label + input {
+  height: 20px;
+  border-radius: 3px;
+  padding-left: 10px;
+  outline: none;
+  box-shadow: inset 0 0 3px rgb(49,49,49);
+  margin-left: 30px;
+  width: 200px;
+}
+
+ul.logs.react-logs {
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
 }
+
+ul.logs.react-logs > div.react-log {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+ul.logs.react-logs > div.react-log > div:first-of-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  margin-right: 20px;
+}
+
+ul.logs.react-logs > div.react-log > div{
+  margin-bottom: 10px;
+}
+
+
+
+

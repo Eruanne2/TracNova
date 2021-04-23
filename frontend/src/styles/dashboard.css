@@ -1,0 +1,168 @@
+
+.dashboard-div {
+  margin-left: 18%;
+  padding-top: 20px;
+  width: 68%;
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+}
+
+.dashboard-div > aside {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 150px);
+}
+
+.dashboard-div > aside > h1 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  width: 260px;
+  color: rgb(116,115,120);
+}
+
+.dashboard-div > aside > ul {
+  width: 260px;
+  padding: 0px;
+  height: 100%;
+  border: none;
+  box-shadow: 0 0 3px rgb(49,49,49);
+  margin-top: 15px;
+  position: relative;
+}
+
+.dashboard-div > aside > ul > li {
+  position: relative;
+  list-style: none;
+  border-bottom: 1px solid rgb(116,115,120);
+  height: 55px;
+  display: flex;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 55px;
+  width: 260px;
+  background-color: white;
+  text-decoration: none;
+  color: rgb(29,96,139);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.dashboard-div > aside > ul > li.complete {
+  background-color: rgb(163, 244, 145);
+  box-shadow: inset 0 0 3px rgb(22, 48, 14);
+}
+
+.dashboard-div > aside > ul > li.incomplete {
+  background-color: rgb(252, 188, 188);
+  box-shadow: inset 0 0 3px rgb(49, 15, 15);
+}
+
+.dashboard-div > aside > ul > li > div {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 260px;
+}
+
+.dashboard-div > aside > ul > li > div > div {
+  margin-right: 10px;
+}
+
+.dashboard-div > aside > ul > li > div > div.icon {
+  border: none;
+  box-shadow: 0 0 3px rgb(49,49,49);
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-div > aside > ul > li > div > div.name {
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-div > main {
+  padding-top: 30px;
+  padding-left: 50px;
+  position: relative;
+  z-index: 5;
+}
+
+.toggle-entry-form {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgb(49,49,49);
+  background-color: rgb(193, 193, 193);
+  color: white;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.toggle-entry-form > button {
+  position: relative;
+  border: none;
+  box-shadow: 0 0 7px rgb(49,49,49);
+  border-radius: 5px;
+  background-color: rgb(79,167,51);
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.toggle-entry-form > :nth-child(2) {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 800;
+  font-size: 18px;
+  text-shadow: 0 0 3px rgb(49,49,49);
+}
+
+.correlation-preview {
+  position: relative;
+  top: 40px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgb(49,49,49);
+  background-color: rgb(226, 253, 255);
+  color: rgb(73, 121, 255);
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.correlation-preview > h1 {
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.correlation-preview > h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px
+}

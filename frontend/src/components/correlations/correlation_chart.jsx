@@ -31,25 +31,6 @@ export default function CorrelationChart({correlation, variables, width = 1000, 
     const startDate = correlation.startDate;
     const endDate = correlation.endDate;
   }
-  const fakeData = [];
-  for (let i = 0; i < 20; i++)
-  fakeData.push({
-    date: i, 
-    value: 0.5 + Math.random() + i,
-  })
-   
-  const fakeData2 = [];
-  for (let i = 0; i < 20; i++)
-  fakeData2.push({
-    date: i, 
-    nums: Math.floor(0.5 + (Math.random())),
-  })
-  const fakeData3 = [];
-  for (let i = 0; i < 20; i++)
-  fakeData3.push({
-    date: i, 
-    nums: Math.floor(0.5 + (Math.random())),
-  })
 
   return (
     // <figure className="react-chart correlation">
