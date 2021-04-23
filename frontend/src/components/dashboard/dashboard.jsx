@@ -6,21 +6,21 @@ import "../../styles/dashboard.css";
 
 export default function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
-  const [_currentVar1, _setCurrentVar1] = useState('');
-  const [_currentVar2, _setCurrentVar2] = useState('');
+  const [_selectedVar, _setselectedVar] = useState('');
+  const [_draggedVar, _setDraggedVar] = useState('');
   const [_coefficient, _setCoefficient] = useState(0);
 
   useEffect(() => {
     if (
-      !!_currentVar1 
-      && !!_currentVar2 
-      && _currentVar1 !== _currentVar2
-      && StatUtil.numDataPoints(_currentVar1, _currentVar2) > 6
-      ) _setCoefficient(StatUtil.getCorrelationCoefficient(_currentVar1, _currentVar2))
-  }, [_currentVar2]);
+      !!_selectedVar 
+      && !!_draggedVar 
+      && _selectedVar !== _draggedVar
+      && StatUtil.numDataPoints(_selectedVar, _draggedVar) > 6
+      ) _setCoefficient(StatUtil.getCorrelationCoefficient(_selectedVar, _draggedVar))
+  }, [_draggedVar]);
 
   useEffect(() => {
-    _setCurrentVar1(Object.values(variables)[0] || '')
+    _setselectedVar(Object.values(variables)[0] || '')
   }, [variables]);
   
   const _completed = (variable) => {
@@ -31,8 +31,8 @@ export default function Dashboard({variables}){
 
   const handleLiClick = (variable) => {
     return e => {
-      if (!!_currentVar2) _setCurrentVar1(_currentVar2);
-      _setCurrentVar2(variable);
+      if (!!_draggedVar) _setselectedVar(_draggedVar);
+      _setDraggedVar(variable);
     }
   }
 
@@ -40,8 +40,13 @@ export default function Dashboard({variables}){
     e.dataTransfer.setData('text/plain', id);
   };
 
+  const handleReceiveDrop = e => {
+    let id = e.dataTransfer.getData('text/plain');
+    _setDraggedVar(variables[id]);
+  };
+
   let numPoints = 0;
-  if (!!_currentVar1 && !!_currentVar2) numPoints = StatUtil.numDataPoints(_currentVar1, _currentVar2);
+  if (!!_selectedVar && !!_draggedVar) numPoints = StatUtil.numDataPoints(_selectedVar, _draggedVar);
   
   return(
     <div className="dashboard-div">
@@ -59,13 +64,13 @@ export default function Dashboard({variables}){
       <main>
         <section className='toggle-entry-form'>
           <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-          {_toggleForm && <AddEntryFormContainer defaultVar={_currentVar2 || null}/>}
+          {_toggleForm && <AddEntryFormContainer defaultVar={_draggedVar || null}/>}
         </section>
         <section className='correlation-preview'>
-          <h1>Habit 1: {_currentVar1.name} and Habit 2: {_currentVar2.name}</h1>
-          {(!!_currentVar2 && numPoints > 6) && <h2>Correlation Coefficient: {_coefficient}</h2>}
+          <h1>Habit 1: {_selectedVar.name} and Habit 2: {_draggedVar.name}</h1>
+          {(!!_draggedVar && numPoints > 6) && <h2>Correlation Coefficient: {_coefficient}</h2>}
           
-          {!!_currentVar2 && 
+          {!!_draggedVar && 
             <h3>
               You have {numPoints} {parseInt(numPoints) === 1 ? 'entry' : 'entries'} for this correlation.
               { (parseInt(numPoints) < 7) && <p>We need at least 7 day's worth of data to be able to look for a correlation.</p> }
@@ -75,14 +80,16 @@ export default function Dashboard({variables}){
             </h3>
           }
 
-          <section style={{width: '400px', height: '400px', border: '2px solid red'}}className='droppable-graph-box'>
-
-
+          <section className='droppable-graph-box'
+                  style={{width: '400px', height: '400px', border: '2px solid red'}}
+                  onDragOver={e => e.preventDefault()}
+                  onDrop={handleReceiveDrop}>
+              <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
 
             graph goes here
           </section>
 
-          {/* make a graph using currentVar1 and currentVar2 */}
+          {/* make a graph using selectedVar and draggedVar */}
         </section>
       </main>
     </div>
