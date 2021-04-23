@@ -14,7 +14,15 @@
 } */
 
 section.session-background {
-  background-color: rgb(227, 239, 242);
+  background-color: rgb(0, 183, 255);
+  /* background-image: url('../images/sunny.png'); */
+  /* background-size: 100%; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  z-index: -4;
 }
 
 section.login-or-signup {
@@ -23,6 +31,7 @@ section.login-or-signup {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  z-index: 5;
 }
 
 section.login-or-signup > .logo-wrapper {
@@ -43,6 +52,7 @@ section.login-or-signup > .logo-wrapper > .logo {
 .logo {
   /* filter: drop-shadow(16px 16px 20px red) invert(75%); */
   filter: drop-shadow(0px 0px 40px rgba(5, 100, 200));
+  /* filter: drop-shadow(0px 0px 40px rgba(255, 255, 100)); */
   transition: filter 0.5s linear;
   z-index: 0;
 }
@@ -74,6 +84,7 @@ section.login-or-signup > .logo-wrapper > .logo {
   transition: box-shadow 0.5s linear;
   padding-top: 18px;
   padding-bottom: 18px;
+  z-index: 5;
 }
 
 .login-form-head {
@@ -262,6 +273,7 @@ section.login-or-signup > .logo-wrapper > .logo {
   padding-bottom: 30px;
   margin-top: 10px;
   font-size: 16px;
+  z-index: 5;
 }
 
 .go-to-signup:hover {

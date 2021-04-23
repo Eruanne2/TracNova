@@ -30,7 +30,7 @@
   position: relative;
   border: 1px solid #ddd;  
   border-radius: 3px;
-  overflow: hidden;
+  /* overflow: hidden; */
   background: #fff;
   box-shadow: 0px 4px 4px #0000001f;
 }
@@ -78,7 +78,7 @@
 
 .dashboard-div > aside > ul > li:hover {
   /* box-shadow: 0 0 2px rgb(49, 15, 15); */
-  /* color: rgb(55, 40, 150);
+  color: rgb(55, 40, 150);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -7px;
@@ -86,7 +86,7 @@
   border-radius: 3px;
   padding-right: 4px;
   padding-top: 1px;
-  margin-bottom: -1px; */
+  margin-bottom: -1px;
   background-color: #e3eef4;
 }
 
@@ -126,19 +126,19 @@ li.incomplete > .icon-wrapper > .icon {
 
 .dashboard-div > aside > ul > li.selected-var {
   /* color: rgb(55, 40, 150); */
-  /* text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -12px;
   top: -2px;
   border-radius: 3px;
   padding-right: 8px;
   padding-top: 3px;
-  margin-bottom: 2px; */
+  margin-bottom: 2px;
   background: #acd4e5;
 }
 
 .dashboard-div > aside > ul > li.selected-var:hover {
-  /* color: rgb(55, 40, 150);
+  /* color: rgb(55, 40, 150); */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -15px;
@@ -146,7 +146,7 @@ li.incomplete > .icon-wrapper > .icon {
   border-radius: 3px;
   padding-top: 4px;
   padding-right: 10px;
-  margin-bottom: 1px; */
+  margin-bottom: 1px;
 }
 
 .dashboard-div > aside > ul > li.selected-var > div > div.icon {
