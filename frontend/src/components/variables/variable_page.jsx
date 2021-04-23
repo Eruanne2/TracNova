@@ -135,7 +135,7 @@ export default function VariablePage({
   const handleCreateLog = () => {
     const today = dateToMDY(new Date());
     const date = _dailylogs[today] === undefined ? today : undefined;
-    _setDateMapping({[date]: date});
+    _setDateMapping({[date]: '1/1/1900'});
     _setDailylogs({..._dailylogs, [date]: 0});
     _setEdit(date);
   }

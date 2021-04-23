@@ -137,3 +137,9 @@ div.rating-radios > label{
 div.log.date{
   width: 140px;
 }
+
+div.yes-no-indicator {
+  width: 100%;
+  text-align: center;
+}
+

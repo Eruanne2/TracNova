@@ -12,7 +12,10 @@ export default function LogEditor({
     if (unit === Symbol.for('boolean'))
       return (
         <div onClick={(e) => handleBooleanChange()}>
-          {toYesNo(count)}
+          <div className="yes-no-indicator">
+
+            {toYesNo(count)}  
+          </div>
         </div>
       );
     
