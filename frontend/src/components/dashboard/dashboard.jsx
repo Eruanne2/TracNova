@@ -85,24 +85,28 @@ export default function Dashboard({variables}){
           }
 
           <section className='droppable-graph-box'
-                  style={{width: '400px', height: '400px', border: '2px solid red'}}
                   onDragOver={e => e.preventDefault()}
                   onDrop={handleReceiveDrop}>
-            <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
             <ul className='tab-headers'>
-              <h2 onClick={e => _setWhichTab(1)}>Habits over Time</h2>
-              <h2 onClick={e => _setWhichTab(2)}>Scatterplot</h2>
+              <h2 onClick={e => _setWhichTab(1)} className={_whichTab === 1 && 'selected-tab'}>Habits over Time</h2>
+              <h2 onClick={e => _setWhichTab(2)} className={`${_whichTab === 2 && 'selected-tab'}`}>Scatterplot</h2>
             </ul>
             {_whichTab === 1 && 
               <div className='tab-one'>
-                graph 1
-                {/* make a graph using currentVar1 and currentVar2 */}
+                <div className='graph-container'>
+                  <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
+                  variables graphed over time
+                  {/* make a graph using currentVar1 and currentVar2 */}
+                </div>
               </div>
             }
             {_whichTab === 2 && 
               <div className='tab-two'>
-                graph 2
-                {/* make a graph using currentVar1 and currentVar2 */}
+                <div className='graph-container'>
+                  <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
+                  scatterplot with correlation line
+                  {/* make a graph using currentVar1 and currentVar2 */}
+                </div>
               </div>
             }
           </section>
