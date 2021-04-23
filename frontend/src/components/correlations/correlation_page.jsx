@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import AddCorrelationContainer from "./add_correlation_container";
 import CorrelationChart from "./correlation_chart"
 import CorrelationButtons from "./correlation_buttons"
 import CorrelationChartContainer from "./correlation_chart_container";
 import VariableContainer from "../variables/variable_container";
 import LogsWrapperContainer from "../variables/logs_wrapper_container";
+import AddEntryFormContainer from '../util/add_entry_form_container';
 
 function CorrelationPage({logout, history, variables, correlation, correlations}){
+  const [_toggleForm, _setToggleForm] = useState(false);
+
   return (
     <section className="page correlation">
+        <section className='toggle-entry-form'>
+          <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
+          {_toggleForm && <AddEntryFormContainer defaultVar={null}/>}
+        </section>
       <section>
         <section>
           <figure>
