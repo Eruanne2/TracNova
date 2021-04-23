@@ -92,9 +92,9 @@ export default function Dashboard({variables}){
             <div className='correlation-info'>
               <h2>Correlation Coefficient: {_coefficient}</h2>
               <p>There is 
-                {(_coefficient <= -.1 || _coefficient >= .1)  ? ' a ' : ' '} 
+                {(_coefficient <= -.1 || _coefficient >= .1)  ? ' a ' : ''} 
                 {getCorrelationStrength(_coefficient)} 
-                correlation between {_selectedVar.name} and {_draggedVar.name}.
+                correlation betwen {_selectedVar.name} and {_draggedVar.name}.
               </p>
             </div>
           }
@@ -125,7 +125,7 @@ export default function Dashboard({variables}){
             {_whichTab === 2 && 
               <div className='tab-two'>
                 <div className='graph-container'>
-                  <ScatteredChart variables={[_selectedVar, _draggedVar], _coefficient}/>
+                  <ScatteredChart variables={[_selectedVar, _draggedVar]}/>
                 </div>
               </div>
             }
