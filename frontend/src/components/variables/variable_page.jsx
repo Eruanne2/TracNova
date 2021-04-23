@@ -130,7 +130,7 @@ export default function VariablePage({
     _setDailylogs({..._dailylogs, [date]: 0});
     _setEdit(date);
   }
-
+  
   return (
     <section className="page variable">
       <section className='toggle-entry-form'>
@@ -197,10 +197,9 @@ export default function VariablePage({
             }
           <ul className="logs react-logs">
             { Object.entries(_dailylogs)
-                .sort((a, b) => a[0] === String(_edit) ? 1 :
-                  ( b[0] === String(_edit) ? -1 :
-                    new Date(a[0]) - new Date(b[0])
-                  )
+                .sort((a, b) => 
+                  (new Date(a[0]).getTime() || 0) - 
+                  (new Date(b[0]).getTime() || 0)
                 )
                 .map(([date, count]) => (
                   <Log key={date} 
