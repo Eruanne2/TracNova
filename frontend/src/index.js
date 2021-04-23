@@ -8,7 +8,9 @@ import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 import { fetchUserVariables } from './actions/variables_actions';
 import { fetchUserCorrelations } from './actions/correlations_actions';
-
+import "./fonts/whitney-2-cufonfonts-webfont/whitneylight.woff";
+import "./fonts/whitney-2-cufonfonts-webfont/whitneymedium.woff";
+import "./fonts/whitney-2-cufonfonts-webfont/whitneybold.woff";
 // Not Needed
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';

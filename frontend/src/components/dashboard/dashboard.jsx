@@ -29,7 +29,7 @@ export default function Dashboard({variables}){
   const _completed = (variable) => {
     let date = new Date();
     let dateString = ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + date.getFullYear();
-    return (!!variable.dailylogs[dateString]);
+    return (variable.dailylogs[dateString] !== undefined);
   };
 
   const handleLiClick = (variable) => {
@@ -84,7 +84,7 @@ export default function Dashboard({variables}){
       <main>
         <section className='toggle-entry-form'>
           <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-          {_toggleForm && <AddEntryFormContainer defaultVar={_draggedVar || null}/>}
+          {_toggleForm && <AddEntryFormContainer defaultVar={_draggedVar || null} parentSetToggle={_setToggleForm.bind(this)}/>}
         </section>
         <section className='correlation-preview'>
           {!!_draggedVar ? <h1>"{_selectedVar.name}" vs "{_draggedVar.name}"</h1> : <h1>{_selectedVar.name}</h1>}
@@ -113,7 +113,7 @@ export default function Dashboard({variables}){
                   onDrop={handleReceiveDrop}>
             <ul className='tab-headers'>
               <h2 onClick={e => _setWhichTab(1)} className={_whichTab === 1 ? 'selected-tab' : ''}>Habits over Time</h2>
-              <h2 onClick={e => _setWhichTab(2)} className={_whichTab === 2 ? 'selected-tab' : ''}>Scatterplot</h2>
+              {_draggedVar && <h2 onClick={e => _setWhichTab(2)} className={_whichTab === 2 ? 'selected-tab' : ''}>Scatterplot</h2>}
             </ul>
             {_whichTab === 1 && 
               <div className='tab-one'>
