@@ -13,6 +13,7 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
   
   const handleDeleteVariable = (id) => {
     destroyVariable(id);
+    history.push(`/variables/${variables[0]._id}`);
   }
 
   const handleDragStart = (e, id) => {
