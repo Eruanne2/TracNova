@@ -4,32 +4,43 @@ div.splash-div{
   transform: scaleX(-1);
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
-div.splash-div > img {
+div.splash-inner-div {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  transform: scaleX(-1);
+  top: 50%;
+  margin-top: -170px;
+}
+
+div.splash-inner-div > img {
   width: 60%;
   height: auto;
   filter: drop-shadow(0px 0px 30px rgb(255, 255, 255));
   transition: filter 0.5s linear;
   z-index: 0;
   position: relative;
-  top: 100px;
-  left: 35%;
-  transform: scaleX(-1);
+  left: -10px;
 }
 
-div.splash-div > a {
+div.splash-inner-div > a {
   color: white;
   font-family: fantasy;
   font-weight: 900;
   letter-spacing: 5px;
   text-decoration: none;
   font-size: 30px;
-  position: fixed;
-  right: 22%;
-  top: 500px;
+  position: relative;
+  top: -50px;
+  left: 135px;
   z-index: 0;
   filter: drop-shadow(0px 0px 7px rgb(255, 255, 255));
   transition: filter 0.5s linear;
-  transform: scale(-1, 1);
 }
