@@ -90,8 +90,8 @@ export default function Dashboard({variables}){
                   onDragOver={e => e.preventDefault()}
                   onDrop={handleReceiveDrop}>
             <ul className='tab-headers'>
-              <h2 onClick={e => _setWhichTab(1)} className={_whichTab === 1 && 'selected-tab'}>Habits over Time</h2>
-              <h2 onClick={e => _setWhichTab(2)} className={`${_whichTab === 2 && 'selected-tab'}`}>Scatterplot</h2>
+              <h2 onClick={e => _setWhichTab(1)} className={_whichTab === 1 ? 'selected-tab' : ''}>Habits over Time</h2>
+              <h2 onClick={e => _setWhichTab(2)} className={_whichTab === 2 ? 'selected-tab' : ''}>Scatterplot</h2>
             </ul>
             {_whichTab === 1 && 
               <div className='tab-one'>
