@@ -4,6 +4,21 @@ import Statistics from "statistics.js"
 // { "10/15/2021": true, "04/19/2021": true, "04/21/2021": false }
 // => [ { var1: } ]
 
+export const formatData = (variable1, variable2) => {
+  let formattedData = [];
+
+  Object.keys(variable1.dailylogs).forEach(date => {
+    if (variable2.dailylogs[date] !== undefined) 
+      formattedData.push({ date, [variable1.name]: variable1.dailylogs[date], [variable2.name]: variable2.dailylogs[date] });
+  });
+
+  return formattedData.sort((a, b) => new Date(a) - new Date(b));
+}
+
+// get number of data points
+export const numDataPoints = (variable1, variable2) => 
+  formatData(variable1, variable2).length;
+
 // takes data from daily logs and formats it as shown below
 export const getStatData = (variable1, variable2) => {
   let varTypes = { 
@@ -11,23 +26,7 @@ export const getStatData = (variable1, variable2) => {
     [variable2.name]: (variable2.unit === 'boolean') ? 'binary' : 'metric' 
   };
 
-  let formattedData = [];
-  Object.keys(variable1.dailylogs).forEach(date => {
-    if (!variable2.dailylogs[date]) return;
-    else formattedData.push({ [variable1.name]: variable1.dailylogs[date], [variable2.name]: variable2.dailylogs[date] });
-  });
-
-  return [formattedData, varTypes];
-};
-
-// get number of data points
-export const numDataPoints = (variable1, variable2) => {
-  let formattedData = [];
-  Object.keys(variable1.dailylogs).forEach(date => {
-    if (!variable2.dailylogs[date]) return;
-    else formattedData.push({ [variable1.name]: variable1.dailylogs[date], [variable2.name]: variable2.dailylogs[date] });
-  });
-  return formattedData.length;
+  return [formatData(variable1, variable2), varTypes];
 };
 
 // example input for getCorrelationCoefficient: 
@@ -44,13 +43,13 @@ export const numDataPoints = (variable1, variable2) => {
 
 // varTypes = { painMeds: 'binary', walkingMin: 'metric' }   -->   (varTypes are either 'binary' or 'metric')
 
-const sum = (arr) => arr.reduce((acc, el) => acc + el);
-const avg = (arr) => sum(arr) / arr.length;
+const sum = (arr) => arr.reduce((acc, el) => acc + el, 0);
+const avg = (arr) => arr.length === 0 ? 0 : sum(arr) / arr.length;
 
 // export and use this function
 // export const getCorrelationCoefficient = (data, varTypes) => {
 export const getCorrelationCoefficient = (var1, var2) => {
-  const [ data, varTypes] = getStatData(var1, var2);
+  const [data, varTypes] = getStatData(var1, var2);
 
   const types = Object.values(varTypes);
   const hasBinary = types.includes('binary');
@@ -59,7 +58,7 @@ export const getCorrelationCoefficient = (var1, var2) => {
   if (types.length !== 2) throw 'Invalid varTypes.';
 
   if (hasBinary && !hasMetric){
-    const valSets = data.map(pair => Object.values(pair));
+    const valSets = data.map(([date, ...pair]) => Object.values(pair));
     const count = { '0,0': 0, '0,1': 0, '1,0': 0, '1,1': 0 };
 
     valSets.forEach(set => {

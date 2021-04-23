@@ -5,28 +5,15 @@ import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
 import '../../styles/var_page.css';
 
-import VariablesIndexContainer from './variables_index_container';
-
 import Log from "./log";
 import AddEntryFormContainer from "../util/add_entry_form_container";
-
-const MOCK_DATA = {
-  user: 'userId',
-  name: 'code written',
-  unit: 'boolean',
-  dailylogs: {
-    '04/01/2021': 35,
-    '04/02/2021': 0,
-    '04/03/2021': 13
-  }
-};
 
 const nullVariable = {};
 
 export default function VariablePage({
   variable = nullVariable,
   currentUser, 
-  createVariable, updateVariable, addVariableEntry
+  createVariable, updateVariable
 }){
   const symbolBooleanRef = useRef(Symbol('Boolean'));
   
