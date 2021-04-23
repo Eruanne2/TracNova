@@ -39,6 +39,20 @@ export default function Dashboard({variables}){
     }
   }
 
+  const getCorrelationStrength = r => {
+    if (r <= -.9) return "a very strong negative";
+    if (r <= -.7) return "a strong negative";
+    if (r <= -.5) return "a moderate negative";
+    if (r <= -.3) return "a weak negative";
+    if (r <= -.1) return "a very weak negative";
+    if (r < .1) return "no"
+    if (r < .3) return "a very weak positive";
+    if (r < .5) return "a weak positive";
+    if (r < .7) return "a moderate positive";
+    if (r < .9) return "a strong positive";
+    if (r <= 1) return "a very strong positive";
+  }
+
   const handleDragStart = (e, id) => {
     e.dataTransfer.setData('text/plain', id);
   };
@@ -74,7 +88,12 @@ export default function Dashboard({variables}){
         </section>
         <section className='correlation-preview'>
           <h1>Habit 1: {_selectedVar.name} and Habit 2: {_draggedVar.name}</h1>
-          {(!!_draggedVar && numPoints > 6) && <h2>Correlation Coefficient: {_coefficient}</h2>}
+          {(!!_draggedVar && numPoints > 6) && <div>
+            <h2>Correlation Coefficient: {_coefficient.toFixed(3)}</h2>
+            <p>There is {getCorrelationStrength(_coefficient.toFixed(3))} correlation betwen {_selectedVar.name} and {_draggedVar.name}.</p>
+
+            {/**r < 0.3None or very weak0.3 < r <0.5Weak0.5 < r < 0.7Moderater > 0.7Stron */}
+          </div>}
           
           {!!_draggedVar && 
             <h3>
