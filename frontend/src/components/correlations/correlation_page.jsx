@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AddCorrelationContainer from "./add_correlation_container";
-import CorrelationChart from "./correlation_chart"
-import CorrelationButtons from "./correlation_buttons"
-import CorrelationChartContainer from "./correlation_chart_container";
 import LogsWrapperContainer from "../variables/logs_wrapper_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +7,7 @@ import VariableIcon from "../variables/variable_icon";
 import ChartMetrics from "./chart_permutations/chart_metrics";
 import * as StatUtil from "../../util/stat_util";
 import AddEntryFormContainer from '../util/add_entry_form_container';
+import Chart from "../chart/chart";
 
 const nullCorrelation = {};
 
@@ -85,7 +83,7 @@ function CorrelationPage({
                 StatUtil.getCorrelationCoefficient(..._vars)
               }
             </h3>
-            <ChartMetrics variables={_vars}/>
+            <Chart variables={_vars}/>
           </section>
         }
 
