@@ -22,9 +22,9 @@ function AppMenu({history, variables, logout}){
           <li className="menu-item">
             <NavLink activeClassName="selected" to='/variables'>Habits</NavLink>
           </li>
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <NavLink activeClassName="selected" to="/correlations">Correlations</NavLink>
-            </li>
+            </li> */}
           <li className="menu-item">
             <NavLink activeClassName="selected" to="#" onClick={handleLogout}>Logout</NavLink>
           </li>

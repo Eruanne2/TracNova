@@ -17,6 +17,7 @@ function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
   switch (varType){
     case 'binary': return (
       <YAxis
+        key={`y-axis-${varName}`}
         yAxisId={varName}
         dataKey={varName}
         type="number"
@@ -28,6 +29,7 @@ function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
     );
     case 'rating': return (
       <YAxis
+        key={`y-axis-${varName}`}
         yAxisId={varName}
         dataKey={varName}
         type="number"
@@ -40,6 +42,7 @@ function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
     );
     default: return (
       <YAxis
+        key={`y-axis-${varName}`}
         yAxisId={varName}
         dataKey={varName}
         type="number"
@@ -56,6 +59,7 @@ function ChartData({varName, varType}){
   switch (varType){
     case 'binary': return (
       <Bar
+        key={varName}
         yAxisId={varName}
         dataKey={varName}
         type="number"
@@ -70,6 +74,7 @@ function ChartData({varName, varType}){
     );
     case 'rating': return (
       <Area
+        key={varName}
         yAxisId={varName}
         dataKey={varName}
         type='step'
@@ -81,6 +86,7 @@ function ChartData({varName, varType}){
     );
     default: return (
       <Line
+        key={varName}
         yAxisId={varName}
         dataKey={varName}
         stroke="rgb(5, 0, 200)"
