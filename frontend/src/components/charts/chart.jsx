@@ -101,7 +101,7 @@ function ChartData({varName, varType}){
 export default function Chart({variables}){
   const [data, metadataObj] = StatUtil.getStatData(...variables);
   const metadataArr = Object.entries(metadataObj);
-console.log(data);
+
   return (
     <ResponsiveContainer className="chartPrice" width={"100%"} height={400}>
       <ComposedChart
