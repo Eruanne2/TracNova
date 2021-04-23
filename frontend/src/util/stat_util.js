@@ -36,7 +36,7 @@ const formatVarTypes = (...variables) => Object.fromEntries(
     [ variable.name, 
       (variable.unit === 'boolean') ? 'binary' : 
         // (variable.unit === 'rating' ? 'rating' : 
-        'metric'
+        variable.unit
     ]
   )
 );
@@ -74,11 +74,11 @@ export const getCorrelationCoefficient = (var1, var2) => {
   
   const types = Object.values(varTypes);
   const hasBinary = types.includes('binary');
-  const hasMetric = types.includes('metric');
+  const hasOther = types.filter(type => type !== 'binary') > 0;
 
   if (types.length !== 2) throw 'Invalid varTypes.';
 
-  if (hasBinary && !hasMetric){
+  if (hasBinary && !hasOther){
     const valSets = data.map(pair => Object.values(pair));
     const count = { '0,0': 0, '0,1': 0, '1,0': 0, '1,1': 0 };
 
@@ -92,12 +92,12 @@ export const getCorrelationCoefficient = (var1, var2) => {
     return phi(table);
   }
 
-  if (hasBinary && hasMetric){
+  if (hasBinary && hasOther){
     // point-biserial
     return pointBiserial(data, varTypes);
   }
 
-  if (!hasBinary && hasMetric){
+  if (!hasBinary && hasOther){
     // spearman
     
     const stats = new Statistics(data, varTypes);
