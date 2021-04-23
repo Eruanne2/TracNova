@@ -1,4 +1,6 @@
+export const RATING_EMOJIS = ['😡', '😂', '🙃', '😛', '🥰'];
 export const toYesNo = count => !!count ? 'Yes' : 'No';
+export const toRating = count => RATING_EMOJIS[count];
 
 const dateToYMDArr = date => [
   date.getFullYear().toString().padStart(4, '0'),
