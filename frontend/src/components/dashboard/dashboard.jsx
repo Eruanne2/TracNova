@@ -57,7 +57,7 @@ export default function Dashboard({variables}){
       </aside>
       <main>
         <section className='toggle-entry-form'>
-          <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
+          <button onClick={e => _setToggleForm(!_toggleForm)} className='incomplete'>Add Today's Entry</button>
           {_toggleForm && <AddEntryFormContainer defaultVar={_currentVar2 || null}/>}
         </section>
         <section className='correlation-preview'>
