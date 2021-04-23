@@ -150,7 +150,7 @@ export default function VariablePage({
       </section>
       <form onSubmit={handleSubmit}>
         {_name &&!_selectedVar && <h1>"{_name}" History</h1>}
-        {_name &&!_selectedVar && <div>
+        {true && <div>
           <input className="input variable-input variable-name"
             type="text" value={_name} placeholder="Enter factor name"
             onChange={e => _setName(e.currentTarget.value)}
