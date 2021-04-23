@@ -15,11 +15,9 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
     destroyVariable(id);
   }
 
-  // ************************************************************
   const handleDragStart = (e, id) => {
     e.dataTransfer.setData('text/plain', id);
   }
-  //************************************************************* 
 
   return (
     <section className="index variables-index">
@@ -36,11 +34,7 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
               <NavLink activeClassName="selected" className="var-item-link"
                 to={`/variables/${variable._id}`}
               >
-                {/* ********************************************************************************************* */}
-                <VariableIcon variable={variable} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
-                {/* ********************************************************************************************* */}
-
-
+              <VariableIcon variable={variable} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
               </NavLink>
               <div onClick={e => handleDeleteVariable(variable._id)}>Delete</div>
             </li>

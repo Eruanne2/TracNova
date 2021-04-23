@@ -9,30 +9,32 @@ import Log from "./log";
 import AddEntryFormContainer from "../util/add_entry_form_container";
 
 const nullVariable = {};
+const SYMBOL_BOOLEAN = Symbol.for('boolean');
+const SYMBOL_RATING = Symbol.for('rating');
 
 export default function VariablePage({
   variable = nullVariable,
   currentUser, 
   createVariable, updateVariable
 }){
-  const symbolBooleanRef = useRef(Symbol('Boolean'));
   
-
-  if (variable.unit && typeof variable.unit === 'string' &&
-      variable.unit.toLowerCase() === 'boolean')
-    variable.unit = symbolBooleanRef.current;
+  if (variable.unit && typeof variable.unit === 'string'){
+    if (["boolean", "binary"].includes(variable.unit.toLowerCase()))
+      variable.unit = SYMBOL_BOOLEAN
+    else if (variable.unit.toLowerCase() === 'rating')
+      variable.unit = SYMBOL_RATING
+  }
 
   const [_name, _setName] = useState(variable.name || '');
-  const [_unit, _setUnit] = useState(variable.unit || symbolBooleanRef.current);
+  const [_unit, _setUnit] = useState(variable.unit || SYMBOL_BOOLEAN);
   const [_metricUnit, _setMetricUnit] = useState(
-    (variable.unit && variable.unit !== symbolBooleanRef.current) ?
+    (variable.unit && typeof variable.unit !== 'symbol') ?
       variable.unit : ''
   );
   const [_dailylogs, _setDailylogs] = useState(Object.assign({}, variable.dailylogs || {}));
   const [_range, _setRange] = useState();
   const [_edit, _setEdit] = useState();
   const [_toggleForm, _setToggleForm] = useState(false);
-
 
   const allResolved = _dailylogs[_edit] === undefined
   
@@ -57,16 +59,18 @@ export default function VariablePage({
 
   useEffect(() => {
     _setName(variable.name || '');
-    _setUnit(variable.unit || symbolBooleanRef.current);
+    _setUnit(variable.unit || SYMBOL_BOOLEAN);
     _setDailylogs(Object.assign({}, variable.dailylogs || {}));
   }, [variable]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const varData = {
       user: currentUser.id,
       name: _name, 
-      unit: typeof _unit === 'symbol' ? 'boolean' : _unit, 
+      unit: _unit === SYMBOL_BOOLEAN ? 'boolean' : 
+        (_unit === SYMBOL_RATING ? 'rating' : _unit), 
       dailylogs: _dailylogs
     };
     
@@ -125,10 +129,15 @@ export default function VariablePage({
 
   return (
     <section className="page variable">
-        <section className='toggle-entry-form'>
-          <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-          {_toggleForm && <AddEntryFormContainer defaultVar={variable || null}/>}
-        </section>
+      <section className='toggle-entry-form'>
+        <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
+        {_toggleForm && <AddEntryFormContainer defaultVar={variable || null}/>}
+      </section>
+      <section className='var-graph-holder'>
+        <div>
+          this is where the graph will go
+        </div>
+      </section>
       <form onSubmit={handleSubmit}>
         <input className="input variable-input variable-name"
           type="text" value={_name} placeholder="Enter habit name"
@@ -139,21 +148,29 @@ export default function VariablePage({
         <label>
           <input className="input variable-input variable-unit"
             type="radio" name="unit" value="boolean"
-            checked={_unit === symbolBooleanRef.current}
-            onChange={e => _setUnit(symbolBooleanRef.current)}
+            checked={_unit === SYMBOL_BOOLEAN}
+            onChange={e => _setUnit(SYMBOL_BOOLEAN)}
           />
           Yes/No
         </label>
         <label>
           <input className="input variable-input variable-unit"
+            type="radio" name="unit" value="rating"
+            checked={_unit === SYMBOL_RATING}
+            onChange={e => _setUnit(SYMBOL_RATING)}
+          />
+          Rating
+        </label>
+        <label>
+          <input className="input variable-input variable-unit"
             type="radio" name="unit" value={"metric"} 
-            checked={_unit !== symbolBooleanRef.current}
+            checked={typeof _unit !== 'symbol'}
             onChange={e => _setUnit(_metricUnit)}
           />
           Metric (please specify unit)
         </label>
         
-        { _unit === symbolBooleanRef.current ? null :
+        { typeof _unit === "symbol" ? null :
           <input className="input variable-input variable-unit"
             value={_metricUnit}
             onChange={e => {

@@ -11,8 +11,6 @@ import Chart from "../charts/chart";
 
 const nullCorrelation = {};
 
-
-//************************************************************
 function VariableDropArea({handleReceiveVarId, variable}){
   return (
     <div className="variable-drop"
@@ -25,9 +23,7 @@ function VariableDropArea({handleReceiveVarId, variable}){
     }</div>
   );
 }
-// ***********************************************************
   
-
 function CorrelationPage({
   allVariables,
   variables = [],
@@ -52,7 +48,6 @@ function CorrelationPage({
   }, [allVariables]);
 
 
-  // ******************************************************************************
   const handleReceiveVarIdCreator = i => e => {
     const variable = allVariables[e.dataTransfer.getData('text/plain')];
     const arr = [..._vars];
@@ -62,7 +57,6 @@ function CorrelationPage({
       _setVars(arr)
     }
   }
-  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   return (
     <section className="page correlation">
@@ -71,7 +65,6 @@ function CorrelationPage({
           {_toggleForm && <AddEntryFormContainer defaultVar={null}/>}
         </section>
       <section>
-        {/* ************************************************************** */}
         <section>
           { [0, 1].map(i => (
               <section key={i} className='drop-area variables-drop-area'>
@@ -83,7 +76,6 @@ function CorrelationPage({
             ))
           }
         </section>
-        {/* ************************************************************** */}
 
         { _vars.length !== 2 ? null : 
           <section className="analysis">

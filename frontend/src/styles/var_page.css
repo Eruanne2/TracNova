@@ -9,6 +9,22 @@ section.page.variable {
   width: 56%;
 }
 
+section.page.variable > section.var-graph-holder {
+  top: 40px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgb(49,49,49);
+  background-color: rgb(226, 253, 255);
+  color: rgb(73, 121, 255);
+  margin: 40px;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
 section.page.variable > form:first-of-type {
   position: relative;
   margin-top: 30px;
