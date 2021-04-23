@@ -135,11 +135,11 @@ export default function VariablePage({
   const handleCreateLog = () => {
     const today = dateToMDY(new Date());
     const date = _dailylogs[today] === undefined ? today : undefined;
-    _setDateMapping({[date]: date});
+    _setDateMapping({[date]: '1/1/1900'});
     _setDailylogs({..._dailylogs, [date]: 0});
     _setEdit(date);
   }
-
+console.log(_name);
   return (
     <section className="page variable">
       <section className='toggle-entry-form'>
@@ -150,7 +150,7 @@ export default function VariablePage({
         <Chart variables={[variable]}/>
       </section>
       <form onSubmit={handleSubmit}>
-        {!_selectedVar && <h1>"{_name}" History</h1>}
+        {_name &&!_selectedVar && <h1>"{_name}" History</h1>}
         {_selectedVar && <div>
           <input className="input variable-input variable-name"
             type="text" value={_name} placeholder="Enter factor name"

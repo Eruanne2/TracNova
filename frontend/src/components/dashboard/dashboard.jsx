@@ -94,7 +94,7 @@ export default function Dashboard({variables}){
               <p>There is 
                 {(_coefficient <= -.1 || _coefficient >= .1)  ? ' a ' : ''} 
                 {getCorrelationStrength(_coefficient)} 
-                correlation betwen {_selectedVar.name} and {_draggedVar.name}.
+                correlation between {_selectedVar.name} and {_draggedVar.name}.
               </p>
             </div>
           }

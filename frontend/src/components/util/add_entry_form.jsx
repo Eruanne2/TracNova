@@ -6,7 +6,7 @@ import '../../styles/entry_form.css';
 import { dateToMDY } from '../../util/converters';
 
 
-export default function AddEntryForm({updateVariable, variables, defaultVar, parentSetToggle}) {
+export default function AddEntryForm({updateVariable, variables = {dailylogs: {}}, defaultVar, parentSetToggle}) {
   const [_variable, _setVariable] = useState(defaultVar);
   const [_todayVal, _setTodayVal] = useState(0);
   
