@@ -47,6 +47,10 @@ section.page.variable > form:first-of-type > * {
   position: relative;
   margin-bottom: 10px;
   width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  font: inherit;
+  color: rgb(79,167,51);
 }
 
 section.page.variable > form:first-of-type > input[type="text"] {
@@ -105,9 +109,11 @@ ul.logs.react-logs > div.react-log {
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  border-radius: 5px;
-  border: 1px solid rgb(208, 208, 208);
+  /* border-radius: 5px; */
+  border-top: 1px solid rgb(208, 208, 208);
 }
+
+
 
 ul.logs.react-logs > div.react-log:hover {
   background-color: rgb(173, 235, 152)
