@@ -6,22 +6,22 @@ import "../../styles/dashboard.css";
 
 export default function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
-  const [_currentVar1, _setCurrentVar1] = useState('');
-  const [_currentVar2, _setCurrentVar2] = useState('');
+  const [_selectedVar, _setSelectedVar] = useState('');
+  const [_draggedVar, _setDraggedVar] = useState('');
   const [_coefficient, _setCoefficient] = useState(0);
   const [_whichTab, _setWhichTab] = useState(1);
 
   useEffect(() => {
     if (
-      !!_currentVar1 
-      && !!_currentVar2 
-      && _currentVar1 !== _currentVar2
-      && StatUtil.numDataPoints(_currentVar1, _currentVar2) > 6
-      ) _setCoefficient(StatUtil.getCorrelationCoefficient(_currentVar1, _currentVar2))
-  }, [_currentVar2]);
+      !!_selectedVar 
+      && !!_draggedVar 
+      && _selectedVar !== _draggedVar
+      && StatUtil.numDataPoints(_selectedVar, _draggedVar) > 6
+      ) _setCoefficient(StatUtil.getCorrelationCoefficient(_selectedVar, _draggedVar))
+  }, [_draggedVar]);
 
   useEffect(() => {
-    _setCurrentVar1(Object.values(variables)[0] || '')
+    _setSelectedVar(Object.values(variables)[0] || '')
   }, [variables]);
   
   const _completed = (variable) => {
@@ -32,13 +32,22 @@ export default function Dashboard({variables}){
 
   const handleLiClick = (variable) => {
     return e => {
-      if (!!_currentVar2) _setCurrentVar1(_currentVar2);
-      _setCurrentVar2(variable);
+      _setSelectedVar(variable);
+      _setDraggedVar('');
     }
   }
 
+  const handleDragStart = (e, id) => {
+    e.dataTransfer.setData('text/plain', id);
+  };
+
+  const handleReceiveDrop = e => {
+    let id = e.dataTransfer.getData('text/plain');
+    if (!(id === _selectedVar._id)) _setDraggedVar(variables[id]);
+  };
+
   let numPoints = 0;
-  if (!!_currentVar1 && !!_currentVar2) numPoints = StatUtil.numDataPoints(_currentVar1, _currentVar2);
+  if (!!_selectedVar && !!_draggedVar) numPoints = StatUtil.numDataPoints(_selectedVar, _draggedVar);
   
   return(
     <div className="dashboard-div">
@@ -46,26 +55,26 @@ export default function Dashboard({variables}){
         <h1>Your Habits: </h1>
         <ul className='variables-list'>
           {Object.values(variables).map((variable, idx) => (
-            <li 
-              key={idx} 
-              className={_completed(variable) ? 'complete' : 'incomplete'}
-              onClick={handleLiClick(variable)}
-            >
-              <VariableIcon variable={variable}/>
+            <li key={idx} onClick={handleLiClick(variable)}
+                className={
+                  `${_completed(variable) ? 'complete' : 'incomplete'} 
+                  ${variable._id === _selectedVar._id && 'selected-var'}`
+                }>
+              <VariableIcon variable={variable} draggable={true} onDragStart={e => handleDragStart(e, variable._id)}/>
             </li>
           ))}
         </ul>
       </aside>
       <main>
         <section className='toggle-entry-form'>
-          <button onClick={e => _setToggleForm(!_toggleForm)} className='incomplete'>Add Today's Entry</button>
-          {_toggleForm && <AddEntryFormContainer defaultVar={_currentVar2 || null}/>}
+          <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
+          {_toggleForm && <AddEntryFormContainer defaultVar={_draggedVar || null}/>}
         </section>
         <section className='correlation-preview'>
-          <h1>Habit 1: {_currentVar1.name} and Habit 2: {_currentVar2.name}</h1>
-          {(!!_currentVar2 && numPoints > 6) && <h2>Correlation Coefficient: {_coefficient}</h2>}
+          <h1>Habit 1: {_selectedVar.name} and Habit 2: {_draggedVar.name}</h1>
+          {(!!_draggedVar && numPoints > 6) && <h2>Correlation Coefficient: {_coefficient}</h2>}
           
-          {!!_currentVar2 && 
+          {!!_draggedVar && 
             <h3>
               You have {numPoints} {parseInt(numPoints) === 1 ? 'entry' : 'entries'} for this correlation.
               { (parseInt(numPoints) < 7) && <p>We need at least 7 day's worth of data to be able to look for a correlation.</p> }
