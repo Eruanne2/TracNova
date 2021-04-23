@@ -137,57 +137,55 @@ export default function VariablePage({
         <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
         {_toggleForm && <AddEntryFormContainer defaultVar={variable || null} parentSetToggle={_setToggleForm.bind(this)}/>}
       </section>
-        {/* **************************************************************** */}
       <section className='var-graph-holder'>
         <div className='graph-container'>
           <Chart variables={[variable]}/>
         </div>
-        {/* <div>
-          this is where the graph will go
-        </div> */}
       </section>
-        {/* **************************************************************** */}
       <form onSubmit={handleSubmit}>
-        <input className="input variable-input variable-name"
-          type="text" value={_name} placeholder="Enter habit name"
-          onChange={e => _setName(e.currentTarget.value)}
-        />
+        {!_selectedVar && <h1>"{_name}" History</h1>}
+        {_selectedVar && <div>
+          <input className="input variable-input variable-name"
+            type="text" value={_name} placeholder="Enter habit name"
+            onChange={e => _setName(e.currentTarget.value)}
+          />
 
-        Select data type:
-        <label>
-          <input className="input variable-input variable-unit"
-            type="radio" name="unit" value="boolean"
-            checked={_unit === SYMBOL_BOOLEAN}
-            onChange={e => _setUnit(SYMBOL_BOOLEAN)}
-          />
-          Yes/No
-        </label>
-        <label>
-          <input className="input variable-input variable-unit"
-            type="radio" name="unit" value="rating"
-            checked={_unit === SYMBOL_RATING}
-            onChange={e => _setUnit(SYMBOL_RATING)}
-          />
-          Rating
-        </label>
-        <label>
-          <input className="input variable-input variable-unit"
-            type="radio" name="unit" value={"metric"} 
-            checked={typeof _unit !== 'symbol'}
-            onChange={e => _setUnit(_metricUnit)}
-          />
-          Metric (please specify unit)
-        </label>
-        
-        { typeof _unit === "symbol" ? null :
-          <input className="input variable-input variable-unit"
-            value={_metricUnit}
-            onChange={e => {
-              _setMetricUnit(e.target.value);
-              _setUnit(e.target.value);
-            }}
-          />
-        }
+          Select data type:
+          <label>
+            <input className="input variable-input variable-unit"
+              type="radio" name="unit" value="boolean"
+              checked={_unit === SYMBOL_BOOLEAN}
+              onChange={e => _setUnit(SYMBOL_BOOLEAN)}
+            />
+            Yes/No
+          </label>
+          <label>
+            <input className="input variable-input variable-unit"
+              type="radio" name="unit" value="rating"
+              checked={_unit === SYMBOL_RATING}
+              onChange={e => _setUnit(SYMBOL_RATING)}
+            />
+            Rating
+          </label>
+          <label>
+            <input className="input variable-input variable-unit"
+              type="radio" name="unit" value={"metric"} 
+              checked={typeof _unit !== 'symbol'}
+              onChange={e => _setUnit(_metricUnit)}
+            />
+            Metric (please specify unit)
+          </label>
+          
+          { typeof _unit === "symbol" ? null :
+            <input className="input variable-input variable-unit"
+              value={_metricUnit}
+              onChange={e => {
+                _setMetricUnit(e.target.value);
+                _setUnit(e.target.value);
+              }}
+            />
+          }
+        </div>}
 
         <section className="logs-wrapper react-logs-wrapper">
             {allResolved ? 
