@@ -24,18 +24,23 @@
 
 .dashboard-div > aside > ul {
   width: 260px;
-  padding: 0px;
   height: 100%;
-  border: none;
+  /* border: none; */
   margin-top: 15px;
   position: relative;
+  border: 1px solid #ddd;  
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0px 4px 4px #0000001f;
 }
 
 .dashboard-div > aside > ul > li {
-  box-shadow: 0 0 3px rgb(49,49,49);
+  /* box-shadow: 0 0 3px rgb(49,49,49); */
   position: relative;
   list-style: none;
-  border-bottom: 0px solid rgb(116,115,120);
+  /* border-bottom: 0px solid rgb(116,115,120); */
+  border-bottom: 1px solid #ddd;
   height: 55px;
   display: flex;
   position: relative;
@@ -45,21 +50,27 @@
   align-items: center;
   height: 55px;
   width: 260px;
-  background-color: white;
+  /* background-color: white; */
   text-decoration: none;
-  color: white;
+  /* color: white; */
   font-weight: 800;
   cursor: pointer;
   margin: 1px;
   border-radius: 1px;
 }
 
+.dashboard-div > aside > ul > li:nth-child(2n){
+  background-color: #f7f7f7;
+}
+
 .dashboard-div > aside > ul > li.complete {
-  background-color: rgb(163, 244, 145);
-  box-shadow: inset 0 0 1px rgb(22, 48, 14);
+  /* background-color: rgb(163, 244, 145); */
+  /* box-shadow: inset 0 0 1px rgb(22, 48, 14); */
+  color: #035946;
 }
 
 .icon-wrapper > .icon {
+  transform: scale(0.8);
   background: radial-gradient( #88cc78, #98e687);
   font-size: 18px;
   font-weight: 100;
@@ -67,7 +78,7 @@
 
 .dashboard-div > aside > ul > li:hover {
   /* box-shadow: 0 0 2px rgb(49, 15, 15); */
-  color: rgb(55, 40, 150);
+  /* color: rgb(55, 40, 150);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -7px;
@@ -75,55 +86,59 @@
   border-radius: 3px;
   padding-right: 4px;
   padding-top: 1px;
-  margin-bottom: -1px;
+  margin-bottom: -1px; */
+  background-color: #e3eef4;
 }
 
 .dashboard-div > aside > ul > li.incomplete {
-  background-color: rgba(252, 188, 188);
-  box-shadow: inset 0 0 1px rgb(49, 15, 15);
+  /* background-color: rgba(252, 188, 188);
+  box-shadow: inset 0 0 1px rgb(49, 15, 15); */
+  color: #594000;
 }
 
 .dashboard-div > aside > ul > li.incomplete:hover {
-  background-color: rgba(252, 188, 188);
+  /* background-color: rgba(252, 188, 188);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -7px;
   top: -1px;
   border-radius: 3px;
   padding-right: 4px;
   padding-top: 1px;
-  margin-bottom: -1px;
+  margin-bottom: -1px; */
 }
 
 @keyframes shaking {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg) translateY(-1px); }
-  50% { transform: rotate(0deg); }
-  75% { transform: rotate(-5deg) translateY(1px); }
-  100% { transform: rotate(0deg); }
+  0% { transform: rotate(0deg) scale(0.8); }
+  25% { transform: rotate(5deg) translateY(-1px) scale(0.78125); }
+  50% { transform: rotate(0deg) scale(0.8); }
+  75% { transform: rotate(-5deg) translateY(1px) scale(0.78125); }
+  100% { transform: rotate(0deg) scale(0.8); }
 }
 
 li.incomplete > .icon-wrapper > .icon {
-  background: radial-gradient( #f29191, #d96c6c);
-  box-shadow: inset 0 0 1px rgb(49, 15, 15);
+  background: radial-gradient( #f9d467, #f7c23e/*#f29191, #d96c6c*/);
+  color: #594000;
+  /* box-shadow: inset 0 0 1px rgb(49, 15, 15); */
   animation-name: shaking;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
 }
 
 .dashboard-div > aside > ul > li.selected-var {
-  color: rgb(55, 40, 150);
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  /* color: rgb(55, 40, 150); */
+  /* text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -12px;
   top: -2px;
   border-radius: 3px;
-  /* padding-left: -10px; */
   padding-right: 8px;
   padding-top: 3px;
-  margin-bottom: 2px;
+  margin-bottom: 2px; */
+  background: #acd4e5;
 }
+
 .dashboard-div > aside > ul > li.selected-var:hover {
-  color: rgb(55, 40, 150);
+  /* color: rgb(55, 40, 150);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -15px;
@@ -131,18 +146,19 @@ li.incomplete > .icon-wrapper > .icon {
   border-radius: 3px;
   padding-top: 4px;
   padding-right: 10px;
-  margin-bottom: 1px;
+  margin-bottom: 1px; */
 }
 
 .dashboard-div > aside > ul > li.selected-var > div > div.icon {
   border: none;
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),   1px 1px 4px rgb(49, 15, 15);
-  border-radius: 20px;
+  border-radius: 50%;
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: scale(1);
 }
 
 .dashboard-div > aside > ul > li > div {

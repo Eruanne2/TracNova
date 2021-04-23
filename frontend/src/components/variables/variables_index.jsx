@@ -1,9 +1,10 @@
 import React, {useEffect} from "react";
 import {NavLink, withRouter} from "react-router-dom";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/var_index.css";
 import VariableIcon from "./variable_icon";
+import IconButton from "../util/icon_button";
 
 function VariablesIndex({history, variables = {}, destroyVariable}){
   useEffect(() => {
@@ -37,7 +38,7 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
               >
               <VariableIcon variable={variable} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
               </NavLink>
-              <div onClick={e => handleDeleteVariable(variable._id)}>Delete</div>
+              <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>
             </li>
           ))
         }
