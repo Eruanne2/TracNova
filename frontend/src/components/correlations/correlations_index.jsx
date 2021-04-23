@@ -30,7 +30,7 @@ function CorrelationsIndex({history, correlations, variables, createCorrelation,
             <NavLink activeClassName="selected" className="var-item-link"
               to={`/correlations/${correlation._id}`}
             >
-              <correlationIcon correlation={correlation}/>
+              {/* <CorrelationIcon correlation={correlation}/> */}
             </NavLink>
             <div onClick={e => handleDeleteCorrelation(correlation._id)}>Delete</div>
           </li>
