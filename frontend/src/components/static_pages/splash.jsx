@@ -1,7 +1,14 @@
 import React from 'react';
+import '../../styles/splash.css'
+// import strange_space from '../../images/strange_space.jpeg';
+import logo from '../../images/logo-white.png'
+import {Link} from 'react-router-dom';
 
 export default function Splash() {
   return(
-    <p>this is the splash page</p>
+    <div className="splash-div"> 
+      <img src={logo}/>
+      <Link to="/login" className="go-back">LOG IN HERE</Link>
+    </div>
   )
 };
