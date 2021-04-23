@@ -143,3 +143,13 @@ div.yes-no-indicator {
   text-align: center;
 }
 
+div.create-form {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: center;
+  width: 300px;
+}
+
+div.create-form input {
+  padding: 8px;
+}

@@ -18,7 +18,6 @@ export default function VariablePage({
   currentUser, 
   createVariable, updateVariable
 }){
-  
   if (variable.unit && typeof variable.unit === 'string'){
     if (["boolean", "binary"].includes(variable.unit.toLowerCase()))
       variable.unit = SYMBOL_BOOLEAN
@@ -92,7 +91,7 @@ export default function VariablePage({
       if (!window.confirm(
         `You are about to overwrite a previous log on ${newDate}.\nCurrent value: ${logs[newDate]}\nNew value: ${value}\nAre you sure?`
       )) return false;
-    console.log(newDate, date)
+
     if (newDate !== date){
       console.log(_dateMapping)
       let origDate = Object.values(_dateMapping)[0];
@@ -139,7 +138,7 @@ export default function VariablePage({
     _setDailylogs({..._dailylogs, [date]: 0});
     _setEdit(date);
   }
-console.log(_name);
+
   return (
     <section className="page variable">
       <section className='toggle-entry-form'>
@@ -150,49 +149,50 @@ console.log(_name);
         <Chart variables={[variable]}/>
       </section>
       <form onSubmit={handleSubmit}>
-        {_name &&!_selectedVar && <h1>"{_name}" History</h1>}
-        {_selectedVar && <div>
-          <input className="input variable-input variable-name"
-            type="text" value={_name} placeholder="Enter factor name"
-            onChange={e => _setName(e.currentTarget.value)}
-          />
+        {variable && variable._id ? <h1>"{_name}" History</h1> :
+          <div className="create-form">
+            <input className="input variable-input variable-name"
+              type="text" value={_name} placeholder="Enter factor name"
+              onChange={e => _setName(e.currentTarget.value)}
+            />
 
-          Select data type:
-          <label>
-            <input className="input variable-input variable-unit"
-              type="radio" name="unit" value="boolean"
-              checked={_unit === SYMBOL_BOOLEAN}
-              onChange={e => _setUnit(SYMBOL_BOOLEAN)}
-            />
-            Yes/No
-          </label>
-          <label>
-            <input className="input variable-input variable-unit"
-              type="radio" name="unit" value="rating"
-              checked={_unit === SYMBOL_RATING}
-              onChange={e => _setUnit(SYMBOL_RATING)}
-            />
-            Rating
-          </label>
-          <label>
-            <input className="input variable-input variable-unit"
-              type="radio" name="unit" value={"metric"} 
-              checked={typeof _unit !== 'symbol'}
-              onChange={e => _setUnit(_metricUnit)}
-            />
-            Metric (please specify unit)
-          </label>
-          
-          { typeof _unit === "symbol" ? null :
-            <input className="input variable-input variable-unit"
-              value={_metricUnit}
-              onChange={e => {
-                _setMetricUnit(e.target.value);
-                _setUnit(e.target.value);
-              }}
-            />
-          }
-        </div>}
+            Select data type:
+            <label>
+              <input className="input variable-input variable-unit"
+                type="radio" name="unit" value="boolean"
+                checked={_unit === SYMBOL_BOOLEAN}
+                onChange={e => _setUnit(SYMBOL_BOOLEAN)}
+              />
+              Yes/No
+            </label>
+            <label>
+              <input className="input variable-input variable-unit"
+                type="radio" name="unit" value="rating"
+                checked={_unit === SYMBOL_RATING}
+                onChange={e => _setUnit(SYMBOL_RATING)}
+              />
+              Rating
+            </label>
+            <label>
+              <input className="input variable-input variable-unit"
+                type="radio" name="unit" value={"metric"} 
+                checked={typeof _unit !== 'symbol'}
+                onChange={e => _setUnit(_metricUnit)}
+              />
+              Metric (please specify unit)
+            </label>
+            
+            { typeof _unit === "symbol" ? null :
+              <input className="input variable-input variable-unit"
+                value={_metricUnit}
+                onChange={e => {
+                  _setMetricUnit(e.target.value);
+                  _setUnit(e.target.value);
+                }}
+              />
+            }
+          </div>
+        }
 
         <section className="logs-wrapper react-logs-wrapper">
             {allResolved ? 
