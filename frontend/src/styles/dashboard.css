@@ -15,9 +15,9 @@
 }
 
 .dashboard-div > aside > h1 {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   width: 260px;
   color: rgb(116,115,120);
 }
@@ -47,19 +47,29 @@
   width: 260px;
   background-color: white;
   text-decoration: none;
-  color: rgb(29,96,139);
+  color: white;
   font-weight: 800;
   cursor: pointer;
 }
 
 .dashboard-div > aside > ul > li.complete {
-  background-color: rgb(163, 244, 145);
-  box-shadow: inset 0 0 3px rgb(22, 48, 14);
+  background-color: rgb(162, 228, 77);
+  text-shadow: 0 0 2px rgb(77, 77, 77);
+  box-shadow: inset 0 0 3px  rgb(124, 201, 24);
+}
+
+.dashboard-div > aside > ul > li.complete > div > div.icon {
+  background-color: rgb(194, 250, 119);
 }
 
 .dashboard-div > aside > ul > li.incomplete {
-  background-color: rgb(252, 188, 188);
-  box-shadow: inset 0 0 3px rgb(49, 15, 15);
+  background-color: rgb(241, 115, 99);
+  text-shadow: 0 0 2px rgb(77, 77, 77);
+  box-shadow: inset 0 0 3px rgb(255, 48, 48);
+}
+
+.dashboard-div > aside > ul > li.incomplete > div > div.icon {
+  background-color: rgb(255, 164, 152);
 }
 
 .dashboard-div > aside > ul > li > div {
@@ -94,7 +104,7 @@
 }
 
 .dashboard-div > main {
-  padding-top: 30px;
+  padding-top: 44px;
   padding-left: 50px;
   position: relative;
   z-index: 5;
@@ -103,9 +113,9 @@
 .toggle-entry-form {
   border: none;
   border-radius: 5px;
-  box-shadow: 0 0 4px rgb(49,49,49);
-  background-color: rgb(193, 193, 193);
-  color: white;
+  box-shadow: 0 0 3px rgb(49,49,49);
+  background-color: white;
+  color: rgb(148,150,159);
   margin-right: 40px;
   display: flex;
   flex-direction: column;
@@ -117,9 +127,9 @@
 .toggle-entry-form > button {
   position: relative;
   border: none;
-  box-shadow: 0 0 7px rgb(49,49,49);
+  box-shadow: 0 0 3px rgb(49,49,49);
   border-radius: 5px;
-  background-color: rgb(79,167,51);
+  background-color: rgb(53,133,247);
   color: white;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   font-weight: 900;
@@ -129,12 +139,16 @@
   cursor: pointer;
 }
 
+.toggle-entry-form > button:hover {
+  background-color: rgb(10, 109, 247);
+  transition: 0.3s;
+}
+
 .toggle-entry-form > :nth-child(2) {
   margin-top: 20px;
   margin-bottom: 20px;
   font-weight: 800;
   font-size: 18px;
-  text-shadow: 0 0 3px rgb(49,49,49);
 }
 
 .correlation-preview {

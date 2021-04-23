@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import IconButton from "../util/icon_button"
 import { faCheckCircle, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import '../../styles/entry_form.css';
 
 
 export default function AddEntryForm({updateVariable, variables, defaultVar}) {
