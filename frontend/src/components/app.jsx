@@ -13,6 +13,7 @@ import VariableIndexContainer from "./variables/variables_index_container"
 import PageNotFound from './static_pages/page_not_found';
 import Splash from './static_pages/splash';
 import VariablesIndexContainer from "./variables/variables_index_container";
+import Empty from './static_pages/empty';
 
 window.axios = axios;
 
@@ -28,6 +29,7 @@ export default function App(){
         <AuthRoute exact path='/' component={Splash}/>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer}/>
+        <ProtectedRoute exact path="/variables" component={Empty}/>
 
         <ProtectedRoute exact path="/variables/:variableId" component={VariablePageContainer}/>
         <ProtectedRoute exact path="/correlations/:correlationId" component={CorrelationPageContainer}/>
