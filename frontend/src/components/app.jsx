@@ -37,9 +37,6 @@ export default function App(){
           <Redirect to="/dashboard"/>
         </Route>  
         <Route path='*' component={PageNotFound}/>
-        <Route >
-          
-        </Route>
       </Switch>
     </div>
   );
