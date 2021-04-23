@@ -4,6 +4,7 @@ import { createVariable } from "../../actions/variables_actions";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
 import '../../styles/var_page.css';
+import Chart from '../charts/chart';
 
 import Log from "./log";
 import AddEntryFormContainer from "../util/add_entry_form_container";
@@ -26,7 +27,9 @@ export default function VariablePage({
   }
 
   const [_name, _setName] = useState(variable.name || '');
+  const [_id, _setId] = useState(variable.id || '');
   const [_unit, _setUnit] = useState(variable.unit || SYMBOL_BOOLEAN);
+  
   const [_metricUnit, _setMetricUnit] = useState(
     (variable.unit && typeof variable.unit !== 'symbol') ?
       variable.unit : ''
@@ -133,11 +136,16 @@ export default function VariablePage({
         <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
         {_toggleForm && <AddEntryFormContainer defaultVar={variable || null} parentSetToggle={_setToggleForm.bind(this)}/>}
       </section>
+        {/* **************************************************************** */}
       <section className='var-graph-holder'>
-        <div>
-          this is where the graph will go
+        <div className='graph-container'>
+          {/* <Chart variables={[, ""]}/> */}
         </div>
+        {/* <div>
+          this is where the graph will go
+        </div> */}
       </section>
+        {/* **************************************************************** */}
       <form onSubmit={handleSubmit}>
         <input className="input variable-input variable-name"
           type="text" value={_name} placeholder="Enter habit name"
