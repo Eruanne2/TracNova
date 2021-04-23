@@ -74,7 +74,7 @@ function SignupForm({signup, errors, history, currentUser, clearSessionErrors}){
             <section className="login-form">
               <div className="login-form-head">
                 <h1>Create an Account</h1>
-                <p>Sign up to see your habits and their correlations</p>
+                <p>Sign up to see your factors and their correlations</p>
               </div>
               <form onSubmit={e => handleSubmit(e)}>
 

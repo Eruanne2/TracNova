@@ -146,7 +146,7 @@ export default function VariablePage({
         {!_selectedVar && <h1>"{_name}" History</h1>}
         {_selectedVar && <div>
           <input className="input variable-input variable-name"
-            type="text" value={_name} placeholder="Enter habit name"
+            type="text" value={_name} placeholder="Enter factor name"
             onChange={e => _setName(e.currentTarget.value)}
           />
 
@@ -216,7 +216,7 @@ export default function VariablePage({
           
         </section>
 
-        <input type="submit" value="Save habit data!"/>
+        <input type="submit" value="Save factor data!"/>
       </form>
     </section>
   )
