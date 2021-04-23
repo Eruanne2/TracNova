@@ -21,7 +21,7 @@ export default function App(){
     <div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
       <section className="indices">
-        <ProtectedRoute path="/(variables|correlations)" component={VariablesIndexContainer}/>
+        <ProtectedRoute path={['/variables', '/correlation']} component={VariablesIndexContainer}/>
         <ProtectedRoute path="/correlations" component={CorrelationsIndexContainer}/>
       </section>
       <Switch>
