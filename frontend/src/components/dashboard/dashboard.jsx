@@ -85,10 +85,8 @@ export default function Dashboard({variables}){
           }
 
           <section className='droppable-graph-box'
-                  style={{width: '400px', height: '400px', border: '2px solid red'}}
                   onDragOver={e => e.preventDefault()}
                   onDrop={handleReceiveDrop}>
-            <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
             <ul className='tab-headers'>
               <h2 onClick={e => _setWhichTab(1)}>Habits over Time</h2>
               <h2 onClick={e => _setWhichTab(2)}>Scatterplot</h2>
@@ -96,12 +94,14 @@ export default function Dashboard({variables}){
             {_whichTab === 1 && 
               <div className='tab-one'>
                 graph 1
+                <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
                 {/* make a graph using currentVar1 and currentVar2 */}
               </div>
             }
             {_whichTab === 2 && 
               <div className='tab-two'>
                 graph 2
+                <p>selectedVar: {_selectedVar.name}, _draggedVar: {_draggedVar.name}</p>
                 {/* make a graph using currentVar1 and currentVar2 */}
               </div>
             }
