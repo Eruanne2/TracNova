@@ -1,6 +1,7 @@
 div.splash-div{
   background-image: url('../images/strange_space.jpeg');
   background-size: 100%;
+  transform: scaleX(-1);
   width: 100vw;
   height: 100vh;
 }
@@ -11,9 +12,10 @@ div.splash-div > img {
   filter: drop-shadow(0px 0px 30px rgb(255, 255, 255));
   transition: filter 0.5s linear;
   z-index: 0;
-  position: absolute;
+  position: relative;
   top: 100px;
-  left: 40%;
+  left: 35%;
+  transform: scaleX(-1);
 }
 
 div.splash-div > a {
@@ -23,7 +25,11 @@ div.splash-div > a {
   letter-spacing: 5px;
   text-decoration: none;
   font-size: 30px;
-  position: absolute;
-  left: 58%;
-  top: 68%;
+  position: fixed;
+  right: 22%;
+  top: 500px;
+  z-index: 0;
+  filter: drop-shadow(0px 0px 7px rgb(255, 255, 255));
+  transition: filter 0.5s linear;
+  transform: scale(-1, 1);
 }
