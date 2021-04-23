@@ -125,10 +125,15 @@ export default function VariablePage({
 
   return (
     <section className="page variable">
-        <section className='toggle-entry-form'>
-          <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-          {_toggleForm && <AddEntryFormContainer defaultVar={variable || null}/>}
-        </section>
+      <section className='toggle-entry-form'>
+        <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
+        {_toggleForm && <AddEntryFormContainer defaultVar={variable || null}/>}
+      </section>
+      <section className='var-graph-holder'>
+        <div>
+          this is where the graph will go
+        </div>
+      </section>
       <form onSubmit={handleSubmit}>
         <input className="input variable-input variable-name"
           type="text" value={_name} placeholder="Enter habit name"
