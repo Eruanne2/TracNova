@@ -16,8 +16,6 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
   }
 
   const handleDragStart = (e, id) => {
-    console.log(1);
-    console.log(e, id);
     e.dataTransfer.setData('text/plain', id);
   }
 
