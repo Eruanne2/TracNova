@@ -1,12 +1,12 @@
 section.page.variable {
   position: absolute;
   top: 100px;
-  left: 16%;
+  left: 10%;
   border: none;
   font-family: 'Whitney';
   margin-left: 250px;
   padding-top: 75px;
-  width: 56%;
+  width: 67%;
 }
 
 section.page.variable > section.var-graph-holder {
