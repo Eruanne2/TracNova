@@ -150,7 +150,7 @@ export default function VariablePage({
       </section>
       <form onSubmit={handleSubmit}>
         {_name &&!_selectedVar && <h1>"{_name}" History</h1>}
-        {true && <div>
+        {_name &&!_selectedVar && <div>
           <input className="input variable-input variable-name"
             type="text" value={_name} placeholder="Enter factor name"
             onChange={e => _setName(e.currentTarget.value)}
@@ -179,6 +179,7 @@ export default function VariablePage({
               checked={typeof _unit !== 'symbol'}
               onChange={e => _setUnit(_metricUnit)}
             />
+          </label>
 
             Select data type:
             <label>
