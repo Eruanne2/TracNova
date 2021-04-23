@@ -75,7 +75,7 @@ function CorrelationPage({
             ))
           }
         </section>
-        { _vars.length !== 2 ? null : 
+        { _vars.length == 0 ? null : 
           <section className="analysis">
             <h2 className="title"></h2>
             <h3 className="summary">
