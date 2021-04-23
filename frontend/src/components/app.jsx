@@ -29,7 +29,7 @@ export default function App(){
         <AuthRoute exact path='/' component={Splash}/>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer}/>
-        <AuthRoute exact path="/variables" component={Empty}/>
+        <ProtectedRoute exact path="/variables" component={Empty}/>
 
         <ProtectedRoute exact path="/variables/:variableId" component={VariablePageContainer}/>
         <ProtectedRoute exact path="/correlations/:correlationId" component={CorrelationPageContainer}/>
