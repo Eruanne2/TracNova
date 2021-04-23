@@ -12,7 +12,7 @@ export const formatData = (...variables) => {
   const formDataObj = {};
   const dates = new Set(
     variables.reduce((acc, variable) => (
-      acc.concat(Object.keys(variable.dailylogs))
+      acc.concat(Object.keys(variable.dailylogs || {}))
     ), [])
   );
 

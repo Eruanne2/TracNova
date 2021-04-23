@@ -148,9 +148,10 @@ export default function VariablePage({
       </section>
         {/* **************************************************************** */}
       <section className='var-graph-holder'>
-        <div className='graph-container'>
-          <Chart variables={[variable]}/>
-        </div>
+        <Chart variables={[variable]}/>
+        {/* <div className='graph-container'>
+          
+        </div> */}
         {/* <div>
           this is where the graph will go
         </div> */}
