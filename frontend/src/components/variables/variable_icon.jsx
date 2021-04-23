@@ -1,3 +1,6 @@
+import { faChartLine, faStar, faYinYang } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import React from 'react';
 
 export default function VariableIcon({variable, onDragStart, handleClick, draggable}){
@@ -11,11 +14,14 @@ export default function VariableIcon({variable, onDragStart, handleClick, dragga
     abbreviation = name.substring(0, 2);
 
   return (
-    <div className='icon-wrapper variable' 
+    <div className='react-variable-icon icon-wrapper variable' 
       onClick={handleClick} onDragStart={onDragStart} draggable={draggable}
     >
       <div className='icon'>
-        {abbreviation}
+        <FontAwesomeIcon icon={
+          variable.unit === 'binary' ? faYinYang :
+            variable.unit === 'rating' ? faStar : faChartLine
+        }/>
       </div>
       <div className='name'>
         {name}

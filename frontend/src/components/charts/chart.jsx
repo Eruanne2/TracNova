@@ -103,7 +103,7 @@ export default function Chart({variables}){
   const metadataArr = Object.entries(metadataObj);
 
   return (
-    <ResponsiveContainer className="chartPrice" width={800} height={400}>
+    <ResponsiveContainer className="chartPrice" width={"100%"} height={400}>
       <ComposedChart
         width={500}
         height={300}
