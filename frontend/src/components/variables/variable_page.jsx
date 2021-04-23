@@ -35,6 +35,7 @@ export default function VariablePage({
   const [_range, _setRange] = useState();
   const [_edit, _setEdit] = useState();
   const [_toggleForm, _setToggleForm] = useState(false);
+  const [_dateMapping, _setDateMapping] = useState({});
 
   const allResolved = _dailylogs[_edit] === undefined
   
@@ -87,6 +88,12 @@ export default function VariablePage({
       if (!window.confirm(
         `You are about to overwrite a previous log on ${newDate}.\nCurrent value: ${logs[newDate]}\nNew value: ${value}\nAre you sure?`
       )) return false;
+    console.log(newDate, date)
+    if (newDate !== date){
+      console.log(_dateMapping)
+      let origDate = Object.values(_dateMapping)[0];
+      _setDateMapping({[newDate]: origDate || date});
+    }
 
     if (String(_edit) === date){
       _setEdit(newDate);
@@ -97,6 +104,7 @@ export default function VariablePage({
 
     setRange();
     _setDailylogs(logs)
+    
   }
   
   const handleDeleteLogCreator = date => () => {
@@ -113,8 +121,9 @@ export default function VariablePage({
     // newEntryRef.current = undefined;
     
     if (_dailylogs[undefined] !== undefined) 
-      alert('All records must be properly dated.');
+    alert('All records must be properly dated.');
     else {
+      _setDateMapping({});
       _setEdit(undefined)
     }
   }
@@ -122,11 +131,11 @@ export default function VariablePage({
   const handleCreateLog = () => {
     const today = dateToMDY(new Date());
     const date = _dailylogs[today] === undefined ? today : undefined;
-    
+    _setDateMapping({[date]: date});
     _setDailylogs({..._dailylogs, [date]: 0});
     _setEdit(date);
   }
-  
+
   return (
     <section className="page variable">
       <section className='toggle-entry-form'>
@@ -189,8 +198,8 @@ export default function VariablePage({
           <ul className="logs react-logs">
             { Object.entries(_dailylogs)
                 .sort((a, b) => 
-                  (new Date(a[0]).getTime() || 0) - 
-                  (new Date(b[0]).getTime() || 0)
+                  (new Date(_dateMapping[a[0]] || a[0] ).getTime() || 0) - 
+                  (new Date(_dateMapping[b[0]] || b[0] ).getTime() || 0)
                 )
                 .map(([date, count]) => (
                   <Log key={date} 
