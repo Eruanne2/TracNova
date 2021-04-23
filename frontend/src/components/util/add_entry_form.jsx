@@ -18,7 +18,6 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
     e.preventDefault();
     let newVar = Object.assign({}, _variable);
     newVar.dailylogs[getToday()] = _todayVal;
-    debugger
     updateVariable(newVar);
   };
 
