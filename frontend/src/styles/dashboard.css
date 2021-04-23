@@ -72,6 +72,10 @@
   background-color: rgb(255, 164, 152);
 }
 
+.dashboard-div > aside > ul > li.selected-var {
+  color: white;
+}
+
 .dashboard-div > aside > ul > li > div {
   margin-left: 15px;
   display: flex;
@@ -164,7 +168,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .correlation-preview > h1 {
@@ -179,4 +183,37 @@
   margin-bottom: 20px;
   margin-left: 20px;
   margin-right: 20px
+}
+
+.droppable-graph-box {
+  width: 700px;
+  height: 400px;
+}
+
+.droppable-graph-box > ul.tab-headers {
+  padding-left: 40px;
+}
+
+.droppable-graph-box > ul.tab-headers > h2 {
+  display: inline-block;
+  padding-right: 20px;
+  border: 1px solid rgb(73, 121, 255);
+  border-bottom: none;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 5px 10px;
+}
+
+.droppable-graph-box > ul.tab-headers > h2.selected-tab {
+  box-shadow: 0 3px 0px rgb(226, 253, 255);
+}
+
+.droppable-graph-box > .tab-one, .droppable-graph-box > div.tab-two {
+  width: 100%;
+  border-top: 1px solid rgb(73, 121, 255);
+  border-top-left-radius: 0;
+}
+
+.droppable-graph-box div.graph-container {
+  margin: 20px 40px
 }

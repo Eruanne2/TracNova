@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import IconButton from "../util/icon_button"
 import { faCheckCircle, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import '../../styles/entry_form.css';
+import { dateToMDY } from '../../util/converters';
 
 
 export default function AddEntryForm({updateVariable, variables, defaultVar}) {
@@ -33,17 +34,11 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
     _setTodayVal(e.currentTarget.value);
   };
 
-  const getYesterday = () => {
-    let date = new Date();
-    let dateString = ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + (date.getDate() - 1)).slice(-2) + '/' + date.getFullYear();
-    return dateString;
-  };
+  const getYesterday = () => 
+    dateToMDY(new Date(new Date().getTime() - 86400000));
 
-  const getToday = () => {
-    let date = new Date();
-    let dateString = ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + date.getFullYear();
-    return dateString;
-  }
+  const getToday = () => 
+    dateToMDY(new Date());
 
   const getCustomInput = variable => {
     if (!variable) return null;
@@ -68,7 +63,8 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
           />
           <input className="input range react-log-input"
               type="range" value={_todayVal} step="1"
-              min={Math.min(...Object.values(variable.dailylogs)) - 10} max={Math.max(...Object.values(variable.dailylogs)) + 10}
+              min={Math.max(Math.min(...Object.values(variable.dailylogs)) - 10, 0)}
+              max={Math.max(...Object.values(variable.dailylogs)) + 10}
               onChange={updateVal}
             />
           <IconButton className="button range-button" 

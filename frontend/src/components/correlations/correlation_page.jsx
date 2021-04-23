@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AddCorrelationContainer from "./add_correlation_container";
-import CorrelationChart from "./correlation_chart"
-import CorrelationButtons from "./correlation_buttons"
-import CorrelationChartContainer from "./correlation_chart_container";
 import LogsWrapperContainer from "../variables/logs_wrapper_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -10,9 +7,12 @@ import VariableIcon from "../variables/variable_icon";
 import ChartMetrics from "./chart_permutations/chart_metrics";
 import * as StatUtil from "../../util/stat_util";
 import AddEntryFormContainer from '../util/add_entry_form_container';
+import Chart from "../chart/chart";
 
 const nullCorrelation = {};
 
+
+//************************************************************
 function VariableDropArea({handleReceiveVarId, variable}){
   return (
     <div className="variable-drop"
@@ -25,7 +25,9 @@ function VariableDropArea({handleReceiveVarId, variable}){
     }</div>
   );
 }
+// ***********************************************************
   
+
 function CorrelationPage({
   allVariables,
   variables = [],
@@ -49,6 +51,8 @@ function CorrelationPage({
     }
   }, [allVariables]);
 
+
+  // ******************************************************************************
   const handleReceiveVarIdCreator = i => e => {
     const variable = allVariables[e.dataTransfer.getData('text/plain')];
     const arr = [..._vars];
@@ -58,6 +62,7 @@ function CorrelationPage({
       _setVars(arr)
     }
   }
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   return (
     <section className="page correlation">
@@ -66,6 +71,7 @@ function CorrelationPage({
           {_toggleForm && <AddEntryFormContainer defaultVar={null}/>}
         </section>
       <section>
+        {/* ************************************************************** */}
         <section>
           { [0, 1].map(i => (
               <section key={i} className='drop-area variables-drop-area'>
@@ -77,6 +83,8 @@ function CorrelationPage({
             ))
           }
         </section>
+        {/* ************************************************************** */}
+
         { _vars.length !== 2 ? null : 
           <section className="analysis">
             <h2 className="title"></h2>
@@ -85,7 +93,7 @@ function CorrelationPage({
                 StatUtil.getCorrelationCoefficient(..._vars)
               }
             </h3>
-            <ChartMetrics variables={_vars}/>
+            <Chart variables={_vars}/>
           </section>
         }
 
