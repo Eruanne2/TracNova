@@ -5,8 +5,8 @@ section.page.variable {
   border: none;
   font-family: 'Franklin Gothic Medium', 'Arial Wide', Arial, sans-serif;
   margin-left: 250px;
-  padding-top: 20px;
-  width: 48%;
+  padding-top: 75px;
+  width: 45%;
 }
 
 section.page.variable > form:first-of-type {

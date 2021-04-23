@@ -10,9 +10,10 @@
 }
 
 .variables-index > h1 {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 5px;
   width: 260px;
   color: rgb(116,115,120);
 }
