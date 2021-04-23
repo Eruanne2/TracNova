@@ -29,7 +29,7 @@ export default function Dashboard({variables}){
   const _completed = (variable) => {
     let date = new Date();
     let dateString = ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + date.getFullYear();
-    return (!!variable.dailylogs[dateString]);
+    return (variable.dailylogs[dateString] !== undefined);
   };
 
   const handleLiClick = (variable) => {
