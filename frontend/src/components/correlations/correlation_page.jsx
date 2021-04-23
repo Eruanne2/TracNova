@@ -62,7 +62,7 @@ function CorrelationPage({
     <section className="page correlation">
         <section className='toggle-entry-form'>
           <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-          {_toggleForm && <AddEntryFormContainer defaultVar={null}/>}
+          {_toggleForm && <AddEntryFormContainer defaultVar={null} parentSetToggle={_setToggleForm.bind(this)}/>}
         </section>
       <section>
         <section>

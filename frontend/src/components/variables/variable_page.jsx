@@ -131,7 +131,7 @@ export default function VariablePage({
     <section className="page variable">
       <section className='toggle-entry-form'>
         <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-        {_toggleForm && <AddEntryFormContainer defaultVar={variable || null}/>}
+        {_toggleForm && <AddEntryFormContainer defaultVar={variable || null} parentSetToggle={_setToggleForm.bind(this)}/>}
       </section>
       <section className='var-graph-holder'>
         <div>

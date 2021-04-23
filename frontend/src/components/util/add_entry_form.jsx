@@ -6,7 +6,7 @@ import '../../styles/entry_form.css';
 import { dateToMDY } from '../../util/converters';
 
 
-export default function AddEntryForm({updateVariable, variables, defaultVar}) {
+export default function AddEntryForm({updateVariable, variables, defaultVar, parentSetToggle}) {
   const [_variable, _setVariable] = useState(defaultVar);
   const [_todayVal, _setTodayVal] = useState(0);
   
@@ -16,9 +16,11 @@ export default function AddEntryForm({updateVariable, variables, defaultVar}) {
   
   const handleSubmit = e => {
     e.preventDefault();
+    if (!_variable) return;
     let newVar = Object.assign({}, _variable);
     newVar.dailylogs[getToday()] = _todayVal;
     updateVariable(newVar);
+    parentSetToggle(false);
   };
 
   const submitYesterday = e => {
