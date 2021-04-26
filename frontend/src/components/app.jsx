@@ -14,6 +14,7 @@ import PageNotFound from './static_pages/page_not_found';
 import Splash from './static_pages/splash';
 import VariablesIndexContainer from "./variables/variables_index_container";
 import Empty from './static_pages/empty';
+import MeetTheTeam from './static_pages/meet_the_team';
 
 window.axios = axios;
 
@@ -30,6 +31,7 @@ export default function App(){
         <ProtectedRoute path="/correlations" component={CorrelationsIndexContainer}/>
       </section>
       <Switch>
+        <Route exact path='/meet-the-team' component={MeetTheTeam}/>
         <AuthRoute exact path='/' component={Splash}/>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer}/>

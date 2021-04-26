@@ -1,0 +1,42 @@
+.meet-the-team {
+  font-family: 'Whitney';
+}
+
+.meet-the-team > h1 {
+  font-size: 40px;
+  width: 400px;
+  text-align: center;
+  margin: 70px auto;
+}
+
+.meet-the-team img {
+  border-radius: 10px;
+}
+
+.meet-the-team > ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.meet-the-team > ul > li {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meet-the-team > ul > li > h2 {
+  font-size: 25px;
+  padding: 25px;
+  border-bottom: 1px solid black;
+  font-weight: 700;
+}
+
+.meet-the-team > ul > li > h3 {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.meet-the-team img.social-logo {
+  margin: 0 20px;
+}

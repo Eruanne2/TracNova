@@ -15,9 +15,15 @@ function AppMenu({history, variables, logout}){
   return (
     <section className="modal app-menu-nav dropdown-menu">
       <section className="app-menu dropdown-menu">
-        <Link to="/">
-          <img src={logo} className="logo" alt="logo"/>
-        </Link>
+        <ul>
+          <li><Link to="/">
+              <img src={logo} className="logo" alt="logo"/>
+            </Link>
+          </li>
+          <li>
+            <Link to='/meet-the-team'>Meet the Team</Link>
+          </li>
+        </ul>
         <ul>
           <li className="menu-item">
             <NavLink activeClassName="selected" to='/variables'>Factors</NavLink>
