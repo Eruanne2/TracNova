@@ -11,7 +11,7 @@
 .dashboard-div > aside {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
+  margin-bottom: 100px;
 }
 
 .dashboard-div > aside > h1 {
@@ -23,9 +23,6 @@
 }
 
 .dashboard-div > aside > ul {
-  width: 260px;
-  height: 100%;
-  /* border: none; */
   margin-top: 15px;
   position: relative;
   border: 1px solid #ddd;  
