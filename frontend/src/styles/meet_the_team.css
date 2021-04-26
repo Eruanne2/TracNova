@@ -1,0 +1,16 @@
+.meet-the-team > h1 {
+  font-size: 40px;
+}
+
+.meet-the-team > ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.meet-the-team > ul > li {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: blue;
+}
