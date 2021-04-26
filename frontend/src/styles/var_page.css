@@ -27,7 +27,7 @@ section.page.variable > section.var-graph-holder {
 
 section.page.variable > form:first-of-type {
   position: relative;
-  margin-top: 30px;
+  margin: 30px 0;
   padding: 40px;
   border: none;
   border-radius: 5px;
