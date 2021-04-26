@@ -29,6 +29,7 @@ export default function VariablePage({
   const [_selectedVar, _setSelectedVar] = useState('');
   const [_id, _setId] = useState(variable.id || '');
   const [_unit, _setUnit] = useState(variable.unit || SYMBOL_BOOLEAN);
+  const [_formError, _setFormError] = useState('');
   
   const [_metricUnit, _setMetricUnit] = useState(
     (variable.unit && typeof variable.unit !== 'symbol') ?
@@ -46,9 +47,8 @@ export default function VariablePage({
     const valArr = Object.values(_dailylogs || {});
 
     if (valArr.length === 0) return;
-
     let min = Math.min(...valArr), max = Math.max(...valArr);
-    
+
     if ( max - min < 10 ){
       min = Math.max(0, min - ((10 - max + min) >> 1));
       max = min + 10;
@@ -65,6 +65,7 @@ export default function VariablePage({
     _setName(variable.name || '');
     _setUnit(variable.unit || SYMBOL_BOOLEAN);
     _setDailylogs(Object.assign({}, variable.dailylogs || {}));
+    _setFormError('')
   }, [variable]);
 
   const handleSubmit = (e) => {
@@ -77,11 +78,18 @@ export default function VariablePage({
         (_unit === SYMBOL_RATING ? 'rating' : _unit), 
       dailylogs: _dailylogs
     };
+
+    if (JSON.stringify(varData.dailylogs) === '{}') {
+      _setFormError('Please add at least one record for this variable.')
+      return;
+    }
     
     if (variable._id)
       updateVariable({...varData, _id: variable._id})
     else
       createVariable(varData);
+    _setFormError('')
+    
   }
 
   const handleChangeLogCreator = date => ({date: newDate, value}) => {
@@ -139,19 +147,20 @@ export default function VariablePage({
     _setEdit(date);
   }
 
+  
   return (
     <section className="page variable">
       <section className='toggle-entry-form'>
         <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
         {_toggleForm && <AddEntryFormContainer defaultVar={variable || null} parentSetToggle={_setToggleForm.bind(this)}/>}
       </section>
-      {_name && !_selectedVar &&
+      {!!variable._id &&
         <section className='var-graph-holder'>
           <Chart variables={[variable]}/>
         </section>
       }
       <form onSubmit={handleSubmit}>
-        {_name && !_selectedVar ?
+        {!!variable._id ?
          <h1>"{_name}" History</h1>
          : 
          <div>
@@ -226,6 +235,7 @@ export default function VariablePage({
           
         </section>
 
+        <span>{!variable._id && _formError}</span>
         <input type="submit" value="Save factor data!"/>
       </form>
     </section>
