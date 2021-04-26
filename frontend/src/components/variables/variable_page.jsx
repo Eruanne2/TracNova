@@ -14,9 +14,11 @@ const SYMBOL_BOOLEAN = Symbol.for('boolean');
 const SYMBOL_RATING = Symbol.for('rating');
 
 export default function VariablePage({
+  history,
   variable = nullVariable,
   currentUser, 
-  createVariable, updateVariable
+  createVariable, updateVariable,
+  allVariables
 }){
   if (variable.unit && typeof variable.unit === 'string'){
     if (["boolean", "binary"].includes(variable.unit.toLowerCase()))
@@ -78,18 +80,24 @@ export default function VariablePage({
         (_unit === SYMBOL_RATING ? 'rating' : _unit), 
       dailylogs: _dailylogs
     };
-
+    
     if (JSON.stringify(varData.dailylogs) === '{}') {
-      _setFormError('Please add at least one record for this variable.')
+      _setFormError('Please add at least one record for this variable.');
+      return;
+    }
+
+    if (varData.name === '') {
+      _setFormError('Please enter a factor name.');
       return;
     }
     
     if (variable._id)
       updateVariable({...varData, _id: variable._id})
     else
-      createVariable(varData);
+      createVariable(varData)
+    history.push(`/variables/${Object.keys(allVariables)[0]}`) // change this to redirect to newly created variable
     _setFormError('')
-    
+
   }
 
   const handleChangeLogCreator = date => ({date: newDate, value}) => {

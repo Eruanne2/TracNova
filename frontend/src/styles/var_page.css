@@ -97,6 +97,11 @@ section.page.variable > form:first-of-type  label + input {
   width: 200px;
 }
 
+section.page.variable > form:first-of-type span {
+  color: rgb(255, 34, 34);
+  font-weight: 700;
+}
+
 section.logs-wrapper.react-logs-wrapper > :first-child {
   margin-top: 20px;
   margin-bottom: 0px;
