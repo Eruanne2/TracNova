@@ -145,9 +145,11 @@ export default function VariablePage({
         <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
         {_toggleForm && <AddEntryFormContainer defaultVar={variable || null} parentSetToggle={_setToggleForm.bind(this)}/>}
       </section>
-      <section className='var-graph-holder'>
-        <Chart variables={[variable]}/>
-      </section>
+      {_name && !_selectedVar &&
+        <section className='var-graph-holder'>
+          <Chart variables={[variable]}/>
+        </section>
+      }
       <form onSubmit={handleSubmit}>
         {_name && !_selectedVar ?
          <h1>"{_name}" History</h1>
