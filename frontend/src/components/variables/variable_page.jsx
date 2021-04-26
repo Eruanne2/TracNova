@@ -149,38 +149,14 @@ export default function VariablePage({
         <Chart variables={[variable]}/>
       </section>
       <form onSubmit={handleSubmit}>
-        {_name &&!_selectedVar && <h1>"{_name}" History</h1>}
-        {true && <div>
+        {_name && !_selectedVar ?
+         <h1>"{_name}" History</h1>
+         : 
+         <div>
           <input className="input variable-input variable-name"
             type="text" value={_name} placeholder="Enter factor name"
             onChange={e => _setName(e.currentTarget.value)}
           />
-
-          Select data type:
-          <label>
-            <input className="input variable-input variable-unit"
-              type="radio" name="unit" value="boolean"
-              checked={_unit === SYMBOL_BOOLEAN}
-              onChange={e => _setUnit(SYMBOL_BOOLEAN)}
-            />
-            Yes/No
-          </label>
-          <label>
-            <input className="input variable-input variable-unit"
-              type="radio" name="unit" value="rating"
-              checked={_unit === SYMBOL_RATING}
-              onChange={e => _setUnit(SYMBOL_RATING)}
-            />
-            Rating
-          </label>
-          <label>
-            <input className="input variable-input variable-unit"
-              type="radio" name="unit" value={"metric"} 
-              checked={typeof _unit !== 'symbol'}
-              onChange={e => _setUnit(_metricUnit)}
-            />
-          </label>
-
             Select data type:
             <label>
               <input className="input variable-input variable-unit"
