@@ -3,8 +3,9 @@
 }
 
 .meet-the-team > h1 {
-  font-size: 40px;
-  width: 400px;
+  font-family: 'Kalam', cursive;
+  font-size: 60px;
+  width: 700px;
   text-align: center;
   margin: 70px auto;
 }
