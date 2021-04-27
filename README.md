@@ -47,4 +47,5 @@ gif here
 
 # Lessons Learned
 ## Database Design
+* To update a nested object value of the field in a document, simply making changes to the nested object by mutating it will not persist in the database when the document is saved. The nested object value needs to be duplicated, updated, then reassigned to the field before saving the document.
 ## Work Delegation
