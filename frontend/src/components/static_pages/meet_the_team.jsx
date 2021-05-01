@@ -43,9 +43,9 @@ export default function MeetTheTeam() {
         </li>
 
         <li>
-          <img src={justinCheasty} className="member-photo" alt="Justin Cheasty, Graphics Lead" height="200"/>
+          <img src={justinCheasty} className="member-photo" alt="Justin Cheasty, Design Lead" height="200"/>
           <h2>Justin Cheasty</h2>
-          <h3>Graphics Lead</h3>
+          <h3>Design Lead</h3>
           <div>
             <a href="https://github.com/justinnnnnnnn"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
             <a href="https://www.linkedin.com/in/justin-cheasty-2a521a14/"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
