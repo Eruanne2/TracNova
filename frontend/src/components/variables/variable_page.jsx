@@ -17,8 +17,7 @@ export default function VariablePage({
   history,
   variable = nullVariable,
   currentUser, 
-  createVariable, updateVariable,
-  allVariables
+  createVariable, updateVariable, allVariables
 }){
   if (variable.unit && typeof variable.unit === 'string'){
     if (["boolean", "binary"].includes(variable.unit.toLowerCase()))
@@ -94,13 +93,8 @@ export default function VariablePage({
     if (variable._id)
       updateVariable({...varData, _id: variable._id})
     else {
-      debugger
-      createVariable(varData)//.then(res => {debugger});
+      createVariable(varData).then(res => history.push(`/variables/${res.variable._id}`));
     }
-    
-    _setFormError('')
-    setTimeout(() => history.push(`/variables/${Object.keys(allVariables)[Object.keys(allVariables).length-1]}`), 1000) // change this to redirect to newly created variable
-
   }
 
   const handleChangeLogCreator = date => ({date: newDate, value}) => {

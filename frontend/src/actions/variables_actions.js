@@ -28,31 +28,31 @@ export const receiveVariableErrors = errors => ({
 // thunk creators
 
 export const fetchVariable = varId => dispatch => {
-  APIUtil.getVariableById(varId)
+  return APIUtil.getVariableById(varId)
     .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const fetchUserVariables = userId => dispatch => {
-  APIUtil.getUserVariables(userId)
+  return APIUtil.getUserVariables(userId)
     .then(res => dispatch(receiveUserVariables(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const createVariable = varData => dispatch => {
-  APIUtil.postVariable(varData)
+  return APIUtil.postVariable(varData)
     .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const addVariableEntry = entryData => dispatch => {
-  APIUtil.patchVariableEntry(entryData)
+  return APIUtil.patchVariableEntry(entryData)
     .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const updateVariable = varData => dispatch => {
-  APIUtil.patchVariable(varData)
+  return APIUtil.patchVariable(varData)
   .then(res => {
     dispatch(receiveVariable(res.data));
   })
