@@ -61,21 +61,40 @@
   border-top: 1px solid rgb(116,115,120);
 }
 
-.variables-index > ul > li > div:last-of-type {
+.variables-index > ul > li a > svg.fa-trash {
   position: absolute;
   right: 10px;
   top: 20px;
   cursor: pointer;
   font-weight: 800;
-  color: rgb(205, 0, 0);
   z-index: 10;
 }
 
-.variables-index > ul > li > div:last-of-type:hover {
-  color:rgb(255, 34, 34);
+svg.fa-trash {
+  color: rgb(160, 0, 15);
 }
 
-a.var-item-link {
+svg.fa-pen {
+  color: rgb(15, 80, 120);
+}
+
+svg.fa-check-circle{
+  color: #1f9c34;
+}
+
+a:hover svg.fa-trash {
+  color: rgb(208, 0, 48);
+}
+
+a:hover svg.fa-pen {
+  color: rgb(15, 120, 208);
+}
+
+a:hover svg.fa-check-circle{
+  color: #06b624;
+}
+
+.var-item-link {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -89,12 +108,12 @@ a.var-item-link {
   font-weight: 800;
 }
 
-a.var-item-link:hover {
+.var-item-link:hover {
   background-color: rgb(231,243,254);
   transition: 0.3s;
 }
 
-a.var-item-link > div {
+.var-item-link > .react-variable-icon {
   margin-left: 15px;
   display: flex;
   flex-direction: row;
@@ -103,11 +122,11 @@ a.var-item-link > div {
   width: 260px;
 }
 
-a.var-item-link > div > div {
+.var-item-link > .react-variable-icon > div {
   margin-right: 10px;
 }
 
-a.var-item-link > div > div.icon {
+.var-item-link > .react-variable-icon > .icon {
   border: none;
   box-shadow: 0 0 3px rgb(49,49,49);
   border-radius: 20px;
@@ -118,7 +137,7 @@ a.var-item-link > div > div.icon {
   align-items: center;
 }
 
-a.var-item-link > div > div.name {
+.var-item-link > .react-variable-icon > a.name {
   width: 140px;
   white-space: nowrap;
   overflow: hidden;

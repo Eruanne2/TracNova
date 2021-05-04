@@ -105,11 +105,14 @@
   cursor: pointer;
 }
 
+.react-log{
+  user-select: none;
+}
 input.range.react-log-input {
   height: 30px;
   outline: none;
   border: 1px solid rgb(155, 155, 155);
-  background-color: rgb(230,230,230);
+  background-color: #fff;
   border-radius: 5px;
   margin: 0 10px;
   text-align: center;
