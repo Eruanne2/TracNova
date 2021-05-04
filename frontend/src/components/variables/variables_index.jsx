@@ -33,10 +33,10 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
         </NavLink>
         { variables.map(variable => (
             <li key={variable._id}>
-              <NavLink activeClassName="selected" className="var-item-link"
+              <NavLink activeClassName="selected" className="var-item-link" as="div"
                 to={`/variables/${variable._id}`}
               >
-              <VariableIcon variable={variable} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
+                <VariableIcon variable={variable} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
               </NavLink>
               <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>
             </li>

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import React from 'react';
 
-export default function VariableIcon({variable, onDragStart, handleClick, draggable}){
+export default function VariableIcon({variable, onDragStart, handleClick, draggable, completed}){
   const {name} = variable;
   let abbreviation;
   const match = name.match(/^(\s+)?(\w+\s+)+(\w+)?/g);
@@ -16,14 +16,15 @@ export default function VariableIcon({variable, onDragStart, handleClick, dragga
   return (
     <div className='react-variable-icon icon-wrapper variable' 
       onClick={handleClick} onDragStart={onDragStart} draggable={draggable}
+      title="Drag onto the chart to reveal the correlation"
     >
-      <div className='icon'>
+      <div className='icon' title={completed ? '' : `The record is incomplete. Please enter today's entry`}>
         <FontAwesomeIcon icon={
           variable.unit === 'binary' ? faYinYang :
             variable.unit === 'rating' ? faStar : faChartLine
         }/>
       </div>
-      <div className='name'>
+      <div className='name' >
         {name}
       </div>
     </div>
