@@ -232,8 +232,8 @@ ul.logs.react-logs > div.react-log > div{
 
 .react-logs-wrapper > .button.react-icon-button {
   width: 130px;
+}
 
 .button.react-icon-button {
-
   cursor: pointer;
 }
