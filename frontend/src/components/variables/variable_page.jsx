@@ -69,11 +69,12 @@ export default function VariablePage({
     _setUnit(variable.unit || SYMBOL_BOOLEAN);
     _setDailylogs(Object.assign({}, variable.dailylogs || {}));
     _setFormError('')
+    _setChanged(false);
   }, [variable]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     const varData = {
       user: currentUser.id,
       name: _name, 

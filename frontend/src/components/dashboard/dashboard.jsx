@@ -5,6 +5,7 @@ import AddEntryFormContainer from '../util/add_entry_form_container';
 import "../../styles/dashboard.css";
 import Chart from '../charts/chart';
 import ScatteredChart from '../charts/scattered_chart';
+import { completed } from '../../util/converters';
 
 export default function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
@@ -25,12 +26,6 @@ export default function Dashboard({variables}){
   useEffect(() => {
     _setSelectedVar(Object.values(variables)[0] || '')
   }, [variables]);
-  
-  const _completed = (variable) => {
-    let date = new Date();
-    let dateString = ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + date.getFullYear();
-    return (variable.dailylogs[dateString] !== undefined);
-  };
 
   const handleLiClick = (variable) => {
     return e => {
@@ -73,10 +68,10 @@ export default function Dashboard({variables}){
           {Object.values(variables).map((variable, idx) => (
             <li key={idx} onClick={handleLiClick(variable)}
                 className={
-                  `${_completed(variable) ? 'complete' : 'incomplete'} 
+                  `${completed(variable) ? 'complete' : 'incomplete'} 
                   ${variable._id === _selectedVar._id && 'selected-var'}`
                 }>
-              <VariableIcon variable={variable} draggable={true} completed={_completed(variable)} onDragStart={e => handleDragStart(e, variable._id)}/>
+              <VariableIcon variable={variable} draggable={true} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)}/>
             </li>
           ))}
         </ul>

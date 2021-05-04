@@ -18,14 +18,15 @@
   color: rgb(116,115,120);
 }
 
-.variables-index > ul {
+/* .variables-index > ul {
   width: 260px;
   padding: 0px;
   height: 100%;
   border: 1px solid rgb(116,115,120);
   margin-top: 15px;
   position: relative;
-}
+  
+} */
 
 .variables-index > ul > a.button.variable-button {
   text-decoration: none;
@@ -50,15 +51,19 @@
 }
 
 .variables-index > ul > li {
-  position: relative;
+  /* position: relative;
   list-style: none;
   border-bottom: 1px solid rgb(116,115,120);
   height: 55px;
-  display: flex;
+  display: flex; */
 }
 
 .variables-index > ul > li:first-of-type {
-  border-top: 1px solid rgb(116,115,120);
+  /* border-top: 1px solid rgb(116,115,120); */
+}
+
+.variables-index > ul > li > a.selected{
+  background-color: #acd4e5;
 }
 
 .variables-index > ul > li a > svg.fa-trash {
