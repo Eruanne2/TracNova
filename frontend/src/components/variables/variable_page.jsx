@@ -93,10 +93,13 @@ export default function VariablePage({
     
     if (variable._id)
       updateVariable({...varData, _id: variable._id})
-    else
-      createVariable(varData)
-    history.push(`/variables/${Object.keys(allVariables)[0]}`) // change this to redirect to newly created variable
+    else {
+      debugger
+      createVariable(varData)//.then(res => {debugger});
+    }
+    
     _setFormError('')
+    setTimeout(() => history.push(`/variables/${Object.keys(allVariables)[Object.keys(allVariables).length-1]}`), 1000) // change this to redirect to newly created variable
 
   }
 
