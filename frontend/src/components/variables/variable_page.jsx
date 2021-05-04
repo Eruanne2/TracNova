@@ -73,9 +73,6 @@ export default function VariablePage({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let err_message = document.querySelector('.delete_err');
-    err_message.classList.add('hidden');
-
     const varData = {
       user: currentUser.id,
       name: _name, 
@@ -135,15 +132,11 @@ export default function VariablePage({
         delete logs[date];
       _setDailylogs(logs);
     } else {
-      let err_message = document.querySelector('.delete_err');
-      err_message.classList.remove('hidden');
-      setTimeout(() => err_message.classList.add('hidden'), 3000);
+      _setFormError("Factor must have at least one date record.");
     }
   }
 
   const handleLogEditModeCreator = date => () => {
-    let err_message = document.querySelector('.delete_err');
-    err_message.classList.add('hidden');
     _setEdit(date);
   }
   
@@ -161,8 +154,6 @@ export default function VariablePage({
   const handleCreateLog = () => {
     const today = dateToMDY(new Date());
     const date = _dailylogs[today] === undefined ? today : undefined;
-    let err_message = document.querySelector('.delete_err');
-    err_message.classList.add('hidden');
     _setDateMapping({[date]: '1/1/1900'});
     _setDailylogs({..._dailylogs, [date]: 0});
     _setEdit(date);
@@ -259,7 +250,7 @@ export default function VariablePage({
           
         </section>
 
-        <span>{!variable._id && _formError}</span>
+        <span>{_formError}</span>
         <input type="submit" value="Save factor data!"/>
       </form>
     </section>
