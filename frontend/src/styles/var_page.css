@@ -107,6 +107,18 @@ section.logs-wrapper.react-logs-wrapper > :first-child {
   margin-bottom: 0px;
 }
 
+.hidden {
+  display: none;
+}
+
+.delete_err {
+  color: red;
+  font-size: 18px;
+  position: absolute;
+  left: 150px;
+  top: -8px;
+}
+
 ul.logs.react-logs {
   display: flex;
   flex-direction: column;
@@ -144,6 +156,7 @@ ul.logs.react-logs > div.react-log > div{
   margin-right: 15px;
 }
 
-/* .button.react-icon-button {
-  width: 20px;
-} */
+.react-logs-wrapper > .button.react-icon-button {
+  width: 130px;
+  cursor: pointer;
+}

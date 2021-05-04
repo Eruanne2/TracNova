@@ -7,6 +7,7 @@ import VariableIcon from "./variable_icon";
 import IconButton from "../util/icon_button";
 
 function VariablesIndex({history, variables = {}, destroyVariable}){
+
   useEffect(() => {
     history.location.pathname === '/variables' && variables.length && 
       history.push(`/variables/${variables[0]._id}`);
