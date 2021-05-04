@@ -78,8 +78,23 @@ export default function ChartMetricRating(){
           strokeWidth="2"
           domain={[0, 5]}
         />
-        <Line yAxisId="yLeft" dataKey="nums1" stroke="rgb(5, 0, 200)" dot={false} strokeWidth="6"/> 0.6)" dot={false} strokeWidth="2" fill="rgba(5, 0, 220, 0.3)"/>
-        <Area yAxisId='yRight' type='step' dataKey="nums2" stroke="rgba(5, 160, 0, 0.8)" dot={false} strokeWidth="4" fill="rgba(5, 200, 0, 0.3)"/>
+        <Line 
+          yAxisId="yLeft" 
+          dataKey="nums1" 
+          stroke="rgb(5, 0, 200)" 
+          dot={false} 
+          strokeWidth="6"
+        />
+          
+        <Area 
+          yAxisId='yRight' 
+          type='step' 
+          dataKey="nums2" 
+          stroke="rgba(5, 160, 0, 0.8)" 
+          dot={false} 
+          strokeWidth="4" 
+          fill="rgba(5, 200, 0, 0.3)"
+        />
         {/* <Bar type="number" type='Before' dataKey="nums2" yAxisId="yRight" barSize={30}  fill="rgba(20, 250, 0, 0.4)" isAnimationActive={false} strokeWidth="1" stroke="green" minPointSize={3} /> */}
         {/* <Tooltip backgroundColor="inherit" /> */}
         {/* <ReferenceLine type="linear" isFront={true} dataKey="nums3" label="the average" stroke="black" strokeWidth="5"strokeDasharray="3 3"/> */}

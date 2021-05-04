@@ -64,8 +64,22 @@ export default function ChartRatings(){
           strokeWidth="2"
           domain={[0, 5]}
         />
-        <Area type='stepBefore' dataKey="nums2" stroke="rgba(5, 160, 0, 0.8)" dot={false} strokeWidth="4" fill="rgba(5, 200, 0, 0.3)"/>
-        <Area type='stepBefore' dataKey="nums1" stroke="rgba(5, 0, 250, 0.5)" dot={false} strokeWidth="2" fill="rgba(5, 0, 220, 0.3)"/>
+        <Area 
+          type='stepBefore' 
+          dataKey="nums2" 
+          stroke="rgba(5, 160, 0, 0.8)" 
+          dot={false} 
+          strokeWidth="4" 
+          fill="rgba(5, 200, 0, 0.3)"
+        />
+        <Area 
+          type='stepBefore' 
+          dataKey="nums1" 
+          stroke="rgba(5, 0, 250, 0.5)" 
+          dot={false} 
+          strokeWidth="2" 
+          fill="rgba(5, 0, 220, 0.3)"
+        />
         <Tooltip backgroundColor="inherit" />
         <ReferenceLine type="linear" isFront={true} dataKey="nums3" label="the average" stroke="black" strokeWidth="5"strokeDasharray="3 3"/>
       </AreaChart>

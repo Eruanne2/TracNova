@@ -81,9 +81,23 @@ return (
         />  
           <Tooltip />
           <Legend />
-          <Bar type="number" dataKey="nums1" stackId="a" fill="#8884d8" isAnimationActive={false} minPointSize={6} />
+          <Bar 
+            type="number" 
+            dataKey="nums1" 
+            stackId="a" 
+            fill="#8884d8" 
+            // isAnimationActive={false} 
+            minPointSize={6} 
+          />
         
-          <Bar type="number" dataKey="nums2" stackId="a" fill="#82ca9d" isAnimationActive={false} minPointSize={3} />
+          <Bar 
+            type="number" 
+            dataKey="nums2" 
+            stackId="a" 
+            fill="#82ca9d" 
+            // isAnimationActive={false} 
+            minPointSize={3} 
+          />
      
         </BarChart>
     //   </ResponsiveContainer>

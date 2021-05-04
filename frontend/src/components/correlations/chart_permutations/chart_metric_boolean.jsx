@@ -81,8 +81,25 @@ export default function ChartMetricBoolean(){
           <Label value="Yes" offset={0} position="insideTopRight"/>
         </YAxis>
         {/* <Area yAxisId='yLeft' type='step' dataKey="nums1" stroke="rgba(5, 160, 0, 0.8)" dot={false} strokeWidth="4" fill="rgba(5, 200, 0, 0.3)"/> */}
-        <Line yAxisId="yLeft" dataKey="nums1" stroke="rgb(5, 0, 200)" dot={false} strokeWidth="6"/>
-        <Bar type="number" type='Before' dataKey="nums2" yAxisId="yRight" barSize={30}  fill="rgba(20, 250, 0, 0.4)" isAnimationActive={false} strokeWidth="1" stroke="green" minPointSize={3} />
+        <Line 
+          yAxisId="yLeft" 
+          dataKey="nums1" 
+          stroke="rgb(5, 0, 200)" 
+          dot={false} 
+          strokeWidth="6"
+        />
+        <Bar 
+          type="number" 
+          type='Before' 
+          dataKey="nums2" 
+          yAxisId="yRight" 
+          barSize={30}  
+          fill="rgba(20, 250, 0, 0.4)" 
+          isAnimationActive={false} 
+          strokeWidth="1" 
+          stroke="green" 
+          minPointSize={3} 
+        />
         {/* <Tooltip backgroundColor="inherit" /> */}
         {/* <ReferenceLine type="linear" isFront={true} dataKey="nums3" label="the average" stroke="black" strokeWidth="5"strokeDasharray="3 3"/> */}
       </ComposedChart>
