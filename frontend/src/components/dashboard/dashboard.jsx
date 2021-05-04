@@ -58,6 +58,8 @@ export default function Dashboard({variables}){
   };
 
   const handleReceiveDrop = e => {
+    e.preventDefault();
+    e.stopPropagation();
     let id = e.dataTransfer.getData('text/plain');
     if (!(id === _selectedVar._id)) _setDraggedVar(variables[id]);
   };
