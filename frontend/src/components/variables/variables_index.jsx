@@ -8,6 +8,7 @@ import IconButton from "../util/icon_button";
 import { completed } from '../../util/converters';
 
 function VariablesIndex({history, variables = {}, destroyVariable}){
+
   useEffect(() => {
     history.location.pathname === '/variables' && variables.length && 
       history.push(`/variables/${variables[0]._id}`);

@@ -128,9 +128,12 @@ export default function VariablePage({
   
   const handleDeleteLogCreator = date => () => {
     const logs = {..._dailylogs};
-    delete logs[date];
-    _setDailylogs(logs);
-    _setChanged(true);
+    if (Object.keys(logs).length > 1) {
+        delete logs[date];
+      _setDailylogs(logs);
+    } else {
+      _setFormError("Factor must have at least one date record.");
+    }
   }
 
   const handleLogEditModeCreator = date => () => {
@@ -169,6 +172,7 @@ export default function VariablePage({
           <Chart variables={[variable]}/>
         </section>
       }
+
       <form onSubmit={handleSubmit}>
         {!!variable._id ?
          <h1>"{_name}" History</h1>
@@ -217,6 +221,7 @@ export default function VariablePage({
         }
 
         <section className="logs-wrapper react-logs-wrapper">
+        <p className="delete_err hidden">Factor must have at least one date record.</p>
             {allResolved ? 
               <IconButton icon={faCalendarPlus} onClick={e => handleCreateLog()}>
                 &nbsp; Add a record
@@ -225,32 +230,29 @@ export default function VariablePage({
           <ul className="logs react-logs">
             { Object.entries(_dailylogs)
                 .sort((a, b) => 
-                  (new Date(_dateMapping[a[0]] || a[0] ).getTime() || 0) - 
-                  (new Date(_dateMapping[b[0]] || b[0] ).getTime() || 0)
+                (new Date(_dateMapping[a[0]] || a[0] ).getTime() || 0) - 
+                (new Date(_dateMapping[b[0]] || b[0] ).getTime() || 0)
                 )
                 .map(([date, count]) => (
                   <Log key={date} 
-                    {...{date, count}}
-                    editMode={String(_edit) == date}
-                    unit={_unit}
-                    range={_range}
-                    handleChange={handleChangeLogCreator(date)}
-                    handleDelete={handleDeleteLogCreator(date)}
-                    handleEditMode={handleLogEditModeCreator(date)}
-                    handleFinishEdit={handleLogFinishEdit}
+                  {...{date, count}}
+                  editMode={String(_edit) == date}
+                  unit={_unit}
+                  range={_range}
+                  handleChange={handleChangeLogCreator(date)}
+                  handleDelete={handleDeleteLogCreator(date)}
+                  handleEditMode={handleLogEditModeCreator(date)}
+                  handleFinishEdit={handleLogFinishEdit}
                   />
-                ))
-            }
+                  ))
+                }
           </ul>
+          <p className="delete_err hidden">Factor must have at least one date record.</p>
           
         </section>
 
-        <span>{!variable._id && _formError}</span>
-        <input 
-          className={`submit${_changed ? '' : ' hidden'}`}
-          type="submit" 
-          value="Save factor data!"
-        />
+        <span>{_formError}</span>
+        <input type="submit" value="Save factor data!"/>
       </form>
     </section>
   )

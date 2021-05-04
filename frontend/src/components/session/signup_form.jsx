@@ -69,6 +69,7 @@ function SignupForm({signup, errors, history, currentUser, clearSessionErrors}){
 
           <figure className="logo-wrapper">
             <img src={logo} className="logo" alt="TracNova icon"/>
+            <Link to="/meet-the-team">Meet the Team</Link>
           </figure>
           <section className="login-section">
             <section className="login-form">

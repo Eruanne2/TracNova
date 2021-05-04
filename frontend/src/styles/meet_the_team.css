@@ -1,3 +1,16 @@
+div.meet-za-team {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .meet-the-team {
   font-family: 'Whitney';
 }
@@ -8,6 +21,7 @@
   width: 700px;
   text-align: center;
   margin: 70px auto;
+  margin-top: 30px;
 }
 
 .meet-the-team img {
@@ -40,4 +54,12 @@
 
 .meet-the-team img.social-logo {
   margin: 0 20px;
+}
+
+.app-menu > ul:last-of-type > li:last-of-type > .go-back2:hover {
+  color: green;
+  background-color: #e2ffdf;
+  transition: 0.3s;
+  text-decoration: none;
+  box-shadow: 0 0 5px rgb(49,49,49);
 }

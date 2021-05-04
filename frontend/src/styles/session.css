@@ -38,6 +38,7 @@ section.login-or-signup > .logo-wrapper {
   width: 400px;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -47,6 +48,23 @@ section.login-or-signup > .logo-wrapper > .logo {
   left: -30px;
   width: 500px;
   height: auto;
+}
+
+section.login-or-signup > .logo-wrapper > a {
+  text-decoration: none;
+  color: white;
+  font-family: "Whitney";
+  font-size: 25px;
+  letter-spacing: 2px;
+  position: relative;
+  top: -40px;
+  left: -45px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+section.login-or-signup > .logo-wrapper > a:hover {
+  text-shadow: 0 0 10px rgb(207, 253, 205);
 }
 
 .logo {
