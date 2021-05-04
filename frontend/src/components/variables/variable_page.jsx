@@ -1,6 +1,5 @@
 import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useRef, useEffect } from "react";
-import { createVariable } from "../../actions/variables_actions";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
 import '../../styles/var_page.css';
@@ -68,11 +67,12 @@ export default function VariablePage({
     _setUnit(variable.unit || SYMBOL_BOOLEAN);
     _setDailylogs(Object.assign({}, variable.dailylogs || {}));
     _setFormError('')
+    _setChanged(false);
   }, [variable]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     const varData = {
       user: currentUser.id,
       name: _name, 
@@ -97,6 +97,8 @@ export default function VariablePage({
       updateVariable({...varData, _id: variable._id})
     else
       createVariable(varData).then(res => history.push(`/variables/${res.variable._id}`));
+
+    _setFormError('')
   }
 
   const handleChangeLogCreator = date => ({date: newDate, value}) => {

@@ -60,7 +60,7 @@ export const updateVariable = varData => dispatch => {
 };
 
 export const destroyVariable = varId => dispatch => {
-  APIUtil.deleteVariable(varId)
+  return APIUtil.deleteVariable(varId)
     .then(res => {dispatch(removeVariable(res.data.v._id))})
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };

@@ -27,3 +27,6 @@ export const dateToMDY = date => {
   const [y, m, d] = dateToYMDArr(date);
   return `${m}/${d}/${y}`;
 };
+
+export const completed = (variable) => 
+  (variable.dailylogs[dateToMDY(new Date())] !== undefined);
