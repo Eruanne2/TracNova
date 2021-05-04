@@ -53,7 +53,7 @@ section.page.variable > form:first-of-type > * {
 }
 
 section.page.variable > form:first-of-type > input[type="submit"],
-section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child {
+section.logs-wrapper.react-logs-wrapper > .react-icon-button {
   box-sizing: border-box;
   height: 48px;
   padding: 10px;
@@ -73,6 +73,7 @@ section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child {
   box-shadow: 0 4px 4px 0 #0000001f;
   opacity: 0.95;
   user-select: none;
+  width: 100%;
 }
 
 section.page.variable > form:first-of-type > input.submit.hidden {
@@ -95,16 +96,16 @@ section.page.variable > form:first-of-type > input.submit:active {
   background: linear-gradient(#09893b, #11b05e);
 }
 
-section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child {
+section.logs-wrapper.react-logs-wrapper > .react-icon-button {
   background: linear-gradient(#0080ea, #0076e5);
 }
 
-section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child:active {
+section.logs-wrapper.react-logs-wrapper > .react-icon-button:active {
   background: linear-gradient(#0076e5, #0080ea);
 }
 
 section.page.variable > form:first-of-type > input[type="submit"]:hover, 
-section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child:hover {
+section.logs-wrapper.react-logs-wrapper > .react-icon-button:hover {
   opacity: 1;
 }
 
