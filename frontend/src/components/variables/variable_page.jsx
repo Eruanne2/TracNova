@@ -252,7 +252,7 @@ export default function VariablePage({
         </section>
 
         <span>{_formError}</span>
-        <input type="submit" value="Save factor data!"/>
+        <input type="submit" className="submit" value="Save factor data!"/>
       </form>
     </section>
   )

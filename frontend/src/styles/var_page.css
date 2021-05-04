@@ -61,7 +61,6 @@ section.logs-wrapper.react-logs-wrapper > .react-icon-button {
   outline: none;
   color: #fff;
   border-radius: 24px;
-  background-color:#286841;
   vertical-align: middle;
   display: flex;
   align-self: center;
@@ -86,13 +85,13 @@ section.page.variable > form:first-of-type > input.submit.hidden {
   100% { background-color: #12be65 }
 }
 
-section.page.variable > form:first-of-type > input.submit {
+section.page.variable > form > input.submit {
   /* background: linear-gradient(#12be65, #09893b, #12be65); */
   background-size: 200% 800%;
   animation: remind-save 2s ease infinite;
 }
 
-section.page.variable > form:first-of-type > input.submit:active {
+section.page.variable > form > input.submit:active {
   background: linear-gradient(#09893b, #11b05e);
 }
 
