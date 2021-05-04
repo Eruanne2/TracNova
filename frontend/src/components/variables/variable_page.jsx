@@ -16,8 +16,7 @@ export default function VariablePage({
   history,
   variable = nullVariable,
   currentUser, 
-  createVariable, updateVariable,
-  allVariables
+  createVariable, updateVariable, allVariables
 }){
   if (variable.unit && typeof variable.unit === 'string'){
     if (["boolean", "binary"].includes(variable.unit.toLowerCase()))
@@ -96,11 +95,10 @@ export default function VariablePage({
     
     if (variable._id)
       updateVariable({...varData, _id: variable._id})
-    else{
-    }
+    else
+      createVariable(varData).then(res => history.push(`/variables/${res.variable._id}`));
 
     _setFormError('')
-
   }
 
   const handleChangeLogCreator = date => ({date: newDate, value}) => {
