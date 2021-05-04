@@ -32,6 +32,7 @@ export default function VariablePage({
   const [_id, _setId] = useState(variable.id || '');
   const [_unit, _setUnit] = useState(variable.unit || SYMBOL_BOOLEAN);
   const [_formError, _setFormError] = useState('');
+  const [_changed, _setChanged] = useState(false);
   
   const [_metricUnit, _setMetricUnit] = useState(
     (variable.unit && typeof variable.unit !== 'symbol') ?
@@ -80,6 +81,8 @@ export default function VariablePage({
         (_unit === SYMBOL_RATING ? 'rating' : _unit), 
       dailylogs: _dailylogs
     };
+
+    _setChanged(false);
     
     if (JSON.stringify(varData.dailylogs) === '{}') {
       _setFormError('Please add at least one record for this variable.');
@@ -95,7 +98,7 @@ export default function VariablePage({
       updateVariable({...varData, _id: variable._id})
     else
       createVariable(varData)
-    history.push(`/variables/${Object.keys(allVariables)[0]}`) // change this to redirect to newly created variable
+    // history.push(`/variables/${Object.keys(allVariables)[0]}`) // change this to redirect to newly created variable
     _setFormError('')
 
   }
@@ -123,13 +126,13 @@ export default function VariablePage({
 
     setRange();
     _setDailylogs(logs)
-    
   }
   
   const handleDeleteLogCreator = date => () => {
     const logs = {..._dailylogs};
     delete logs[date];
     _setDailylogs(logs);
+    _setChanged(true);
   }
 
   const handleLogEditModeCreator = date => () => {
@@ -145,6 +148,8 @@ export default function VariablePage({
       _setDateMapping({});
       _setEdit(undefined)
     }
+
+    _setChanged(true);
   }
   
   const handleCreateLog = () => {
@@ -155,7 +160,6 @@ export default function VariablePage({
     _setEdit(date);
   }
 
-  
   return (
     <section className="page variable">
       <section className='toggle-entry-form'>
@@ -217,7 +221,7 @@ export default function VariablePage({
         <section className="logs-wrapper react-logs-wrapper">
             {allResolved ? 
               <IconButton icon={faCalendarPlus} onClick={e => handleCreateLog()}>
-                Add a record
+                &nbsp; Add a record
               </IconButton> : null
             }
           <ul className="logs react-logs">
@@ -244,7 +248,11 @@ export default function VariablePage({
         </section>
 
         <span>{!variable._id && _formError}</span>
-        <input type="submit" value="Save factor data!"/>
+        <input 
+          className={`submit${_changed ? '' : ' hidden'}`}
+          type="submit" 
+          value="Save factor data!"
+        />
       </form>
     </section>
   )

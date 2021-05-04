@@ -47,15 +47,76 @@ section.page.variable > form:first-of-type > * {
   position: relative;
   margin-bottom: 10px;
   width: 100%;
-  padding: 10px;
   border-radius: 3px;
   font: inherit;
-  color: rgb(79,167,51);
+  color: #286841;
+}
+
+section.page.variable > form:first-of-type > input[type="submit"],
+section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child {
+  box-sizing: border-box;
+  height: 48px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 24px;
+  background-color:#286841;
+  vertical-align: middle;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  line-height: 24px;
+  font-weight: 400;
+  text-shadow: 0 0 3px #0000007f;
+  cursor: pointer;
+  box-shadow: 0 4px 4px 0 #0000001f;
+  opacity: 0.95;
+  user-select: none;
+}
+
+section.page.variable > form:first-of-type > input.submit.hidden {
+  display: none;
+}
+
+@keyframes remind-save {
+  0% { background-color: #12be65; }
+  50% { background-color: #09893b }
+  100% { background-color: #12be65 }
+}
+
+section.page.variable > form:first-of-type > input.submit {
+  /* background: linear-gradient(#12be65, #09893b, #12be65); */
+  background-size: 200% 800%;
+  animation: remind-save 2s ease infinite;
+}
+
+section.page.variable > form:first-of-type > input.submit:active {
+  background: linear-gradient(#09893b, #11b05e);
+}
+
+section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child {
+  background: linear-gradient(#0080ea, #0076e5);
+}
+
+section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child:active {
+  background: linear-gradient(#0076e5, #0080ea);
+}
+
+section.page.variable > form:first-of-type > input[type="submit"]:hover, 
+section.logs-wrapper.react-logs-wrapper > .react-icon-button:first-child:hover {
+  opacity: 1;
 }
 
 section.page.variable > form:first-of-type > div {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
+}
+
+section.page.variable > form:first-of-type > h1 {
+  font-weight: 600;
+  font-size: 24px;
 }
 
 section.page.variable > form:first-of-type > div input[type="text"] {
@@ -112,6 +173,12 @@ ul.logs.react-logs {
   flex-direction: column;
   margin-top: 20px;
   width: 100%;
+  border-bottom: 1px solid #cfcfcf;
+  max-height: 620px;
+  overflow-y: scroll;
+  box-shadow: inset 1px 2px #0000001f;
+  position: relative;
+  z-index: 10;
 }
 
 ul.logs.react-logs > div.react-log {
@@ -123,7 +190,13 @@ ul.logs.react-logs > div.react-log {
   border-top: 1px solid rgb(208, 208, 208);
 }
 
+ul.logs.react-logs > div.react-log:nth-child(2n + 1) {
+  background-color: #e2f3dd;
+}
 
+ul.logs.react-logs > div.react-log:nth-child(2n) {
+  background-color: #e9f6e5;
+}
 
 ul.logs.react-logs > div.react-log:hover {
   background-color: rgb(173, 235, 152)
@@ -144,6 +217,6 @@ ul.logs.react-logs > div.react-log > div{
   margin-right: 15px;
 }
 
-/* .button.react-icon-button {
-  width: 20px;
-} */
+.button.react-icon-button {
+  cursor: pointer;
+}

@@ -76,7 +76,7 @@ export default function Dashboard({variables}){
                   `${_completed(variable) ? 'complete' : 'incomplete'} 
                   ${variable._id === _selectedVar._id && 'selected-var'}`
                 }>
-              <VariableIcon variable={variable} draggable={true} onDragStart={e => handleDragStart(e, variable._id)}/>
+              <VariableIcon variable={variable} draggable={true} completed={_completed(variable)} onDragStart={e => handleDragStart(e, variable._id)}/>
             </li>
           ))}
         </ul>
