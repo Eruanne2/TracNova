@@ -97,10 +97,6 @@ export default function VariablePage({
     if (variable._id)
       updateVariable({...varData, _id: variable._id})
     else{
-      createVariable(varData).then(res => {
-        console.log(res);
-        history.push(`/variables/${res.data._id}`);
-      });
     }
 
     _setFormError('')

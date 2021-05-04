@@ -28,33 +28,31 @@ export const receiveVariableErrors = errors => ({
 // thunk creators
 
 export const fetchVariable = varId => dispatch => {
-  APIUtil.getVariableById(varId)
+  return APIUtil.getVariableById(varId)
     .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const fetchUserVariables = userId => dispatch => {
-  APIUtil.getUserVariables(userId)
+  return APIUtil.getUserVariables(userId)
     .then(res => dispatch(receiveUserVariables(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
-export const createVariable = varData => dispatch => 
-  APIUtil.postVariable(varData)
-    .then(res => {
-      dispatch(receiveVariable(res.data));
-      return res;
-    })
+export const createVariable = varData => dispatch => {
+  return APIUtil.postVariable(varData)
+    .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
+};
 
 export const addVariableEntry = entryData => dispatch => {
-  APIUtil.patchVariableEntry(entryData)
+  return APIUtil.patchVariableEntry(entryData)
     .then(res => dispatch(receiveVariable(res.data)))
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
 export const updateVariable = varData => dispatch => {
-  APIUtil.patchVariable(varData)
+  return APIUtil.patchVariable(varData)
   .then(res => {
     dispatch(receiveVariable(res.data));
   })
@@ -62,7 +60,7 @@ export const updateVariable = varData => dispatch => {
 };
 
 export const destroyVariable = varId => dispatch => {
-  APIUtil.deleteVariable(varId)
+  return APIUtil.deleteVariable(varId)
     .then(res => {dispatch(removeVariable(res.data.v._id))})
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
