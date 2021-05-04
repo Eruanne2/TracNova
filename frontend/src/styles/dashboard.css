@@ -8,13 +8,13 @@
   font-family: 'Whitney';
 }
 
-.dashboard-div > aside {
+aside {
   display: flex;
   flex-direction: column;
   margin-bottom: 100px;
 }
 
-.dashboard-div > aside > h1 {
+aside > h1 {
   font-size: 25px;
   font-weight: 800;
   margin-bottom: 5px;
@@ -22,7 +22,7 @@
   color: rgb(116,115,120);
 }
 
-.dashboard-div > aside > ul {
+aside > ul {
   margin-top: 15px;
   position: relative;
   border: 1px solid #ddd;  
@@ -30,9 +30,11 @@
   /* overflow: hidden; */
   background: #fff;
   box-shadow: 0px 4px 4px #0000001f;
+  max-height: 614px;
+  overflow-y: scroll;
 }
 
-.dashboard-div > aside > ul > li {
+aside > ul > li {
   /* box-shadow: 0 0 3px rgb(49,49,49); */
   position: relative;
   list-style: none;
@@ -56,11 +58,11 @@
   border-radius: 1px;
 }
 
-.dashboard-div > aside > ul > li:nth-child(2n){
+aside > ul > li:nth-child(2n){
   background-color: #f7f7f7;
 }
 
-.dashboard-div > aside > ul > li.complete {
+aside > ul > li.complete {
   /* background-color: rgb(163, 244, 145); */
   /* box-shadow: inset 0 0 1px rgb(22, 48, 14); */
   color: #035946;
@@ -73,9 +75,9 @@
   font-weight: 100;
 }
 
-.dashboard-div > aside > ul > li:hover {
+aside > ul > li:hover {
   /* box-shadow: 0 0 2px rgb(49, 15, 15); */
-  color: rgb(55, 40, 150);
+  /* color: rgb(55, 40, 150); */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -7px;
@@ -87,13 +89,13 @@
   background-color: #e3eef4;
 }
 
-.dashboard-div > aside > ul > li.incomplete {
+aside > ul > li.incomplete {
   /* background-color: rgba(252, 188, 188);
   box-shadow: inset 0 0 1px rgb(49, 15, 15); */
   color: #594000;
 }
 
-.dashboard-div > aside > ul > li.incomplete:hover {
+aside > ul > li.incomplete:hover {
   /* background-color: rgba(252, 188, 188);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -7px;
@@ -112,16 +114,16 @@
   100% { transform: rotate(0deg) scale(0.8); }
 }
 
-li.incomplete > .icon-wrapper > .icon {
-  background: radial-gradient( #f9d467, #f7c23e/*#f29191, #d96c6c*/);
-  color: #594000;
+li.incomplete .icon-wrapper > .icon {
+  background: radial-gradient( #fb5c74, #fa243b/*#f29191, #d96c6c*/);
+  color: #fff;
   /* box-shadow: inset 0 0 1px rgb(49, 15, 15); */
   animation-name: shaking;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
 }
 
-.dashboard-div > aside > ul > li.selected-var {
+aside > ul > li.selected-var aside > ul > li > .selected{
   /* color: rgb(55, 40, 150); */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
@@ -134,7 +136,7 @@ li.incomplete > .icon-wrapper > .icon {
   background: #acd4e5;
 }
 
-.dashboard-div > aside > ul > li.selected-var:hover {
+aside > ul > li.selected-var:hover {
   /* color: rgb(55, 40, 150); */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
@@ -146,7 +148,7 @@ li.incomplete > .icon-wrapper > .icon {
   margin-bottom: 1px;
 }
 
-.dashboard-div > aside > ul > li.selected-var > div > div.icon {
+aside > ul > li.selected-var > .react-variable-icon > .icon {
   border: none;
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),   1px 1px 4px rgb(49, 15, 15);
   border-radius: 50%;
@@ -158,7 +160,7 @@ li.incomplete > .icon-wrapper > .icon {
   transform: scale(1);
 }
 
-.dashboard-div > aside > ul > li > div {
+aside > ul > li > .react-variable-icon {
   margin-left: 15px;
   display: flex;
   flex-direction: row;
@@ -167,29 +169,30 @@ li.incomplete > .icon-wrapper > .icon {
   width: 260px;
 }
 
-.dashboard-div > aside > ul > li > div > div {
+aside > ul > li > .react-variable-icon {
   margin-right: 10px;
 }
 
-.dashboard-div > aside > ul > li > div > div.icon {
+aside > ul > li > .react-variable-icon > .icon {
   border: none;
   box-shadow: 0 0 3px rgb(49,49,49);
   border-radius: 20px;
   width: 40px;
   height: 40px;
+  margin-right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.dashboard-div > aside > ul > li > div > div.name {
+aside > ul > li .react-variable-icon > .name {
   width: 160px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.dashboard-div > main {
+.dashboard-div main {
   padding-top: 47px;
   padding-left: 33px;
   position: relative;

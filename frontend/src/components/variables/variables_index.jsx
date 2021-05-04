@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/var_index.css";
 import VariableIcon from "./variable_icon";
 import IconButton from "../util/icon_button";
+import { completed } from '../../util/converters';
 
 function VariablesIndex({history, variables = {}, destroyVariable}){
 
@@ -23,7 +24,7 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
   }
 
   return (
-    <section className="index variables-index">
+    <aside className="index variables-index">
       <h1>Factors</h1>
       <ul className="variables">
         <NavLink className="button variable-button" activeClassName="selected"
@@ -33,18 +34,18 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
           <p>Track a new factor!</p>
         </NavLink>
         { variables.map(variable => (
-            <li key={variable._id}>
-              <NavLink activeClassName="selected" className="var-item-link"
+            <li key={variable._id} className={`${completed(variable) ? 'complete' : 'incomplete'}`}>
+              <NavLink activeClassName="selected" className="var-item-link" as="div"
                 to={`/variables/${variable._id}`}
               >
-              <VariableIcon variable={variable} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
+                <VariableIcon variable={variable} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
               </NavLink>
               <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>
             </li>
           ))
         }
       </ul>
-    </section>
+    </aside>
   )
 }
 
