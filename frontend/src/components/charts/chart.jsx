@@ -9,11 +9,16 @@ import {
   Tooltip,
   Baseline
 } from 'recharts';
-
+// add style if orientation is left this color otherwise other color
 // import '../../../styles/chart.css'
 import * as StatUtil from "../../util/stat_util";
 
+
+
+
+
 function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
+  
   switch (varType){
     case 'binary': return (
       <YAxis
@@ -34,7 +39,7 @@ function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
         dataKey={varName}
         type="number"
         label={"rating"}
-        ticks={[0, 1, 2, 3, 4, 5]}
+        ticks={[0, 1, 2, 3, 4, 5]} //change this
         domain={[0, 5]}
         orientation={orientaion}
         strokeWidth="2"
@@ -55,51 +60,96 @@ function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
   }
 }
 
-function ChartData({varName, varType}){
-  switch (varType){
-    case 'binary': return (
-      <Bar
-        key={varName}
-        yAxisId={varName}
-        dataKey={varName}
-        type="number"
-        type='Before'
-        barSize={30}
-        fill="rgba(250, 250, 0, 0.4)"
-        isAnimationActive={false}
-        strokeWidth="2"
-        stroke="gold"
-        minPointSize={3}
-      />
-    );
-    case 'rating': return (
-      <Area
-        key={varName}
-        yAxisId={varName}
-        dataKey={varName}
-        type='step'
-        stroke="rgba(5, 0, 250, 0.6)"
-        dot={false}
-        strokeWidth="3"
-        fill="rgba(5, 0, 220, 0.5)"
-      />
-    );
-    default: return (
-      <Line
-        key={varName}
-        yAxisId={varName}
-        dataKey={varName}
-        stroke="rgb(5, 0, 200)"
-        strokeWidth="6"
-        dot={false}
-      />
-    );
+function ChartData({varName, varType, i}){
+  console.log(i === 1)
+  if (i === 0) {
+    switch (varType){
+      case 'binary': return (
+        <Bar
+          key={varName}
+          yAxisId={varName}
+          dataKey={varName}
+          type="number"
+          type='Before'
+          barSize={30}
+          fill="rgba(250, 250, 0, 0.4)"
+          isAnimationActive={false}
+          strokeWidth="2"
+          stroke="gold"
+          minPointSize={3}
+        />
+      );
+      case 'rating': return (
+        <Area
+          key={varName}
+          yAxisId={varName}
+          dataKey={varName}
+          type='step'
+          stroke="rgba(5, 0, 250, 0.6)"
+          dot={false}
+          strokeWidth="3"
+          fill="rgba(225, 220, 220, 0.5)"
+        />
+      );
+      default: return (
+          <Line
+            key={varName}
+            yAxisId={varName}
+            dataKey={varName}
+            stroke="rgb(5, 0, 200)"
+            strokeWidth="3"
+            dot={false}
+          />
+        
+      );
+    }
+  } else {
+    switch (varType){
+      case 'binary': return (
+        <Bar
+          key={varName}
+          yAxisId={varName}
+          dataKey={varName}
+          type="number"
+          type='Before'
+          barSize={30}
+          fill="rgba(20, 220, 220, 0.4)"
+          isAnimationActive={false}
+          strokeWidth="2"
+          stroke="rgba(5, 220, 200, 0.6)"
+          minPointSize={3}
+        />
+      );
+      case 'rating': return (
+        <Area
+          key={varName}
+          yAxisId={varName}
+          dataKey={varName}
+          type='step'
+          stroke="rgba(5, 220, 200, 0.6)"
+          dot={false}
+          strokeWidth="3"
+          fill="rgba(20, 220, 220, 0.5)"
+        />
+      );
+      default: return (
+          <Line
+            key={varName}
+            yAxisId={varName}
+            dataKey={varName}
+            stroke="rgb(5, 220, 200)"
+            strokeWidth="3"
+            dot={false}
+          />
+        
+      );
+    }
   }
 }
 
 
 export default function Chart({variables}){
-  const [data, metadataObj] = StatUtil.getStatData(...variables);
+  const [data, metadataObj] = StatUtil.getStatData(...variables); // refactor to two variables?
   const metadataArr = Object.entries(metadataObj);
 
   return (
@@ -121,7 +171,7 @@ export default function Chart({variables}){
           )
         }
         { metadataArr.map(([varName, varType], i) => 
-            ChartData({key: i, varName, varType})
+            ChartData({key: i, varName, varType, i})
           )
         }
         <Tooltip />
