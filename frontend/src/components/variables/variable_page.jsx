@@ -1,6 +1,5 @@
 import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useRef, useEffect } from "react";
-import { createVariable } from "../../actions/variables_actions";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
 import '../../styles/var_page.css';
@@ -97,9 +96,13 @@ export default function VariablePage({
     
     if (variable._id)
       updateVariable({...varData, _id: variable._id})
-    else
-      createVariable(varData)
-    // history.push(`/variables/${Object.keys(allVariables)[0]}`) // change this to redirect to newly created variable
+    else{
+      createVariable(varData).then(res => {
+        console.log(res);
+        history.push(`/variables/${res.data._id}`);
+      });
+    }
+
     _setFormError('')
 
   }

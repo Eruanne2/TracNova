@@ -39,11 +39,13 @@ export const fetchUserVariables = userId => dispatch => {
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
 };
 
-export const createVariable = varData => dispatch => {
+export const createVariable = varData => dispatch => 
   APIUtil.postVariable(varData)
-    .then(res => dispatch(receiveVariable(res.data)))
+    .then(res => {
+      dispatch(receiveVariable(res.data));
+      return res;
+    })
     .catch(err => dispatch(receiveVariableErrors(err.response.data)));
-};
 
 export const addVariableEntry = entryData => dispatch => {
   APIUtil.patchVariableEntry(entryData)
