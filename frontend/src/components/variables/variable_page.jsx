@@ -73,6 +73,9 @@ export default function VariablePage({
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    let err_message = document.querySelector('.delete_err');
+    err_message.classList.add('hidden');
+
     const varData = {
       user: currentUser.id,
       name: _name, 
@@ -139,6 +142,8 @@ export default function VariablePage({
   }
 
   const handleLogEditModeCreator = date => () => {
+    let err_message = document.querySelector('.delete_err');
+    err_message.classList.add('hidden');
     _setEdit(date);
   }
   
