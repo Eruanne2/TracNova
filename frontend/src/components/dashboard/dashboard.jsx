@@ -40,17 +40,17 @@ export default function Dashboard({variables}){
   }
 
   const getCorrelationStrength = r => {
-    if (r <= -.9) return " very strong negative ";
-    if (r <= -.7) return " strong negative ";
-    if (r <= -.5) return " moderate negative ";
-    if (r <= -.3) return " weak negative ";
-    if (r <= -.1) return " very weak negative ";
-    if (r < .1) return ""
-    if (r < .3) return " very weak positive ";
-    if (r < .5) return " weak positive ";
-    if (r < .7) return " moderate positive ";
-    if (r < .9) return " strong positive ";
-    if (r <= 1) return " very strong positive ";
+    if (r <= -.9) return "very strong negative";
+    if (r <= -.7) return "strong negative";
+    if (r <= -.5) return "moderate negative";
+    if (r <= -.3) return "weak negative";
+    if (r <= -.1) return "very weak negative";
+    if (r < .1) return "none";
+    if (r < .3) return "very weak positive";
+    if (r < .5) return "weak positive";
+    if (r < .7) return "moderate positive";
+    if (r < .9) return "strong positive";
+    if (r <= 1) return "very strong positive";
   }
 
   const handleDragStart = (e, id) => {
@@ -90,25 +90,26 @@ export default function Dashboard({variables}){
         </section>
         <section className='correlation-preview'>
           {!!_draggedVar ? <h1>"{_selectedVar.name}" vs "{_draggedVar.name}"</h1> : <h1>{_selectedVar.name}</h1>}
-          {(!!_draggedVar && numPoints > 6) && 
-            <div className='correlation-info'>
-              <h2>Correlation Coefficient: {_coefficient}</h2>
-              <p>There is 
-                {(_coefficient <= -.1 || _coefficient >= .1)  ? ' a ' : ' no '} 
-                {getCorrelationStrength(_coefficient)} 
-                correlation between {_selectedVar.name} and {_draggedVar.name}.
-              </p>
-            </div>
-          }
-          {!!_draggedVar && 
-            <h3>
-              You have {numPoints} {parseInt(numPoints) === 1 ? 'entry' : 'entries'} for this correlation.
-              { (parseInt(numPoints) < 7) && <p>We need at least 7 day's worth of data to be able to look for a correlation.</p> }
-              { (parseInt(numPoints) > 7 && parseInt(numPoints) < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span> For better accuracy, log these two factorss daily for at least two weeks.</p>}
-              { (parseInt(numPoints) > 13 && parseInt(numPoints) < 30) && <p>You've logged these two factors for over two weeks. Nice! In statistics, it's still a pretty small sample - for even better results, try to log these factors daily for a whole month.</p>}
-              { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
-            </h3>
-          }
+
+          {(!_draggedVar && <p className='drag-info'>To calculate a correlation, drag a second factor onto the graph below.</p>)}
+
+          <div>
+            {(!!_draggedVar && numPoints > 6) && 
+              <ul className='correlation-info'>
+                <li>Correlation Coefficient: {_coefficient}</li>
+                <li>Entries: {numPoints}</li>
+                <li>Correlation Strength: {getCorrelationStrength(_coefficient)}</li>
+              </ul>
+            }
+            {!!_draggedVar && 
+              <div className='entries-info'>
+                { (parseInt(numPoints) < 7) && <p><span>We need at least 7 day's worth of data to be able to look for a correlation.</span></p> }
+                { (parseInt(numPoints) > 7 && parseInt(numPoints) < 14) && <p><span>Warning: we don't have much data yet, so this could be misleading.</span> For better accuracy, log these two factorss daily for at least two weeks.</p>}
+                { (parseInt(numPoints) > 13 && parseInt(numPoints) < 30) && <p><span>You've logged these two factors for over two weeks.</span> Nice! In statistics, it's still a pretty small sample - for even better results, try to log these factors daily for a whole month.</p>}
+                { (parseInt(numPoints) > 30) && <p>Wow! With such consistent logging, we can be pretty certain that your results are accurate.</p>}
+              </div>
+            }
+          </div>
 
           <section className='droppable-graph-box'
                   onDragOver={e => e.preventDefault()}
