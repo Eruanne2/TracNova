@@ -5,12 +5,18 @@
   height: 70px;
   margin-top: 0px;
   /* background-color: rgb(79,167,51); */
-  background-color: rgb(240, 217, 10);
+  background-color:  #3b793b;
+  background-color:  #466bb1fa;
+  background-color: rgb(53,133,247);
+  /* background-color:  #60a74e; */
+  /* background: radial-gradient( #88cc78, #98e687); */
+
+  /* background-color: rgb(240, 217, 10); */
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 5px rgb(49,49,49);
+  box-shadow: 0 0 5px rgb(0, 0, 0);
   margin-bottom: 40px;
   font-family: 'Whitney';
 }

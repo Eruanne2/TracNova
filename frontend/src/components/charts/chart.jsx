@@ -97,8 +97,10 @@ function ChartData({varName, varType, i}){
             yAxisId={varName}
             dataKey={varName}
             stroke="rgb(5, 0, 200)"
+            stroke="rgb(23,63,247)"
             strokeWidth="3"
             dot={false}
+            type="monotone"
           />
         
       );
@@ -140,6 +142,8 @@ function ChartData({varName, varType, i}){
             stroke="rgb(5, 220, 200)"
             strokeWidth="3"
             dot={false}
+            type="monotone"
+            text-shadow="0px 4px 4px #0000001f"
           />
         
       );
@@ -165,6 +169,7 @@ export default function Chart({variables}){
           bottom: 5
         }}
       >
+
         <XAxis dataKey="date" />
         { metadataArr.map(([varName, varType], i) => 
             YAxisData({key: i, varName, varType, orientaion: i === 1 ? 'right' : 'left'})
