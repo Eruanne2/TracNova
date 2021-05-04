@@ -1,6 +1,5 @@
 import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useRef, useEffect } from "react";
-import { createVariable } from "../../actions/variables_actions";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
 import '../../styles/var_page.css';
@@ -17,8 +16,7 @@ export default function VariablePage({
   history,
   variable = nullVariable,
   currentUser, 
-  createVariable, updateVariable,
-  allVariables
+  createVariable, updateVariable, allVariables
 }){
   if (variable.unit && typeof variable.unit === 'string'){
     if (["boolean", "binary"].includes(variable.unit.toLowerCase()))
@@ -32,6 +30,7 @@ export default function VariablePage({
   const [_id, _setId] = useState(variable.id || '');
   const [_unit, _setUnit] = useState(variable.unit || SYMBOL_BOOLEAN);
   const [_formError, _setFormError] = useState('');
+  const [_changed, _setChanged] = useState(false);
   
   const [_metricUnit, _setMetricUnit] = useState(
     (variable.unit && typeof variable.unit !== 'symbol') ?
@@ -68,11 +67,12 @@ export default function VariablePage({
     _setUnit(variable.unit || SYMBOL_BOOLEAN);
     _setDailylogs(Object.assign({}, variable.dailylogs || {}));
     _setFormError('')
+    _setChanged(false);
   }, [variable]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     const varData = {
       user: currentUser.id,
       name: _name, 
@@ -80,6 +80,8 @@ export default function VariablePage({
         (_unit === SYMBOL_RATING ? 'rating' : _unit), 
       dailylogs: _dailylogs
     };
+
+    _setChanged(false);
     
     if (JSON.stringify(varData.dailylogs) === '{}') {
       _setFormError('Please add at least one record for this variable.');
@@ -94,10 +96,9 @@ export default function VariablePage({
     if (variable._id)
       updateVariable({...varData, _id: variable._id})
     else
-      createVariable(varData)
-    history.push(`/variables/${Object.keys(allVariables)[0]}`) // change this to redirect to newly created variable
-    _setFormError('')
+      createVariable(varData).then(res => history.push(`/variables/${res.variable._id}`));
 
+    _setFormError('')
   }
 
   const handleChangeLogCreator = date => ({date: newDate, value}) => {
@@ -123,13 +124,16 @@ export default function VariablePage({
 
     setRange();
     _setDailylogs(logs)
-    
   }
   
   const handleDeleteLogCreator = date => () => {
     const logs = {..._dailylogs};
-    delete logs[date];
-    _setDailylogs(logs);
+    if (Object.keys(logs).length > 1) {
+        delete logs[date];
+      _setDailylogs(logs);
+    } else {
+      _setFormError("Factor must have at least one date record.");
+    }
   }
 
   const handleLogEditModeCreator = date => () => {
@@ -145,6 +149,8 @@ export default function VariablePage({
       _setDateMapping({});
       _setEdit(undefined)
     }
+
+    _setChanged(true);
   }
   
   const handleCreateLog = () => {
@@ -155,7 +161,6 @@ export default function VariablePage({
     _setEdit(date);
   }
 
-  
   return (
     <section className="page variable">
       <section className='toggle-entry-form'>
@@ -167,6 +172,7 @@ export default function VariablePage({
           <Chart variables={[variable]}/>
         </section>
       }
+
       <form onSubmit={handleSubmit}>
         {!!variable._id ?
          <h1>"{_name}" History</h1>
@@ -215,35 +221,37 @@ export default function VariablePage({
         }
 
         <section className="logs-wrapper react-logs-wrapper">
+        <p className="delete_err hidden">Factor must have at least one date record.</p>
             {allResolved ? 
               <IconButton icon={faCalendarPlus} onClick={e => handleCreateLog()}>
-                Add a record
+                &nbsp; Add a record
               </IconButton> : null
             }
           <ul className="logs react-logs">
             { Object.entries(_dailylogs)
                 .sort((a, b) => 
-                  (new Date(_dateMapping[a[0]] || a[0] ).getTime() || 0) - 
-                  (new Date(_dateMapping[b[0]] || b[0] ).getTime() || 0)
+                (new Date(_dateMapping[a[0]] || a[0] ).getTime() || 0) - 
+                (new Date(_dateMapping[b[0]] || b[0] ).getTime() || 0)
                 )
                 .map(([date, count]) => (
                   <Log key={date} 
-                    {...{date, count}}
-                    editMode={String(_edit) == date}
-                    unit={_unit}
-                    range={_range}
-                    handleChange={handleChangeLogCreator(date)}
-                    handleDelete={handleDeleteLogCreator(date)}
-                    handleEditMode={handleLogEditModeCreator(date)}
-                    handleFinishEdit={handleLogFinishEdit}
+                  {...{date, count}}
+                  editMode={String(_edit) == date}
+                  unit={_unit}
+                  range={_range}
+                  handleChange={handleChangeLogCreator(date)}
+                  handleDelete={handleDeleteLogCreator(date)}
+                  handleEditMode={handleLogEditModeCreator(date)}
+                  handleFinishEdit={handleLogFinishEdit}
                   />
-                ))
-            }
+                  ))
+                }
           </ul>
+          <p className="delete_err hidden">Factor must have at least one date record.</p>
           
         </section>
 
-        <span>{!variable._id && _formError}</span>
+        <span>{_formError}</span>
         <input type="submit" value="Save factor data!"/>
       </form>
     </section>

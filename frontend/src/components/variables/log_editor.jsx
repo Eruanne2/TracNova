@@ -11,9 +11,8 @@ export default function LogEditor({
   const generateEditor = (unit) => {
     if (unit === Symbol.for('boolean'))
       return (
-        <div onClick={(e) => handleBooleanChange()}>
-          <div className="yes-no-indicator">
-
+        <div className="content">
+          <div className={`yes-no-indicator ${count ? 'yes' : 'no'}`} onClick={(e) => handleBooleanChange()}>
             {toYesNo(count)}  
           </div>
         </div>

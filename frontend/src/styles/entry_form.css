@@ -105,11 +105,14 @@
   cursor: pointer;
 }
 
+.react-log{
+  user-select: none;
+}
 input.range.react-log-input {
   height: 30px;
   outline: none;
   border: 1px solid rgb(155, 155, 155);
-  background-color: rgb(230,230,230);
+  background-color: #fff;
   border-radius: 5px;
   margin: 0 10px;
   text-align: center;
@@ -138,9 +141,35 @@ div.log.date{
   width: 140px;
 }
 
+div.content {
+  display: flex;
+  justify-content: center !important;
+}
 div.yes-no-indicator {
-  width: 100%;
+  width: max-content;
   text-align: center;
+  padding: 8px 24px;
+  border-radius: 24px;
+  color: #fff;
+  text-shadow: 0 0 3px #0000007f;
+  cursor: pointer;
+  width: max-content;
+}
+
+div.yes-no-indicator.yes {
+  background: linear-gradient(#12be65, #09893b);
+}
+
+div.yes-no-indicator.no {
+  background: linear-gradient(#fb5c74, #fa243b);
+}
+
+div.yes-no-indicator.yes:hover {
+  background: linear-gradient(#09893b, #12be65);
+}
+
+div.yes-no-indicator.no:hover {
+  background: linear-gradient(#fa243b, #fb5c74);
 }
 
 div.create-form {
