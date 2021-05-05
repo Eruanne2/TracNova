@@ -70,7 +70,10 @@ aside > ul > li.complete {
 
 .icon-wrapper > .icon {
   transform: scale(0.8);
-  background: radial-gradient( #88cc78, #98e687);
+  /* background: radial-gradient( #88cc78, #98e687); */
+  /* background:  radial-gradient(#02D667, #10ff07); */
+  background: radial-gradient(#38ff31,#02D667);
+  box-shadow: 0px 0px 4px #10ff07 , inset 0 0px 16px rgb(44, 182, 113);
   font-size: 18px;
   font-weight: 100;
 }
@@ -216,9 +219,11 @@ aside > ul > li .react-variable-icon > .name {
 .toggle-entry-form > button {
   position: relative;
   border: none;
-  box-shadow: 0 0 3px rgb(49,49,49);
+  /* box-shadow: 0 0 3px rgb(49,49,49), inset 0 0 12px rgb(255, 255, 255) ; */
+  box-shadow: 0 0 3px rgb(49,49,49), inset 0 0 1px #2a72dd ;
   border-radius: 5px;
   background-color: rgb(53,133,247);
+
   color: white;
   font-family: 'Whitney';
   font-weight: 900;
@@ -245,8 +250,8 @@ aside > ul > li .react-variable-icon > .name {
   top: 40px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 0 4px rgb(49,49,49);
-  background-color: rgb(226, 253, 255);
+  box-shadow: 0 0 4px rgb(49,49,49), inset 0 0 20px rgb(226, 253, 255) ;
+  /* background-color: rgb(226, 253, 255); */
   color: #035946;
   margin-right: 40px;
   margin-bottom: 100px;
@@ -262,6 +267,14 @@ aside > ul > li .react-variable-icon > .name {
   font-weight: 800;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.selected-vs {
+  color: rgb(5, 0, 200);
+}
+
+.dragged-vs {
+  color: rgb(4, 200, 185);
 }
 
 .correlation-preview .drag-info {
@@ -318,7 +331,8 @@ aside > ul > li .react-variable-icon > .name {
 }
 
 .droppable-graph-box > ul.tab-headers > h2.selected-tab {
-  box-shadow: 0 3px 0px rgb(226, 253, 255);
+  /* box-shadow: 0 3px 0px rgb(226, 253, 255); */
+  box-shadow: 0 3px 0px rgb(255, 255, 255);
 }
 
 .droppable-graph-box > .tab-one, .droppable-graph-box > div.tab-two {

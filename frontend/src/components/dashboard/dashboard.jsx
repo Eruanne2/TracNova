@@ -84,7 +84,7 @@ export default function Dashboard({variables}){
           {_toggleForm && <AddEntryFormContainer defaultVar={_draggedVar || null} parentSetToggle={_setToggleForm.bind(this)}/>}
         </section>
         <section className='correlation-preview'>
-          {!!_draggedVar ? <h1>{_selectedVar.name} vs {_draggedVar.name}</h1> : <h1>{_selectedVar.name}</h1>}
+          {!!_draggedVar ? <h1><span className="selected-vs">{_selectedVar.name}</span> | <span className="dragged-vs">{_draggedVar.name}</span></h1> : <h1 className="selected-vs">{_selectedVar.name}</h1>}
 
           {(!_draggedVar && <p className='drag-info'>To calculate a correlation, drag a second factor onto the graph below.</p>)}
 

@@ -14,7 +14,7 @@ section.page.variable > section.var-graph-holder {
   border: none;
   border-radius: 3px;
   box-shadow: 0 0 4px rgb(49,49,49);
-  background-color: rgb(226, 253, 255);
+  /* background-color: rgb(226, 253, 255); */
   color: rgb(73, 121, 255);
   margin: 40px;
   margin-left: 0;
