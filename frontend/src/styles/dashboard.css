@@ -250,7 +250,7 @@ aside > ul > li .react-variable-icon > .name {
   top: 40px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 0 4px rgb(49,49,49);
+  box-shadow: 0 0 4px rgb(49,49,49), inset 0 0 20px rgb(226, 253, 255) ;
   /* background-color: rgb(226, 253, 255); */
   color: #035946;
   margin-right: 40px;

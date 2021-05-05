@@ -129,7 +129,7 @@ function ChartData({varName, varType, i}){
           type='step'
           // stroke="rgba(5, 0, 250, 0.6)"
           stroke="rgb(23,63,247)"
-          dot={false}
+          // dot={false}
           strokeWidth="1"
           // fill="rgba(100, 100, 255, 0.3)"
           fill="rgba(250, 250, 0, 0.4)"
@@ -144,7 +144,7 @@ function ChartData({varName, varType, i}){
             stroke="rgb(5, 0, 200)"
             stroke="rgb(23,63,247)"
             strokeWidth="2"
-            dot={false}
+            // dot={false}
             type="monotone"
           />
         
@@ -174,9 +174,9 @@ function ChartData({varName, varType, i}){
           yAxisId={varName}
           dataKey={varName}
           type='step'
-          stroke="rgba(5, 180, 160, 0.9)"
-          dot={false}
-          strokeWidth="1"
+          stroke="rgba(5, 180, 160, 0.8)"
+          // dot={false}
+          strokeWidth="2"
           // fill="rgba(10, 180, 140, 0.5)"
           // fill="rgba(180, 0, 140, 0.5)"
           fill="rgba(250, 250, 0, 0.4)"
@@ -189,7 +189,7 @@ function ChartData({varName, varType, i}){
             dataKey={varName}
             stroke="rgb(3, 180, 165)"
             strokeWidth="2"
-            dot={false}
+            // dot={false}
             type="monotone"
             text-shadow="0px 4px 4px #0000001f"
           />
@@ -217,15 +217,6 @@ export default function Chart({variables}){
           bottom: 15
         }}
       >
-
-        <defs>
-          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#129a74" stopOpacity={0.1}/>
-            <stop offset="95%" stopColor="#FFFFFF" stopOpacity={0.1}/>
-          </linearGradient>
-        </defs>
-
-
         <XAxis dataKey="date" />
         { metadataArr.map(([varName, varType], i) => 
             YAxisData({key: i, varName, varType, orientation: i === 1 ? 'right' : 'left'})
@@ -260,7 +251,7 @@ export default function Chart({variables}){
   dataKey={variable.name}
   type='step'
   stroke="rgba(5, 0, 250, 0.6)"
-  dot={false}
+  // dot={false}
   strokeWidth="3"
   fill="rgba(5, 0, 220, 0.5)"
 />
