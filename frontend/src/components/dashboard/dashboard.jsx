@@ -31,6 +31,7 @@ export default function Dashboard({variables}){
     return e => {
       _setSelectedVar(variable);
       _setDraggedVar('');
+      _setToggleForm(true)
     }
   }
 
@@ -81,7 +82,7 @@ export default function Dashboard({variables}){
       <main>
         <section className='toggle-entry-form'>
           <button onClick={e => _setToggleForm(!_toggleForm)} >Add Today's Entry</button>
-          {_toggleForm && <AddEntryFormContainer defaultVar={_draggedVar || null} parentSetToggle={_setToggleForm.bind(this)}/>}
+          {_toggleForm && <AddEntryFormContainer defaultVar={ _draggedVar || _selectedVar } parentSetToggle={_setToggleForm.bind(this)}/>}
         </section>
         <section className='correlation-preview'>
           {!!_draggedVar ? <h1>{_selectedVar.name} vs {_draggedVar.name}</h1> : <h1>{_selectedVar.name}</h1>}
