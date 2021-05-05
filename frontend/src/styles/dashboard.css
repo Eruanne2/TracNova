@@ -11,31 +11,34 @@
 aside {
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
+  /* padding-left: 101px; */
+  overflow-x: visible;
 }
 
 aside > h1 {
   font-size: 25px;
   font-weight: 800;
   margin-bottom: 5px;
-  width: 260px;
   color: rgb(116,115,120);
 }
 
 aside > ul {
   margin-top: 15px;
   position: relative;
-  border: 1px solid #ddd;  
+  /* align-items: top; */
+  /* border: 1px solid #ddd;   */
   border-radius: 3px;
   /* overflow: hidden; */
   background: #fff;
-  box-shadow: 0px 4px 4px #0000001f;
+  /* box-shadow: 0px 4px 4px #0000001f; */
   max-height: 614px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 aside > ul > li {
   /* box-shadow: 0 0 3px rgb(49,49,49); */
+  border-radius: 3px;
   position: relative;
   list-style: none;
   /* border-bottom: 0px solid rgb(116,115,120); */
@@ -55,7 +58,7 @@ aside > ul > li {
   font-weight: 800;
   cursor: pointer;
   margin: 1px;
-  border-radius: 1px;
+  border-radius: 4px;
 }
 
 aside > ul > li:nth-child(2n){
@@ -63,8 +66,8 @@ aside > ul > li:nth-child(2n){
 }
 
 aside > ul > li.complete {
-  /* background-color: rgb(163, 244, 145); */
-  /* box-shadow: inset 0 0 1px rgb(22, 48, 14); */
+  background-color: rgb(163, 244, 145);
+  box-shadow: inset 0 0 1px rgb(22, 48, 14);
   color: #035946;
 }
 
@@ -89,24 +92,24 @@ aside > ul > li:hover {
   padding-right: 4px;
   padding-top: 1px;
   margin-bottom: -1px;
-  background-color: #e3eef4;
+  /* background-color: #e3eef4; */
 }
 
 aside > ul > li.incomplete {
-  /* background-color: rgba(252, 188, 188);
-  box-shadow: inset 0 0 1px rgb(49, 15, 15); */
+  background-color: rgba(252, 188, 188);
+  box-shadow: inset 0 0 1px rgb(49, 15, 15);
   color: #594000;
 }
 
 aside > ul > li.incomplete:hover {
-  /* background-color: rgba(252, 188, 188);
+  background-color: rgba(252, 188, 188);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -7px;
   top: -1px;
   border-radius: 3px;
   padding-right: 4px;
   padding-top: 1px;
-  margin-bottom: -1px; */
+  margin-bottom: -1px;
 }
 
 @keyframes shaking {
@@ -122,13 +125,15 @@ li.incomplete .icon-wrapper > .icon {
   color: #fff;
   /* box-shadow: inset 0 0 1px rgb(49, 15, 15); */
   animation-name: shaking;
-  animation-duration: 0.5s;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
 }
 
-aside > ul > li.selected-var aside > ul > li > .selected{
+aside > ul > li.selected-var  {
+/* aside > ul > li > .selected {  */
+/* .selected { */
   /* color: rgb(55, 40, 150); */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -12px;
   top: -2px;
@@ -136,12 +141,12 @@ aside > ul > li.selected-var aside > ul > li > .selected{
   padding-right: 8px;
   padding-top: 3px;
   margin-bottom: 2px;
-  background: #acd4e5;
+  /* background: #acd4e5; */
 }
 
 aside > ul > li.selected-var:hover {
   /* color: rgb(55, 40, 150); */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -15px;
   top: -3px;
@@ -160,7 +165,7 @@ aside > ul > li.selected-var > .react-variable-icon > .icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(1);
+  /* transform: scale(1); */
 }
 
 aside > ul > li > .react-variable-icon {
@@ -190,7 +195,7 @@ aside > ul > li > .react-variable-icon > .icon {
 
 aside > ul > li .react-variable-icon > .name {
   width: 160px;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -243,6 +248,7 @@ aside > ul > li .react-variable-icon > .name {
   margin-bottom: 20px;
   font-weight: 800;
   font-size: 18px;
+  /* height: 50px; */
 }
 
 .correlation-preview {
