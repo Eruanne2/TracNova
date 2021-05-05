@@ -83,16 +83,19 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
     <div className='entry-form-div'>
       {!!defaultVar ? <h1>Update {defaultVar.name}</h1> : <h1>Log a Factor</h1>}
       <form>
+       
+
         {!defaultVar &&
           <select value={_variable ? _variable._id : 0} onChange={e => _setVariable(variables[e.currentTarget.value])}>
             <option value={0}>Select Factor</option>
             {variables && Object.values(variables).map(variable => (
               <option value={variable._id} key={variable._id}>{variable.name}</option>
-            ))}
+              ))}
           </select>
         }
         {(!!_variable && !!_variable.dailylogs && !!_variable.dailylogs[getYesterday()]) && <button onClick={submitYesterday}>Repeat yesterday's Entry</button>}
         {!!_variable && getCustomInput(_variable)}
+       
         <input type='submit' onClick={handleSubmit} value='Add Entry' />
       </form>
       <p>Need to add an entry for another day? <Link to='/variables'>Head over to the factors page.</Link></p>
