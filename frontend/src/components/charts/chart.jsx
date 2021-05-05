@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {PureComponent} from 'react';
 import {
   ResponsiveContainer,
   ComposedChart, LineChart, 
@@ -13,11 +13,47 @@ import {
 // import '../../../styles/chart.css'
 import * as StatUtil from "../../util/stat_util";
 
+  const renderCustomTick = (e) => {
+    switch (true) {
+      case (e === 0):
+        return "";
+        break;
+      case (e === 1) :
+        return "😒";
+        break;
+      case (e === 2) :
+        return "😕";
+        break;
+      case (e === 3) :
+        return "🙂";
+        break;
+      case (e === 4) :
+        return "😊";
+        break;
+      case (e === 5):
+        return "😁";
+        break; 
+      default:
+        return '';
+  }
+}
+  const renderCustomTickBool = (e) => {
+    switch (true) {
+      case (e === 0):
+        return "No";
+        break;
+      case (e === 1) :
+        return "Yes";
+        break;
+      default:
+        return '';
+  }
+}
+const ratingsFormatter = (value) => `${renderCustomTick(value)}`;
+const booleanFormatter = (value) => `${renderCustomTickBool(value)}`;
 
 
-
-
-function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
+function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
   
   switch (varType){
     case 'binary': return (
@@ -26,10 +62,11 @@ function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
         yAxisId={varName}
         dataKey={varName}
         type="number"
-        ticks={["a","b"]}
+        ticks={[0, 1]}
+        tickFormatter={booleanFormatter}
         domain={[0, 1]}
-        orientation={orientaion}
-        strokeWidth="2"
+        orientation={orientation}
+        strokeWidth="1"
       />  
     );
     case 'rating': return (
@@ -38,12 +75,15 @@ function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
         yAxisId={varName}
         dataKey={varName}
         type="number"
-        label={"rating"}
-        ticks={[0, 1, 2, 3, 4, 5]} //change this
-        domain={[0, 5]}
-        orientation={orientaion}
-        strokeWidth="2"
-      /> 
+        label={""}
+        interval={0}
+        ticks={[1, 2, 3, 4, 5]}
+        tickFormatter={ratingsFormatter}
+        domain={[1, 5]}
+        orientation={orientation}
+        strokeWidth="1"
+        dy={0.1}
+      />
     );
     default: return (
       <YAxis
@@ -52,8 +92,8 @@ function YAxisData({varName, varType, varUnit = '', orientaion = 'left'}){
         dataKey={varName}
         type="number"
         label={varUnit}
-        orientation={orientaion}
-        strokeWidth="2"
+        orientation={orientation}
+        strokeWidth="1"
         domain={['dataMin' - 1, 'dataMax']}
       /> 
     );
@@ -73,9 +113,11 @@ function ChartData({varName, varType, i}){
           type='Before'
           barSize={30}
           fill="rgba(250, 250, 0, 0.4)"
+          fill="rgba(23,63,247, 0.2)"
           isAnimationActive={false}
-          strokeWidth="2"
+          strokeWidth="1"
           stroke="gold"
+          stroke="rgb(23,63,247, 0.9)"
           minPointSize={3}
         />
       );
@@ -85,10 +127,13 @@ function ChartData({varName, varType, i}){
           yAxisId={varName}
           dataKey={varName}
           type='step'
-          stroke="rgba(5, 0, 250, 0.6)"
+          // stroke="rgba(5, 0, 250, 0.6)"
+          stroke="rgb(23,63,247)"
           dot={false}
-          strokeWidth="3"
-          fill="rgba(225, 220, 220, 0.5)"
+          strokeWidth="1"
+          // fill="rgba(100, 100, 255, 0.3)"
+          fill="rgba(250, 250, 0, 0.4)"
+          fill="rgba(23,63,247, 0.4)"
         />
       );
       default: return (
@@ -98,7 +143,7 @@ function ChartData({varName, varType, i}){
             dataKey={varName}
             stroke="rgb(5, 0, 200)"
             stroke="rgb(23,63,247)"
-            strokeWidth="3"
+            strokeWidth="2"
             dot={false}
             type="monotone"
           />
@@ -117,8 +162,9 @@ function ChartData({varName, varType, i}){
           barSize={30}
           fill="rgba(20, 220, 220, 0.4)"
           isAnimationActive={false}
-          strokeWidth="2"
-          stroke="rgba(5, 220, 200, 0.6)"
+          strokeWidth="1"
+          stroke="rgba(5, 220, 200, 0.9)"
+          fill="rgba(250, 250, 0, 0.2)"
           minPointSize={3}
         />
       );
@@ -128,10 +174,12 @@ function ChartData({varName, varType, i}){
           yAxisId={varName}
           dataKey={varName}
           type='step'
-          stroke="rgba(5, 220, 200, 0.6)"
+          stroke="rgba(5, 180, 160, 0.9)"
           dot={false}
-          strokeWidth="3"
-          fill="rgba(20, 220, 220, 0.5)"
+          strokeWidth="1"
+          // fill="rgba(10, 180, 140, 0.5)"
+          // fill="rgba(180, 0, 140, 0.5)"
+          fill="rgba(250, 250, 0, 0.4)"
         />
       );
       default: return (
@@ -139,8 +187,8 @@ function ChartData({varName, varType, i}){
             key={varName}
             yAxisId={varName}
             dataKey={varName}
-            stroke="rgb(5, 220, 200)"
-            strokeWidth="3"
+            stroke="rgb(3, 180, 165)"
+            strokeWidth="2"
             dot={false}
             type="monotone"
             text-shadow="0px 4px 4px #0000001f"
@@ -163,16 +211,24 @@ export default function Chart({variables}){
         height={300}
         data={data}
         margin={{
-          top: 5,
+          top: 15,
           right: 30,
           left: 20,
-          bottom: 5
+          bottom: 15
         }}
       >
 
+        <defs>
+          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#129a74" stopOpacity={0.1}/>
+            <stop offset="95%" stopColor="#FFFFFF" stopOpacity={0.1}/>
+          </linearGradient>
+        </defs>
+
+
         <XAxis dataKey="date" />
         { metadataArr.map(([varName, varType], i) => 
-            YAxisData({key: i, varName, varType, orientaion: i === 1 ? 'right' : 'left'})
+            YAxisData({key: i, varName, varType, orientation: i === 1 ? 'right' : 'left'})
           )
         }
         { metadataArr.map(([varName, varType], i) => 

@@ -50,13 +50,21 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
           <button value={0} onClick={updateVal}>No</button>
         </div>
       case 'rating':
+        // return <div>
+        //   <button value={1} onClick={updateVal}>😡</button>
+        //   <button value={2} onClick={updateVal}>😞</button>
+        //   <button value={3} onClick={updateVal}>😐</button>
+        //   <button value={4} onClick={updateVal}>😊</button>
+        //   <button value={5} onClick={updateVal}>😁</button>
+        // </div>
         return <div>
-          <button value={1} onClick={updateVal}>😡</button>
-          <button value={2} onClick={updateVal}>😞</button>
-          <button value={3} onClick={updateVal}>😐</button>
+          <button value={1} onClick={updateVal}>😒</button>
+          <button value={2} onClick={updateVal}>😕</button>
+          <button value={3} onClick={updateVal}>🙂</button>
           <button value={4} onClick={updateVal}>😊</button>
           <button value={5} onClick={updateVal}>😁</button>
         </div>
+     
       default:
         return <div>
           <IconButton className="button range-button" 

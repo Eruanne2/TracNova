@@ -251,7 +251,7 @@ aside > ul > li .react-variable-icon > .name {
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 4px rgb(49,49,49);
-  background-color: rgb(226, 253, 255);
+  /* background-color: rgb(226, 253, 255); */
   color: #035946;
   margin-right: 40px;
   margin-bottom: 100px;
@@ -267,6 +267,14 @@ aside > ul > li .react-variable-icon > .name {
   font-weight: 800;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.selected-vs {
+  color: rgb(5, 0, 200);
+}
+
+.dragged-vs {
+  color: rgb(4, 200, 185);
 }
 
 .correlation-preview .drag-info {
@@ -323,7 +331,8 @@ aside > ul > li .react-variable-icon > .name {
 }
 
 .droppable-graph-box > ul.tab-headers > h2.selected-tab {
-  box-shadow: 0 3px 0px rgb(226, 253, 255);
+  /* box-shadow: 0 3px 0px rgb(226, 253, 255); */
+  box-shadow: 0 3px 0px rgb(255, 255, 255);
 }
 
 .droppable-graph-box > .tab-one, .droppable-graph-box > div.tab-two {

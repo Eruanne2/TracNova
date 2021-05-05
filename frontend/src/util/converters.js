@@ -1,4 +1,12 @@
-export const RATING_EMOJIS = [undefined, '😡', '😞', '😐', '😊', '😁'];
+// export const RATING_EMOJIS = [undefined, '😡', '😞', '😐', '😊', '😁'];
+export const RATING_EMOJIS = [
+    undefined,
+    "😒",
+    "😕",
+    "🙂",
+    "😊",
+    "😁"
+  ];
 export const toYesNo = count => !!count ? 'Yes' : 'No';
 export const toRating = count => RATING_EMOJIS[count];
 
