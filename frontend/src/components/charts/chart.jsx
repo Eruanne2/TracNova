@@ -45,6 +45,9 @@ import * as StatUtil from "../../util/stat_util";
       case (e === 1) :
         return "Yes";
         break;
+      case (e === 2) :
+        return "Both Yes";
+        break;
       default:
         return '';
   }
@@ -64,8 +67,11 @@ function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
         type="number"
         ticks={[0, 1]}
         tickFormatter={booleanFormatter}
-        domain={[0, 1]}
+        // domain={[0, 1]}
+        domain={[0, 'dataMax']}
         orientation={orientation}
+        tick={ orientation === 'left' ? {fill: 'rgb(23,63,247)', fontWeight: 600} : {fill: "rgb(3, 180, 165)", fontWeight: 600}}
+        // label={{fill: 'red'}}
         strokeWidth="1"
       />  
     );
@@ -110,11 +116,11 @@ function ChartData({varName, varType, i}){
           yAxisId={varName}
           dataKey={varName}
           type="number"
-          type='Before'
+          // type='Before'
           barSize={30}
           fill="rgba(250, 250, 0, 0.4)"
           fill="rgba(23,63,247, 0.2)"
-          // isAnimationActive={false}
+          stackId="a"
           strokeWidth="1"
           stroke="gold"
           stroke="rgb(23,63,247, 0.9)"
@@ -161,7 +167,7 @@ function ChartData({varName, varType, i}){
           type='Before'
           barSize={30}
           fill="rgba(20, 220, 220, 0.4)"
-          // isAnimationActive={false}
+          stackId="a"
           strokeWidth="1"
           stroke="rgba(5, 220, 200, 0.9)"
           fill="rgba(250, 250, 0, 0.2)"
@@ -177,8 +183,6 @@ function ChartData({varName, varType, i}){
           stroke="rgba(5, 180, 160, 0.8)"
           dot={false}
           strokeWidth="2"
-          // fill="rgba(10, 180, 140, 0.5)"
-          // fill="rgba(180, 0, 140, 0.5)"
           fill="rgba(250, 250, 0, 0.4)"
         />
       );
@@ -193,6 +197,7 @@ function ChartData({varName, varType, i}){
             type="monotone"
             text-shadow="0px 4px 4px #0000001f"
           />
+          
         
       );
     }
