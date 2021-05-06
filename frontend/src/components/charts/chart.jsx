@@ -12,7 +12,22 @@ import {
 // import '../../../styles/chart.css'
 import * as StatUtil from "../../util/stat_util";
 
-  const renderCustomTick = (e) => {
+const CustomTooltip = ({ active, payload, label, varName }) => {
+	if (active) {
+		return (
+			<div className="tooltip">
+				<p>{`${label.slice(0,5)}`}</p>
+				<p>{`L: ${payload[0].value}`}</p>
+				<p>{`R: ${payload[1].value}`}</p>
+			</div>
+		);
+	}
+
+	return null;
+};
+
+
+const renderCustomTick = (e) => {
     switch (true) {
       case (e === 0):
         return "";
@@ -30,7 +45,8 @@ import * as StatUtil from "../../util/stat_util";
         return '';
   }
 }
-  const renderCustomTickBool = (e) => {
+
+const renderCustomTickBool = (e) => {
     switch (true) {
       case (e === 0):
         return "No";
@@ -52,7 +68,7 @@ function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
     case 'binary': return (
       <YAxis
         key={`y-axis-${varName}`}
-        yAxisId={varName}
+        yAxisId="bar"
         dataKey={varName}
         type="number"
         ticks={[0, 1]}
@@ -88,7 +104,7 @@ function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
         label={varUnit}
         orientation={orientation}
         strokeWidth="1"
-        domain={['dataMin' - 1, 'dataMax']}
+        domain={['dataMin', 'dataMax']}
       /> 
     );
   }
@@ -100,12 +116,10 @@ function ChartData({varName, varType, i}){
     switch (varType){
       case 'binary': return (
         <Bar
-          stackId='a'
+          stackId={1}
           key={varName}
-          yAxisId={varName}
+          yAxisId="bar"
           dataKey={varName}
-          type="number"
-          barSize={30}
           fill="rgba(250, 250, 0, 0.4)"
           fill="rgba(23,63,247, 0.2)"
           strokeWidth="1"
@@ -144,19 +158,16 @@ function ChartData({varName, varType, i}){
     switch (varType){
       case 'binary': return (
         <Bar
-          stackId='a'
+          stackId={1}
           key={varName}
-          yAxisId={varName}
+          yAxisId="bar"
           dataKey={varName}
-          type="number"
           type='Before'
-          barSize={30}
-          fill="rgba(20, 220, 220, 0.4)"
+          fill="rgba(20, 170, 170, 0.6)"
+          fill="rgba(250, 250, 0, 0.3)"
           strokeWidth="1"
-          stroke="rgba(5, 220, 200, 0.9)"
-          fill="rgba(250, 250, 0, 0.2)"
-          minPointSize={3}
-          // stackOffset
+          stroke="rgba(5, 150, 150, 0.9)"
+          minPointSize={1}
         />
       );
       case 'rating': return (
@@ -168,7 +179,8 @@ function ChartData({varName, varType, i}){
           stroke="rgba(5, 180, 160, 0.8)"
           dot={false}
           strokeWidth="2"
-          fill="rgba(250, 250, 0, 0.4)"
+          fill="rgba(20, 170, 170, 0.6)"
+          fill="rgba(250, 250, 0, 0.3)"
         />
       );
       default: return (
@@ -182,8 +194,6 @@ function ChartData({varName, varType, i}){
             type="monotone"
             text-shadow="0px 4px 4px #0000001f"
           />
-          
-        
       );
     }
   }
@@ -197,7 +207,9 @@ export default function Chart({variables}){
   return (
     <ResponsiveContainer className="chartPrice" width={"100%"} height={400}>
       <ComposedChart
-        width={500}
+        barCategoryGap={0.8}
+        stackOffset="expand"
+        width="100%"
         height={300}
         data={data}
         margin={{
@@ -216,7 +228,9 @@ export default function Chart({variables}){
             ChartData({key: i, varName, varType, i})
           )
         }
-        <Tooltip />
+        <Tooltip 
+          // content={<CustomTooltip />}
+        />
         <Brush dataKey="date" height={30} stroke="#8884d8" />
       </ComposedChart>
     </ResponsiveContainer>
