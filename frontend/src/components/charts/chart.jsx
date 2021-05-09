@@ -1,50 +1,59 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {
   ResponsiveContainer,
-  ComposedChart, LineChart, 
+  ComposedChart,
   Brush,
   XAxis, YAxis,
   ReferenceLine,
   Line, Bar, Area,
   Tooltip,
-  Baseline
 } from 'recharts';
 // add style if orientation is left this color otherwise other color
 // import '../../../styles/chart.css'
 import * as StatUtil from "../../util/stat_util";
 
-  const renderCustomTick = (e) => {
+const CustomTooltip = ({ active, payload, label, varName }) => {
+	if (active) {
+		return (
+			<div className="tooltip">
+				<p>{`${label.slice(0,5)}`}</p>
+				<p>{`L: ${payload[0].value}`}</p>
+				<p>{`R: ${payload[1].value}`}</p>
+			</div>
+		);
+	}
+
+	return null;
+};
+
+
+const renderCustomTick = (e) => {
     switch (true) {
       case (e === 0):
         return "";
-        break;
       case (e === 1) :
         return "😒";
-        break;
       case (e === 2) :
         return "😕";
-        break;
       case (e === 3) :
         return "🙂";
-        break;
       case (e === 4) :
         return "😊";
-        break;
       case (e === 5):
-        return "😁";
-        break; 
+        return "😁"; 
       default:
         return '';
   }
 }
-  const renderCustomTickBool = (e) => {
+
+const renderCustomTickBool = (e) => {
     switch (true) {
       case (e === 0):
         return "No";
-        break;
       case (e === 1) :
         return "Yes";
-        break;
+      case (e === 2) :
+        return "Both Yes";
       default:
         return '';
   }
@@ -59,13 +68,14 @@ function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
     case 'binary': return (
       <YAxis
         key={`y-axis-${varName}`}
-        yAxisId={varName}
+        yAxisId="bar"
         dataKey={varName}
         type="number"
         ticks={[0, 1]}
         tickFormatter={booleanFormatter}
-        domain={[0, 1]}
+        domain={[0, 'dataMax']}
         orientation={orientation}
+        tick={ orientation === 'left' ? {fill: 'rgb(23,63,247)', fontWeight: 600} : {fill: "rgb(3, 180, 165)", fontWeight: 600}}
         strokeWidth="1"
       />  
     );
@@ -94,7 +104,7 @@ function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
         label={varUnit}
         orientation={orientation}
         strokeWidth="1"
-        domain={['dataMin' - 1, 'dataMax']}
+        domain={['dataMin', 'dataMax']}
       /> 
     );
   }
@@ -106,17 +116,13 @@ function ChartData({varName, varType, i}){
     switch (varType){
       case 'binary': return (
         <Bar
+          stackId={1}
           key={varName}
-          yAxisId={varName}
+          yAxisId="bar"
           dataKey={varName}
-          type="number"
-          type='Before'
-          barSize={30}
           fill="rgba(250, 250, 0, 0.4)"
           fill="rgba(23,63,247, 0.2)"
-          isAnimationActive={false}
           strokeWidth="1"
-          stroke="gold"
           stroke="rgb(23,63,247, 0.9)"
           minPointSize={3}
         />
@@ -127,11 +133,9 @@ function ChartData({varName, varType, i}){
           yAxisId={varName}
           dataKey={varName}
           type='step'
-          // stroke="rgba(5, 0, 250, 0.6)"
           stroke="rgb(23,63,247)"
-          // dot={false}
+          dot={false}
           strokeWidth="1"
-          // fill="rgba(100, 100, 255, 0.3)"
           fill="rgba(250, 250, 0, 0.4)"
           fill="rgba(23,63,247, 0.4)"
         />
@@ -144,7 +148,7 @@ function ChartData({varName, varType, i}){
             stroke="rgb(5, 0, 200)"
             stroke="rgb(23,63,247)"
             strokeWidth="2"
-            // dot={false}
+            dot={false}
             type="monotone"
           />
         
@@ -154,18 +158,16 @@ function ChartData({varName, varType, i}){
     switch (varType){
       case 'binary': return (
         <Bar
+          stackId={1}
           key={varName}
-          yAxisId={varName}
+          yAxisId="bar"
           dataKey={varName}
-          type="number"
           type='Before'
-          barSize={30}
-          fill="rgba(20, 220, 220, 0.4)"
-          isAnimationActive={false}
+          fill="rgba(20, 170, 170, 0.6)"
+          fill="rgba(250, 250, 0, 0.3)"
           strokeWidth="1"
-          stroke="rgba(5, 220, 200, 0.9)"
-          fill="rgba(250, 250, 0, 0.2)"
-          minPointSize={3}
+          stroke="rgba(5, 150, 150, 0.9)"
+          minPointSize={1}
         />
       );
       case 'rating': return (
@@ -175,11 +177,10 @@ function ChartData({varName, varType, i}){
           dataKey={varName}
           type='step'
           stroke="rgba(5, 180, 160, 0.8)"
-          // dot={false}
+          dot={false}
           strokeWidth="2"
-          // fill="rgba(10, 180, 140, 0.5)"
-          // fill="rgba(180, 0, 140, 0.5)"
-          fill="rgba(250, 250, 0, 0.4)"
+          fill="rgba(20, 170, 170, 0.6)"
+          fill="rgba(250, 250, 0, 0.3)"
         />
       );
       default: return (
@@ -189,11 +190,10 @@ function ChartData({varName, varType, i}){
             dataKey={varName}
             stroke="rgb(3, 180, 165)"
             strokeWidth="2"
-            // dot={false}
+            dot={false}
             type="monotone"
             text-shadow="0px 4px 4px #0000001f"
           />
-        
       );
     }
   }
@@ -207,7 +207,9 @@ export default function Chart({variables}){
   return (
     <ResponsiveContainer className="chartPrice" width={"100%"} height={400}>
       <ComposedChart
-        width={500}
+        barCategoryGap={0.8}
+        stackOffset="expand"
+        width="100%"
         height={300}
         data={data}
         margin={{
@@ -226,78 +228,11 @@ export default function Chart({variables}){
             ChartData({key: i, varName, varType, i})
           )
         }
-        <Tooltip />
+        <Tooltip 
+          // content={<CustomTooltip />}
+        />
         <Brush dataKey="date" height={30} stroke="#8884d8" />
       </ComposedChart>
     </ResponsiveContainer>
   )
 }
-
-// rating:
-
-{/* 
-<YAxis
-  yAxisId={variable.name}
-  dataKey={variable.name}
-  type="number"
-  label={"rating"}
-  ticks={[0, 1, 2, 3, 4, 5]}
-  domain={[0, 5]}
-  orientation={orientaion}
-  strokeWidth="2"
-/> 
-<Area
-  yAxisId={variable.name}
-  dataKey={variable.name}
-  type='step'
-  stroke="rgba(5, 0, 250, 0.6)"
-  // dot={false}
-  strokeWidth="3"
-  fill="rgba(5, 0, 220, 0.5)"
-/>
-*/}
-
-// binary
-{/* 
-<YAxis
-  yAxisId={variable.name}
-  dataKey={variable.name}
-  type="number"
-  ticks={["a","b"]}
-  domain={[0, 1]}
-  orientation={orientaion}
-  strokeWidth="2"
-/>  
-<Bar
-  yAxisId={variable.name}
-  dataKey={variable.name}
-  type="number"
-  type='Before'
-  barSize={30}
-  fill="rgba(250, 250, 0, 0.4)"
-  isAnimationActive={false}
-  strokeWidth="2"
-  stroke="gold"
-  minPointSize={3}
-/>
-*/}
-
-// metric
-{/*
-<YAxis
-  yAxisId={variable.name}
-  dataKey={variable.name}
-  type="number"
-  label={variable.unit || ""}
-  orientation={orientaion}
-  strokeWidth="2"
-  domain={['dataMin' - 1, 'dataMax']}
-/> 
-<Line
-  yAxisId={variable.name}
-  dataKey={variable.name}
-  stroke="rgb(5, 0, 200)"
-  strokeWidth="6"
-  dot={false}
-/>
-*/}
