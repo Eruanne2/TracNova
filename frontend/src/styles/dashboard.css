@@ -9,7 +9,7 @@
   font-family: 'Whitney';
 }
 
-aside {
+aside.dashboard-aside {
   display: flex;
   flex-direction: column;
   /* margin-bottom: 100px; */
@@ -17,7 +17,7 @@ aside {
   overflow-x: visible;
 }
 
-aside > h1 {
+aside.dashboard-aside > h1 {
   font-size: 25px;
   font-weight: 800;
   margin-bottom: 5px;
@@ -26,7 +26,7 @@ aside > h1 {
   top: 130px;
 }
 
-aside > div.var-list-wrap {
+aside.dashboard-aside > div.var-list-wrap {
   overflow: hidden;
   height: 550px;
   width: 280px;
@@ -36,7 +36,7 @@ aside > div.var-list-wrap {
 }
 
 
-aside > div.var-list-wrap > ul {
+aside.dashboard-aside > div.var-list-wrap > ul {
   margin-top: 15px;
   padding-top: 8px;
   padding-left: 16px;
@@ -81,7 +81,7 @@ aside > div.var-list-wrap > ul {
   );
 } 
 
-aside > div.var-list-wrap > ul > li {
+aside.dashboard-aside > div.var-list-wrap > ul > li {
   /* box-shadow: 0 0 3px rgb(49,49,49); */
   border-radius: 3px;
   position: relative;
@@ -106,11 +106,11 @@ aside > div.var-list-wrap > ul > li {
   border-radius: 4px;
 }
 
-aside > div.var-list-wrap > ul > li:nth-child(2n){
+aside.dashboard-aside > div.var-list-wrap > ul > li:nth-child(2n){
   background-color: #f7f7f7;
 }
 
-aside > div.var-list-wrap > ul > li.complete {
+aside.dashboard-aside > div.var-list-wrap > ul > li.complete {
   background-color: rgb(163, 244, 145);
   box-shadow: inset 0 0 1px rgb(22, 48, 14);
   color: #035946;
@@ -126,7 +126,7 @@ aside > div.var-list-wrap > ul > li.complete {
   font-weight: 100;
 }
 
-aside > div.var-list-wrap > ul > li:hover {
+aside.dashboard-aside > div.var-list-wrap > ul > li:hover {
   /* box-shadow: 0 0 2px rgb(49, 15, 15); */
   /* color: rgb(55, 40, 150); */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
@@ -140,13 +140,13 @@ aside > div.var-list-wrap > ul > li:hover {
   /* background-color: #e3eef4; */
 }
 
-aside > div.var-list-wrap > ul > li.incomplete {
+aside.dashboard-aside > div.var-list-wrap > ul > li.incomplete {
   background-color: rgba(252, 188, 188);
   box-shadow: inset 0 0 1px rgb(49, 15, 15);
   color: #594000;
 }
 
-aside > div.var-list-wrap > ul > li.incomplete:hover {
+aside.dashboard-aside > div.var-list-wrap > ul > li.incomplete:hover {
   background-color: rgba(252, 188, 188);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
   left: -7px;
@@ -174,8 +174,8 @@ li.incomplete .icon-wrapper > .icon {
   animation-iteration-count: infinite;
 }
 
-aside > div.var-list-wrap > ul > li.selected-var  {
-/* aside > div.var-list-wrap > ul > li > .selected {  */
+aside.dashboard-aside > div.var-list-wrap > ul > li.selected-var  {
+/* aside.dashboard-aside > div.var-list-wrap > ul > li > .selected {  */
 /* .selected { */
   /* color: rgb(55, 40, 150); */
   text-shadow: 0 0 10px rgba(255, 255, 255, 1);
@@ -189,7 +189,7 @@ aside > div.var-list-wrap > ul > li.selected-var  {
   /* background: #acd4e5; */
 }
 
-aside > div.var-list-wrap > ul > li.selected-var:hover {
+aside.dashboard-aside > div.var-list-wrap > ul > li.selected-var:hover {
   /* color: rgb(55, 40, 150); */
   text-shadow: 0 0 10px rgba(255, 255, 255, 1);
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),  2px 2px 6px rgb(49, 15, 15);
@@ -201,7 +201,7 @@ aside > div.var-list-wrap > ul > li.selected-var:hover {
   margin-bottom: 1px;
 }
 
-aside > div.var-list-wrap > ul > li.selected-var > .react-variable-icon > .icon {
+aside.dashboard-aside > div.var-list-wrap > ul > li.selected-var > .react-variable-icon > .icon {
   border: none;
   box-shadow: inset 0 0 3px rgb( 215, 249, 215),   1px 1px 4px rgb(49, 15, 15);
   border-radius: 50%;
@@ -213,7 +213,7 @@ aside > div.var-list-wrap > ul > li.selected-var > .react-variable-icon > .icon 
   /* transform: scale(1); */
 }
 
-aside > div.var-list-wrap > ul > li > .react-variable-icon {
+aside.dashboard-aside > div.var-list-wrap > ul > li > .react-variable-icon {
   margin-left: 15px;
   display: flex;
   flex-direction: row;
@@ -222,11 +222,11 @@ aside > div.var-list-wrap > ul > li > .react-variable-icon {
   width: 260px;
 }
 
-aside > div.var-list-wrap > ul > li > .react-variable-icon {
+aside.dashboard-aside > div.var-list-wrap > ul > li > .react-variable-icon {
   margin-right: 10px;
 }
 
-aside > div.var-list-wrap > ul > li > .react-variable-icon > .icon {
+aside.dashboard-aside > div.var-list-wrap > ul > li > .react-variable-icon > .icon {
   border: none;
   box-shadow: 0 0 3px rgb(49,49,49);
   border-radius: 20px;
@@ -238,7 +238,7 @@ aside > div.var-list-wrap > ul > li > .react-variable-icon > .icon {
   align-items: center;
 }
 
-aside > div.var-list-wrap > ul > li .react-variable-icon > .name {
+aside.dashboard-aside > div.var-list-wrap > ul > li .react-variable-icon > .name {
   width: 160px;
   /* white-space: nowrap; */
   overflow: hidden;
