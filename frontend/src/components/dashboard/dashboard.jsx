@@ -67,17 +67,20 @@ export default function Dashboard({variables}){
     <div className="dashboard-div">
       <aside>
         <h1>Your Factors: </h1>
-        <ul className='variables-list'>
-          {Object.values(variables).map((variable, idx) => (
-            <li key={idx} onClick={handleLiClick(variable)}
-                className={
-                  `${completed(variable) ? 'complete' : 'incomplete'} 
-                  ${variable._id === _selectedVar._id && 'selected-var'}`
-                }>
-              <VariableIcon variable={variable} draggable={true} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)}/>
-            </li>
-          ))}
-        </ul>
+        <div className="var-list-wrap">
+          <ul className='variables-list'>
+            {Object.values(variables).map((variable, idx) => (
+              <li key={idx} onClick={handleLiClick(variable)}
+                  className={
+                    `${completed(variable) ? 'complete' : 'incomplete'} 
+                    ${variable._id === _selectedVar._id && 'selected-var'}`
+                  }>
+                <VariableIcon variable={variable} draggable={true} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)}/>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* <div class="fadeout"></div> */}
       </aside>
       <main>
         <section className='toggle-entry-form'>
