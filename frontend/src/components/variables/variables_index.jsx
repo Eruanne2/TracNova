@@ -26,25 +26,27 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
   return (
     <aside className="index variables-index">
       <h1>Factors</h1>
-      <ul className="variables">
-        <NavLink className="button variable-button" activeClassName="selected"
-          to="/variables/new"
-        >
-          <FontAwesomeIcon className="icon" icon={faPlus}/>
-          <p>Track a new factor!</p>
-        </NavLink>
-        { variables.map(variable => (
-            <li key={variable._id} className={`${completed(variable) ? 'complete' : 'incomplete'}`}>
-              <NavLink activeClassName="selected" className="var-item-link" as="div"
-                to={`/variables/${variable._id}`}
-              >
-                <VariableIcon variable={variable} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
-              </NavLink>
-              <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>
-            </li>
-          ))
-        }
-      </ul>
+      <NavLink className="button variable-button" activeClassName="selected"
+        to="/variables/new"
+      >
+        <FontAwesomeIcon className="icon" icon={faPlus}/>
+        <p>Track a new factor!</p>
+      </NavLink>
+      <div className="var-list-wrap factor-wrap">
+        <ul className="variables">
+          { variables.map(variable => (
+              <li key={variable._id} className={`${completed(variable) ? 'complete' : 'incomplete'}`}>
+                <NavLink activeClassName="selected" className="var-item-link" as="div"
+                  to={`/variables/${variable._id}`}
+                >
+                  <VariableIcon variable={variable} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
+                </NavLink>
+                <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </aside>
   )
 }

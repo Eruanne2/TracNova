@@ -12,8 +12,6 @@
 .variables-index > h1 {
   font-size: 25px;
   font-weight: 800;
-  margin-top: 20px;
-  margin-bottom: 5px;
   width: 260px;
   color: rgb(116,115,120);
 }
@@ -28,9 +26,19 @@
   
 } */
 
-.variables-index > ul > a.button.variable-button {
+aside > div.var-list-wrap.factor-wrap {
+  overflow: hidden;
+  height: 550px;
+  width: 280px;
+  position: fixed;
+  top: 200px;
+  left: 5%;
+}
+
+a.button.variable-button {
   text-decoration: none;
-  position: relative;
+  position: fixed;
+  top: 180px;
   height: 40px;
   width: 180px;
   background-color: rgb(49,49,49);
@@ -46,7 +54,7 @@
   padding-right: 60px;
 }
 
-.variables-index > ul > a.button.variables-button:hover {
+a.button.variables-button:hover {
   background-color: rgb(116,115,120);
 }
 

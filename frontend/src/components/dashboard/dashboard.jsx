@@ -65,7 +65,7 @@ export default function Dashboard({variables}){
   
   return(
     <div className="dashboard-div">
-      <aside className="dashboard-aside">
+      <aside>
         <h1>Your Factors: </h1>
         <div className="var-list-wrap">
           <ul className='variables-list'>
