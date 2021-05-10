@@ -6,3 +6,4 @@ keys_dev.js
 /assets/raw/*
 
 package-log.json
+package-lock.json
