@@ -23,6 +23,19 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
     e.dataTransfer.setData('text/plain', id);
   }
 
+  const disableScroll = e => {
+    // console.log("event happened");
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    window.onscroll = function() {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
+  }
+
+  const enableScroll = e => {
+    window.onscroll = function() {};
+  }
+
   return (
     <aside className="index variables-index">
       <h1>Factors</h1>
@@ -32,7 +45,7 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
         <FontAwesomeIcon className="icon" icon={faPlus}/>
         <p>Track a new factor!</p>
       </NavLink>
-      <div className="var-list-wrap factor-wrap">
+      <div className="var-list-wrap factor-wrap" onMouseEnter={() => disableScroll()} onMouseLeave={() => enableScroll()}>
         <ul className="variables">
           { variables.map(variable => (
               <li key={variable._id} className={`${completed(variable) ? 'complete' : 'incomplete'}`}>
