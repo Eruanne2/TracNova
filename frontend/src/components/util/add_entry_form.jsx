@@ -33,6 +33,10 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
   const updateVal = e => {
     e.preventDefault();
     _setTodayVal(e.currentTarget.value);
+    let selectedButton = e.currentTarget;
+    let allButtons = document.querySelectorAll(".select-button");
+    allButtons.forEach(b => b.classList.remove("select-button"));
+    selectedButton.classList.add("select-button");
   };
 
   const getYesterday = () => 
@@ -46,23 +50,23 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
     switch(variable.unit){
       case 'binary':
         return <div>
-          <button value={0} onClick={updateVal}>Yes</button>
-          <button value={0} onClick={updateVal}>No</button>
+          <div><button value={0} onClick={updateVal}>Yes</button></div>
+          <div><button value={0} onClick={updateVal}>No</button></div>
         </div>
       case 'rating':
         // return <div>
-        //   <button value={1} onClick={updateVal}>😡</button>
-        //   <button value={2} onClick={updateVal}>😞</button>
-        //   <button value={3} onClick={updateVal}>😐</button>
-        //   <button value={4} onClick={updateVal}>😊</button>
-        //   <button value={5} onClick={updateVal}>😁</button>
+        //   <div> </div><button value={1} onClick={updateVal}>😡</button>
+        //   <div> </div><button value={2} onClick={updateVal}>😞</button>
+        //   <div> </div><button value={3} onClick={updateVal}>😐</button>
+        //   <div> </div><button value={4} onClick={updateVal}>😊</button>
+        //   <div> </div><button value={5} onClick={updateVal}>😁</button>
         // </div>
         return <div>
-          <button value={1} onClick={updateVal}>😒</button>
-          <button value={2} onClick={updateVal}>😕</button>
-          <button value={3} onClick={updateVal}>🙂</button>
-          <button value={4} onClick={updateVal}>😊</button>
-          <button value={5} onClick={updateVal}>😁</button>
+          <div><button value={1} onClick={updateVal}>😒</button></div>
+          <div><button value={2} onClick={updateVal}>😕</button></div>
+          <div><button value={3} onClick={updateVal}>🙂</button></div>
+          <div><button value={4} onClick={updateVal}>😊</button></div>
+          <div><button value={5} onClick={updateVal}>😁</button></div>
         </div>
      
       default:
