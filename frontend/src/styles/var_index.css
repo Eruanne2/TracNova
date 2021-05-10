@@ -31,16 +31,18 @@ aside > div.var-list-wrap.factor-wrap {
   height: 550px;
   width: 280px;
   position: fixed;
-  top: 200px;
+  top: 199px;
   left: 5%;
 }
 
 a.button.variable-button {
   text-decoration: none;
   position: fixed;
-  top: 180px;
+  z-index: 10;
+  top: 175px;
+  left: 6%;
   height: 40px;
-  width: 180px;
+  width: 185px;
   background-color: rgb(49,49,49);
   color: white;
   font-weight: 800;
@@ -70,13 +72,21 @@ a.button.variables-button:hover {
   /* border-top: 1px solid rgb(116,115,120); */
 }
 
-.variables-index > ul > li > a.selected{
+.variables-index > div.var-list-wrap.factor-wrap > ul {
+  max-height: 470px;
+}
+
+.variables-index > div.var-list-wrap.factor-wrap > ul > li > a {
+  box-shadow: 0 0 1px black;
+}
+
+.variables-index > div.var-list-wrap.factor-wrap > ul > li > a.selected{
   background-color: #acd4e5;
 }
 
-.variables-index > ul > li a > svg.fa-trash {
+.variables-index > div.var-list-wrap.factor-wrap > ul > li a > svg.fa-trash {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 20px;
   cursor: pointer;
   font-weight: 800;

@@ -40,8 +40,8 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
                   to={`/variables/${variable._id}`}
                 >
                   <VariableIcon variable={variable} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
+                  <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>
                 </NavLink>
-                <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>
               </li>
             ))
           }
