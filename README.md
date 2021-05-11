@@ -1,5 +1,5 @@
 # TracNova
-[TracNova](#website-here) is a habit tracker app that offers more than just a history of how well you've stuck to your goals - it gives you a quantifiable measurement of why you should stick to them.
+[TracNova](https://trac-nova.herokuapp.com/#/) is a habit tracker app that offers more than just a history of how well you've stuck to your goals - it gives you a quantifiable measurement of why you should stick to them.
 
 We all know that what gets measured gets improved. Like any other habit tracker, TracNova provides a place to record measurements of various habits you wish to cultivate, whether hours slept, money earned from sales, or calories eaten. However, with TracNova you are able to investigate the correlation between any two habits. Simply choose the two variables you want to compare, and TracNova will run the appropriate statistical test to find the correlation coefficient between them and indicate the nature of their interaction. The more often you log, the more accurate it becomes.
 
@@ -49,3 +49,4 @@ gif here
 ## Database Design
 * To update a nested object value of the field in a document, simply making changes to the nested object by mutating it will not persist in the database when the document is saved. The nested object value needs to be duplicated, updated, then reassigned to the field before saving the document.
 ## Work Delegation
+* Learned to allocate time for group meeting to avoid design and styling conflict among parallel branches.
