@@ -11,14 +11,6 @@ import { fetchUserCorrelations } from './actions/correlations_actions';
 import "./fonts/whitney-2-cufonfonts-webfont/whitneylight.woff";
 import "./fonts/whitney-2-cufonfonts-webfont/whitneymedium.woff";
 import "./fonts/whitney-2-cufonfonts-webfont/whitneybold.woff";
-// Not Needed
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
-
-// testing
-import axios from 'axios';
-import * as variableActions from './actions/variables_actions';
-import * as correlationActions from './actions/correlations_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store, decodedUser;
@@ -44,10 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
 
   //testing
-  window.axios = axios;
-  window.store = store;
-  window.variableActions = variableActions;
-  window.correlationActions = correlationActions;
+  // window.store = store;
 
 
   ReactDOM.render(<Root store={store} />, root);
