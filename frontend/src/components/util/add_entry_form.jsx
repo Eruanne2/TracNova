@@ -13,6 +13,11 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
   useEffect(() => {
     if (!!defaultVar) _setVariable(Object.assign({}, defaultVar));
   }, [defaultVar]);
+
+  useEffect(() => {
+    let allButtons = document.querySelectorAll(".select-button");
+    allButtons.forEach(b => b.classList.remove("select-button"));
+  }, [_variable]);
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -37,6 +42,7 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
     let allButtons = document.querySelectorAll(".select-button");
     allButtons.forEach(b => b.classList.remove("select-button"));
     selectedButton.classList.add("select-button");
+    console.log(selectedButton);
   };
 
   const getYesterday = () => 
@@ -50,17 +56,10 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
     switch(variable.unit){
       case 'binary':
         return <div>
-          <div><button value={0} onClick={updateVal}>Yes</button></div>
+          <div><button value={1} onClick={updateVal}>Yes</button></div>
           <div><button value={0} onClick={updateVal}>No</button></div>
         </div>
       case 'rating':
-        // return <div>
-        //   <div> </div><button value={1} onClick={updateVal}>😡</button>
-        //   <div> </div><button value={2} onClick={updateVal}>😞</button>
-        //   <div> </div><button value={3} onClick={updateVal}>😐</button>
-        //   <div> </div><button value={4} onClick={updateVal}>😊</button>
-        //   <div> </div><button value={5} onClick={updateVal}>😁</button>
-        // </div>
         return <div>
           <div><button value={1} onClick={updateVal}>😒</button></div>
           <div><button value={2} onClick={updateVal}>😕</button></div>
