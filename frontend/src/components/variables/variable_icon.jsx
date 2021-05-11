@@ -1,5 +1,6 @@
 import { faChartLine, faStar, faYinYang } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SYMBOL_BOOLEAN, SYMBOL_RATING } from '../../util/symbols';
 
 import React from 'react';
 
@@ -20,8 +21,8 @@ export default function VariableIcon({variable, onDragStart, handleClick, dragga
     >
       <div className='icon' title={completed ? '' : `The record is incomplete. Please enter today's entry`}>
         <FontAwesomeIcon icon={
-          variable.unit === 'binary' ? faYinYang :
-            variable.unit === 'rating' ? faStar : faChartLine
+          (variable.unit === 'binary' || variable.unit === SYMBOL_BOOLEAN) ? faYinYang :
+            (variable.unit === 'rating' || variable.unit === SYMBOL_RATING) ? faStar : faChartLine
         }/>
       </div>
       <div className='name' >

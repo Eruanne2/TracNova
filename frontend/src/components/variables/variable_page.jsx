@@ -1,16 +1,14 @@
 import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { dateToMDY } from "../../util/converters";
 import IconButton from "../util/icon_button";
 import '../../styles/var_page.css';
 import Chart from '../charts/chart';
-
 import Log from "./log";
 import AddEntryFormContainer from "../util/add_entry_form_container";
+import { SYMBOL_BOOLEAN, SYMBOL_RATING } from '../../util/symbols';
 
 const nullVariable = {};
-const SYMBOL_BOOLEAN = Symbol.for('boolean');
-const SYMBOL_RATING = Symbol.for('rating');
 
 export default function VariablePage({
   history,
