@@ -60,6 +60,19 @@ export default function Dashboard({variables}){
     if (!(id === _selectedVar._id)) _setDraggedVar(variables[id]);
   };
 
+  const disableScroll = e => {
+    // console.log("event happened");
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    window.onscroll = function() {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
+  }
+
+  const enableScroll = e => {
+    window.onscroll = function() {};
+  }
+
   let numPoints = 0;
   if (!!_selectedVar && !!_draggedVar) numPoints = StatUtil.numDataPoints(_selectedVar, _draggedVar);
   
@@ -67,7 +80,7 @@ export default function Dashboard({variables}){
     <div className="dashboard-div">
       <aside>
         <h1>Your Factors: </h1>
-        <div className="var-list-wrap">
+        <div className="var-list-wrap" onMouseEnter={() => disableScroll()} onMouseLeave={() => enableScroll()}>
           <ul className='variables-list'>
             {Object.values(variables).map((variable, idx) => (
               <li key={idx} onClick={handleLiClick(variable)}
