@@ -94,7 +94,7 @@ User can create, read, update and delete quantified daily records within each fa
 ## Correlations and Significance
 (Details of Math) is used to create correlation coefficient that ranges from 1 to -1. 1 represents absolute positive correlation; -1 represents absolute negative correlation; 0 represents no correlation.
 
-![correlation coefficient](https://github.com/Eruanne2/TracNova/blob/readme/assets/readme_img/correlation_coef.png)
+![correlation coefficient](https://github.com/Eruanne2/TracNova/blob/readme/assets/readme_img/correlation_coef2.png)
 
 ## Graphs
 (Wenchong's Magic)
