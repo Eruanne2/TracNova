@@ -89,7 +89,7 @@ const CorrelationFormModalContainer = connect(mapSTP, mapDTP)(CorrelationFormMod
 function AddCorrelation(){
   const handleCreate = (e, {name, varIds}) => {
     e.preventDefault();
-    console.log(name, varIds);
+    // console.log(name, varIds);
     // history.push(`/correlations`);
   };
 

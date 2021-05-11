@@ -111,7 +111,6 @@ function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
 }
 
 function ChartData({varName, varType, i}){
-  console.log(i === 1)
   if (i === 0) {
     switch (varType){
       case 'binary': return (

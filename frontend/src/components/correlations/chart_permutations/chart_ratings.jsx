@@ -32,7 +32,7 @@ export default function ChartRatings(){
     for (let i = 0; i < 20; i++)
     fakeRating[i].nums3 = (fakeRating[i].nums1 + fakeRating[i].nums2) / 2
   
-  console.log(fakeRating)
+  // console.log(fakeRating)
 
   // const RATING_EMOJIS = [undefined, '😡', '😞', '😐', '😊', '😁'];
   // const RATING_EMOJIS = [undefined, '😡', '😞', '😐', '😊', '😁'];

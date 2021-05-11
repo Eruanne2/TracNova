@@ -16,7 +16,7 @@ import * as StatUtil from "../../../util/stat_util";
 
 export default function ChartMetrics({variables}){
   const [data, dataType] = StatUtil.getStatData(...variables);
-console.log(data, dataType);
+// console.log(data, dataType);
   return (
     <ResponsiveContainer className="chartPrice" width={800} height={400}>
       <ComposedChart

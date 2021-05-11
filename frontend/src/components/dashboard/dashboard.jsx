@@ -9,7 +9,7 @@ import { completed } from '../../util/converters';
 
 export default function Dashboard({variables}){
   const [_toggleForm, _setToggleForm] = useState(false);
-  const [_selectedVar, _setSelectedVar] = useState('');
+  const [_selectedVar, _setSelectedVar] = useState(variables[localStorage.getItem('selectedId')] || '');
   const [_draggedVar, _setDraggedVar] = useState('');
   const [_coefficient, _setCoefficient] = useState(0);
   const [_whichTab, _setWhichTab] = useState(1);
@@ -24,12 +24,13 @@ export default function Dashboard({variables}){
   }, [_draggedVar]);
 
   useEffect(() => {
-    _setSelectedVar(Object.values(variables)[0] || '')
+    _setSelectedVar(variables[localStorage.getItem('selectedId')] || Object.values(variables)[0] || '');
   }, [variables]);
 
   const handleLiClick = (variable) => {
     return e => {
       _setSelectedVar(variable);
+      localStorage.setItem('selectedId', variable._id);
       _setDraggedVar('');
       _setToggleForm(true)
     }

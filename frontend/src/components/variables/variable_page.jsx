@@ -110,7 +110,7 @@ export default function VariablePage({
       )) return false;
 
     if (newDate !== date){
-      console.log(_dateMapping)
+      // console.log(_dateMapping)
       let origDate = Object.values(_dateMapping)[0];
       _setDateMapping({[newDate]: origDate || date});
     }
