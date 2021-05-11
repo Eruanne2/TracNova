@@ -5,7 +5,7 @@ We all know that what gets measured gets improved. Like any other habit tracker,
 
 Does drinking water really help you lose weight? Does waking up earlier really make you more productive? Find out for yourself.
 
-![splash page](https://github.com/Eruanne2/TracNova/blob/readme/assets/readme_img/splash.gif)
+![splash page](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/splash.gif)
 
 # Table of Contents
 * [Technologies Used](#technologies-used)
@@ -89,17 +89,17 @@ User can create, read, update and delete factors that they choose to keep track 
 ## Records in Factors
 User can create, read, update and delete quantified daily records within each factor. (Details of frontend code). An daily entry dropdown menu is located on the top of every page for convenience of the user and to remind users to log today's entry as they are using the app. Daily entry's datatype includes continuous spectrum and discrete spectrum.
 
-![daily entry form](https://github.com/Eruanne2/TracNova/blob/readme/assets/readme_img/entry_form2.gif)
+![daily entry form](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/entry_form2.gif)
 
 ## Correlations and Significance
 (Details of Math) is used to create correlation coefficient that ranges from 1 to -1. 1 represents absolute positive correlation; -1 represents absolute negative correlation; 0 represents no correlation.
 
-![correlation coefficient](https://github.com/Eruanne2/TracNova/blob/readme/assets/readme_img/correlation_coef2.png)
+![correlation coefficient](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/correlation_coef2.png)
 
 ## Graphs
 (Wenchong's Magic)
 
-![drag to chart](https://github.com/Eruanne2/TracNova/blob/readme/assets/readme_img/drag2chart.gif)
+![drag to chart](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/drag2chart.gif)
 
 # Features In Progress
 ## Multi-Variable Correlations
