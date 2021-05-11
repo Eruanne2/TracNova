@@ -16,7 +16,7 @@ export default function VariablePage({
   history,
   variable = nullVariable,
   currentUser, 
-  createVariable, updateVariable, allVariables
+  createVariable, updateVariable
 }){
   if (variable.unit && typeof variable.unit === 'string'){
     if (["boolean", "binary"].includes(variable.unit.toLowerCase()))

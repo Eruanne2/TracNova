@@ -36,13 +36,6 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
     window.onscroll = function() {};
   }
 
-  // this is only here because --activeClassName="selected"-- on line 60 is not working.
-  const activeWorkaround = e => {
-    e.preventDefault();
-    document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
-    e.currentTarget.classList.add('selected');
-  }
-
   return (
     <aside className="index variables-index">
       <h1>Factors</h1>
@@ -56,8 +49,8 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
         <ul className="variables">
           { variables.map(variable => (
               <li key={variable._id} className={`${completed(variable) ? 'complete' : 'incomplete'}`}>
-                <NavLink exact to={`/variables/${variable._id}`} onClick={activeWorkaround}
-                  activeClassName="selected" className="var-item-link" as="div"
+                <NavLink exact to={`/variables/${variable._id}`}
+                  className={`var-item-link ${history.location.pathname.includes(variable._id) ? 'selected' : ''}`} as="div"
                 >
                   <VariableIcon variable={variable} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
                   <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>
