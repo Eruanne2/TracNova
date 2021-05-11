@@ -93,13 +93,27 @@
   justify-content: space-evenly;
   align-items: center;
   height: 50px;
+  position: relative;
 }
 
-.entry-form-div > form > div > button {
+.entry-form-div > form > div > div {
   width: 50px;
   height: 50px;
   outline: none;
   border: none;
+  position: relative;
+  background-color: white;
+  border-radius: 25px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.entry-form-div > form > div > div > button {
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+  position: absolute;
   box-shadow: 0 0 3px black;
   background-color: white;
   border-radius: 25px;
@@ -107,9 +121,29 @@
   cursor: pointer;
 }
 
+.entry-form-div > form > div > div > button:hover {
+  width: 54px;
+  height: 54px;
+  outline: none;
+  border: none;
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  box-shadow: 0 0 3px black;
+  background-color: rgb(235, 255, 214);
+  border-radius: 27px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.entry-form-div > form > div > div > button.select-button {
+  background-color: greenyellow;
+}
+
 .react-log{
   user-select: none;
 }
+
 input.range.react-log-input {
   height: 30px;
   outline: none;
