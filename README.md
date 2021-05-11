@@ -38,50 +38,50 @@ Does drinking water really help you lose weight? Does waking up earlier really m
 ## User Auth
 User is able to Create an account, Login and Logout. When creating an account, the back-end express router first check for existing email to avoid duplicates. The password input is then combined with a salt, hashed using bcrypt, and saved into the database. 
 ```javascript
-  User.findOne({email: req.body.email})
-    .then(user => {
-      if (user) return res.status(400).json({email: "Email already used."})
-      else {
-        const newUser = new User({
-          username: req.body.username,
-          email: req.body.email,
-          password: req.body.password
-        });
+User.findOne({email: req.body.email})
+.then(user => {
+  if (user) return res.status(400).json({email: "Email already used."})
+  else {
+    const newUser = new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    });
 
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser.save().then(user => res.send(user)).catch(err => res.send(err));
-          })
-        })
-      }
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser.save().then(user => res.send(user)).catch(err => res.send(err));
+      })
     })
+  }
+})
 ```
 When logging in, the password input is checked for matches in the database, then a json web token is assigned to the user that expires in one hour or when the user logs out.
 ```javascript
 bcrypt.compare(password, user.password)
-  .then(isMatch => {
-    if (isMatch) {
-      const payload = {
-        id: user.id,
-        username: user.username,
-        email: user.email
-      }
-      jwt.sign(
-        payload,
-        keys.secretOrKey,
-        { expiresIn: 3600 },
-        (err, token) => {
-          res.json({
-            success: true,
-            token: "Bearer " + token
-          });
-        }
-      )
+.then(isMatch => {
+  if (isMatch) {
+    const payload = {
+      id: user.id,
+      username: user.username,
+      email: user.email
     }
-    else return res.status(400).json({password: "Incorrect password"});
-  })
+    jwt.sign(
+      payload,
+      keys.secretOrKey,
+      { expiresIn: 3600 },
+      (err, token) => {
+        res.json({
+          success: true,
+          token: "Bearer " + token
+        });
+      }
+    )
+  }
+  else return res.status(400).json({password: "Incorrect password"});
+})
 ```
 ## Factors
 User can create, read, update and delete factors that they choose to keep track of.
@@ -89,7 +89,7 @@ User can create, read, update and delete factors that they choose to keep track 
 ## Records in Factors
 User can create, read, update and delete quantified daily records within each factor. (Details of frontend code). An daily entry dropdown menu is located on the top of every page for convenience of the user and to remind users to log today's entry as they are using the app. Daily entry's datatype includes continuous spectrum and discrete spectrum.
 
-![daily entry form](https://github.com/Eruanne2/TracNova/blob/readme/assets/readme_img/entry_form.gif)
+![daily entry form](https://github.com/Eruanne2/TracNova/blob/readme/assets/readme_img/entry_form2.gif)
 
 ## Correlations and Significance
 (Details of Math) is used to create correlation coefficient that ranges from 1 to -1. 1 represents absolute positive correlation; -1 represents absolute negative correlation; 0 represents no correlation.
