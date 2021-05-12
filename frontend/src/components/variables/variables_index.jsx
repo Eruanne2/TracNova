@@ -49,8 +49,8 @@ function VariablesIndex({history, variables = {}, destroyVariable}){
         <ul className="variables">
           { variables.map(variable => (
               <li key={variable._id} className={`${completed(variable) ? 'complete' : 'incomplete'}`}>
-                <NavLink activeClassName="selected" className="var-item-link" as="div"
-                  to={`/variables/${variable._id}`}
+                <NavLink exact to={`/variables/${variable._id}`}
+                  className={`var-item-link ${history.location.pathname.includes(variable._id) ? 'selected' : ''}`} as="div"
                 >
                   <VariableIcon variable={variable} completed={completed(variable)} onDragStart={e => handleDragStart(e, variable._id)} draggable={true}/>
                   <IconButton icon={faTrash} onClick={e => handleDeleteVariable(variable._id)} title="Delete"/>

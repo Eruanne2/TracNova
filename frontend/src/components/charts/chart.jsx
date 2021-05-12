@@ -11,6 +11,7 @@ import {
 // add style if orientation is left this color otherwise other color
 // import '../../../styles/chart.css'
 import * as StatUtil from "../../util/stat_util";
+import { SYMBOL_BOOLEAN, SYMBOL_RATING } from '../../util/symbols';
 
 const CustomTooltip = ({ active, payload, label, varName }) => {
 	if (active) {
@@ -65,6 +66,7 @@ const booleanFormatter = (value) => `${renderCustomTickBool(value)}`;
 function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
   
   switch (varType){
+    case SYMBOL_BOOLEAN:
     case 'binary': return (
       <YAxis
         key={`y-axis-${varName}`}
@@ -79,6 +81,7 @@ function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
         strokeWidth="1"
       />  
     );
+    case SYMBOL_RATING:
     case 'rating': return (
       <YAxis
         key={`y-axis-${varName}`}
@@ -111,8 +114,12 @@ function YAxisData({varName, varType, varUnit = '', orientation = 'left'}){
 }
 
 function ChartData({varName, varType, i}){
+  // let bool = SYMBOL_BOOLEAN;
+  // let rating = SYMBOL_RATING;
+
   if (i === 0) {
     switch (varType){
+      case SYMBOL_BOOLEAN:
       case 'binary': return (
         <Bar
           stackId={1}
@@ -126,6 +133,7 @@ function ChartData({varName, varType, i}){
           minPointSize={3}
         />
       );
+      case SYMBOL_RATING:
       case 'rating': return (
         <Area
           key={varName}
@@ -155,6 +163,7 @@ function ChartData({varName, varType, i}){
     }
   } else {
     switch (varType){
+      case SYMBOL_BOOLEAN:
       case 'binary': return (
         <Bar
           stackId={1}
@@ -169,6 +178,7 @@ function ChartData({varName, varType, i}){
           minPointSize={1}
         />
       );
+      case SYMBOL_RATING:
       case 'rating': return (
         <Area
           key={varName}

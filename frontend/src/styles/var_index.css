@@ -84,7 +84,7 @@ a.button.variables-button:hover {
   background-color: #acd4e5;
 }
 
-.variables-index > div.var-list-wrap.factor-wrap > ul > li a > svg.fa-trash {
+.variables-index > div.var-list-wrap.factor-wrap > ul > li div > svg.fa-trash {
   position: absolute;
   right: 20px;
   top: 20px;

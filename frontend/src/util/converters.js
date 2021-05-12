@@ -22,7 +22,7 @@ export const mDYToYMD = mdy => {
 };
 
 export const yMDToMDY = ymd => {
-  const [y, m, d] = dateToYMDArr(new Date(ymd.replace('-', '/')));
+  const [y, m, d] = dateToYMDArr(new Date(ymd.replace(/-/g, '/')));
   return `${m}/${d}/${y}`;
 };
 
