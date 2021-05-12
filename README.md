@@ -102,7 +102,8 @@ User can create, read, update and delete quantified daily records within each fa
 ![drag to chart](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/drag2chart.gif)
 
 # Features In Progress
-## Multi-Variable Correlations
+* Mobile-friendly - make the website responsive for small screen sizes and for mobile.
+* Multi-Variable Correlations - allow the option to drag multiple variables onto the graph to calculate three-way correlations. 
 
 # Lessons Learned
 ## Database Design
