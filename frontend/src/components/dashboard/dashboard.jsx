@@ -15,7 +15,8 @@ export default function Dashboard({variables}){
   const [_whichTab, _setWhichTab] = useState(1);
 
   useEffect(() => {
-    _setToggleForm(false)
+    _setToggleForm(false);
+    _setWhichTab(1);
   }, [_selectedVar]);
 
   useEffect(() => {
