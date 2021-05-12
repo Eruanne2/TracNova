@@ -216,11 +216,6 @@ function LegendPayload(variables){
     let secVar = { value: variables[1].name, type: 'square', color: 'rgb(3, 180, 165)'};
     payload.push(secVar);
   }
-            // payload={[
-            //   { value: 'Group A', type: 'square', color: '#112E51' },
-            //   { value: 'Group B', type: 'square', color: '#0071bc' },
-            //   { value: 'Group C', type: 'square', color: '#00a6d2' },
-            // ]}
   return payload;
 };
 
