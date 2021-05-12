@@ -4,6 +4,7 @@ import IconButton from "../util/icon_button"
 import { faCheckCircle, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import '../../styles/entry_form.css';
 import { dateToMDY } from '../../util/converters';
+import { SYMBOL_BOOLEAN, SYMBOL_RATING } from '../../util/symbols';
 
 
 export default function AddEntryForm({updateVariable, variables = {dailylogs: {}}, defaultVar, parentSetToggle}) {
@@ -54,11 +55,13 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
   const getCustomInput = variable => {
     if (!variable) return null;
     switch(variable.unit){
+      case SYMBOL_BOOLEAN:
       case 'binary':
         return <div>
           <div><button value={1} onClick={updateVal}>Yes</button></div>
           <div><button value={0} onClick={updateVal}>No</button></div>
         </div>
+      case SYMBOL_RATING:
       case 'rating':
         return <div>
           <div><button value={1} onClick={updateVal}>😒</button></div>
