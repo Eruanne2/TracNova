@@ -24,7 +24,7 @@ export default function LogEditor({
           RATING_EMOJIS.slice(1).map((emoji, i) => (
             <label key={i}>
               <input type="radio" value={i+1} name="rating"
-                checked={count === i}
+                checked={count === i+1}
                 onChange={ e => handleChange({date, value: Number(e.target.value)})}
               />
               {emoji}
