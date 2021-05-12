@@ -6,7 +6,7 @@ import {
   XAxis, YAxis,
   ReferenceLine,
   Line, Bar, Area,
-  Tooltip,
+  Tooltip, Legend
 } from 'recharts';
 // add style if orientation is left this color otherwise other color
 // import '../../../styles/chart.css'
@@ -208,6 +208,22 @@ function ChartData({varName, varType, i}){
   }
 }
 
+function LegendPayload(variables){
+  let payload = [];
+  let firstVar = { value: variables[0].name, type: 'square', color: 'rgb(23,63,247)'};
+  payload.push(firstVar);
+  if (!!variables[1] && variables[1] !== '') {
+    let secVar = { value: variables[1].name, type: 'square', color: 'rgb(3, 180, 165)'};
+    payload.push(secVar);
+  }
+            // payload={[
+            //   { value: 'Group A', type: 'square', color: '#112E51' },
+            //   { value: 'Group B', type: 'square', color: '#0071bc' },
+            //   { value: 'Group C', type: 'square', color: '#00a6d2' },
+            // ]}
+  return payload;
+};
+
 
 export default function Chart({variables}){
   const [data, metadataObj] = StatUtil.getStatData(...variables); // refactor to two variables?
@@ -240,6 +256,7 @@ export default function Chart({variables}){
         <Tooltip 
           // content={<CustomTooltip />}
         />
+        <Legend payload={LegendPayload(variables)} />
         <Brush dataKey="date" height={30} stroke="#8884d8" />
       </ComposedChart>
     </ResponsiveContainer>
