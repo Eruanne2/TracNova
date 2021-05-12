@@ -23,7 +23,7 @@ export default function LogEditor({
         <div className="input rating-radios">{
           RATING_EMOJIS.slice(1).map((emoji, i) => (
             <label key={i}>
-              <input type="radio" value={i} name="rating"
+              <input type="radio" value={i+1} name="rating"
                 checked={count === i}
                 onChange={ e => handleChange({date, value: Number(e.target.value)})}
               />
