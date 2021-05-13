@@ -34,7 +34,7 @@ export const logout = () => dispatch => {
   APIUtil.setAuthToken(false);
   dispatch(receiveUserLogout());
 
-  document.getElementById('hide-overflow-left').classList.add('hidden');
+  document.getElementById('hide-overflow-left') && document.getElementById('hide-overflow-left').classList.add('hidden');
   clearTimeout(flashTimer);
 };
 
