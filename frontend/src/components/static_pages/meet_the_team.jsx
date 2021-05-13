@@ -36,8 +36,8 @@ export default function MeetTheTeam() {
             <h2>Charis Ginn</h2>
             <h3>Team Lead</h3>
             <div>
-              <a href="https://github.com/Eruanne2"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
-              <a href="www.linkedin.com/in/charis-ginn-9abb93173"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
+              <a href="https://github.com/Eruanne2" target="_blank"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
+              <a href="www.linkedin.com/in/charis-ginn-9abb93173" target="_blank"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
             </div>
           </li>
 
@@ -46,8 +46,8 @@ export default function MeetTheTeam() {
             <h2>Chris Hong</h2>
             <h3>Backend Lead</h3>
             <div>
-              <a href="https://github.com/hongchris96"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
-              <a href="https://www.linkedin.com/in/chen-wei-christopher-hong-4b189162/"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
+              <a href="https://github.com/hongchris96" target="_blank"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
+              <a href="https://www.linkedin.com/in/chen-wei-christopher-hong-4b189162/" target="_blank" target="_blank"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
             </div>
           </li>
 
@@ -56,8 +56,8 @@ export default function MeetTheTeam() {
             <h2>Wenchong Lai</h2>
             <h3>Frontend Lead</h3>
             <div>
-              <a href="https://github.com/wenchonglai"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
-              <a href="https://www.linkedin.com/in/wenchong-lai-4296424b/"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
+              <a href="https://github.com/wenchonglai" target="_blank"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
+              <a href="https://www.linkedin.com/in/wenchong-lai-4296424b/" target="_blank"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
             </div>
           </li>
 
@@ -66,8 +66,8 @@ export default function MeetTheTeam() {
             <h2>Justin Cheasty</h2>
             <h3>Design Lead</h3>
             <div>
-              <a href="https://github.com/justinnnnnnnn"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
-              <a href="https://www.linkedin.com/in/justin-cheasty-2a521a14/"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
+              <a href="https://github.com/justinnnnnnnn" target="_blank"><img src={githubLogo} className="social-logo" alt="Github Logo" height="60"/></a>
+              <a href="https://www.linkedin.com/in/justin-cheasty-2a521a14/" target="_blank"><img src={linkedinLogo} className="social-logo" alt="LinkedIn Logo" height="61"/></a>
             </div>
           </li>
         </ul>
