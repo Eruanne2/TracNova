@@ -249,6 +249,8 @@ aside > div.var-list-wrap > ul > li .react-variable-icon > .name {
   padding-top: 47px;
   padding-left: 33px;
   position: relative;
+  /* position: absolute;
+  left: 380px; */
   z-index: 5;
 }
 
