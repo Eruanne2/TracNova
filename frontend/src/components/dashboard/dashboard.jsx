@@ -55,6 +55,17 @@ export default function Dashboard({variables}){
     if (r <= 1) return "very strong positive";
   }
 
+  const getUnit = variable => {
+    switch(variable.unit){
+      case 'boolean':
+      case 'binary':
+      case 'rating':
+        return '';
+      default:
+        return `(${variable.unit})`;
+    }
+  }
+
   const handleDragStart = (e, id) => {
     e.dataTransfer.setData('text/plain', id);
   };
@@ -106,7 +117,9 @@ export default function Dashboard({variables}){
           {_toggleForm && <AddEntryFormContainer defaultVar={ _draggedVar || _selectedVar } parentSetToggle={_setToggleForm.bind(this)}/>}
         </section>
         <section className='correlation-preview'>
-          {!!_draggedVar ? <h1><span className="selected-vs">{_selectedVar.name} ({_selectedVar.unit})</span> | <span className="dragged-vs">{_draggedVar.name}  ({_draggedVar.unit})</span></h1> : <h1 className="selected-vs">{_selectedVar.name}  ({_selectedVar.unit})</h1>}
+          {!!_draggedVar ? 
+            <h1><span className="selected-vs">{_selectedVar.name} {getUnit(_selectedVar)}</span> | <span className="dragged-vs">{_draggedVar.name}  {getUnit(_draggedVar)}</span></h1> 
+            : <h1 className="selected-vs">{_selectedVar.name}  {getUnit(_selectedVar)}</h1>}
 
           {(!_draggedVar && <p className='drag-info'>To calculate a correlation, drag a second factor onto the graph below.</p>)}
 
