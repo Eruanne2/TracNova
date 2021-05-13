@@ -59,6 +59,7 @@ export default function Dashboard({variables}){
     switch(variable.unit){
       case 'boolean':
       case 'binary':
+        return '(Y/N)'
       case 'rating':
         return '';
       default:
