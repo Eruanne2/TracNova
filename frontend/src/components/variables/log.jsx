@@ -19,7 +19,6 @@ export default function Log({editMode, unit, date, count, range, handleEditMode,
   }
 
   const handleDateChange = (e) => {
-    debugger
     if (e.currentTarget.value)
       handleChange({date: yMDToMDY(e.currentTarget.value), value: count});
   };

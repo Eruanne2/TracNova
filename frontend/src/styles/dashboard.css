@@ -24,6 +24,7 @@ aside > h1 {
   color: rgb(116,115,120);
   position: fixed;
   top: 130px;
+  z-index: 5;
 }
 
 aside > div.var-list-wrap {

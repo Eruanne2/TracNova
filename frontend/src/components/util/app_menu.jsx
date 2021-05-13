@@ -3,6 +3,8 @@ import { withRouter } from "react-router";
 import {Link, NavLink} from "react-router-dom";
 import '../../styles/app_menu_nav.css';
 import logo from '../../images/tracnova3.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function AppMenu({history, variables, logout}){
   const handleLogout = e => {
@@ -22,6 +24,12 @@ function AppMenu({history, variables, logout}){
           </li>
           <li>
             <Link to='/meet-the-team'>Meet the Team</Link>
+          </li>
+          <li>
+            <Link to='/tutorial'>Tutorial </Link>
+          </li>
+          <li>
+            <p id='tutorial-arrow' className='hidden'><i><FontAwesomeIcon icon={faArrowLeft} /></i></p>
           </li>
         </ul>
         <ul>
