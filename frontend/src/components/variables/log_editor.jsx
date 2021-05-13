@@ -42,7 +42,7 @@ export default function LogEditor({
           <label>
             <input className="input range react-log-input"
               type="range" value={count} step="1"
-              min={range.min || 0} max={range.max || 100}
+              min={!!range ? range.min : 0} max={!!range ? range.max : 100}
               onChange={e => handleChange({date, value: Number(e.target.value)})}
             />
           </label>

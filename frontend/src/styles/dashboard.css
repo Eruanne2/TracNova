@@ -251,6 +251,7 @@ aside > div.var-list-wrap > ul > li .react-variable-icon > .name {
   position: relative;
   /* position: absolute;
   left: 380px; */
+  margin: 10%vh;
   z-index: 5;
 }
 

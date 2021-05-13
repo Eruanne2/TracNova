@@ -57,6 +57,8 @@ export default function Dashboard({variables}){
 
   const getUnit = variable => {
     switch(variable.unit){
+      case undefined:
+        return '';
       case 'boolean':
       case 'binary':
         return '(Y/N)'
