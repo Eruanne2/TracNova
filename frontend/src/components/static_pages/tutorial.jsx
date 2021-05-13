@@ -23,6 +23,7 @@ export default function Tutorial() {
       </section>
 
       <div className='tutorial-div'>
+        <h1>User Tutorial</h1>
         <iframe width="672" height="378" src="https://www.youtube.com/embed/Vm-eAoNCHT0" frameBorder="0" allowFullScreen/>
       </div>
     </div>

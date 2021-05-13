@@ -1,5 +1,14 @@
 .tutorial-div {
-  margin: 12% auto;
+  margin: 8% auto;
+}
+
+
+.tutorial-div h1 {
+  font-family: 'Kalam', cursive;
+  font-size: 60px;
+  width: 700px;
+  text-align: center;
+  margin: 20px auto;
 }
 
 .hidden {
