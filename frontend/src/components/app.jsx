@@ -25,6 +25,7 @@ function NoIndexComponent(){
 export default function App(){
   return (
     <div>
+      <div id='hide-overflow-left'></div>
       <ProtectedRoute path="/" component={AppMenuContainer}/>
       <section className="indices">
         <ProtectedRoute path={['/variables', '/correlations']} component={VariablesIndexContainer}/>

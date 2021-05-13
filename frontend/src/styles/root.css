@@ -9,3 +9,14 @@
 /* #root > div {
   position: relative;
 } */
+
+#hide-overflow-left {
+  z-index: 4;
+  position: fixed;
+  left: 0;
+  top: 40px;
+  width: 270px;
+  padding: 3.5%;
+  height: 100vh;
+  background-color: white;
+}

@@ -16,16 +16,6 @@
   color: rgb(116,115,120);
 }
 
-/* .variables-index > ul {
-  width: 260px;
-  padding: 0px;
-  height: 100%;
-  border: 1px solid rgb(116,115,120);
-  margin-top: 15px;
-  position: relative;
-  
-} */
-
 aside > div.var-list-wrap.factor-wrap {
   overflow: hidden;
   height: 550px;
@@ -33,6 +23,7 @@ aside > div.var-list-wrap.factor-wrap {
   position: fixed;
   top: 199px;
   left: 5%;
+  z-index: 5;
 }
 
 a.button.variable-button {
