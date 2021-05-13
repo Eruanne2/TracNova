@@ -33,6 +33,7 @@ aside > div.var-list-wrap {
   position: fixed;
   top: 150px;
   left: 5%;
+  z-index: 5;
 }
 
 
@@ -249,10 +250,7 @@ aside > div.var-list-wrap > ul > li .react-variable-icon > .name {
   padding-top: 47px;
   padding-left: 33px;
   position: relative;
-  /* position: absolute;
-  left: 380px; */
-  margin: 10%vh;
-  z-index: 5;
+  z-index: 3;
 }
 
 .toggle-entry-form {
