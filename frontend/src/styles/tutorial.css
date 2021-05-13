@@ -1,3 +1,26 @@
 .tutorial-div {
   margin: 12% auto;
 }
+
+.hidden {
+  display: none;
+}
+
+#tutorial-arrow {
+  position: relative;
+  right: 30px;
+}
+
+.flash {
+  display: inline-block;
+  color: #fa243b;
+  font-size: 30px;
+  font-weight: 900;
+  animation: blinker 3s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
