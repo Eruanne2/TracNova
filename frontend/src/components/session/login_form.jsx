@@ -73,6 +73,7 @@ function LoginForm({
           <figure className="logo-wrapper">
             <img src={logo} className="logo" alt="TracNova icon"/>
             <Link to="/meet-the-team">Meet the Team</Link>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/i8mSl03t-Gk?autoplay=1;rel=0" frameborder="0" allowfullscreen/>
           </figure>
           
           <section className="login-section">
