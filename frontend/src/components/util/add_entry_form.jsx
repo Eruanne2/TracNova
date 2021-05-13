@@ -43,7 +43,6 @@ export default function AddEntryForm({updateVariable, variables = {dailylogs: {}
     let allButtons = document.querySelectorAll(".select-button");
     allButtons.forEach(b => b.classList.remove("select-button"));
     selectedButton.classList.add("select-button");
-    console.log(selectedButton);
   };
 
   const getYesterday = () => 

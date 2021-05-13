@@ -23,6 +23,9 @@ function AppMenu({history, variables, logout}){
           <li>
             <Link to='/meet-the-team'>Meet the Team</Link>
           </li>
+          <li>
+            <Link to='/tutorial'>Tutorial</Link>
+          </li>
         </ul>
         <ul>
           <li className="menu-item">

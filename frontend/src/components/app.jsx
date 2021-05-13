@@ -15,6 +15,7 @@ import Splash from './static_pages/splash';
 import VariablesIndexContainer from "./variables/variables_index_container";
 import Empty from './static_pages/empty';
 import MeetTheTeam from './static_pages/meet_the_team';
+import Tutorial from './static_pages/tutorial';
 
 window.axios = axios;
 
@@ -33,6 +34,8 @@ export default function App(){
       </section>
       <Switch>
         <Route exact path='/meet-the-team' component={MeetTheTeam}/>
+        <ProtectedRoute exact path='/tutorial' component={Tutorial}/>
+        
         <AuthRoute exact path='/' component={Splash}/>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer}/>
