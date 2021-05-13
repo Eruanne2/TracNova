@@ -67,7 +67,6 @@ export default function Dashboard({variables}){
   };
 
   const disableScroll = e => {
-    // console.log("event happened");
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     window.onscroll = function() {
@@ -107,7 +106,7 @@ export default function Dashboard({variables}){
           {_toggleForm && <AddEntryFormContainer defaultVar={ _draggedVar || _selectedVar } parentSetToggle={_setToggleForm.bind(this)}/>}
         </section>
         <section className='correlation-preview'>
-          {!!_draggedVar ? <h1><span className="selected-vs">{_selectedVar.name}</span> | <span className="dragged-vs">{_draggedVar.name}</span></h1> : <h1 className="selected-vs">{_selectedVar.name}</h1>}
+          {!!_draggedVar ? <h1><span className="selected-vs">{_selectedVar.name} ({_selectedVar.unit})</span> | <span className="dragged-vs">{_draggedVar.name}  ({_draggedVar.unit})</span></h1> : <h1 className="selected-vs">{_selectedVar.name}  ({_selectedVar.unit})</h1>}
 
           {(!_draggedVar && <p className='drag-info'>To calculate a correlation, drag a second factor onto the graph below.</p>)}
 
