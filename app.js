@@ -58,8 +58,6 @@ app.use('/api/correlations', correlations);
 // POST /api/correlations/
 // PATCH /api/correlations/:id
 // DELETE /api/correlations/:id
-require ('newrelic');
-
 
 // Port:
 const port = process.env.PORT || 5000;
