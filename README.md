@@ -30,9 +30,12 @@ Does drinking water really help you lose weight? Does waking up earlier really m
 * React
 * Node.js
 ## Notable Dependencies
+* Redux
 * Statistics.js
 * ReCharts
 * mongoose-data-seed
+* jwt-token
+* axios
 
 # Features
 ## User Auth
