@@ -94,7 +94,7 @@ User can create, read, update and delete quantified daily records within each fa
 
 There are three different methods used to calculate the correlation coefficient depending on the types of data. Factors measured in the form of yes/no are recorded as binary data, and records measured through a rating (1-5) or any custom unit are recorded as metric data.  
 
-````javascript
+```javascript
   if (hasBinary && !hasOther){
     const valSets = data.map(pair => Object.values(pair));
     const count = { '0,0': 0, '0,1': 0, '1,0': 0, '1,1': 0 };
