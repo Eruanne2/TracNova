@@ -140,7 +140,7 @@ The calculations for Spearman's Rho were imported through `Statistics.js`. Calcu
 
 ![drag to chart](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/drag2chart.gif)
 
-The dashboard graph utilizes React Hooks to 
+The dashboard graph utilizes React Hooks to manage a `selectedVar` and a `draggedVar`. There is always a `selectedVar`, which is displayed alone on the graph by default. However, when the `draggedVar` is given a value, the graph is rerendered to show both values and to include a scatterplot of the values. 
 
 # Future Features
 * Mobile-friendly - make the website responsive for small screen sizes and for mobile.
