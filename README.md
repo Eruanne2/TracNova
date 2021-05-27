@@ -84,7 +84,7 @@ bcrypt.compare(password, user.password)
 ```
 
 ## Records in Factors
-User can create, read, update and delete quantified daily records within each factor. (Details of frontend code). An daily entry dropdown menu is located on the top of every page for convenience of the user and to remind users to log today's entry as they are using the app. Daily entry's datatype includes continuous spectrum and discrete spectrum.
+User can create, read, update and delete quantified daily records within each factor. (Details of frontend code). A daily entry dropdown menu is located on the top of every page for convenience of the user and to remind users to log today's entry as they are using the app. Daily entry's datatype includes continuous spectrum and discrete spectrum.
 
 ![daily entry form](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/entry_form2.gif)
 
@@ -94,7 +94,7 @@ User can create, read, update and delete quantified daily records within each fa
 
 There are three different methods used to calculate the correlation coefficient depending on the types of data. Factors measured in the form of yes/no are recorded as binary data, and records measured through a rating (1-5) or any custom unit are recorded as metric data.  
 
-```
+````javascript
   if (hasBinary && !hasOther){
     const valSets = data.map(pair => Object.values(pair));
     const count = { '0,0': 0, '0,1': 0, '1,0': 0, '1,1': 0 };
