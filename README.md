@@ -17,9 +17,7 @@ Does drinking water really help you lose weight? Does waking up earlier really m
   * [Correlations](#correlations)
   * [Statistics](#statistics)
   * [Graphs](#graphs)
-* [Features In Progress](#features-in-progress)
-  * [Multi-Variable Correlations](#multi-variable-correlations)
-  * [Mobile Design](#mobile-design)
+* [Future Features](#future-features)
 * [Lessons Learned](#lessons-learned)
   * [Database Design](#database-design)
 
@@ -95,16 +93,56 @@ User can create, read, update and delete quantified daily records within each fa
 ![daily entry form](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/entry_form2.gif)
 
 ## Correlations and Significance
-(Details of Math) is used to create correlation coefficient that ranges from 1 to -1. 1 represents absolute positive correlation; -1 represents absolute negative correlation; 0 represents no correlation.
 
 ![correlation coefficient](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/correlation_coef2.png)
 
+There are three different methods used to calculate the correlation coefficient depending on the types of data. Factors measured in the form of yes/no are recorded as binary data, and records measured through a rating (1-5) or any custom unit are recorded as metric data.  
+
+```
+  if (hasBinary && !hasOther){
+    const valSets = data.map(pair => Object.values(pair));
+    const count = { '0,0': 0, '0,1': 0, '1,0': 0, '1,1': 0 };
+
+    valSets.forEach(set => {
+      let key = set.toString();
+      count[key] += 1 
+    });
+    
+    const table = Object.values(count);
+
+    return phi(table);
+  }
+
+  if (hasBinary && hasOther){
+    // point-biserial
+    return pointBiserial(data, varTypes);
+  }
+
+  if (!hasBinary && hasOther){
+    // spearman
+    const stats = new Statistics(data, varTypes);
+    const spearman = stats.spearmansRho(...Object.keys(stats.columns));
+
+    return spearman.rho;
+  }
+```
+
+There are three possible combinations (binary-binary, binary-metric, or metric-metric) of datasets to be compared. 
+* If both datasets are binary, the [phi coefficient](http://www.pmean.com/definitions/phi.htm) is used. 
+* If one dataset is binary and the other is metric, the [point-biserial coefficient](https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/NCSS/Point-Biserial_and_Biserial_Correlations.pdf) is used. 
+* If both datasets are metric, [Spearman's Rho](https://statistics.laerd.com/statistical-guides/spearmans-rank-order-correlation-statistical-guide.php) is used. 
+
+In every case, the resulting coefficient will be contained in the interval \[-1,1\], where 1 represents absolute positive correlation; -1 represents absolute negative correlation; and 0 represents no correlation.
+
+The calculations for Spearman's Rho were imported through `Statistics.js`. Calculations for the other two methods were coded out by the team.
+
 ## Graphs
-(Wenchong's Magic)
 
 ![drag to chart](https://github.com/Eruanne2/TracNova/blob/main/assets/readme_img/drag2chart.gif)
 
-# Features In Progress
+The dashboard graph utilizes React Hooks to 
+
+# Future Features
 * Mobile-friendly - make the website responsive for small screen sizes and for mobile.
 * Multi-Variable Correlations - allow the option to drag multiple variables onto the graph to calculate three-way correlations. 
 
