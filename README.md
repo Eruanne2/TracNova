@@ -13,13 +13,11 @@ Does drinking water really help you lose weight? Does waking up earlier really m
   * [Notable Dependencies](#notable-dependencies)
 * [Features](#features)
   * [User Auth](#user-auth)
-  * [Variables](#variables)
-  * [Correlations](#correlations)
-  * [Statistics](#statistics)
+  * [Records in Factors](#records-in-factors)
+  * [Correlations and Significance](#correlations-and-significance)
   * [Graphs](#graphs)
 * [Future Features](#future-features)
 * [Lessons Learned](#lessons-learned)
-  * [Database Design](#database-design)
 
 # Technologies Used
 ## Stack
@@ -84,8 +82,6 @@ bcrypt.compare(password, user.password)
   else return res.status(400).json({password: "Incorrect password"});
 })
 ```
-## Factors
-User can create, read, update and delete factors that they choose to keep track of.
 
 ## Records in Factors
 User can create, read, update and delete quantified daily records within each factor. (Details of frontend code). An daily entry dropdown menu is located on the top of every page for convenience of the user and to remind users to log today's entry as they are using the app. Daily entry's datatype includes continuous spectrum and discrete spectrum.
