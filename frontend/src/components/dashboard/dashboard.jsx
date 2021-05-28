@@ -112,7 +112,6 @@ export default function Dashboard({variables}){
             ))}
           </ul>
         </div>
-        {/* <div class="fadeout"></div> */}
       </aside>
       <main>
         <section className='toggle-entry-form'>
@@ -145,11 +144,13 @@ export default function Dashboard({variables}){
           </div>
 
           <section className='droppable-graph-box'
-                  onDragOver={e => e.preventDefault()}
-                  onDrop={handleReceiveDrop}>
+                    onDragOver={e => e.preventDefault()}
+                    onDrop={handleReceiveDrop}>
             <ul className='tab-headers'>
-              <h2 onClick={e => _setWhichTab(1)} className={_whichTab === 1 ? 'selected-tab' : ''}>Factor over Time</h2>
-              {_draggedVar && <h2 onClick={e => _setWhichTab(2)} className={_whichTab === 2 ? 'selected-tab' : ''}>Scatterplot</h2>}
+            <h2 onClick={e => _setWhichTab(1)} className={_whichTab === 1 ? 'selected-tab' : ''}>Factor over Time</h2>
+            {_draggedVar && 
+              <h2 onClick={e => _setWhichTab(2)} className={_whichTab === 2 ? 'selected-tab' : ''}>Scatterplot</h2>
+            }
             </ul>
             {_whichTab === 1 && 
               <div className='tab-one'>
